@@ -11,21 +11,22 @@ struct TestSuite : Test
     explicit TestSuite(const std::string& name);    
     ~TestSuite();
 
-    void addTest(const Test&);
+    void addTest(Test*);
+    void runBare(TestResult &result);
 
 private:
-    OVERRIDE(void run(TestResult&) const);
+    OVERRIDE(void run(TestResult&));
     OVERRIDE(const std::string& getName() const);
-    OVERRIDE(int getNumOfTestCases() const);
+    OVERRIDE(int countTestCases() const);
 
 private:
-    void doStartSuite(TestResult&) const;
-    void doRunChildTests(TestResult&) const;
-    void doEndSuite(TestResult&) const;
+    void doStartSuite(TestResult&);
+    void doRunChildTests(TestResult&);
+    void doEndSuite(TestResult&);
 
 private:
     std::string name;
-    std::vector<const Test*> tests;
+    std::vector<Test*> tests;
 };
 
 MAGELLAN_NS_END

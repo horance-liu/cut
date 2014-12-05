@@ -1,26 +1,18 @@
 #include <magellan/core/TestCase.h>
 #include <magellan/core/TestResult.h>
-#include <magellan/core/TestFunctor.h>
+#include "magellan/core/TestMethod.h"
 
 MAGELLAN_NS_BEGIN
 
 namespace
 {
-    struct TestCaseMethodFunctor : TestFunctor
+    struct TestMethodWrapper : TestMethod
     {
-        using TestCaseMethod = void(TestCase::*)();
-        using ConstTestCaseMethod = void(TestCase::*)() const;
+        using Method = void(TestCase::*)();
         
-        TestCaseMethodFunctor(const TestCase& target, TestCaseMethod method)
-            : target(const_cast<TestCase&>(target))
-            , method(method)
-        {
-        }
-
-        TestCaseMethodFunctor(const TestCase& target, const ConstTestCaseMethod method)
-          : TestCaseMethodFunctor(target, (TestCaseMethod)method)
-        {
-        }
+        TestMethodWrapper(TestCase& target, Method method)
+            : target(target), method(method)
+        {}
 
     private:
         OVERRIDE(bool operator()() const)
@@ -31,7 +23,7 @@ namespace
 
     private:
        TestCase& target;
-       TestCaseMethod method;
+       Method method;
     };
 }
 
@@ -40,29 +32,29 @@ TestCase::TestCase(const std::string& name) : name(name)
 }
 
 template <typename Functor>
-inline bool TestCase::protect(TestResult& result, Functor functor, const char* desc) const
+inline bool TestCase::protect(TestResult& result, Functor functor, const char* desc)
 {
-    return result.protect(TestCaseMethodFunctor(*this, functor), *this, desc);
+    return result.protect(*this, TestMethodWrapper(*this, functor), desc);
 }
 
-inline void TestCase::doRun(TestResult& result) const
+void TestCase::runBare(TestResult& result)
 {
-    if (protect(result, &TestCase::setUp, "setUp() failed"))
+#define PROTECT(action) protect(result, &TestCase::action, #action" failed")
+
+    if (PROTECT(setUp))
     {
-        protect(result, &TestCase::runTest);
+        PROTECT(runTest);
     }
 
-    protect(result, &TestCase::tearDown, "tearDown() failed");
+    PROTECT(tearDown);
 }
 
-void TestCase::run(TestResult& result) const
+void TestCase::run(TestResult& result)
 {
-    result.startTest(*this);
-    doRun(result);
-    result.endTest(*this);
+    result.run(*this);
 }
 
-int TestCase::getNumOfTestCases() const
+int TestCase::countTestCases() const
 {
     return 1;
 }
@@ -73,4 +65,3 @@ const std::string& TestCase::getName() const
 }
 
 MAGELLAN_NS_END
-

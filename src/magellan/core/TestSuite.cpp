@@ -1,5 +1,7 @@
 #include <magellan/core/TestSuite.h>
 #include <magellan/core/TestResult.h>
+#include <infra/base/Collections.h>
+
 
 MAGELLAN_NS_BEGIN
 
@@ -9,17 +11,12 @@ TestSuite::TestSuite(const std::string& name)
 
 TestSuite::~TestSuite()
 {
-    for (auto test : tests)
-    {
-        delete test;
-    }
-
-    tests.clear();
+    clear_container(tests);
 }
 
-void TestSuite::addTest(const Test& test)
+void TestSuite::addTest(Test* test)
 {
-    tests.push_back(&test);
+    tests.push_back(test);
 }
 
 const std::string& TestSuite::getName() const
@@ -27,29 +24,19 @@ const std::string& TestSuite::getName() const
     return name;
 }
 
-int TestSuite::getNumOfTestCases() const
+int TestSuite::countTestCases() const
 {
     auto num = 0;
 
     for (auto test : tests)
     {
-        num += test->getNumOfTestCases();
+        num += test->countTestCases();
     }
 
     return num;
 }
 
-inline void TestSuite::doStartSuite(TestResult& result) const
-{
-    result.startSuite(*this);
-}
-
-inline void TestSuite::doEndSuite(TestResult& result) const
-{
-    result.endSuite(*this);
-}
-
-inline void TestSuite::doRunChildTests(TestResult& result) const
+void TestSuite::runBare(TestResult &result)
 {
     for (auto test : tests)
     {
@@ -57,11 +44,9 @@ inline void TestSuite::doRunChildTests(TestResult& result) const
     }
 }
 
-void TestSuite::run(TestResult& result) const
+void TestSuite::run(TestResult& result)
 {
-    doStartSuite(result);
-    doRunChildTests(result);
-    doEndSuite(result);
+    result.run(*this);
 }
 
 MAGELLAN_NS_END

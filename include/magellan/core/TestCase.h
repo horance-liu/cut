@@ -8,21 +8,23 @@ MAGELLAN_NS_BEGIN
 
 struct TestCase : Test, TestFixture
 {
-    explicit TestCase(const std::string& name);
+    explicit TestCase(const std::string& name = "");
+
+    void runBare(TestResult&);
 
 private:
-    OVERRIDE(void run(TestResult&) const);
-    OVERRIDE(int getNumOfTestCases() const);
+    OVERRIDE(void run(TestResult&));
+    OVERRIDE(int countTestCases() const);
     OVERRIDE(const std::string& getName() const);
 
 private:
-    DEFAULT(void, runTest() const);
+    DEFAULT(void, runTest());
 
 private:
     void doRun(TestResult&) const;
 
     template <typename Functor>
-    bool protect(TestResult& result, Functor functor, const char* desc = "") const;
+    bool protect(TestResult& result, Functor functor, const char* desc = "");
 
 private:
     std::string name; 

@@ -15,4 +15,3 @@ DEFINE_ROLE(TestFixture)
 MAGELLAN_NS_END
 
 #endif
-

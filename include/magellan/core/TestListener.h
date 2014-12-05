@@ -2,6 +2,7 @@
 #define _SAOXDTVZ85W9YDU8WXPQZX5VG9GYC1PRD9KOOAOJADH827VEOLVORP2L
 
 #include <infra/base/Role.h>
+#include <magellan/base/magellan.h>
 
 MAGELLAN_NS_BEGIN
 
@@ -11,16 +12,17 @@ struct TestFailure;
 
 DEFINE_ROLE(TestListener)
 {
-    DEFUALT(void, startTest(const Test&));
-    DEFUALT(void, endTest(const Test&));
+    DEFAULT(void, startTest(Test&));
+    DEFAULT(void, endTest(Test&));
     
-    DEFUALT(void, startSuite(const Test&));
-    DEFUALT(void, endSuite(const Test&));
+    DEFAULT(void, startSuite(Test&));
+    DEFAULT(void, endSuite(Test&));
     
-    DEFUALT(void, startTestRun(const Test&, TestResult&));
-    DEFUALT(void, endTestRun(const Test&, TestResult&));
+    DEFAULT(void, startTestRun(Test&, TestResult&));
+    DEFAULT(void, endTestRun(Test&, TestResult&));
     
-    DEFUALT(void, addFailure(const TestFailure&));
+    DEFAULT(void, addFailure(Test&, const TestFailure&));
+    DEFAULT(void, addError(Test&, const TestFailure&));
 };
 
 MAGELLAN_NS_END

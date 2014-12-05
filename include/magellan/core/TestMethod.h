@@ -5,7 +5,7 @@
 
 MAGELLAN_NS_BEGIN
 
-DEFINE_ROLE(TestFunctor)
+DEFINE_ROLE(TestMethod)
 {
     ABSTRACT(bool operator()() const);
 };
@@ -13,4 +13,3 @@ DEFINE_ROLE(TestFunctor)
 MAGELLAN_NS_END
 
 #endif
-
