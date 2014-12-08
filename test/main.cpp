@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+#include "magellan/options/OptionsRepositry.h"
 
 int main(int argc, char** argv)
 {

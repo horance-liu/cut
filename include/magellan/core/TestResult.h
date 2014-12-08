@@ -3,6 +3,7 @@
 
 #include <magellan/base/magellan.h>
 #include <vector>
+#include <string>
 
 MAGELLAN_NS_BEGIN
 
