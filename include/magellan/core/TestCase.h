@@ -21,13 +21,11 @@ private:
     DEFAULT(void, runTest());
 
 private:
-    void doRun(TestResult&) const;
-
     template <typename Functor>
     bool protect(TestResult& result, Functor functor, const char* desc = "");
 
 private:
-    std::string name; 
+    const std::string name; 
 };
 
 MAGELLAN_NS_END

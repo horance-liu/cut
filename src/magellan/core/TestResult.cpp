@@ -4,7 +4,7 @@
 #include <magellan/core/TestListener.h>
 #include <magellan/core/TestCase.h>
 #include <magellan/core/TestSuite.h>
-#include <magellan/core/TestMethod.h>
+#include <magellan/core/TestFunctor.h>
 #include <magellan/core/AssertionError.h>
 
 MAGELLAN_NS_BEGIN
@@ -26,7 +26,7 @@ void TestResult::reportError(Test&test, const Message& msg)
     addError(test, new TestFailure(test, msg, true));
 }
 
-bool TestResult::protect(Test& test, const TestMethod& method, const std::string& desc)
+bool TestResult::protect(Test& test, const TestFunctor& method, const std::string& desc)
 {
     try {
         return method();

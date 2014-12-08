@@ -1,16 +1,16 @@
 #include <magellan/core/TestCase.h>
 #include <magellan/core/TestResult.h>
-#include "magellan/core/TestMethod.h"
+#include "magellan/core/TestFunctor.h"
 
 MAGELLAN_NS_BEGIN
 
 namespace
 {
-    struct TestMethodWrapper : TestMethod
+    struct TestFunctorWrapper : TestFunctor
     {
         using Method = void(TestCase::*)();
         
-        TestMethodWrapper(TestCase& target, Method method)
+        TestFunctorWrapper(TestCase& target, Method method)
             : target(target), method(method)
         {}
 
@@ -34,7 +34,7 @@ TestCase::TestCase(const std::string& name) : name(name)
 template <typename Functor>
 inline bool TestCase::protect(TestResult& result, Functor functor, const char* desc)
 {
-    return result.protect(*this, TestMethodWrapper(*this, functor), desc);
+    return result.protect(*this, TestFunctorWrapper(*this, functor), desc);
 }
 
 void TestCase::runBare(TestResult& result)

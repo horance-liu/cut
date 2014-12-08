@@ -20,12 +20,7 @@ private:
     OVERRIDE(int countTestCases() const);
 
 private:
-    void doStartSuite(TestResult&);
-    void doRunChildTests(TestResult&);
-    void doEndSuite(TestResult&);
-
-private:
-    std::string name;
+    const std::string name;
     std::vector<Test*> tests;
 };
 

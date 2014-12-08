@@ -8,16 +8,17 @@ MAGELLAN_NS_BEGIN
 template <typename Fixture>
 struct TestCaller : TestCase
 {
-    using TestMethod = void (Fixture::*)() const;
+    using Method = void(Fixture::*)();
 
-    TestCaller(const std::string& name, TestMethod method)
-        : TestCase(name), fixture(0), method(method)
+    TestCaller(const std::string& name, const Method method)
+        : TestCase(name), fixture(nullptr), method(method)
     {
     }
 
 private:
     OVERRIDE(void setUp())
     {
+        // must not register test method to MetaTestFixture again.
         fixture = new Fixture;
         fixture->setUp();
     }
@@ -25,7 +26,7 @@ private:
     OVERRIDE(void tearDown())
     {
         delete fixture;
-        fixture = 0;
+        fixture = nullptr;
     }
 
     OVERRIDE(void runTest())
@@ -35,10 +36,9 @@ private:
 
 private:
     Fixture* fixture;
-    TestMethod method;
+    Method method;
 };
 
 MAGELLAN_NS_END
 
 #endif
-

@@ -11,19 +11,19 @@ struct TestCase;
 struct TestSuite;
 struct TestFailure;
 struct TestListener;
-struct TestMethod;
+struct TestFunctor;
 struct Message;
 
 struct TestResult
 {
     ~TestResult();
 
+    void add(TestListener*);
+    
     void run(TestCase&);
     void run(TestSuite&);
 
-    bool protect(Test& test, const TestMethod&, const std::string&);
-
-    void add(TestListener*);
+    bool protect(Test& test, const TestFunctor&, const std::string&);
 
 private:
     void startTest(Test&);
