@@ -28,6 +28,8 @@ struct Description
         , const std::string& end
         , const std::initializer_list<SelfDescribing> list);
 
+    const std::string& to_s() const;
+
 private:
     Description& appendList
         ( const std::string& separator

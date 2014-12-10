@@ -10,7 +10,17 @@ HAMCREST_NS_BEGIN
 template <typename U, typename V>
 void assert_that(const U& actual, const Matcher<V>& matcher)
 {
-    ASSERT_TRUE(matcher.matches(actual));
+    if (!matcher.matches(actual))
+    {
+        Description desc; 
+        
+        desc.appendText("Expected: ") \
+            .appendDescriptionOf(matcher) \
+            .appendText(", but got: ") \
+            .appendValue(actual); \
+
+        FAIL() << desc.to_s();
+    }
 }
 
 #define ASSERT_THAT(actual, matcher) HAMCREST_NS::assert_that(actual, matcher)

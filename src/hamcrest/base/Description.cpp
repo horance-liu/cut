@@ -43,4 +43,9 @@ Description& Description::appendList
     return append(start).appendList(separator, list).append(end);
 }
 
+const std::string& Description::to_s() const
+{
+    return desc;
+}
+
 HAMCREST_NS_END
