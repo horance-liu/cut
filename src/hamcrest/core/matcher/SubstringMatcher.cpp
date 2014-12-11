@@ -1,4 +1,4 @@
-#include <hamcrest/core/SubstringMatcher.h>
+#include <hamcrest/core/matcher/SubstringMatcher.h>
 
 HAMCREST_NS_BEGIN
 
@@ -33,8 +33,7 @@ bool SubstringMatcher::matches(const std::string& actual) const
 void SubstringMatcher::describeTo(Description& description) const
 {
     description.appendText("a string ")
-            .appendText(relationship)
-            .appendText(" ")
+            .appendText(relationship + " ")
             .appendValue(substring);
 
     if (ignoringCase)

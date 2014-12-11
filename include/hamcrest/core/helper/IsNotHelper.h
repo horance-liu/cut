@@ -1,8 +1,8 @@
 #ifndef H6FE7D00B_4D0D_419D_A21A_1C4243288223
 #define H6FE7D00B_4D0D_419D_A21A_1C4243288223
 
-#include <hamcrest/core/IsNot.h>
-#include <hamcrest/helper/IsEqualHelper.h>
+#include <hamcrest/core/matcher/IsNot.h>
+#include <hamcrest/core/helper/IsEqualHelper.h>
 
 HAMCREST_NS_BEGIN
 

@@ -3,7 +3,6 @@
 
 #include <gtest/gtest.h>
 #include <hamcrest/base/Matcher.h>
-#include <hamcrest/core/IsNil.h>
 
 HAMCREST_NS_BEGIN
 

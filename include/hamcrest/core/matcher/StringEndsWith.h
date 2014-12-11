@@ -1,7 +1,7 @@
 #ifndef H5E9E7C61_DCDA_4893_93D2_F8B6BA190E86
 #define H5E9E7C61_DCDA_4893_93D2_F8B6BA190E86
 
-#include <hamcrest/core/SubstringMatcher.h>
+#include <hamcrest/core/matcher/SubstringMatcher.h>
 
 HAMCREST_NS_BEGIN
 

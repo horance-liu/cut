@@ -1,8 +1,8 @@
 #ifndef H65272EEC_9259_408E_9121_253663AB9F98
 #define H65272EEC_9259_408E_9121_253663AB9F98
 
-#include <hamcrest/core/Is.h>
-#include <hamcrest/helper/IsEqualHelper.h>
+#include <hamcrest/core/matcher/Is.h>
+#include <hamcrest/core/helper/IsEqualHelper.h>
 
 HAMCREST_NS_BEGIN
 

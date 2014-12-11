@@ -1,5 +1,4 @@
-#include <gtest/gtest.h>
-#include <hamcrest/helper/IsNotHelper.h>
+#include <hamcrest/core/helper/IsNotHelper.h>
 #include <assertion/Asserter.h>
 
 USING_HAMCREST_NS

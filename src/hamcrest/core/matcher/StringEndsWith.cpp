@@ -1,4 +1,4 @@
-#include <hamcrest/core/StringEndsWith.h>
+#include <hamcrest/core/matcher/StringEndsWith.h>
 
 HAMCREST_NS_BEGIN
 
@@ -7,10 +7,12 @@ StringEndsWith::StringEndsWith(bool ignoringCase, const std::string& substring)
 {
 }
 
-bool StringEndsWith::evalSubstringOf(const std::string& s) const
+bool StringEndsWith::evalSubstringOf(const std::string& str) const
 {
-    return ::strncmp(converted(s).c_str() + s.size() - substring.size()
-    , converted(substring).c_str(), substring.size()) == 0;
+    auto &&target = converted(substring);
+    return ::strncmp( str.c_str() + str.size() - target.size()
+                    , target.c_str()
+                    , target.size()) == 0;
 }
 
 const StringEndsWith* StringEndsWith::clone() const

@@ -1,8 +1,8 @@
 #ifndef H97BCD1FA_2A90_4110_BD1A_D6E7A1004220
 #define H97BCD1FA_2A90_4110_BD1A_D6E7A1004220
 
-#include <hamcrest/core/Description.h>
-#include <hamcrest/core/SelfDescribing.h>
+#include <hamcrest/base/Description.h>
+#include <hamcrest/base/SelfDescribing.h>
 
 HAMCREST_NS_BEGIN
 

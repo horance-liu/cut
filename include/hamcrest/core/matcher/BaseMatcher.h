@@ -1,8 +1,8 @@
 #ifndef H51EBF108_EB0E_4847_BA80_3012AD037673
 #define H51EBF108_EB0E_4847_BA80_3012AD037673
 
-#include "hamcrest/core/Matcher.h"
-#include "hamcrest/core/Description.h"
+#include "hamcrest/base/Matcher.h"
+#include "hamcrest/base/Description.h"
 
 HAMCREST_NS_BEGIN
 

@@ -1,4 +1,4 @@
-#include <hamcrest/core/StringStartsWith.h>
+#include <hamcrest/core/matcher/StringStartsWith.h>
 #include <string.h>
 
 HAMCREST_NS_BEGIN
@@ -8,9 +8,10 @@ StringStartsWith::StringStartsWith(bool ignoringCase, const std::string& substri
 {
 }
 
-bool StringStartsWith::evalSubstringOf(const std::string& s) const
+bool StringStartsWith::evalSubstringOf(const std::string& str) const
 {
-    return ::strncmp(converted(s).c_str(), converted(substring).c_str(), substring.size()) == 0;
+    auto &&target = converted(substring);
+    return ::strncmp(str.c_str(), target.c_str(), target.size()) == 0;
 }
 
 const StringStartsWith* StringStartsWith::clone() const

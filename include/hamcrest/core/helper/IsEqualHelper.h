@@ -1,7 +1,7 @@
 #ifndef HDFBDF617_D256_4ACA_A294_8F5558BD74AC
 #define HDFBDF617_D256_4ACA_A294_8F5558BD74AC
 
-#include <hamcrest/core/IsEqual.h>
+#include <hamcrest/core/matcher/IsEqual.h>
 
 HAMCREST_NS_BEGIN
 

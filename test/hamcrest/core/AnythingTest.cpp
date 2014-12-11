@@ -1,5 +1,4 @@
-#include <gtest/gtest.h>
-#include <hamcrest/core/Anything.h>
+#include <hamcrest/core/matcher/Anything.h>
 #include <assertion/Asserter.h>
 
 USING_HAMCREST_NS

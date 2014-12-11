@@ -35,6 +35,7 @@ std::string toString(char* s);
 std::string toString(const char* s);
 std::string toString(float f);
 std::string toString(double d);
+std::string toString(long double d);
 std::string toString(bool b);
 std::string toString(char c);
 std::string toString(unsigned char c);

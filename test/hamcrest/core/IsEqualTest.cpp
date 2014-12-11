@@ -1,4 +1,4 @@
-#include <hamcrest/helper/IsEqualHelper.h>
+#include <hamcrest/core/helper/IsEqualHelper.h>
 #include <assertion/Asserter.h>
 
 USING_HAMCREST_NS

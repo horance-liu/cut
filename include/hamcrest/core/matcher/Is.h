@@ -1,7 +1,7 @@
 #ifndef HF1936DAE_CC46_49DE_A381_6206FE0D19C7
 #define HF1936DAE_CC46_49DE_A381_6206FE0D19C7
 
-#include <hamcrest/core/IsEqual.h>
+#include <hamcrest/core/matcher/IsEqual.h>
 
 HAMCREST_NS_BEGIN
 

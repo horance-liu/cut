@@ -204,3 +204,6 @@ std::string toString(float f)
 //////////////////////////////////////////
 std::string toString(double f)
 { return toValStr(f); }
+
+std::string toString(long double d)
+{ return toValStr(d); }
