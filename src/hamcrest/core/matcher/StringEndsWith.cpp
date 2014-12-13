@@ -1,4 +1,5 @@
 #include <hamcrest/core/matcher/StringEndsWith.h>
+#include <string.h>
 
 HAMCREST_NS_BEGIN
 
