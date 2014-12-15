@@ -1,4 +1,5 @@
 #include <hamcrest/ext/string/matcher/StringContains.h>
+#include <string.h>
 
 HAMCREST_NS_BEGIN
 
