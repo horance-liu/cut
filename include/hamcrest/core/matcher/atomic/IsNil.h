@@ -1,7 +1,7 @@
 #ifndef HCAB75B4B_8F10_461E_9087_04A4AC719FAF
 #define HCAB75B4B_8F10_461E_9087_04A4AC719FAF
 
-#include <hamcrest/base/BaseMatcher.h>
+#include <hamcrest/internal/BaseMatcher.h>
 
 HAMCREST_NS_BEGIN
 

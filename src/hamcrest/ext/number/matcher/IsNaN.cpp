@@ -3,7 +3,7 @@
 
 HAMCREST_NS_BEGIN
 
-IsNaN* IsNaN::clone() const
+const IsNaN* IsNaN::clone() const
 {
     return new IsNaN;
 }

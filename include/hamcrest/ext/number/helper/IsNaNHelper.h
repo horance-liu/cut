@@ -3,6 +3,6 @@
 
 #include <hamcrest/ext/number/matcher/IsNaN.h>
 
-#define is_nan(number) HAMCREST_NS::IsNaN()
+#define not_a_number() HAMCREST_NS::IsNaN()
 
 #endif

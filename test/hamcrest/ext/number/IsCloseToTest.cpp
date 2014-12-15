@@ -1,6 +1,5 @@
 #include <hamcrest/ext/number/helper/IsCloseToHelper.h>
 #include <assertion/Asserter.h>
-#include <algorithm>
 
 USING_HAMCREST_NS
 

@@ -1,7 +1,7 @@
 #ifndef H4F7A9E79_EF75_4EEE_BA1E_F5C16CF3DD3D
 #define H4F7A9E79_EF75_4EEE_BA1E_F5C16CF3DD3D
 
-#include <hamcrest/base/BaseMatcher.h>
+#include <hamcrest/internal/BaseMatcher.h>
 
 HAMCREST_NS_BEGIN
 

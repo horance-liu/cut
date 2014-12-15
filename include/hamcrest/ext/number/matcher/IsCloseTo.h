@@ -1,7 +1,7 @@
 #ifndef H8470FF6C_251A_4176_8AC3_6EE17C0EC20B
 #define H8470FF6C_251A_4176_8AC3_6EE17C0EC20B
 
-#include <hamcrest/base/BaseMatcher.h>
+#include <hamcrest/internal/BaseMatcher.h>
 
 HAMCREST_NS_BEGIN
 
@@ -10,7 +10,7 @@ struct IsCloseTo : BaseMatcher<long double>
     IsCloseTo(long double value, long double delta);
 
 private:
-    OVERRIDE(IsCloseTo* clone() const);
+    OVERRIDE(const IsCloseTo* clone() const);
     OVERRIDE(bool matches(const long double& actual) const);
     OVERRIDE(void describeTo(Description& desc) const);
     OVERRIDE(void describeMismatch(const long double&, Description&) const);

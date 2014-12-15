@@ -20,7 +20,7 @@ IsCloseTo::IsCloseTo(long double value, long double delta)
 {
 }
 
-IsCloseTo* IsCloseTo::clone() const
+const IsCloseTo* IsCloseTo::clone() const
 {
     return new IsCloseTo(value, delta);
 }

@@ -1,7 +1,7 @@
 #ifndef H1368FCA0_5942_44AD_8C3E_29AF182FF6BF
 #define H1368FCA0_5942_44AD_8C3E_29AF182FF6BF
 
-#include "hamcrest/base/BaseMatcher.h"
+#include "hamcrest/internal/BaseMatcher.h"
 
 HAMCREST_NS_BEGIN
 

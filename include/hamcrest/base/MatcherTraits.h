@@ -15,20 +15,20 @@ struct MatcherTraits
     using category = NotMatcherTag;
 };
 
-#define HAMCREST_GENERIC_MATCHER_TAG(matcher_t)  \
-    template <typename T>                        \
-    struct MatcherTraits< matcher_t<T> >         \
-    {                                            \
-        using argument = T;                      \
-        using category = MatcherTag;             \
-    }
-
 #define HAMCREST_MATCHER_TAG(matcher_t, arg_t) \
     template <>                                   \
     struct MatcherTraits< matcher_t >             \
     {                                             \
         using argument = arg_t;                   \
         using category = MatcherTag;              \
+    }
+
+#define HAMCREST_GENERIC_MATCHER_TAG(matcher_t)  \
+    template <typename T>                        \
+    struct MatcherTraits< matcher_t<T> >         \
+    {                                            \
+        using argument = T;                      \
+        using category = MatcherTag;             \
     }
 
 HAMCREST_NS_END

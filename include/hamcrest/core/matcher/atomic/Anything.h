@@ -1,7 +1,7 @@
 #ifndef H3D00A295_D9EA_479A_AAA0_2FDBA1AE5389
 #define H3D00A295_D9EA_479A_AAA0_2FDBA1AE5389
 
-#include <hamcrest/base/BaseMatcher.h>
+#include <hamcrest/internal/BaseMatcher.h>
 
 HAMCREST_NS_BEGIN
 

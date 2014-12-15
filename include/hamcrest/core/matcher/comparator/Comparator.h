@@ -1,7 +1,7 @@
 #ifndef _35XQNLDP7FEDH3UBQW4Y4XL4X6NUNP13XRR3MLSJ7DBYTEI1VB1MAYIC               
 #define _35XQNLDP7FEDH3UBQW4Y4XL4X6NUNP13XRR3MLSJ7DBYTEI1VB1MAYIC
 
-#include <hamcrest/base/BaseMatcher.h>
+#include <hamcrest/internal/BaseMatcher.h>
 
 HAMCREST_NS_BEGIN
 

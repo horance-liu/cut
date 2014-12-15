@@ -1,5 +1,5 @@
 #include <assertion/Asserter.h>
-#include <hamcrest/core/helper/CompartorHelper.h>
+#include <hamcrest/core/helper/ComparatorHelper.h>
 #include <hamcrest/core/helper/IsHelper.h>
 #include <hamcrest/core/helper/IsNotHelper.h>
 

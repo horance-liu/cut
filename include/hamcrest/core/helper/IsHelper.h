@@ -2,7 +2,7 @@
 #define H65272EEC_9259_408E_9121_253663AB9F98
 
 #include <hamcrest/core/matcher/decorator/Is.h>
-#include <hamcrest/core/helper/CompartorHelper.h>
+#include <hamcrest/core/helper/ComparatorHelper.h>
 
 HAMCREST_NS_BEGIN
 
