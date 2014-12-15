@@ -3,6 +3,7 @@
 
 #include <gtest/gtest.h>
 #include <hamcrest/base/Matcher.h>
+#include <hamcrest/base/Description.h>
 
 HAMCREST_NS_BEGIN
 
@@ -13,10 +14,11 @@ void assert_that(const U& actual, const Matcher<V>& matcher)
     {
         Description desc; 
         
-        desc.appendText("Expected: ") \
-            .appendDescriptionOf(matcher) \
-            .appendText(", but got: ") \
-            .appendValue(actual); \
+        desc.appendText("\nExpected: ")
+            .appendDescriptionOf(matcher)
+            .appendText("\n     but: ");
+
+        matcher.describeMismatch(actual, desc);
 
         FAIL() << desc.to_s();
     }

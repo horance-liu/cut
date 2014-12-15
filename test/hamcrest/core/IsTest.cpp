@@ -1,5 +1,4 @@
 #include <hamcrest/core/helper/IsHelper.h>
-#include <hamcrest/core/matcher/IsNil.h>
 #include <assertion/Asserter.h>
 
 USING_HAMCREST_NS

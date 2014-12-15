@@ -1,4 +1,4 @@
-#include <hamcrest/core/matcher/IsNil.h>
+#include <hamcrest/core/matcher/atomic/IsNil.h>
 
 HAMCREST_NS_BEGIN
 

@@ -1,4 +1,4 @@
-#include <hamcrest/core/matcher/StringContains.h>
+#include <hamcrest/ext/string/matcher/StringContains.h>
 
 HAMCREST_NS_BEGIN
 

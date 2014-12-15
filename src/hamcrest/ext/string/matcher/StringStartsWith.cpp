@@ -1,4 +1,4 @@
-#include <hamcrest/core/matcher/StringStartsWith.h>
+#include <hamcrest/ext/string/matcher/StringStartsWith.h>
 #include <string.h>
 
 HAMCREST_NS_BEGIN

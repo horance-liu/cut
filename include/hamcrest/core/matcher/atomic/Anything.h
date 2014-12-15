@@ -6,13 +6,13 @@
 HAMCREST_NS_BEGIN
 
 template <typename T>
-struct anything : BaseMatcher<T>
+struct Anything : BaseMatcher<T>
 {
-    anything(const std::string& desc = "ANYTHING")
+    Anything(const std::string& desc = "ANYTHING")
         : desc(desc)
     {}
 
-    virtual ~anything() = default;
+    virtual ~Anything() = default;
 
 private:
     OVERRIDE(void describeTo(Description& description) const)
@@ -22,7 +22,7 @@ private:
 
     OVERRIDE(const Matcher<T>* clone() const)
     {
-        return new anything(*this);
+        return new Anything(*this);
     }
 
     OVERRIDE(bool matches(const T&) const)
@@ -36,7 +36,7 @@ private:
     std::string desc;
 };
 
-HAMCREST_GENERIC_MATCHER_TAG(anything);
+HAMCREST_GENERIC_MATCHER_TAG(Anything);
 
 HAMCREST_NS_END
 

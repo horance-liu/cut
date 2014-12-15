@@ -1,7 +1,7 @@
 #ifndef H81110271_991D_4024_B460_602F5FD78CF3
 #define H81110271_991D_4024_B460_602F5FD78CF3
 
-#include <hamcrest/core/matcher/SubstringMatcher.h>
+#include <hamcrest/ext/string/matcher/SubstringMatcher.h>
 
 HAMCREST_NS_BEGIN
 

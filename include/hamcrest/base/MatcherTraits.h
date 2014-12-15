@@ -23,11 +23,11 @@ struct MatcherTraits
         using category = MatcherTag;             \
     }
 
-#define HAMCREST_MATCHER_TAG(matcher_t, arg_type) \
+#define HAMCREST_MATCHER_TAG(matcher_t, arg_t) \
     template <>                                   \
     struct MatcherTraits< matcher_t >             \
     {                                             \
-        using argument = arg_type;                \
+        using argument = arg_t;                   \
         using category = MatcherTag;              \
     }
 

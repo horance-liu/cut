@@ -1,5 +1,5 @@
 #include <hamcrest/core/helper/IsHelper.h>
-#include <hamcrest/core/helper/StringContainsHelper.h>
+#include <hamcrest/ext/string/helper/StringContainsHelper.h>
 #include <assertion/Asserter.h>
 
 TEST(constains_string, case_sensitive)

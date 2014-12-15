@@ -1,7 +1,7 @@
 #ifndef H044CD3FB_447C_48A9_8931_A6DD2578C0CA
 #define H044CD3FB_447C_48A9_8931_A6DD2578C0CA
 
-#include <hamcrest/core/matcher/SubstringMatcher.h>
+#include <hamcrest/ext/string/matcher/SubstringMatcher.h>
 
 HAMCREST_NS_BEGIN
 

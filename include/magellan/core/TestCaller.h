@@ -25,6 +25,7 @@ private:
 
     OVERRIDE(void tearDown())
     {
+        fixture->tearDown();
         delete fixture;
         fixture = nullptr;
     }
