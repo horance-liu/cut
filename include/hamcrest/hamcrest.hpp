@@ -14,4 +14,6 @@
 #include <hamcrest/ext/number/helper/IsCloseToHelper.h>
 #include <hamcrest/ext/number/helper/IsNaNHelper.h>
 
+#include <hamcrest/ext/collection/helper/IsInHelper.h>
+
 #endif
