@@ -31,6 +31,7 @@ std::string toString(const T* s)
 
 ///////////////////////////////////////////////////////
 std::string toString(const std::string& s);
+std::string toString(const std::nullptr_t& p);
 std::string toString(char* s);
 std::string toString(const char* s);
 std::string toString(float f);
@@ -38,6 +39,7 @@ std::string toString(double d);
 std::string toString(long double d);
 std::string toString(bool b);
 std::string toString(char c);
+std::string toString(signed char c);
 std::string toString(unsigned char c);
 std::string toString(short s);
 std::string toString(unsigned short s);

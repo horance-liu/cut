@@ -70,6 +70,12 @@ std::string toPointerString(void* p)
 }
 
 //////////////////////////////////////////
+std::string toString(const std::nullptr_t& p)
+{
+    return "nullptr";
+}
+
+//////////////////////////////////////////
 std::string toString(const std::string& s)
 {
     oss_t oss;
@@ -85,7 +91,7 @@ std::string toString(char* s)
     if(s == 0)
         oss << "nil";
     else
-        oss << (void*) s;
+        oss << "\"" << s << "\"";
 
     return oss.str();
 }
@@ -119,6 +125,10 @@ namespace
     { return toHexStr((int)val&0xFF); }
 
     //////////////////////////////////////////
+    std::string toHexStr(signed char val)
+    { return toHexStr((int)val&0xFF); }
+
+    //////////////////////////////////////////
     std::string toHexStr(unsigned char val)
     { return toHexStr((unsigned int)val&0xFF); }
 
@@ -144,6 +154,10 @@ namespace
     { return toValStr((int)val); }
 
     //////////////////////////////////////////
+    std::string toValStr(signed char val)
+    { return toValStr((int)val); }
+
+    //////////////////////////////////////////
     std::string toValStr(unsigned char val)
     { return toValStr((unsigned int)val); }
 
@@ -159,6 +173,10 @@ namespace
 
 //////////////////////////////////////////
 std::string toString(char c)
+{ return toHexAndDecStr(c); }
+
+//////////////////////////////////////////
+std::string toString(signed char c)
 { return toHexAndDecStr(c); }
 
 //////////////////////////////////////////

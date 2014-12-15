@@ -15,7 +15,7 @@ struct MatcherTraits
     using category = NotMatcherTag;
 };
 
-#define HAMCREST_MATCHER_TAG(matcher_t, arg_t) \
+#define HAMCREST_MATCHER_TAG(matcher_t, arg_t)    \
     template <>                                   \
     struct MatcherTraits< matcher_t >             \
     {                                             \

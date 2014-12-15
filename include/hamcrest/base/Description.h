@@ -3,7 +3,6 @@
 
 #include <hamcrest/internal/SelfDescribingContainer.h>
 #include <infra/base/Formatter.h>
-#include <stack>
 
 HAMCREST_NS_BEGIN
 
@@ -66,7 +65,7 @@ private:
     std::string desc;
 };
 
-// because of circular dependency, must implement here.
+// !!! because of circular dependency, must implement here.
 template <typename T>
 void SelfDescribingValue<T>::describeTo(Description& desc) const
 {
