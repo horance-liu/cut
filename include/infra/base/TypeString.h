@@ -24,5 +24,11 @@ struct TypeString<std::string>
     static std::string value() { return "std::string"; }
 };
 
-#endif
+///////////////////////////////////////////////////////////////
+template<>
+struct TypeString<std::nullptr_t>
+{
+    static std::string value() { return "std::nullptr_t"; }
+};
 
+#endif
