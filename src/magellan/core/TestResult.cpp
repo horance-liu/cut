@@ -6,6 +6,7 @@
 #include <magellan/core/TestSuite.h>
 #include <magellan/core/TestFunctor.h>
 #include <magellan/core/AssertionError.h>
+#include <infra/base/Functional.h>
 
 MAGELLAN_NS_BEGIN
 
@@ -64,52 +65,40 @@ void TestResult::addFailure(Test& test, TestFailure* failure)
 {
     failures.push_back(failure);
 
-    for (auto listener : listeners)
-    {
-        listener->addFailure(test, *failure);
-    }
+    each(listeners, [&test, failure](TestListener* listener)
+             { listener->addFailure(test, *failure); });
 }
 
 void TestResult::addError(Test& test, TestFailure* error)
 {
     failures.push_back(error);
 
-    for (auto listener : listeners)
-    {
-        listener->addError(test, *error);
-    }
+    each(listeners, [&test, error](TestListener* listener)
+             { listener->addError(test, *error); });
 }
 
 void TestResult::startTest(Test& test)
 {
-    for (auto listener : listeners)
-    {
-        listener->startTest(test);
-    }
+    each(listeners, [&test](TestListener* listener)
+             { listener->startTest(test); });
 }
 
 void TestResult::endTest(Test& test)
 {
-    for (auto listener : listeners)
-    {
-        listener->endTest(test);
-    }
+    each(listeners, [&test](TestListener* listener)
+             { listener->endTest(test); });
 }
 
 void TestResult::startSuite(Test& test)
 {
-    for (auto listener : listeners)
-    {
-        listener->startSuite(test);
-    }
+    each(listeners, [&test](TestListener* listener)
+             { listener->startSuite(test); });
 }
 
 void TestResult::endSuite(Test& test)
 {
-    for (auto listener : listeners)
-    {
-        listener->endSuite(test);
-    }
+    each(listeners, [&test](TestListener* listener)
+             { listener->endSuite(test); });
 }
 
 MAGELLAN_NS_END
