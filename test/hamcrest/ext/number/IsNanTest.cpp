@@ -1,6 +1,6 @@
-#include <hamcrest/ext/number/helper/IsNaNHelper.h>
-#include <hamcrest/core/helper/IsHelper.h>
-#include <hamcrest/core/helper/IsNotHelper.h>
+#include <magellan/hamcrest/ext/number/helper/IsNaNHelper.h>
+#include <magellan/hamcrest/core/helper/IsHelper.h>
+#include <magellan/hamcrest/core/helper/IsNotHelper.h>
 #include <assertion/Asserter.h>
 #include <math.h>
 

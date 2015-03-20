@@ -1,5 +1,5 @@
-#include <hamcrest/core/helper/IsHelper.h>
-#include <hamcrest/ext/string/helper/StringEndsWithHelper.h>
+#include <magellan/hamcrest/core/helper/IsHelper.h>
+#include <magellan/hamcrest/ext/string/helper/StringEndsWithHelper.h>
 #include <assertion/Asserter.h>
 
 TEST(ends_with, case_sensitive)

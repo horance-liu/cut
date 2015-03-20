@@ -1,4 +1,4 @@
-#include <hamcrest/core/helper/IsNotHelper.h>
+#include <magellan/hamcrest/core/helper/IsNotHelper.h>
 #include <assertion/Asserter.h>
 
 USING_HAMCREST_NS

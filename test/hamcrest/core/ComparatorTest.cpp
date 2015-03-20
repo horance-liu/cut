@@ -1,7 +1,7 @@
 #include <assertion/Asserter.h>
-#include <hamcrest/core/helper/ComparatorHelper.h>
-#include <hamcrest/core/helper/IsHelper.h>
-#include <hamcrest/core/helper/IsNotHelper.h>
+#include <magellan/hamcrest/core/helper/ComparatorHelper.h>
+#include <magellan/hamcrest/core/helper/IsHelper.h>
+#include <magellan/hamcrest/core/helper/IsNotHelper.h>
 
 USING_HAMCREST_NS
 

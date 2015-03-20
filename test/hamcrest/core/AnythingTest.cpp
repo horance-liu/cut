@@ -1,4 +1,4 @@
-#include <hamcrest/core/helper/AnythingHelper.h>
+#include <magellan/hamcrest/core/helper/AnythingHelper.h>
 #include <assertion/Asserter.h>
 
 USING_HAMCREST_NS

@@ -1,7 +1,0 @@
-#ifndef H7F7F95E7_1360_426C_BB2D_CA6B866AFFF5
-#define H7F7F95E7_1360_426C_BB2D_CA6B866AFFF5
-
-#define __DO_STRINGIZE( symbol ) #symbol
-#define STRINGIZE(symbol) __DO_STRINGIZE(symbol)
-
-#endif

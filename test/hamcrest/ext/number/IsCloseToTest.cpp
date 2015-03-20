@@ -1,4 +1,4 @@
-#include <hamcrest/ext/number/helper/IsCloseToHelper.h>
+#include <magellan/hamcrest/ext/number/helper/IsCloseToHelper.h>
 #include <assertion/Asserter.h>
 
 USING_HAMCREST_NS

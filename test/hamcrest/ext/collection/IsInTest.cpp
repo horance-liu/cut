@@ -1,6 +1,6 @@
-#include <hamcrest/ext/collection/helper/IsInHelper.h>
-#include <hamcrest/core/helper/IsHelper.h>
-#include <hamcrest/core/helper/IsNotHelper.h>
+#include <magellan/hamcrest/ext/collection/helper/IsInHelper.h>
+#include <magellan/hamcrest/core/helper/IsHelper.h>
+#include <magellan/hamcrest/core/helper/IsNotHelper.h>
 #include <assertion/Asserter.h>
 
 USING_HAMCREST_NS
