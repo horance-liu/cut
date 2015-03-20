@@ -1,7 +1,7 @@
 #ifndef _30KHGDCAF3MOKCBO9D1E7TLHUX8AUQ8FLRZ2MNXSJTX011I7KFOCMGJY               
 #define _30KHGDCAF3MOKCBO9D1E7TLHUX8AUQ8FLRZ2MNXSJTX011I7KFOCMGJY
 
-#include <magellan/framework/base/magellan.h>
+#include <magellan/framework/magellan.h>
 #include <magellan/infra/dci/Role.h>
 #include <string>
 

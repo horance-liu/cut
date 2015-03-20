@@ -1,7 +1,7 @@
 #ifndef H9B2734EF_6E30_4E1E_BCBF_6E3F73F776AC
 #define H9B2734EF_6E30_4E1E_BCBF_6E3F73F776AC
 
-#include <magellan/framework/base/magellan.h>
+#include <magellan/framework/magellan.h>
 #include <exception>
 #include <string>
 

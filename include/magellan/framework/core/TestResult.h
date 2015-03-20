@@ -1,7 +1,7 @@
 #ifndef _7Q5LD8WDHIYD4YAN2MCI6W2EECFPWRMQK7TPIRTA7HRM7L83N1O5MX0               
 #define _7Q5LD8WDHIYD4YAN2MCI6W2EECFPWRMQK7TPIRTA7HRM7L83N1O5MX0
 
-#include <magellan/framework/base/magellan.h>
+#include <magellan/framework/magellan.h>
 #include <vector>
 #include <string>
 

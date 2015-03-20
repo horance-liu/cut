@@ -2,7 +2,7 @@
 #define _SAOXDTVZ85W9YDU8WXPQZX5VG9GYC1PRD9KOOAOJADH827VEOLVORP2L
 
 #include <magellan/infra/dci/Role.h>
-#include <magellan/framework/base/magellan.h>
+#include <magellan/framework/magellan.h>
 
 MAGELLAN_NS_BEGIN
 
