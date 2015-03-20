@@ -1,7 +1,7 @@
 #ifndef HAC0ECC9C_2787_410E_8B4E_9A89458BA795
 #define HAC0ECC9C_2787_410E_8B4E_9A89458BA795
 
-#include <magellan/hamcrest/base/hamcrest.h>
+#include <magellan/hamcrest/hamcrest.h>
 
 HAMCREST_NS_BEGIN
 
