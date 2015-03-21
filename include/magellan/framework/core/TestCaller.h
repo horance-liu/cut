@@ -17,7 +17,6 @@ struct TestCaller : TestCase
 private:
     OVERRIDE(void setUp())
     {
-        // must not register test method to MetaTestFixture<Fixture> again
         fixture = new Fixture;
         fixture->setUp();
     }

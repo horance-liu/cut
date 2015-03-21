@@ -3,8 +3,9 @@
 
 #include "magellan/framework/def/FixtureDef.h"
 #include "magellan/framework/def/TestDef.h"
-#include "magellan/framework/core/StartUp.h"
+#include "magellan/framework/startup/StartUp.h"
 #include "magellan/framework/core/Asserter.h"
+
 #include "hamcrest/hamcrest.hpp"
 
 #endif

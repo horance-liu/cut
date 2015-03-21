@@ -1,7 +1,7 @@
 #ifndef H819CE325_EFE1_471E_B1A0_4E74D37465B6
 #define H819CE325_EFE1_471E_B1A0_4E74D37465B6
 
-#include "magellan/framework/core/Message.h"
+#include "magellan/framework/except/Message.h"
 
 MAGELLAN_NS_BEGIN
 

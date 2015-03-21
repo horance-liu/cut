@@ -1,4 +1,4 @@
-#include "magellan/framework/core/AssertionError.h"
+#include "magellan/framework/except/AssertionError.h"
 #include <sstream>
 
 MAGELLAN_NS_BEGIN

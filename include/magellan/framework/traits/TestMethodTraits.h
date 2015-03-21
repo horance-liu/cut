@@ -1,7 +1,7 @@
 #ifndef H900A8CCD_FC94_4E1F_BA46_4CFA9D1A5B93
 #define H900A8CCD_FC94_4E1F_BA46_4CFA9D1A5B93
 
-#include <magellan/framework/core/MetaTestFixture.h>
+#include <magellan/framework/auto/MetaTestFixture.h>
 
 MAGELLAN_NS_BEGIN
 

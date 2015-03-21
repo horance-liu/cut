@@ -1,4 +1,4 @@
-#include "magellan/framework/core/Message.h"
+#include "magellan/framework/except/Message.h"
 #include <sstream>
 
 MAGELLAN_NS_BEGIN

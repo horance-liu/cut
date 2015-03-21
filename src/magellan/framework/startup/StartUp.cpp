@@ -1,8 +1,8 @@
-#include "magellan/framework/core/StartUp.h"
-#include "magellan/framework/core/TestFactoryRegistry.h"
+#include "magellan/framework/startup/StartUp.h"
+#include "magellan/framework/auto/TestFactoryRegistry.h"
 #include "magellan/framework/core/TestResult.h"
 #include "magellan/framework/core/Test.h"
-#include "magellan/framework/core/TestProgressListener.h"
+#include "magellan/framework/listener/TestProgressListener.h"
 #include <memory>
 
 MAGELLAN_NS_BEGIN

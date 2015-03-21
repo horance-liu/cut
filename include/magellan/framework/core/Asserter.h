@@ -2,7 +2,7 @@
 #define H7E147A58_B997_4DC5_B6EB_A014CC6F6C3E
 
 #include <magellan/infra/std/SourceFile.h>
-#include <magellan/framework/core/AssertionError.h>
+#include <magellan/framework/except/AssertionError.h>
 #include <magellan/hamcrest/base/Matcher.h>
 #include <magellan/hamcrest/base/Description.h>
 

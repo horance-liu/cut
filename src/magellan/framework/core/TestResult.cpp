@@ -1,10 +1,10 @@
 #include "magellan/framework/core/TestResult.h"
-#include "magellan/framework/core/AssertionError.h"
 #include "magellan/framework/core/TestCase.h"
-#include "magellan/framework/core/TestFailure.h"
 #include "magellan/framework/core/TestFunctor.h"
 #include "magellan/framework/core/TestListener.h"
 #include "magellan/framework/core/TestSuite.h"
+#include "magellan/framework/except/AssertionError.h"
+#include "magellan/framework/except/TestFailure.h"
 #include "magellan/infra/std/Algorithm.h"
 
 MAGELLAN_NS_BEGIN

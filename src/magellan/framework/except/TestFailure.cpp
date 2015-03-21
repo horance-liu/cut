@@ -1,4 +1,4 @@
-#include "magellan/framework/core/TestFailure.h"
+#include "magellan/framework/except/TestFailure.h"
 
 MAGELLAN_NS_BEGIN
 

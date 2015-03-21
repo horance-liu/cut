@@ -14,6 +14,5 @@ FIXTURE(Volume)
     {
         ASSERT_THAT(Volume(1, OZ), equal_to(Volume(2, TBSP)));
     }
-
 };
 

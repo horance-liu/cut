@@ -1,8 +1,8 @@
 #ifndef H850C3C7A_82E6_49C1_B47A_4BBB2F6EA3A3
 #define H850C3C7A_82E6_49C1_B47A_4BBB2F6EA3A3
 
-#include <magellan/framework/core/TestMethodTraits.h>
 #include <magellan/infra/std/Symbol.h>
+#include <magellan/framework/traits/TestMethodTraits.h>
 
 ////////////////////////////////////////////////////////////////////////////////
 #define TEST_NAME(unique_id) JOIN(test_, unique_id)

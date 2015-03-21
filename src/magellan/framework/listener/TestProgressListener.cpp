@@ -1,6 +1,6 @@
-#include "magellan/framework/core/TestProgressListener.h"
+#include "magellan/framework/listener/TestProgressListener.h"
 #include "magellan/framework/core/Test.h"
-#include "magellan/framework/core/TestFailure.h"
+#include "magellan/framework/except/TestFailure.h"
 #include <iostream>
 
 MAGELLAN_NS_BEGIN

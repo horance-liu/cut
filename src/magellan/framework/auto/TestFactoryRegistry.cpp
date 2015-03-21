@@ -1,4 +1,4 @@
-#include "magellan/framework/core/TestFactoryRegistry.h"
+#include "magellan/framework/auto/TestFactoryRegistry.h"
 #include "magellan/framework/core/TestSuite.h"
 
 MAGELLAN_NS_BEGIN

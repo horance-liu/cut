@@ -19,6 +19,5 @@ FIXTURE(Legnth)
     {
         ASSERT_THAT(Length(1, MILE), equal_to(Length(1760, YARD)));
     }
-
 };
 

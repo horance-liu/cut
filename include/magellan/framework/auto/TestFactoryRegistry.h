@@ -1,8 +1,8 @@
 #ifndef _8CK6L6MV72FIARV2LMEHCKBEU497MCS5XDXSFOKXW38NULPPOO6OVC4P               
 #define _8CK6L6MV72FIARV2LMEHCKBEU497MCS5XDXSFOKXW38NULPPOO6OVC4P
 
-#include <set>
 #include "magellan/framework/core/TestFactory.h"
+#include <set>
 
 MAGELLAN_NS_BEGIN
 
