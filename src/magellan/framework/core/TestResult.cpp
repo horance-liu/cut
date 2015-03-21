@@ -1,12 +1,11 @@
 #include "magellan/framework/core/TestResult.h"
-
-#include <magellan/infra/std/Algorithm.h>
 #include "magellan/framework/core/AssertionError.h"
 #include "magellan/framework/core/TestCase.h"
 #include "magellan/framework/core/TestFailure.h"
 #include "magellan/framework/core/TestFunctor.h"
 #include "magellan/framework/core/TestListener.h"
 #include "magellan/framework/core/TestSuite.h"
+#include "magellan/infra/std/Algorithm.h"
 
 MAGELLAN_NS_BEGIN
 
@@ -65,40 +64,52 @@ void TestResult::addFailure(Test& test, TestFailure* failure)
 {
     failures.push_back(failure);
 
-    stdext::each(listeners, [&test, failure](TestListener* listener)
-             { listener->addFailure(test, *failure); });
+    for (auto listener : listeners)
+    {
+        listener->addFailure(test, *failure);
+    }
 }
 
 void TestResult::addError(Test& test, TestFailure* error)
 {
     failures.push_back(error);
 
-    stdext::each(listeners, [&test, error](TestListener* listener)
-             { listener->addError(test, *error); });
+    for (auto listener : listeners)
+    {
+        listener->addError(test, *error);
+    }
 }
 
 void TestResult::startTest(Test& test)
 {
-    stdext::each(listeners, [&test](TestListener* listener)
-             { listener->startTest(test); });
+    for (auto listener : listeners)
+    {
+        listener->startTest(test);
+    }
 }
 
 void TestResult::endTest(Test& test)
 {
-    stdext::each(listeners, [&test](TestListener* listener)
-             { listener->endTest(test); });
+    for (auto listener : listeners)
+    {
+        listener->endTest(test);
+    }
 }
 
 void TestResult::startSuite(Test& test)
 {
-    stdext::each(listeners, [&test](TestListener* listener)
-             { listener->startSuite(test); });
+    for (auto listener : listeners)
+    {
+        listener->startSuite(test);
+    }
 }
 
 void TestResult::endSuite(Test& test)
 {
-    stdext::each(listeners, [&test](TestListener* listener)
-             { listener->endSuite(test); });
+    for (auto listener : listeners)
+    {
+        listener->endSuite(test);
+    }
 }
 
 MAGELLAN_NS_END

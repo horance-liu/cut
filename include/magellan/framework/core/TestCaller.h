@@ -11,14 +11,13 @@ struct TestCaller : TestCase
     using Method = void(Fixture::*)();
 
     TestCaller(const std::string& name, const Method method)
-        : TestCase(name), fixture(nullptr), method(method)
-    {
-    }
+        : TestCase(name), method(method)
+    {}
 
 private:
     OVERRIDE(void setUp())
     {
-        // must not register test method to MetaTestFixture again.
+        // must not register test method to MetaTestFixture<Fixture> again
         fixture = new Fixture;
         fixture->setUp();
     }
@@ -36,8 +35,8 @@ private:
     }
 
 private:
-    Fixture* fixture;
-    Method method;
+    Fixture* fixture = nullptr;
+    Method method = nullptr;
 };
 
 MAGELLAN_NS_END

@@ -11,10 +11,12 @@ struct TestFailure
 {
     TestFailure(Test& test, const Message& msg, bool isError);
 
+    bool isError() const;
+
 private:
     Test &test;
     Message msg;
-    bool isError;
+    bool error;
 };
 
 MAGELLAN_NS_END

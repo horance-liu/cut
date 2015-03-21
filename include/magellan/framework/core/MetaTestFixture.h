@@ -1,41 +1,59 @@
 #ifndef _EM7NQ5392XET3HU9T1F55VEUXF7IF2VL9NRNSB7LM17OT1G8VM8P0TD               
 #define _EM7NQ5392XET3HU9T1F55VEUXF7IF2VL9NRNSB7LM17OT1G8VM8P0TD
 
-#include <vector>
 #include "magellan/framework/core/TestMethod.h"
-#include "magellan/framework/core//TestSuite.h"
+#include "magellan/framework/core/TestSuite.h"
+#include "magellan/infra/std/TypeString.h"
+#include <set>
 
 MAGELLAN_NS_BEGIN
 
 template <typename Fixture>
-class MetaTestFixture
+struct MetaTestFixture
 {
     using Method = void(Fixture::*)();
 
-    static void registryMethod(const std::string& name, const Method method)
+    static void registryMethod(int id, Method method, const std::string& name)
     {
-        getRegistry().emplace_back(name, method);
+        methods().put(TestMethod<Fixture>(id, method, name));
     }
 
     static Test* suite()
     {
-        auto result = new TestSuite(Fixture::name);
-
-        for (auto method : getRegistry())
-        {
-            result->addTest(method.makeTest());
-        }
-
-        return result;
+        return methods().suite();
     }
 
 private:
-    using TestMethodRegistry = std::vector<TestMethod<Fixture>>;
-
-    static TestMethodRegistry& getRegistry()
+    struct TestMethodRegistry
     {
-        static TestMethodRegistry registry;
-        return registry;
+        void put(TestMethod<Fixture>&& method)
+        {
+            if (registry.find(method) == registry.end())
+            {
+                registry.emplace(method);
+            }
+        }
+
+        Test* suite() const
+        {
+            auto* result = new TestSuite(stdext::TypeString<Fixture>::value());
+
+            for (auto& method : registry)
+            {
+                result->addTest(method.makeTest());
+            }
+
+            return result;
+        }
+
+    private:
+        std::set<TestMethod<Fixture>> registry;
+    };
+
+    static TestMethodRegistry& methods()
+    {
+        static TestMethodRegistry inst;
+        return inst;
     }
 };
 

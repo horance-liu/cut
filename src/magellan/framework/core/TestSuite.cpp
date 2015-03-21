@@ -25,14 +25,9 @@ const std::string& TestSuite::getName() const
 
 int TestSuite::countTestCases() const
 {
-    auto num = 0;
-
-    for (auto test : tests)
-    {
+    return stdext::reduce(tests, 0, [](int& num, Test* test) {
         num += test->countTestCases();
-    }
-
-    return num;
+    });
 }
 
 void TestSuite::runBare(TestResult &result)

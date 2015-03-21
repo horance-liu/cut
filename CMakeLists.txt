@@ -1,6 +1,13 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+cmake_minimum_required(VERSION 2.8)
 
-PROJECT("magellan")
+project(magellan)
+
+set(MAGELLAN_ENABLE_GTEST ON CACHE BOOL "Enable Google Test framework")
+set(MAGELLAN_ENABLE_EXAMPLES ON CACHE BOOL "Enable the examples")
+
+#
+# File Filter
+#
 
 MACRO(sort_files source_files)
   SET(sgbd_cur_dir ${CMAKE_CURRENT_SOURCE_DIR})
@@ -18,42 +25,29 @@ MACRO(sort_files source_files)
   ENDFOREACH(sgbd_file)
 ENDMACRO(sort_files)
 
-INCLUDE_DIRECTORIES( 
-  "${CMAKE_CURRENT_SOURCE_DIR}/include"
-  "${CMAKE_CURRENT_SOURCE_DIR}/test"
-)
+#
+# Generic Compiler Flags
+#
 
-IF(MSVC)
-  ADD_DEFINITIONS(-D_CRT_SECURE_NO_WARNINGS )
-  ADD_DEFINITIONS(-DMSVC_VMG_ENABLED)
-  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /vmg")
-ENDIF(MSVC)
+if(UNIX)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y")
+elseif(MSVC)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /vmg")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DNOMINMAX")
+endif()
 
-IF(UNIX)
-  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y")
-ENDIF(UNIX)
+#
+# Magellan
+#
 
-FILE(GLOB_RECURSE all_files 
-include/*.h
-include/*.hpp
-include/*.hxx
-include/*.tcc
-src/*.cpp
-src/*.cc
-src/*.cxx
-src/*.c
-src/*.C
-test/*.cpp
-test/*.cc
-test/*.cxx
-test/*.c
-test/*.C)
+set(MAGELLAN_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
-sort_files(all_files)
+include_directories(${MAGELLAN_INCLUDE_DIR})
 
-# link_directories("${CMAKE_CURRENT_SOURCE_DIR}/3th/lib")
+set(MAGELLAN_LIBRARIES magellan gtest pthread stdc++)
 
-add_executable(magellan ${all_files})
+install(DIRECTORY include/magellan DESTINATION include)
 
-target_link_libraries(magellan gtest pthread stdc++)
-
+add_subdirectory(src)
+add_subdirectory(test)
+add_subdirectory(examples)

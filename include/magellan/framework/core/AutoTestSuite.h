@@ -6,17 +6,15 @@
 
 MAGELLAN_NS_BEGIN
 
-
 template <typename Fixture>
 struct AutoTestSuite
 {
-    AutoTestSuite() : registry(TestFactoryRegistry::getRegistry())
+    AutoTestSuite()
     {
-        registry.addFactory(factory);
+        TestFactoryRegistry::getInstance().addFactory(factory);
     }
 
 private:
-    TestFactoryRegistry& registry;
     TestSuiteFactory<Fixture> factory;
 };
 

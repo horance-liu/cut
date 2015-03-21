@@ -3,18 +3,14 @@
 
 MAGELLAN_NS_BEGIN
 
-AssertionError::AssertionError
-    ( const std::string& file, const int line, const std::string& msg)
-    : file(file)
-    , line(line)
-    , msg(msg)
-{
-}
+AssertionError::AssertionError(const std::string& source, const std::string& msg)
+    : source(source), msg(msg)
+{}
 
 const char* AssertionError::what() const noexcept
 {
     std::stringstream ss;
-    ss << file << ":" << line << ":" << msg;
+    ss << source << ":" << msg;
     return ss.str().c_str();
 }
 

@@ -37,10 +37,10 @@ inline bool TestCase::protect(TestResult& result, Functor functor, const char* d
     return result.protect(*this, TestFunctorWrapper(*this, functor), desc);
 }
 
-void TestCase::runBare(TestResult& result)
-{
 #define PROTECT(action) protect(result, &TestCase::action, #action" failed")
 
+void TestCase::runBare(TestResult& result)
+{
     if (PROTECT(setUp))
     {
         PROTECT(runTest);

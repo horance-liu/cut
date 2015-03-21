@@ -10,19 +10,24 @@ struct TestMethod
 {
     using Method = void(Fixture::*)();
 
-    TestMethod(const std::string& name, const Method method)
-        : name(name), method(method)
-    {
-    }
+    TestMethod(int id, Method method, const std::string& name)
+        : id(id), method(method), name(name)
+    {}
 
-    Test* makeTest()
+    Test* makeTest() const
     {
         return new TestCaller<Fixture>(name, method);
     }
 
+    bool operator<(const TestMethod<Fixture>& rhs) const
+    {
+        return id < rhs.id;
+    }
+
 private:
-    std::string name;
+    int id;
     Method method;
+    std::string name;
 };
 
 MAGELLAN_NS_END

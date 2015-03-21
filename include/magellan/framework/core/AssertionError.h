@@ -9,15 +9,14 @@ MAGELLAN_NS_BEGIN
 
 struct AssertionError : std::exception
 {
-    AssertionError(const std::string& file, const int line, const std::string& msg);
+    AssertionError(const std::string& source, const std::string& msg);
     ~AssertionError() noexcept = default;
 
     const char* what() const noexcept;
 
 private:
-    std::string file;
+    std::string source;
     std::string msg;
-    int line;
 };
 
 MAGELLAN_NS_END

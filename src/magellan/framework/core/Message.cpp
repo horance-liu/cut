@@ -3,25 +3,17 @@
 
 MAGELLAN_NS_BEGIN
 
-Message::Message(const std::string &desc, const std::initializer_list<std::string> details)
-  : desc(desc), details(details)
-{
-}
+Message::Message(std::string&& desc, Details&& details)
+  : desc(std::move(desc)), details(std::move(details))
+{}
 
 std::string Message::str() const
 {
-    std::stringstream ss;
-
-    ss << desc;
+    std::stringstream ss(desc);
 
     for (auto &detail : details)
     {
-        if(detail.empty())
-            break;
-
-        ss << "-";
-        ss << detail;
-        ss << "\n";
+        ss << "-" << detail << "\n";
     }
 
     return ss.str();

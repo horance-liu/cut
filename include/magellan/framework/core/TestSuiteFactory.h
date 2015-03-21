@@ -11,7 +11,8 @@ struct TestSuiteFactory : TestFactory
 {
     OVERRIDE(Test* make())
     {
-        static Fixture fixture;   // auto register all test method to MetaTestFixture<Fixture>
+        // auto register all test methods to MetaTestFixture<Fixture>
+        static Fixture fixture;
 
         return MetaTestFixture<Fixture>::suite();
     }
