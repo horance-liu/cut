@@ -35,6 +35,7 @@ echo "start run tests..."
 
 test/magellan-test --gtest_color=yes $1 $2
 examples/robot-cleaner/robot-cleaner-test --gtest_color=yes $1 $2
+examples/quantity/quantity-test --gtest_color=yes $1 $2
 
 if [ $? -ne 0 ]; then
     echo "build ${working_path} fail"

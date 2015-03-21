@@ -8,11 +8,12 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 #define __DEF_FIXTURE(fixture)                                     \
+struct fixture;                                                    \
 static magellan::AutoTestSuite<fixture> UNIQUE_NAME(auto_suite_);  \
 struct fixture : magellan::TestFixture, magellan::FixtureTraits<fixture>
 
 ////////////////////////////////////////////////////////////////////////////////
-#define FIXTURE(fixture)  struct fixture; __DEF_FIXTURE(fixture)
+#define FIXTURE(fixture)  __DEF_FIXTURE(fixture##Test)
 
 ////////////////////////////////////////////////////////////////////////////////
 #define SETUP()    OVERRIDE(void setUp())

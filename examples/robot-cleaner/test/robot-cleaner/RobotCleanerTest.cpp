@@ -5,7 +5,7 @@
 
 USING_HAMCREST_NS
 
-FIXTURE(RobotCleanerTest)
+FIXTURE(RobotCleaner)
 {
     RobotCleaner robot;
 

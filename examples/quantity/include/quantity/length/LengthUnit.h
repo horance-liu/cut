@@ -1,0 +1,12 @@
+#ifndef H9A900C7D_2DDE_43E8_94C9_9E1437E4AF9B
+#define H9A900C7D_2DDE_43E8_94C9_9E1437E4AF9B
+
+enum LengthUnit
+{
+    INCH = 1,
+    FEET = 12 * INCH,
+    YARD = 3 * FEET,
+    MILE = 1760 * YARD,
+};
+
+#endif
