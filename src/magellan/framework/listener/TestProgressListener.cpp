@@ -5,44 +5,31 @@
 
 MAGELLAN_NS_BEGIN
 
-void TestProgressListener::startTest(Test& test)
+void TestProgressListener::startTest(const Test& test)
 {
-    std::cout << "start: " << test.getName() << std::endl;
+    std::cout << "start test: " << test.getName() << std::endl;
 }
 
-void TestProgressListener::endTest(Test& test)
+void TestProgressListener::endTest(const Test& test)
 {
-    std::cout << "end: " << test.getName() << std::endl;
+    std::cout << "end test: " << test.getName() << std::endl;
 }
 
-void TestProgressListener::startSuite(Test& test)
+void TestProgressListener::startSuite(const Test& test)
 {
-    std::cout << "start: " << test.getName() << std::endl;
+    std::cout << "start suite: " << test.getName() << std::endl;
 }
 
-void TestProgressListener::endSuite(Test& test)
+void TestProgressListener::endSuite(const Test& test)
 {
-    std::cout << "end: " << test.getName() << std::endl;
+    std::cout << "end suite: " << test.getName() << std::endl;
 }
 
-void TestProgressListener::startTestRun(Test& test, TestResult&)
+void TestProgressListener::addFailure(const TestFailure& fail)
 {
-    std::cout << "start: " << test.getName() << std::endl;
-}
-
-void TestProgressListener::endTestRun(Test& test, TestResult&)
-{
-    std::cout << "end: " << test.getName() << std::endl;
-}
-
-void TestProgressListener::addFailure(Test& test, const TestFailure& fail)
-{
-    std::cout << "fail: " << test.getName() << (fail.isError() ? "E" : "F") << std::endl;
-}
-
-void TestProgressListener::addError(Test& test, const TestFailure& fail)
-{
-    std::cout << "fail: " << test.getName() << (fail.isError() ? "E" : "F") << std::endl;
+    std::cout << "fail: " << fail.getTestName() << "["
+              << (fail.isFailure() ? "F" : "E") << "]\n"
+              << fail.getExceptionMsg();
 }
 
 MAGELLAN_NS_END

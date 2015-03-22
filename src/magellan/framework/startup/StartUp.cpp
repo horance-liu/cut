@@ -11,12 +11,12 @@ int run_all_tests(int argc, char** argv)
 {
     TestFactory& factory = TestFactoryRegistry::getInstance();
 
-    std::unique_ptr<Test> tests(factory.make());
+    std::unique_ptr<Test> suite(factory.make());
 
     TestResult result;
     result.add(new TestProgressListener);
 
-    tests->run(result);
+    suite->run(result);
 
     return 0;
 }

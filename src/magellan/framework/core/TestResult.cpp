@@ -13,20 +13,80 @@ TestResult::~TestResult()
 {
     stdext::clear(listeners);
     stdext::clear(failures);
-    stdext::clear(errors);
 }
 
-void TestResult::reportFailure(Test& test, const Message& msg)
+void TestResult::add(TestListener* listener)
 {
-    addFailure(test, new TestFailure(test, msg, false));
+    listeners.push_back(listener);
 }
 
-void TestResult::reportError(Test&test, const Message& msg)
+inline void TestResult::startTest(const Test& test)
 {
-    addError(test, new TestFailure(test, msg, true));
+    for (auto listener : listeners)
+    {
+        listener->startTest(test);
+    }
 }
 
-bool TestResult::protect(Test& test, const TestFunctor& method, const std::string& desc)
+inline void TestResult::endTest(const Test& test)
+{
+    for (auto listener : listeners)
+    {
+        listener->endTest(test);
+    }
+}
+
+void TestResult::run(TestCase& test)
+{
+    startTest(test);
+    test.runBare(*this);
+    endTest(test);
+}
+
+inline void TestResult::startSuite(const Test& test)
+{
+    for (auto listener : listeners)
+    {
+        listener->startSuite(test);
+    }
+}
+
+inline void TestResult::endSuite(const Test& test)
+{
+    for (auto listener : listeners)
+    {
+        listener->endSuite(test);
+    }
+}
+
+void TestResult::run(TestSuite& test)
+{
+    startSuite(test);
+    test.runBare(*this);
+    endSuite(test);
+}
+
+inline void TestResult::addFailure(TestFailure* failure)
+{
+    failures.push_back(failure);
+
+    for (auto listener : listeners)
+    {
+        listener->addFailure(*failure);
+    }
+}
+
+inline void TestResult::reportFailure(const Test& test, const Message& msg)
+{
+    addFailure(new TestFailure(test, msg, true));
+}
+
+inline void TestResult::reportError(const Test&test, const Message& msg)
+{
+    addFailure(new TestFailure(test, msg, false));
+}
+
+bool TestResult::protect(const Test& test, const TestFunctor& method, const std::string& desc)
 {
     try {
         return method();
@@ -39,77 +99,6 @@ bool TestResult::protect(Test& test, const TestFunctor& method, const std::strin
     }
 
     return false;
-}
-
-void TestResult::run(TestCase& test)
-{
-    startTest(test);
-    test.runBare(*this);
-    endTest(test);
-}
-
-void TestResult::run(TestSuite& test)
-{
-    startSuite(test);
-    test.runBare(*this);
-    endSuite(test);
-}
-
-void TestResult::add(TestListener* listener)
-{
-    listeners.push_back(listener);
-}
-
-void TestResult::addFailure(Test& test, TestFailure* failure)
-{
-    failures.push_back(failure);
-
-    for (auto listener : listeners)
-    {
-        listener->addFailure(test, *failure);
-    }
-}
-
-void TestResult::addError(Test& test, TestFailure* error)
-{
-    failures.push_back(error);
-
-    for (auto listener : listeners)
-    {
-        listener->addError(test, *error);
-    }
-}
-
-void TestResult::startTest(Test& test)
-{
-    for (auto listener : listeners)
-    {
-        listener->startTest(test);
-    }
-}
-
-void TestResult::endTest(Test& test)
-{
-    for (auto listener : listeners)
-    {
-        listener->endTest(test);
-    }
-}
-
-void TestResult::startSuite(Test& test)
-{
-    for (auto listener : listeners)
-    {
-        listener->startSuite(test);
-    }
-}
-
-void TestResult::endSuite(Test& test)
-{
-    for (auto listener : listeners)
-    {
-        listener->endSuite(test);
-    }
 }
 
 MAGELLAN_NS_END

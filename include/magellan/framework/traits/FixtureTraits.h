@@ -8,6 +8,7 @@ MAGELLAN_NS_BEGIN
 template <typename FIXTURE>
 struct FixtureTraits
 {
+protected:
     using fixture_type = FIXTURE;
 };
 

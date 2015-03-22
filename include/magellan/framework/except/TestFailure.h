@@ -9,14 +9,16 @@ struct Test;
 
 struct TestFailure
 {
-    TestFailure(Test& test, const Message& msg, bool isError);
+    TestFailure(const Test& test, const Message& msg, bool failture);
 
-    bool isError() const;
+    const std::string& getTestName() const;
+    std::string getExceptionMsg() const;
+    bool isFailure() const;
 
 private:
-    Test &test;
-    Message msg;
-    bool error;
+    const Test &test;
+    const Message msg;
+    const bool failture;
 };
 
 MAGELLAN_NS_END

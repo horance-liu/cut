@@ -5,12 +5,11 @@
 
 MAGELLAN_NS_BEGIN
 
-template <typename Fixture>
+
 struct TestMethodTraits
 {
-    using Method = void (Fixture::*)();
-
-    TestMethodTraits(int id, Method method, const std::string& name)
+    template <typename Fixture>
+    TestMethodTraits(int id, void (Fixture::*method)() , const std::string& name)
     {
         MetaTestFixture<Fixture>::registryMethod(id, method, name);
     }

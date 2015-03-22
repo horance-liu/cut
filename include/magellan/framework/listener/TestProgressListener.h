@@ -7,17 +7,13 @@ MAGELLAN_NS_BEGIN
 
 struct TestProgressListener : TestListener
 {
-    OVERRIDE(void startTest(Test&));
-    OVERRIDE(void endTest(Test&));
+    OVERRIDE(void startTest(const Test&));
+    OVERRIDE(void endTest(const Test&));
 
-    OVERRIDE(void startSuite(Test&));
-    OVERRIDE(void endSuite(Test&));
+    OVERRIDE(void startSuite(const Test&));
+    OVERRIDE(void endSuite(const Test&));
 
-    OVERRIDE(void startTestRun(Test&, TestResult&));
-    OVERRIDE(void endTestRun(Test&, TestResult&));
-
-    OVERRIDE(void addFailure(Test&, const TestFailure&));
-    OVERRIDE(void addError(Test&, const TestFailure&));
+    OVERRIDE(void addFailure(const TestFailure&));
 };
 
 MAGELLAN_NS_END

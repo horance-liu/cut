@@ -3,13 +3,14 @@
 
 #include <magellan/infra/std/Symbol.h>
 #include <magellan/framework/traits/TestMethodTraits.h>
+#include <type_traits>
 
 ////////////////////////////////////////////////////////////////////////////////
-#define TEST_NAME(unique_id) JOIN(test_, unique_id)
+#define TEST_NAME(id) JOIN(test_, id)
 
 ////////////////////////////////////////////////////////////////////////////////
-#define __DEF_TEST(id, name) magellan::TestMethodTraits<fixture_type> \
-JOIN(test_traits_, id) { id, &fixture_type::TEST_NAME(id), name};     \
+#define __DEF_TEST(id, name) magellan::TestMethodTraits JOIN(test_traits_, id) \
+{ id, &std::remove_pointer_t<decltype(this)>::TEST_NAME(id), name};            \
 void TEST_NAME(id)()
 
 ////////////////////////////////////////////////////////////////////////////////

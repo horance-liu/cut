@@ -24,25 +24,24 @@ struct TestResult
     void run(TestCase&);
     void run(TestSuite&);
 
-    bool protect(Test& test, const TestFunctor&, const std::string&);
+    bool protect(const Test& test, const TestFunctor&, const std::string&);
 
 private:
-    void startTest(Test&);
-    void endTest(Test&);
+    void startTest(const Test&);
+    void endTest(const Test&);
 
-    void startSuite(Test&);
-    void endSuite(Test&);
+    void startSuite(const Test&);
+    void endSuite(const Test&);
 
-    void addFailure(Test&, TestFailure*);
-    void addError(Test&, TestFailure*);
+    void addFailure(TestFailure*);
+    void addError(TestFailure*);
 
-    void reportFailure(Test& test, const Message&);
-    void reportError(Test&test, const Message&);
+    void reportFailure(const Test&, const Message&);
+    void reportError(const Test&, const Message&);
 
 private:
     std::vector<TestListener*> listeners;
     std::vector<TestFailure*>  failures;
-    std::vector<TestFailure*>  errors;
 };
 
 MAGELLAN_NS_END

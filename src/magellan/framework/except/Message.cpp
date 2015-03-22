@@ -9,11 +9,16 @@ Message::Message(std::string&& desc, Details&& details)
 
 std::string Message::str() const
 {
-    std::stringstream ss(desc);
+    std::stringstream ss;
+
+    ss << desc << "\n";
 
     for (auto &detail : details)
     {
-        ss << "-" << detail << "\n";
+        if(!detail.empty())
+        {
+            ss << " - " << detail << "\n";
+        }
     }
 
     return ss.str();

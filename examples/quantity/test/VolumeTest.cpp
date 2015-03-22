@@ -3,7 +3,7 @@
 
 USING_HAMCREST_NS
 
-FIXTURE(Volume)
+FIXTURE(VolumeTest)
 {
     TEST("1 tbsp should equal to 3 tsps")
     {

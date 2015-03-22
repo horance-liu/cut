@@ -3,7 +3,7 @@
 
 USING_HAMCREST_NS
 
-FIXTURE(Legnth)
+FIXTURE(LegnthTest)
 {
     TEST("1 feet should equal to 12 inch")
     {

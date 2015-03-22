@@ -5,7 +5,7 @@
 
 USING_HAMCREST_NS
 
-FIXTURE(RobotCleaner)
+FIXTURE(RobotCleanerTest)
 {
     RobotCleaner robot;
 
@@ -21,7 +21,7 @@ FIXTURE(RobotCleaner)
 
     void THEN_the_robot_cleaner_should_be_in(const Position& position)
     {
-        ASSERT_THAT(robot.getPosition(), is(position));
+        ASSERT_THAT(robot.getPosition(), is_not(position));
     }
 
     TEST("at the beginning, the robot should be in at the initial position")

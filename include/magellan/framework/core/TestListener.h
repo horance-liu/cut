@@ -12,17 +12,16 @@ struct TestFailure;
 
 DEFINE_ROLE(TestListener)
 {
-    DEFAULT(void, startTest(Test&));
-    DEFAULT(void, endTest(Test&));
+    DEFAULT(void, startTest(const Test&));
+    DEFAULT(void, endTest(const Test&));
     
-    DEFAULT(void, startSuite(Test&));
-    DEFAULT(void, endSuite(Test&));
+    DEFAULT(void, startSuite(const Test&));
+    DEFAULT(void, endSuite(const Test&));
     
-    DEFAULT(void, startTestRun(Test&, TestResult&));
-    DEFAULT(void, endTestRun(Test&, TestResult&));
+    DEFAULT(void, startTestRun(const Test&, TestResult&));
+    DEFAULT(void, endTestRun(const Test&, TestResult&));
     
-    DEFAULT(void, addFailure(Test&, const TestFailure&));
-    DEFAULT(void, addError(Test&, const TestFailure&));
+    DEFAULT(void, addFailure(const TestFailure&));
 };
 
 MAGELLAN_NS_END
