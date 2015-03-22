@@ -2,7 +2,7 @@
 #define H850C3C7A_82E6_49C1_B47A_4BBB2F6EA3A3
 
 #include <magellan/infra/std/Symbol.h>
-#include <magellan/framework/traits/TestMethodTraits.h>
+#include <magellan/framework/auto/TestMethodTraits.h>
 #include <type_traits>
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -14,6 +14,6 @@
 void TEST_NAME(id)()
 
 ////////////////////////////////////////////////////////////////////////////////
-#define TEST(name) __DEF_TEST(__COUNTER__, name)
+#define TEST(name) __DEF_TEST(UNIQUE_ID, name)
 
 #endif

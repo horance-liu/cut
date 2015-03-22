@@ -4,7 +4,6 @@
 #include <magellan/infra/std/Symbol.h>
 #include <magellan/framework/core/TestFixture.h>
 #include <magellan/framework/auto/AutoTestSuite.h>
-#include <magellan/framework/traits/FixtureTraits.h>
 
 ////////////////////////////////////////////////////////////////////////////////
 #define DEF_FIXTURE(fixture, super)                                \

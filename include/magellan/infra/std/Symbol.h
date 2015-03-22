@@ -7,9 +7,11 @@
 #define JOIN(symbol1, symbol2) __DO_JOIN(symbol1, symbol2)
 
 #ifdef __COUNTER__
-# define UNIQUE_NAME(prefix) JOIN(prefix, __COUNTER__)
+# define UNIQUE_ID __COUNTER__
 #else
-# define UNIQUE_NAME(prefix) JOIN(prefix, __LINE__)
+# define UNIQUE_ID __LINE__
 #endif
+
+# define UNIQUE_NAME(prefix) JOIN(prefix, UNIQUE_ID)
 
 #endif
