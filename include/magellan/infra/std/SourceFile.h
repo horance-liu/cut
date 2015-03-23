@@ -2,7 +2,7 @@
 #define HC57E2472_2513_4E94_AEC6_067A30876304
 
 #include <string>
-#include <mango/infra/std/stdext.h>
+#include <magellan/infra/std/stdext.h>
 
 STDEXT_NS_BEGIN
 
