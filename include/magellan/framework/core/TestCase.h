@@ -8,13 +8,14 @@ MAGELLAN_NS_BEGIN
 
 struct TestCase : Test, TestFixture
 {
-    explicit TestCase(const std::string& name = "");
+    TestCase(const std::string& fixture, const std::string& name);
 
     void runBare(TestResult&);
 
 private:
     OVERRIDE(void run(TestResult&));
     OVERRIDE(int countTestCases() const);
+    OVERRIDE(int countChildTests() const);
     OVERRIDE(const std::string& getName() const);
 
 private:
@@ -25,7 +26,7 @@ private:
     bool protect(TestResult& result, Functor functor, const char* desc = "");
 
 private:
-    const std::string name; 
+    const std::string name;
 };
 
 MAGELLAN_NS_END

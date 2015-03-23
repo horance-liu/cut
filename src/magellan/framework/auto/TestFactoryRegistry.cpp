@@ -9,6 +9,11 @@ TestFactoryRegistry& TestFactoryRegistry::getInstance()
     return registry;
 }
 
+Test* TestFactoryRegistry::makeAllTests()
+{
+    return getInstance().make();
+}
+
 Test* TestFactoryRegistry::make()
 {
     auto suite = new TestSuite("All Tests");

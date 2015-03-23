@@ -11,9 +11,10 @@ struct TestResult;
 
 DEFINE_ROLE(Test)
 {
-    ABSTRACT(void run(TestResult&));
-    ABSTRACT(int countTestCases() const);
     ABSTRACT(const std::string& getName () const);
+    ABSTRACT(int countTestCases() const);
+    ABSTRACT(int countChildTests() const);
+    ABSTRACT(void run(TestResult&));
 };
 
 MAGELLAN_NS_END

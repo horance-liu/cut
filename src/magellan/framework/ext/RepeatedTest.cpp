@@ -20,4 +20,9 @@ int RepeatedTest::countTestCases() const
     return TestDecorator::countTestCases() * times;
 }
 
+int RepeatedTest::countChildTests() const
+{
+    return TestDecorator::countChildTests() * times;
+}
+
 MAGELLAN_NS_END

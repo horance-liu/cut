@@ -4,14 +4,13 @@
 MAGELLAN_NS_BEGIN
 
 AssertionError::AssertionError(const std::string& source, const std::string& msg)
-    : source(source), msg(msg)
-{}
+    : msg(source+msg)
+{
+}
 
 const char* AssertionError::what() const noexcept
 {
-    std::stringstream ss;
-    ss << source << ":" << msg;
-    return ss.str().c_str();
+    return msg.c_str();
 }
 
 MAGELLAN_NS_END

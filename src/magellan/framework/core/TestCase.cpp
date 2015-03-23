@@ -4,40 +4,42 @@
 
 MAGELLAN_NS_BEGIN
 
+TestCase::TestCase(const std::string& fixture, const std::string& name)
+  : name(fixture + "::" + name)
+{}
+
 namespace
 {
-    struct TestFunctorWrapper : TestFunctor
+    struct TestCaseFunctor : TestFunctor
     {
         using Method = void(TestCase::*)();
         
-        TestFunctorWrapper(TestCase& target, Method method)
-            : target(target), method(method)
+        TestCaseFunctor(TestCase& test, Method method)
+            : test(test), method(method)
         {}
 
     private:
         OVERRIDE(bool operator()() const)
         {
-            (target.*method)();
+            (test.*method)();
             return true;
         }
 
+        IMPL_ROLE_WITH_OBJ(Test, test);
+
     private:
-       TestCase& target;
+       TestCase& test;
        Method method;
     };
-}
-
-TestCase::TestCase(const std::string& name) : name(name)
-{
 }
 
 template <typename Functor>
 inline bool TestCase::protect(TestResult& result, Functor functor, const char* desc)
 {
-    return result.protect(*this, TestFunctorWrapper(*this, functor), desc);
+    return result.protect(TestCaseFunctor(*this, functor), desc);
 }
 
-#define PROTECT(action) protect(result, &TestCase::action, #action" failed")
+#define PROTECT(functor) protect(result, &TestCase::functor, " in the "#functor)
 
 void TestCase::runBare(TestResult& result)
 {
@@ -57,6 +59,11 @@ void TestCase::run(TestResult& result)
 int TestCase::countTestCases() const
 {
     return 1;
+}
+
+int TestCase::countChildTests() const
+{
+    return 0;
 }
 
 const std::string& TestCase::getName() const

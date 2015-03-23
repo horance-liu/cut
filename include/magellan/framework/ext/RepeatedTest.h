@@ -12,6 +12,7 @@ struct RepeatedTest : TestDecorator
 private:
     OVERRIDE(void run(TestResult&));
     OVERRIDE(int countTestCases() const);
+    OVERRIDE(int countChildTests() const);
 
 private:
     int times;

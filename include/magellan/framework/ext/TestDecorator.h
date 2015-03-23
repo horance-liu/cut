@@ -12,6 +12,7 @@ struct TestDecorator : Test
 protected:
     OVERRIDE(void run(TestResult&));
     OVERRIDE(int countTestCases() const);
+    OVERRIDE(int countChildTests() const);
     OVERRIDE(const std::string& getName () const);
 
 private:

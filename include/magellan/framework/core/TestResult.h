@@ -4,6 +4,7 @@
 #include <magellan/framework/magellan.h>
 #include <vector>
 #include <string>
+#include <ostream>
 
 MAGELLAN_NS_BEGIN
 
@@ -23,10 +24,15 @@ struct TestResult
     
     void run(TestCase&);
     void run(TestSuite&);
+    void runTest(Test& test);
+    void listFailures(std::ostream& out);
 
-    bool protect(const Test& test, const TestFunctor&, const std::string&);
+    bool protect(const TestFunctor&, const std::string&);
 
 private:
+    void startTestRun(const Test& test);
+    void endTestRun(const Test& test);
+
     void startTest(const Test&);
     void endTest(const Test&);
 
@@ -36,8 +42,8 @@ private:
     void addFailure(TestFailure*);
     void addError(TestFailure*);
 
-    void reportFailure(const Test&, const Message&);
-    void reportError(const Test&, const Message&);
+    void reportFailure(const TestFunctor& method, const Message&);
+    void reportError(const TestFunctor& method, const Message&);
 
 private:
     std::vector<TestListener*> listeners;

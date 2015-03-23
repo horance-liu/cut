@@ -6,8 +6,11 @@
 
 MAGELLAN_NS_BEGIN
 
+struct Test;
+
 DEFINE_ROLE(TestFunctor)
 {
+    HAS_ROLE(Test);
     ABSTRACT(bool operator()() const);
 };
 

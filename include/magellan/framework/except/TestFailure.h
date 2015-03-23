@@ -6,10 +6,11 @@
 MAGELLAN_NS_BEGIN
 
 struct Test;
+struct TestFunctor;
 
 struct TestFailure
 {
-    TestFailure(const Test& test, const Message& msg, bool failture);
+    TestFailure(const TestFunctor& method, const Message& msg, bool failure);
 
     const std::string& getTestName() const;
     std::string getExceptionMsg() const;
@@ -18,7 +19,7 @@ struct TestFailure
 private:
     const Test &test;
     const Message msg;
-    const bool failture;
+    bool failure;
 };
 
 MAGELLAN_NS_END

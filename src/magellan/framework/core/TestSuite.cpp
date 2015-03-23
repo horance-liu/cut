@@ -30,6 +30,11 @@ int TestSuite::countTestCases() const
     });
 }
 
+int TestSuite::countChildTests() const
+{
+    return (int)tests.size();
+}
+
 void TestSuite::runBare(TestResult &result)
 {
     for (auto test : tests)

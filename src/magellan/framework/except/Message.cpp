@@ -1,27 +1,18 @@
 #include "magellan/framework/except/Message.h"
-#include <sstream>
+#include <magellan/infra/std/Algorithm.h>
 
 MAGELLAN_NS_BEGIN
 
-Message::Message(std::string&& desc, Details&& details)
-  : desc(std::move(desc)), details(std::move(details))
-{}
+Message::Message(const std::string& desc, const std::string& detail)
+   : desc(desc), detail(detail)
+{
+//    printf("Message::desc:%s\n", desc.c_str());
+//    printf("Message::detail:%s\n", detail.c_str());
+}
 
 std::string Message::str() const
 {
-    std::stringstream ss;
-
-    ss << desc << "\n";
-
-    for (auto &detail : details)
-    {
-        if(!detail.empty())
-        {
-            ss << " - " << detail << "\n";
-        }
-    }
-
-    return ss.str();
+    return desc + "\n" + detail;
 }
 
 MAGELLAN_NS_END

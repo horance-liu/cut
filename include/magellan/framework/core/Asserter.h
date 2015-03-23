@@ -30,7 +30,7 @@ void assert_that(const U& actual, const Matcher<V>& matcher, const std::string& 
 }
 
 #define ASSERT_THAT(actual, matcher) \
-    MAGELLAN_NS::assert_that(actual, matcher, SOURCE_FILE())
+    MAGELLAN_NS::assert_that(actual, matcher, FULL_FILE())
 
 MAGELLAN_NS_END
 

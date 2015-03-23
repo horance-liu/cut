@@ -9,16 +9,12 @@ MAGELLAN_NS_BEGIN
 
 struct Message
 {
-private:
-    using Details = std::vector<std::string>;
-
-public:
-    Message(std::string &&desc, Details&& = {});
+    Message(const std::string& desc, const std::string& detail = "");
     std::string str() const;
 
 private:
     std::string desc;
-    Details details;
+    std::string detail;
 };
 
 MAGELLAN_NS_END

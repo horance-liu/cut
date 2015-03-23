@@ -15,7 +15,6 @@ struct AssertionError : std::exception
     const char* what() const noexcept;
 
 private:
-    std::string source;
     std::string msg;
 };
 

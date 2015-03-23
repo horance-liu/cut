@@ -5,7 +5,6 @@
 
 MAGELLAN_NS_BEGIN
 
-
 struct TestMethodTraits
 {
     template <typename Fixture>

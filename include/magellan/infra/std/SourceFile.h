@@ -6,9 +6,10 @@
 
 STDEXT_NS_BEGIN
 
-std::string source_file(const std::string& file, int line);
+std::string source_file(const std::string& file, int line, bool absolute);
 
-#define SOURCE_FILE() stdext::source_file(__FILE__, __LINE__)
+#define SHORT_FILE() stdext::source_file(__FILE__, __LINE__, false)
+#define FULL_FILE() stdext::source_file(__FILE__, __LINE__, true)
 
 STDEXT_NS_END
 

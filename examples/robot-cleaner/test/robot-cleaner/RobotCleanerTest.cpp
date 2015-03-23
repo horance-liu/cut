@@ -21,7 +21,7 @@ FIXTURE(RobotCleanerTest)
 
     void THEN_the_robot_cleaner_should_be_in(const Position& position)
     {
-        ASSERT_THAT(robot.getPosition(), is_not(position));
+        ASSERT_THAT(robot.getPosition(), is(position));
     }
 
     TEST("at the beginning, the robot should be in at the initial position")

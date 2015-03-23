@@ -17,6 +17,11 @@ int TestDecorator::countTestCases() const
     return test.countTestCases();
 }
 
+int TestDecorator::countChildTests() const
+{
+    return test.countChildTests();
+}
+
 const std::string& TestDecorator::getName () const
 {
     return test.getName();

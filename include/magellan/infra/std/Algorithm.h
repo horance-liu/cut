@@ -5,6 +5,7 @@
 #include <utility>
 #include <algorithm>
 #include <numeric>
+#include <sstream>
 
 STDEXT_NS_BEGIN
 
@@ -69,6 +70,30 @@ void clear(Container&& c)
 {
     each(c, [](auto e) { delete e; });
     c.clear();
+}
+
+namespace details
+{
+    template <typename Iterator>
+    std::string do_join(Iterator first, Iterator last, const std::string& separator)
+    {
+        std::ostringstream ss;
+
+        if (first != last)
+            ss << *first++;
+
+        while (first != last)
+            ss << separator << *first++;
+
+        return ss.str();
+    }
+}
+
+
+template <typename Container>
+std::string join(Container&& c, const std::string& separator)
+{
+    return details::do_join(RANG(c), separator);
 }
 
 STDEXT_NS_END

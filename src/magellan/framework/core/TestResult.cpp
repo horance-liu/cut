@@ -5,6 +5,7 @@
 #include "magellan/framework/core/TestSuite.h"
 #include "magellan/framework/except/AssertionError.h"
 #include "magellan/framework/except/TestFailure.h"
+#include "magellan/framework/listener/Color.h"
 #include "magellan/infra/std/Algorithm.h"
 
 MAGELLAN_NS_BEGIN
@@ -20,20 +21,19 @@ void TestResult::add(TestListener* listener)
     listeners.push_back(listener);
 }
 
+#define BROADCAST(action)         \
+for (auto listener : listeners) { \
+    listener->action;             \
+}
+
 inline void TestResult::startTest(const Test& test)
 {
-    for (auto listener : listeners)
-    {
-        listener->startTest(test);
-    }
+    BROADCAST(startTest(test))
 }
 
 inline void TestResult::endTest(const Test& test)
 {
-    for (auto listener : listeners)
-    {
-        listener->endTest(test);
-    }
+    BROADCAST(endTest(test))
 }
 
 void TestResult::run(TestCase& test)
@@ -45,18 +45,12 @@ void TestResult::run(TestCase& test)
 
 inline void TestResult::startSuite(const Test& test)
 {
-    for (auto listener : listeners)
-    {
-        listener->startSuite(test);
-    }
+    BROADCAST(startSuite(test))
 }
 
 inline void TestResult::endSuite(const Test& test)
 {
-    for (auto listener : listeners)
-    {
-        listener->endSuite(test);
-    }
+    BROADCAST(endSuite(test))
 }
 
 void TestResult::run(TestSuite& test)
@@ -66,39 +60,74 @@ void TestResult::run(TestSuite& test)
     endSuite(test);
 }
 
+inline void TestResult::startTestRun(const Test& test)
+{
+    BROADCAST(startTestRun(test, *this))
+}
+
+
+inline void TestResult::endTestRun(const Test& test)
+{
+    BROADCAST(endTestRun(test, *this))
+}
+
+void TestResult::runTest(Test& test)
+{
+    startTestRun(test);
+    test.run(*this);
+    endTestRun(test);
+}
+
 inline void TestResult::addFailure(TestFailure* failure)
 {
     failures.push_back(failure);
-
-    for (auto listener : listeners)
-    {
-        listener->addFailure(*failure);
-    }
+    BROADCAST(addFailure(*failure))
 }
 
-inline void TestResult::reportFailure(const Test& test, const Message& msg)
+inline void TestResult::reportFailure(const TestFunctor& method, const Message& msg)
 {
-    addFailure(new TestFailure(test, msg, true));
+    addFailure(new TestFailure(method, msg, true));
 }
 
-inline void TestResult::reportError(const Test&test, const Message& msg)
+inline void TestResult::reportError(const TestFunctor& method, const Message& msg)
 {
-    addFailure(new TestFailure(test, msg, false));
+    addFailure(new TestFailure(method, msg, false));
 }
 
-bool TestResult::protect(const Test& test, const TestFunctor& method, const std::string& desc)
+bool TestResult::protect(const TestFunctor& method, const std::string& desc)
 {
     try {
         return method();
-    } catch (const AssertionError& f) {
-        reportFailure(test, Message("assertion fail", {f.what(), desc}));
+    } catch (const AssertionError& e) {
+        reportFailure(method, Message(std::string("assertion fail") + desc, e.what()));
     } catch (const std::exception& e) {
-        reportError(test, Message("uncaught std::exception", {e.what(), desc }));
+        reportError(method, Message(std::string("uncaught std::exception") + desc, e.what()));
     } catch (...) {
-        reportError(test, Message("uncaught unknown exception", {desc}));
+        reportError(method, Message(std::string("uncaught unknown exception") + desc));
     }
 
     return false;
+}
+
+namespace
+{
+    inline const char* titleFor(const TestFailure& failure)
+    {
+        return failure.isFailure() ? "[  FAILURE ] " : "[  ERROR   ] ";
+    }
+}
+
+void TestResult::listFailures(std::ostream& out)
+{
+    if (failures.empty())
+        return;
+
+    out << RED << "[  FAILED  ] " << WHITE << failures.size() << " tests, listed below:" << std::endl;
+
+    for (auto failure : failures)
+    {
+        out << RED << titleFor(*failure) << WHITE << failure->getTestName() << std::endl;
+    }
 }
 
 MAGELLAN_NS_END

@@ -2,6 +2,7 @@
 #define H8830446F_F68B_4ECB_945B_1474064EB768
 
 #include "magellan/framework/core/TestCase.h"
+#include "magellan/infra/std/TypeString.h"
 
 MAGELLAN_NS_BEGIN
 
@@ -11,7 +12,7 @@ struct TestCaller : TestCase
     using Method = void(Fixture::*)();
 
     TestCaller(const std::string& name, const Method method)
-        : TestCase(name), method(method)
+        : TestCase(stdext::TypeString<Fixture>::value(), name), method(method)
     {}
 
 private:
