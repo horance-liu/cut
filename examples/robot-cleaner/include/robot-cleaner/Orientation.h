@@ -1,7 +1,7 @@
 #ifndef H9811B75A_15B3_4DF0_91B7_483C42F74473
 #define H9811B75A_15B3_4DF0_91B7_483C42F74473
 
-#include "magellan/infra/std/EqHelper.h"
+#include "l0-infra/std/EqHelper.h"
 
 struct Point;
 

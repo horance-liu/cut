@@ -12,5 +12,4 @@ FILE(GLOB_RECURSE all_files
 sort_files(all_files)
 
 add_executable(magellan-test  ${all_files})
-target_link_libraries(magellan-test ${MAGELLAN_LIBRARIES})
-
+target_link_libraries(magellan-test ${MAGELLAN_LIBRARIES} hamcrest)
