@@ -48,6 +48,26 @@ In order to support full C++11/14 features, to update GCC to 4.9 or later.
     sudo cp -aR include/gtest/ /usr/local/include/
     sudo ldconfig
 
+#### Install Infra dependces: 
+  
+    git clone https://gitlab.com/horance/infra.git
+    cd infra
+    mkdir build
+    cd build
+    cmake ..
+    make
+    sudo make install
+
+#### Install Hamcrest dependces: 
+    
+    git clone https://gitlab.com/horance/hamcrest-cxx.git
+    cd hamcrest-cxx 
+    mkdir build
+    cd build
+    cmake ..
+    make
+    sudo make install
+
 ### Build and Install Magellan:
 
     mkdir build
