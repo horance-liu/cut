@@ -4,8 +4,8 @@
 
 MAGELLAN_NS_BEGIN
 
-TestFailure::TestFailure(const TestFunctor& method, const Message& msg, bool failure)
-  : test(method.ROLE(Test)), msg(msg), failure(failure)
+TestFailure::TestFailure(const TestFunctor& method, Message&& msg, bool failure)
+  : test(method.ROLE(Test)), msg(std::move(msg)), failure(failure)
 {}
 
 bool TestFailure::isFailure() const
@@ -18,7 +18,7 @@ const std::string& TestFailure::getTestName() const
     return test.getName();
 }
 
-std::string TestFailure::getExceptionMsg() const
+const std::string& TestFailure::getExceptionMsg() const
 {
     return msg.str();
 }

@@ -1,7 +1,6 @@
-#include <gtest/gtest.h>
+#include "magellan/magellan.hpp"
 
 int main(int argc, char** argv)
 {
-    testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
+    return magellan::run_all_tests(argc, argv);
 }

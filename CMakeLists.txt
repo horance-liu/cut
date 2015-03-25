@@ -44,10 +44,9 @@ set(MAGELLAN_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 include_directories(${MAGELLAN_INCLUDE_DIR})
 
-set(MAGELLAN_LIBRARIES magellan gtest pthread stdc++)
+set(MAGELLAN_LIBRARIES magellan stdc++)
 
 install(DIRECTORY include/magellan DESTINATION include)
 
 add_subdirectory(src)
 add_subdirectory(test)
-add_subdirectory(examples)

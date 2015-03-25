@@ -1,18 +1,5 @@
 #!/bin/bash
 
-working_path=$PWD
-
-echo "try build ${working_path}"
-echo "*******************************************************************************"
-echo "start generate cmake eclipse project..."
-
-if [ ! -d "build" ]; then
-    mkdir -p build
-fi
-
-cd build
-cmake -DCMAKE_BUILD_TYPE=Debug ..
-
 # execute cmake when you using colorgcc
 # CC="colorgcc /usr/bin/gcc" CXX="colorgcc /usr/bin/g++" cmake -DCMAKE_BUILD_TYPE=Debug ..
 
@@ -20,34 +7,44 @@ cmake -DCMAKE_BUILD_TYPE=Debug ..
 # export DISTCC_HOSTS="localhost 10.93.114.73"
 # CC="distcc /usr/bin/gcc" CXX="distcc /usr/bin/g++" cmake -DCMAKE_BUILD_TYPE=Debug ..
 
-echo "*******************************************************************************"
-echo "start build cmake project..."
+# working_path=$PWD
 
-make -j4
+function start_exec()
+{
+  echo -e "\033[0;35;1m*******************************************************************************************************\033[0m"
+  echo -e "\033[0;35;1mstart to $1 \033[0m"
+}
 
-if [ $? -ne 0 ]; then
-    echo "build ${working_path} fail"
+function exec_on_fail()
+{
+  start_exec "run $1"
+
+  $1
+  
+  if [ $? -ne 0 ]; then
+    echo "build $1 fail"
     exit 1
-fi
+  fi
+}
+ 
+#export CC=/usr/bin/clang
+#export CXX=/usr/bin/clang++
 
-echo "*******************************************************************************"
-echo "start run tests..."
+start_exec "generate makefile"
+mkdir -p build
+cd build
+cmake -DCMAKE_BUILD_TYPE=Debug ..
 
-test/magellan-test --gtest_color=yes $1 $2
+start_exec "make"
+exec_on_fail make 
 
-echo "start run robot cleaner example tests..."
-examples/robot-cleaner/robot-cleaner-test --gtest_color=yes $1 $2
+function run_test()
+{
+  exec_on_fail "test/$1/$1-test $2 --gtest_color=yes"
+}
 
-echo "start run quantity example tests..."
-examples/quantity/quantity-test --gtest_color=yes $1 $2
-
-if [ $? -ne 0 ]; then
-    echo "build ${working_path} fail"
-    exit 1
-fi
+run_test quantity --gtest_filter=*.*
+run_test robot-cleaner --gtest_filter=*.*
+run_test magellan --gtest_filter=*.*
 
 cd ..
-
-echo "*******************************************************************************"
-echo "build ${working_path} succ"
-

@@ -10,11 +10,10 @@ MAGELLAN_NS_BEGIN
 struct Message
 {
     Message(const std::string& desc, const std::string& detail = "");
-    std::string str() const;
+    const std::string& str() const;
 
 private:
-    std::string desc;
-    std::string detail;
+    std::string msg;
 };
 
 MAGELLAN_NS_END

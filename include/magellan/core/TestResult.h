@@ -42,8 +42,8 @@ private:
     void addFailure(TestFailure*);
     void addError(TestFailure*);
 
-    void reportFailure(const TestFunctor& method, const Message&);
-    void reportError(const TestFunctor& method, const Message&);
+    void reportFailure(const TestFunctor& method, Message&&);
+    void reportError(const TestFunctor& method, Message&&);
 
 private:
     std::vector<TestListener*> listeners;

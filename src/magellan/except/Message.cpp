@@ -4,15 +4,13 @@
 MAGELLAN_NS_BEGIN
 
 Message::Message(const std::string& desc, const std::string& detail)
-   : desc(desc), detail(detail)
+   : msg(desc + "\n" + detail)
 {
-//    printf("Message::desc:%s\n", desc.c_str());
-//    printf("Message::detail:%s\n", detail.c_str());
 }
 
-std::string Message::str() const
+const std::string& Message::str() const
 {
-    return desc + "\n" + detail;
+    return msg;
 }
 
 MAGELLAN_NS_END

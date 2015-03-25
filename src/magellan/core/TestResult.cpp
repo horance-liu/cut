@@ -84,14 +84,14 @@ inline void TestResult::addFailure(TestFailure* failure)
     BROADCAST(addFailure(*failure))
 }
 
-inline void TestResult::reportFailure(const TestFunctor& method, const Message& msg)
+inline void TestResult::reportFailure(const TestFunctor& method, Message&& msg)
 {
-    addFailure(new TestFailure(method, msg, true));
+    addFailure(new TestFailure(method, std::move(msg), true));
 }
 
-inline void TestResult::reportError(const TestFunctor& method, const Message& msg)
+inline void TestResult::reportError(const TestFunctor& method, Message&& msg)
 {
-    addFailure(new TestFailure(method, msg, false));
+    addFailure(new TestFailure(method, std::move(msg), false));
 }
 
 bool TestResult::protect(const TestFunctor& method, const std::string& desc)

@@ -10,10 +10,11 @@ struct TestFunctor;
 
 struct TestFailure
 {
-    TestFailure(const TestFunctor& method, const Message& msg, bool failure);
+    TestFailure(const TestFunctor& method, Message&& msg, bool failure);
 
     const std::string& getTestName() const;
-    std::string getExceptionMsg() const;
+    const std::string& getExceptionMsg() const;
+
     bool isFailure() const;
 
 private:
