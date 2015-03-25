@@ -6,12 +6,22 @@
 #include <type_traits>
 
 ////////////////////////////////////////////////////////////////////////////////
-#define TEST_NAME(id) JOIN(test_, id)
+#define __TEST_NAME(id)     JOIN(test_, id)
+#define __TEST_TRAITS(id)   JOIN(test_traits_, id)
+#define __TEST_REGISTER(id) JOIN(register_test_, id)
 
 ////////////////////////////////////////////////////////////////////////////////
-#define __DEF_TEST(id, name) magellan::TestMethodTraits JOIN(test_traits_, id) \
-{ id, &std::remove_pointer_t<decltype(this)>::TEST_NAME(id), name};            \
-void TEST_NAME(id)()
+#define __DEF_TEST(id, name)                                          \
+private:                                                              \
+magellan::TestMethodTraits __TEST_REGISTER(id)()                      \
+{                                                                     \
+    using fixture_type = std::remove_pointer_t<decltype(this)>;       \
+    auto test_case = &fixture_type::__TEST_NAME(id);                  \
+    return magellan::TestMethodTraits(id, test_case, name);           \
+}                                                                     \
+magellan::TestMethodTraits __TEST_TRAITS(id) = __TEST_REGISTER(id)(); \
+public:                                                               \
+void __TEST_NAME(id)()
 
 ////////////////////////////////////////////////////////////////////////////////
 #define TEST(name) __DEF_TEST(UNIQUE_ID, name)
