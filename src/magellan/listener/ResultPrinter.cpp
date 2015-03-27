@@ -96,7 +96,7 @@ namespace
         if (elapsed.tv_sec > 0)
             ss << elapsed.tv_sec << " s ";
 
-        ss << elapsed.tv_usec << " ms";
+        ss << elapsed.tv_usec << " us";
 
         return ss.str();
     }
