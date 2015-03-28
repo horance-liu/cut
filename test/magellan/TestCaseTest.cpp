@@ -4,6 +4,7 @@
 #include "magellan/except/TestFailure.h"
 #include <functional>
 #include <exception>
+#include <new>
 
 USING_MAGELLAN_NS
 USING_HAMCREST_NS
@@ -73,6 +74,13 @@ FIXTURE(TestCaseTest)
     TEST("when test case throw std::exception")
     {
         run_test([] { throw std::exception(); });
+        ASSERT_THAT(collector->numOfFail, is(1));
+        ASSERT_THAT(collector->numOfError, is(1));
+    }
+
+    TEST("when test case throw std::bad_alloc")
+    {
+        run_test([] { throw std::bad_alloc(); });
         ASSERT_THAT(collector->numOfFail, is(1));
         ASSERT_THAT(collector->numOfError, is(1));
     }

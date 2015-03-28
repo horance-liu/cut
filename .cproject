@@ -27,13 +27,28 @@
 								</inputType>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.assembler.macosx.base.1607815902" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.macosx.base">
+								<option id="gnu.both.asm.option.include.paths.237012804" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/infrastructure/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/magellan/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/hamcrest-cxx/include}&quot;"/>
+								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1414778853" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.archiver.macosx.base.2000446281" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.macosx.base"/>
 							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.macosx.base.1368123055" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.macosx.base">
+								<option id="gnu.cpp.compiler.option.include.paths.1497515034" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/infrastructure/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/magellan/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/hamcrest-cxx/include}&quot;"/>
+								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1919296537" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.c.compiler.macosx.base.1017947876" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.macosx.base">
+								<option id="gnu.c.compiler.option.include.paths.172137100" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/infrastructure/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/magellan/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/hamcrest-cxx/include}&quot;"/>
+								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1117005720" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
 						</toolChain>
@@ -46,8 +61,15 @@
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
 		<project id="magellan.null.1510495172" name="magellan"/>
 	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="refreshScope"/>
 	<storageModule moduleId="scannerConfiguration">
 		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.toolchain.gnu.macosx.base.2012919306;cdt.managedbuild.toolchain.gnu.macosx.base.2012919306.696062632;cdt.managedbuild.tool.gnu.cpp.compiler.macosx.base.1368123055;cdt.managedbuild.tool.gnu.cpp.compiler.input.1919296537">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.toolchain.gnu.macosx.base.2012919306;cdt.managedbuild.toolchain.gnu.macosx.base.2012919306.696062632;cdt.managedbuild.tool.gnu.c.compiler.macosx.base.1017947876;cdt.managedbuild.tool.gnu.c.compiler.input.1117005720">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
 	</storageModule>
-	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 </cproject>
