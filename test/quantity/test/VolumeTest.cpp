@@ -7,12 +7,12 @@ FIXTURE(VolumeTest)
 {
     TEST("1 tbsp should equal to 3 tsps")
     {
-        ASSERT_THAT(Volume(1, TBSP), equal_to(Volume(3, TSP)));
+        ASSERT_THAT(Volume(1, TBSP), eq(Volume(3, TSP)));
     }
 
     TEST("1 oz should equal to 2 tbsps")
     {
-        ASSERT_THAT(Volume(1, OZ), equal_to(Volume(2, TBSP)));
+        ASSERT_THAT(Volume(1, OZ), eq(Volume(2, TBSP)));
     }
 };
 
