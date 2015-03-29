@@ -1,8 +1,6 @@
 # Mangellan
 
-Mangellan is a simple implement for xUnit framework using C++11/14.
-
-* [Magellan Website](http://gitlab.com/horance/magellan)
+[Magellan](http://gitlab.com/horance/magellan) is a simple implement for xUnit framework using C++11/14.
 
 Supported Platform:
 * [MAC OS X] supported
@@ -15,7 +13,8 @@ Supported Compilers:
 * [MSVC] not supported.
 
 Dependces:
-* [Google Test](http://code.google.com/p/googletest/) 1.6 or later.
+* [Infrastructure](https://gitloab.com/horance/infrastructure).
+* [Hamcrest](https://gitlab.com/horance/hamcrest).
 
 ## Installation
 
@@ -29,52 +28,41 @@ In order to support full C++11/14 features, to update GCC to 4.9 or later.
     sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 60 --slave /usr/bin/g++ g++ /usr/bin/g++-4.9
     sudo update-alternatives --config gcc
 
-### Install dependces:
-
-#### Install CMake:
+### Install CMake:
 
     sudo apt-get install cmake
   
-#### Install Google Test dependces:
-
-    sudo apt-get install google-mock
-    cd /usr/src/gmock/gtest
-    sudo mkdir build
-    cd build
-    sudo cmake ..
-    sudo make
-    sudo mv libg* /usr/local/lib/ 
-    cd ..
-    sudo cp -aR include/gtest/ /usr/local/include/
-    sudo ldconfig
-
-#### Install Infra dependces: 
+### Install Infrastructure: 
   
-    git clone https://gitlab.com/horance/infra.git
-    cd infra
+    git clone https://gitlab.com/horance/infrastructure.git
+    cd infrastructure
     mkdir build
     cd build
     cmake ..
     make
     sudo make install
 
-#### Install Hamcrest dependces: 
+### Install Hamcrest: 
     
-    git clone https://gitlab.com/horance/hamcrest-cxx.git
-    cd hamcrest-cxx 
+    git clone https://gitlab.com/horance/hamcrest.git
+    cd hamcrest 
     mkdir build
     cd build
     cmake ..
     make
     sudo make install
 
-### Build and Install Magellan:
+### Install Magellan:
 
     mkdir build
     cd build
     cmake ..
     make
     sudo make install
+
+### NOTE
+
+You can run build.sh only if infrastructure and hamcrest installed.
 
 ## Copyright
 Copyright (c) 2015-2020 Horance Liu. See LICENSE for details.
