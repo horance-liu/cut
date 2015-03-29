@@ -33,7 +33,7 @@ function exec_on_fail()
 start_exec "generate makefile"
 mkdir -p build
 cd build
-cmake -DCMAKE_BUILD_TYPE=Debug ..
+cmake -DCMAKE_BUILD_TYPE=Debug -DMAGELLAN_ENABLE_TEST=ON ..
 
 start_exec "make"
 exec_on_fail make 

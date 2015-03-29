@@ -2,8 +2,7 @@ cmake_minimum_required(VERSION 2.8)
 
 project(magellan)
 
-set(MAGELLAN_ENABLE_GTEST ON CACHE BOOL "Enable Google Test framework")
-set(MAGELLAN_ENABLE_EXAMPLES ON CACHE BOOL "Enable the examples")
+set(MAGELLAN_ENABLE_TEST OFF CACHE BOOL "Enable the test")
 
 #
 # File Filter
@@ -49,4 +48,7 @@ set(MAGELLAN_LIBRARIES magellan stdc++)
 install(DIRECTORY include/magellan DESTINATION include)
 
 add_subdirectory(src)
-add_subdirectory(test)
+
+if(MAGELLAN_ENABLE_TEST)
+    add_subdirectory(test)
+endif()
