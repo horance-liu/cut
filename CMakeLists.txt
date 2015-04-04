@@ -48,7 +48,4 @@ set(MAGELLAN_LIBRARIES magellan stdc++)
 install(DIRECTORY include/magellan DESTINATION include)
 
 add_subdirectory(src)
-
-if(MAGELLAN_ENABLE_TEST)
-    add_subdirectory(test)
-endif()
+add_subdirectory(test)
