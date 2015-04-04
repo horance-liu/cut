@@ -2,8 +2,6 @@ cmake_minimum_required(VERSION 2.8)
 
 project(magellan)
 
-set(MAGELLAN_ENABLE_TEST OFF CACHE BOOL "Enable the test")
-
 #
 # File Filter
 #
