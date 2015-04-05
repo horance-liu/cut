@@ -1,7 +1,7 @@
 #ifndef _PC5J48M0RPLH5JKYMMM8L6D1OYJOPSXFI2OMJIPUIYK6KENE4W1SJSG9               
 #define _PC5J48M0RPLH5JKYMMM8L6D1OYJOPSXFI2OMJIPUIYK6KENE4W1SJSG9
 
-#include <l0-infra/base/Role.h>
+#include <l0-infra/dci/Role.h>
 #include <magellan/magellan.h>
 
 MAGELLAN_NS_BEGIN

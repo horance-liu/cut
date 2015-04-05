@@ -10,7 +10,7 @@ TestSuite::TestSuite(const std::string& name)
 
 TestSuite::~TestSuite()
 {
-    stdext::clear(tests);
+    stdext::each(tests, [](Test* t){ delete t; });
 }
 
 void TestSuite::addTest(Test* test)

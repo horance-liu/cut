@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 2.8)
 
 project(magellan)
 
+set(ENABLE_TEST OFF CACHE BOOL "Enable the test")
+
 #
 # File Filter
 #
@@ -43,7 +45,11 @@ include_directories(${MAGELLAN_INCLUDE_DIR})
 
 set(MAGELLAN_LIBRARIES magellan stdc++)
 
-install(DIRECTORY include/magellan DESTINATION include)
+install(DIRECTORY include/hamcrest include/magellan DESTINATION include)
 
 add_subdirectory(src)
-add_subdirectory(test)
+
+if(ENABLE_TEST)
+  add_subdirectory(test)
+endif()
+

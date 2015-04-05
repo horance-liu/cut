@@ -3,7 +3,7 @@
 
 #include "magellan/core/TestMethod.h"
 #include "magellan/core/TestSuite.h"
-#include "l0-infra/std/TypeString.h"
+#include "l0-infra/std/TypeName.h"
 #include <set>
 
 MAGELLAN_NS_BEGIN
@@ -36,7 +36,7 @@ private:
 
         Test* suite() const
         {
-            auto* result = new TestSuite(stdext::TypeString<Fixture>::value());
+            auto* result = new TestSuite(stdext::TypeName<Fixture>::value());
 
             for (auto& method : registry)
             {

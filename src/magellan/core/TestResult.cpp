@@ -5,15 +5,15 @@
 #include "magellan/core/TestSuite.h"
 #include "magellan/except/AssertionError.h"
 #include "magellan/except/TestFailure.h"
-#include "magellan/listener/Color.h"
+#include "magellan/listener/util/Color.h"
 #include "l0-infra/std/Algorithm.h"
 
 MAGELLAN_NS_BEGIN
 
 TestResult::~TestResult()
 {
-    stdext::clear(listeners);
-    stdext::clear(failures);
+    stdext::each(listeners, [](TestListener* p) { delete p; });
+    stdext::each(failures,  [](TestFailure* p)  { delete p; });
 }
 
 void TestResult::add(TestListener* listener)

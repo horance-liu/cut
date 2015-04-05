@@ -1,7 +1,6 @@
 #ifndef H8888DB62_21C7_4273_9936_AD379FB3BDCC
 #define H8888DB62_21C7_4273_9936_AD379FB3BDCC
 
-#include <l0-infra/std/Formatter.h>
 #include <magellan/magellan.h>
 #include <vector>
 #include <string>

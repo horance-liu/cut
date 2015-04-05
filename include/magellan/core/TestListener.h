@@ -1,7 +1,7 @@
 #ifndef _SAOXDTVZ85W9YDU8WXPQZX5VG9GYC1PRD9KOOAOJADH827VEOLVORP2L               
 #define _SAOXDTVZ85W9YDU8WXPQZX5VG9GYC1PRD9KOOAOJADH827VEOLVORP2L
 
-#include <l0-infra/base/Role.h>
+#include <l0-infra/dci/Role.h>
 #include <magellan/magellan.h>
 
 MAGELLAN_NS_BEGIN
