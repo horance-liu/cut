@@ -15,7 +15,7 @@
 private:                                                              \
 magellan::TestMethodTraits __TEST_REGISTER(id)()                      \
 {                                                                     \
-    using fixture_type = std::remove_pointer_t<decltype(this)>;       \
+    using fixture_type = std::remove_pointer<decltype(this)>::type;   \
     auto test_case = &fixture_type::__TEST_NAME(id);                  \
     return magellan::TestMethodTraits(id, test_case, name);           \
 }                                                                     \

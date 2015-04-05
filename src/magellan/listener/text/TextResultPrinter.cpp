@@ -11,7 +11,7 @@ MAGELLAN_NS_BEGIN
 struct TextResultPrinter::TestInfo
 {
     TestInfo()
-      : timer(std::make_unique<Timer>())
+      : timer(new Timer)
       , succ(true)
       , failure(false)
       , error(false)
