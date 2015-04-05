@@ -1,4 +1,4 @@
-#include <magellan/listener/Timer.h>
+#include <magellan/listener/util/Timer.h>
 
 #if defined(_MSC_VER)
 #include <windows.h>

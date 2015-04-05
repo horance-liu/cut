@@ -130,4 +130,9 @@ void TestResult::listFailures(std::ostream& out)
     }
 }
 
+bool TestResult::isSucc() const
+{
+    return failures.empty();
+}
+
 MAGELLAN_NS_END

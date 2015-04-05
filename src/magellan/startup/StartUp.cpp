@@ -8,8 +8,8 @@ MAGELLAN_NS_BEGIN
 
 int run_all_tests(int argc, char** argv)
 {
-    TestRunner().run(TestFactoryRegistry::makeAllTests());
-    return 0;
+    auto suite = TestFactoryRegistry::makeAllTests();
+    return TestRunner().run(suite) ? EXIT_SUCCESS : EXIT_FAILURE;
 }
 
 MAGELLAN_NS_END
