@@ -9,9 +9,9 @@ struct StringMatcher : BaseMatcher<std::string>
 {
 protected:
     StringMatcher
-        ( const std::string& relationship
-        , const std::string& substring
-        , const bool ignoringCase);
+        ( bool ignoringCase
+        , const std::string& relationship
+        , const std::string& substring);
 
 private:
     OVERRIDE(bool matches(const std::string& actual) const);
@@ -25,9 +25,9 @@ private:
     ABSTRACT(bool evalOf(const std::string&) const);
 
 protected:
+    const bool ignoringCase;
     const std::string relationship;
     const std::string expected;
-    const bool ignoringCase;
 };
 
 HAMCREST_NS_END

@@ -9,12 +9,12 @@ inline std::string StringMatcher::converted(const std::string& str) const
 }
 
 StringMatcher::StringMatcher
-    ( const std::string& relationship
-    , const std::string& substring
-    , const bool ignoringCase)
-    : relationship(relationship)
+    ( bool ignoringCase
+    , const std::string& relationship
+    , const std::string& substring)
+    : ignoringCase(ignoringCase)
+    , relationship(relationship)
     , expected(converted(substring))
-    , ignoringCase(ignoringCase)
 {
 }
 

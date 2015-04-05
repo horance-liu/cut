@@ -34,6 +34,7 @@ private:
     OVERRIDE(void describeMismatch(const T& actual, Description& mismatch) const)
     {
         mismatch.appendValue(actual)
+                .appendText(" ")
                 .appendText(relationship)
                 .appendText(" ")
                 .appendValue(expected)

@@ -4,15 +4,14 @@
 HAMCREST_NS_BEGIN
 
 StringEndsWith::StringEndsWith(bool ignoringCase, const std::string& substring)
-    : StringMatcher("ending with", substring, ignoringCase)
+    : StringMatcher(ignoringCase, "ending with", substring)
 {
 }
 
 bool StringEndsWith::evalOf(const std::string& str) const
 {
-    return ::strncmp( str.c_str() + str.size() - expected.size()
-                    , expected.c_str()
-                    , expected.size()) == 0;
+    return str.length() >= expected.length() &&
+      str.compare(str.length() - expected.length(), expected.length(), expected) == 0;
 }
 
 HAMCREST_NS_END
