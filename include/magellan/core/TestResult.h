@@ -27,6 +27,7 @@ struct TestResult
     void runTest(Test& test);
     void listFailures(std::ostream& out);
 
+    bool isSucc() const;
     bool protect(const TestFunctor&, const std::string&);
 
 private:

@@ -1,7 +1,8 @@
 #include "magellan/core/TestRunner.h"
 #include "magellan/core/TestResult.h"
 #include "magellan/core/Test.h"
-#include "magellan/listener/ResultPrinter.h"
+#include "magellan/listener/text/TextResultPrinter.h"
+#include "l0-infra/std/ScopeExit.h"
 
 MAGELLAN_NS_BEGIN
 
@@ -10,13 +11,15 @@ TestRunner::TestRunner(std::ostream& out)
 {
 }
 
-void TestRunner::run(Test* test)
+bool TestRunner::run(Test* test)
 {
+    SCOPE_EXIT([=]{ delete test; });
+
     TestResult result;
-    result.add(new ResultPrinter(out));
+    result.add(new TextResultPrinter(out));
     result.runTest(*test);
 
-    delete test;
+    return result.isSucc();
 }
 
 MAGELLAN_NS_END

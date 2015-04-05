@@ -12,7 +12,7 @@ struct TestRunner
 {
     TestRunner(std::ostream& = std::cout);
 
-    void run(Test*);
+    bool run(Test*);
 
 private:
     std::ostream& out;

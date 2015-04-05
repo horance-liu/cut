@@ -2,16 +2,16 @@
 #define HC1529C5B_742D_4014_BBBF_7533B3E13905
 
 #include "magellan/core/TestListener.h"
-#include "magellan/listener/Timer.h"
+#include "magellan/listener/util/Timer.h"
 #include <ostream>
 #include <stack>
 
 MAGELLAN_NS_BEGIN
 
-struct ResultPrinter : TestListener
+struct TextResultPrinter : TestListener
 {
-    explicit ResultPrinter(std::ostream&);
-    ~ResultPrinter();
+    explicit TextResultPrinter(std::ostream&);
+    ~TextResultPrinter();
 
 private:
     OVERRIDE(void startTestRun(const Test&, TestResult&));

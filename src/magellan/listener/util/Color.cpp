@@ -1,4 +1,4 @@
-#include <magellan/listener/Color.h>
+#include <magellan/listener/util/Color.h>
 
 MAGELLAN_NS_BEGIN
 
