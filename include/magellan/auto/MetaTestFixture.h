@@ -26,11 +26,11 @@ struct MetaTestFixture
 private:
     struct TestMethodRegistry
     {
-        void put(TestMethod<Fixture>&& method)
+        void put(const TestMethod<Fixture>& method)
         {
             if (registry.find(method) == registry.end())
             {
-                registry.emplace(method);
+                registry.insert(method);
             }
         }
 
