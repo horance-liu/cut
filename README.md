@@ -12,9 +12,8 @@ Supported Compilers:
 * [GCC] 4.9 or later.
 * [MSVC] not supported.
 
-Dependces:
-* [Infrastructure](https://gitloab.com/horance/infrastructure).
-* [Hamcrest](https://gitlab.com/horance/hamcrest).
+Dependences:
+* [l0-infra](https://gitloab.com/horance/l0-infra).
 
 ## Installation
 
@@ -32,25 +31,16 @@ In order to support full C++11/14 features, to update GCC to 4.9 or later.
 
     sudo apt-get install cmake
   
-### Install Infrastructure: 
+### Install l0-infra: 
   
-    git clone https://gitlab.com/horance/infrastructure.git
-    cd infrastructure
+    git clone https://gitlab.com/horance/l0-infra.git
+    cd l0-infra
     mkdir build
     cd build
     cmake ..
     make
     sudo make install
-
-### Install Hamcrest: 
-    
-    git clone https://gitlab.com/horance/hamcrest.git
-    cd hamcrest 
-    mkdir build
-    cd build
-    cmake ..
-    make
-    sudo make install
+    sudo ldconfig
 
 ### Install Magellan:
 
@@ -59,6 +49,18 @@ In order to support full C++11/14 features, to update GCC to 4.9 or later.
     cmake ..
     make
     sudo make install
+    sudo ldconfig
+
+### Test Magellan
+  
+    cd build
+    cmake -DENABLE_TEST=on ..
+    make
+    test/magellan-test
+
+### Magellan Developer
+
+TO see [magellan-dev-kit](https://gitloab.com/horance/magellan-dev-kit) README for details.
 
 ## Copyright
 Copyright (c) 2015-2020 Horance Liu. See LICENSE for details.
