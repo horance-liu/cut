@@ -5,6 +5,7 @@
 #include <hamcrest/core/def/ComparatorDef.h>
 #include <hamcrest/core/def/IsDef.h>
 #include <hamcrest/core/def/IsNotDef.h>
+#include <hamcrest/core/def/BoolDef.h>
 #include <hamcrest/core/def/NilDef.h>
 
 #include <hamcrest/ext/string/def/StringContainsDef.h>
