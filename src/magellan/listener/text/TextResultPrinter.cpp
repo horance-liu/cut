@@ -3,58 +3,10 @@
 #include "magellan/core/Test.h"
 #include "magellan/core/TestResult.h"
 #include "magellan/except/TestFailure.h"
-#include <memory>
+#include "magellan/listener/util/TestInfo.h"
 #include <sstream>
 
 MAGELLAN_NS_BEGIN
-
-struct TextResultPrinter::TestInfo
-{
-    TestInfo()
-      : timer(new Timer)
-      , succ(true)
-      , failure(false)
-      , error(false)
-    {}
-
-    void onFailure()
-    {
-        succ = false;
-        failure = true;
-    }
-
-    void onError()
-    {
-        succ = false;
-        error = true;
-    }
-
-    bool isSucc() const
-    {
-        return succ;
-    }
-
-    bool isFailure() const
-    {
-        return !succ && failure;
-    }
-
-    bool isError() const
-    {
-        return !succ && error;
-    }
-
-    timeval elapsedTime()
-    {
-        return timer->getElapsedTime();
-    }
-
-private:
-    bool succ;
-    bool failure;
-    bool error;
-    std::unique_ptr<Timer> timer;
-};
 
 TextResultPrinter::TextResultPrinter(std::ostream& out)
   : out(out)

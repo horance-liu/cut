@@ -1,8 +1,8 @@
 #include "magellan/magellan.hpp"
 #include "magellan/listener/util/XmlNode.h"
 
-USING_MAGELLAN_NS
 USING_HAMCREST_NS
+USING_MAGELLAN_NS
 
 FIXTURE(XmlNodeTest)
 {
@@ -22,6 +22,48 @@ FIXTURE(XmlNodeTest)
     {
         node.addAttribute("age", "12");
         expectXml("<person age='12'/>");
+    }
+
+//    TEST("char attribute")
+//    {
+//        node.addAttribute("age", 'X');
+//        expectXml("<person age='X'/>");
+//    }
+
+    TEST("short attribute")
+    {
+        node.addAttribute("age", (short)12);
+        expectXml("<person age='12'/>");
+    }
+
+    TEST("negative int attribute")
+    {
+        node.addAttribute("age", -12);
+        expectXml("<person age='-12'/>");
+    }
+
+    TEST("positive int attribute")
+    {
+        node.addAttribute("age", 12);
+        expectXml("<person age='12'/>");
+    }
+
+    TEST("long attribute")
+    {
+        node.addAttribute("age", long(12));
+        expectXml("<person age='12'/>");
+    }
+
+    TEST("float attribute")
+    {
+        node.addAttribute("age", 12.0f);
+        expectXml("<person age='12.00'/>");
+    }
+
+    TEST("float attribute")
+    {
+        node.addAttribute("age", 12.0);
+        expectXml("<person age='12.00'/>");
     }
 
     TEST("attribute value contains <")
@@ -52,6 +94,30 @@ FIXTURE(XmlNodeTest)
     {
         node.addAttribute("age", "&ten");
         expectXml("<person age='&amp;ten'/>");
+    }
+
+    TEST("int value")
+    {
+        node.addValue(12);
+        expectXml("<person>"
+                  "12"
+                  "</person>");
+    }
+
+//    TEST("char value")
+//    {
+//        node.addValue('X');
+//        expectXml("<person>"
+//                  "X"
+//                  "</person>");
+//    }
+
+    TEST("float value")
+    {
+        node.addValue(12.00f);
+        expectXml("<person>"
+                  "12.00"
+                  "</person>");
     }
 
     TEST("string value")
@@ -153,5 +219,20 @@ FIXTURE(XmlNodeTest)
                   "<hobbies/>"
                   "<profession/>"
                   "</person>");
+    }
+
+    TEST("root parent is null")
+    {
+        ASSERT_THAT(nullptr, eq(node.getParent()));
+        ASSERT_THAT("person", eq(node.getName()));
+    }
+
+    TEST("1 child parent is root")
+    {
+        XmlNode* child = new XmlNode("hobbies");
+        node.addChild(child);
+
+        ASSERT_THAT(&node, eq(child->getParent()));
+        ASSERT_THAT("hobbies", eq(child->getName()));
     }
 };

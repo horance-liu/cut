@@ -2,11 +2,12 @@
 #define HC1529C5B_742D_4014_BBBF_7533B3E13905
 
 #include "magellan/core/TestListener.h"
-#include "magellan/listener/util/Timer.h"
 #include <ostream>
 #include <stack>
 
 MAGELLAN_NS_BEGIN
+
+struct TestInfo;
 
 struct TextResultPrinter : TestListener
 {
@@ -37,8 +38,6 @@ private:
 
 private:
     std::ostream& out;
-
-    struct TestInfo;
     std::stack<TestInfo*> tests;
 
     int numOfPassed;

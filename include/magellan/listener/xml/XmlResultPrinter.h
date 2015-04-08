@@ -3,14 +3,20 @@
 
 #include "magellan/core/TestListener.h"
 #include "magellan/listener/util/Timer.h"
+#include "magellan/listener/util/XmlNode.h"
 #include <stack>
 
 MAGELLAN_NS_BEGIN
+
+struct TestInfo;
+struct XmlBuilder;
 
 struct XmlResultPrinter : TestListener
 {
     XmlResultPrinter();
     ~XmlResultPrinter();
+
+    //void toXml() const;
 
 private:
     OVERRIDE(void startTestRun(const Test&, TestResult&));
@@ -23,6 +29,24 @@ private:
     OVERRIDE(void endTest(const Test&));
 
     OVERRIDE(void addFailure(const TestFailure&));
+
+private:
+    struct Statistics;
+
+private:
+    void collectTime(const timeval& elapsed);
+    const std::string handlerTestResult(const TestInfo& info);
+    void addStatusAndTimeAttribute(const std::string& node, const Statistics& stats);
+    void recordStartTime();
+    void clearStatsBy(Statistics& name);
+
+    bool isAllTestSuiteBy(const std::string& name) const;
+private:
+    std::stack<TestInfo*> tests;
+    XmlNode node;
+    XmlBuilder* builder;
+    Statistics* testStat;
+    Statistics* suiteStat;
 };
 
 MAGELLAN_NS_END
