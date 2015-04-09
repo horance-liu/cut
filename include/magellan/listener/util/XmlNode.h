@@ -4,6 +4,7 @@
 #include <magellan/magellan.h>
 #include <vector>
 #include <string>
+#include <l0-infra/std/String.h>
 
 MAGELLAN_NS_BEGIN
 
@@ -13,12 +14,28 @@ struct XmlNode
     ~XmlNode();
 
     void addChild(XmlNode* child);
-    void addAttribute(const std::string& key, const std::string& value);
-    void addValue(const std::string& value);
+
+    template <typename V>
+    void addAttribute(const std::string& key, const V& value)
+    {
+        doAddAtribute(key, stdext::toString(value));
+    }
+
+    template <typename V>
+    void addValue(const V& value)
+    {
+        doAddValue(stdext::toString(value));
+    }
+
+    const std::string& getName() const;
+    XmlNode* getParent() const;
 
     std::string toXml() const;
 
 private:
+    void doAddValue(const std::string& value);
+    void doAddAtribute(const std::string& key, const std::string& value);
+
     bool alone() const;
     std::string closeTag() const;
 
@@ -34,6 +51,7 @@ private:
     std::string attributes;
 
     std::vector<XmlNode*> children;
+    XmlNode* parent;
 };
 
 MAGELLAN_NS_END

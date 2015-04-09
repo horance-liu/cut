@@ -5,6 +5,7 @@ MAGELLAN_NS_BEGIN
 
 XmlNode::XmlNode(const std::string& name)
     : name(name)
+    , parent(0)
 {
 }
 
@@ -18,6 +19,7 @@ XmlNode::~XmlNode()
 
 void XmlNode::addChild(XmlNode* child)
 {
+    child->parent = this;
     children.push_back(child);
 }
 
@@ -60,7 +62,7 @@ namespace
     }
 }
 
-void XmlNode::addAttribute(const std::string& key, const std::string& value)
+void XmlNode::doAddAtribute(const std::string& key, const std::string& value)
 {
     attributes += " ";
     attributes += key;
@@ -69,7 +71,7 @@ void XmlNode::addAttribute(const std::string& key, const std::string& value)
     attributes += "'";
 }
 
-void XmlNode::addValue(const std::string& value)
+void XmlNode::doAddValue(const std::string& value)
 {
     this->value = escape(value);
 }
@@ -129,7 +131,18 @@ std::string XmlNode::toXml() const
 {
     std::ostringstream ss;
     appendContents(ss);
+
     return ss.str();
+}
+
+const std::string& XmlNode::getName() const
+{
+    return name;
+}
+
+XmlNode* XmlNode::getParent() const
+{
+    return parent;
 }
 
 MAGELLAN_NS_END
