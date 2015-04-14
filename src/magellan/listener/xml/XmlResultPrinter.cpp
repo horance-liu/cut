@@ -189,13 +189,14 @@ void XmlResultPrinter::addFailure(const TestFailure& fail)
     builder->addAttribute("message", getExceptionMsg(fail.getExceptionMsg()));
 }
 
-//void XmlResultPrinter::toXml() const
-//{
-//    std::string result = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
-//    result += node.toXml();
-//
-//    std::cout << result << std::endl;
-//}
+std::string XmlResultPrinter::toXml() const
+{
+    std::string result = "<?xml version=\"1.0\" encoding='utf-8'  standalone='yes' ?>\n";
+
+    result += node.toXml();
+
+    return result;
+}
 
 void XmlResultPrinter::recordStartTime()
 {

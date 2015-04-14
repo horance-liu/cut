@@ -16,7 +16,7 @@ struct XmlResultPrinter : TestListener
     XmlResultPrinter();
     ~XmlResultPrinter();
 
-    //void toXml() const;
+    std::string toXml() const;
 
 private:
     OVERRIDE(void startTestRun(const Test&, TestResult&));

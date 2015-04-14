@@ -8,14 +8,8 @@ XmlDocument::XmlDocument
     , const std::string &styleSheet)
     : encoding("ISO-8859-1")
     , styleSheet(styleSheet)
-    , root(new XmlNode(root))
     , standalone(true)
 {
-}
-
-XmlDocument::~XmlDocument()
-{
-    delete root;
 }
 
 std::string XmlDocument::toString() const
