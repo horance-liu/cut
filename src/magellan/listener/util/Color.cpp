@@ -1,4 +1,5 @@
 #include <magellan/listener/util/Color.h>
+#include <magellan/options/magellanOptions.h>
 
 MAGELLAN_NS_BEGIN
 
@@ -39,8 +40,11 @@ namespace
 ///////////////////////////////////////////////////////////
 std::ostream& operator<<(std::ostream& os, const Color color)
 {
-   color();
-   return os;
+    if(OPTIONS.colorOn())
+    {
+        color();
+    }        
+    return os;
 }
 
 #define __RED     Color(C_RED)
@@ -67,7 +71,8 @@ std::ostream& operator<<(std::ostream& os, const Color color)
 #define DEF_COLOR(color)                                 \
 std::ostream& operator<<(std::ostream& os, const T_##color&) \
 {                                                        \
-   return os << __##color;                               \
+    if(!OPTIONS.colorOn()) return os;                     \
+    return os << __##color;                               \
 }
 
 ///////////////////////////////////////////////////////////
