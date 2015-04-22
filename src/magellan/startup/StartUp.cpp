@@ -1,18 +1,17 @@
 #include "magellan/startup/StartUp.h"
 #include "magellan/auto/TestFactoryRegistry.h"
 #include "magellan/core/TestRunner.h"
-#include <magellan/core/TestOption.h>
+#include "magellan/options/MagellanOptions.h"
 
 MAGELLAN_NS_BEGIN
 
 int run_all_tests(int argc, char** argv)
 {
-    TestOption& testOption = TestOption::getInstance();
-    testOption.capatureOptionsFrom(argc, (const char** )argv);
+    OPTIONS.capatureOptionsFrom(argc, (const char** )argv);
 
-    if (testOption.hasHelpOption())
+    if (OPTIONS.hasHelpOption())
     {
-        testOption.handlerHelpOption();
+        OPTIONS.handlerHelpOption();
         return EXIT_SUCCESS;
     }
 

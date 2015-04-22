@@ -12,35 +12,73 @@ namespace
     struct MagellanOptionsImp : MagellanOptions
     {
         MagellanOptionsImp()
-            : desc("Magellan Options")
-            , varMap(VariablesMap::getInstance())
+                : desc("Magellan Options")
+                , options(VariablesMap::getInstance())
             {
-                desc.add({{"color,c", "print has color or not"}
-                        , {"help,h", "print all options"}
-                    });
-                varMap.clear();
+                desc.add({
+                    {"help, h",   "help message"},
+                    {"filter", "set filter"},
+                    {"color,c", "print has color or not"},
+                });
+
+                options.clear();
             }
         
+        OVERRIDE(void capatureOptionsFrom(int argc, const char** argv))
+        {
+            options.parseArgs(argc, argv, desc);
+        }
+
         OVERRIDE(bool colorOn() const)
-            {
-                return true;
-            }
-        
-        OVERRIDE(void parseArgs(int argc, const char** argv))
-            {
-                VariablesMap::getInstance().parseArgs(argc, argv, desc);
-                if(varMap.has("help")) std::cout<<desc;
-            }
+        {
+            return true;
+        }
+
+        OVERRIDE(bool hasHelpOption() const)
+        {
+            return options.has("help");
+        }
+
+        OVERRIDE(void handlerHelpOption() const)
+        {
+            const std::string SEPARATOR = "          ";
+
+            std::cout << "\tMagellan Options Help\n"
+                      << "==============================\n"
+                      << "Option Name" << SEPARATOR <<"Option Description" << std::endl;
+            std::cout << "==============================\n"
+                      << "help(--help, -h) :" << SEPARATOR << "Help message" << std::endl
+                      << "filter(--filter) :" << SEPARATOR << "set filter" << std::endl;
+           // std::cout << desc;
+        }
+
+        OVERRIDE(bool handlerFilterOptionBy(const std::string& name) const)
+        {
+            return (!hasFilterOption())
+                || (hasFilterOption() && isMatchedName(name));
+        }
+
+    private:
+        bool hasFilterOption() const
+        {
+            return options.has("filter");
+        }
+
+        bool isMatchedName(const std::string& name) const
+        {
+            return name == options["filter"];  //To do: need fixed to support *
+        }
 
     private:
         OptionsDescription desc;
-        VariablesMap& varMap;
+        VariablesMap& options;
     };
 }
 
 MagellanOptions& MagellanOptions::getInstance()
 {
     static MagellanOptionsImp imp;
+
     return imp;
 }
 

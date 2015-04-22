@@ -1,9 +1,8 @@
-#include <magellan/core/TestOption.h>
 #include "magellan/core/TestCase.h"
 #include "magellan/core/TestFunctor.h"
 #include "magellan/core/TestResult.h"
+#include "magellan/options/MagellanOptions.h"
 
-#include <iostream>
 MAGELLAN_NS_BEGIN
 
 TestCase::TestCase(const std::string& fixture, const std::string& name)
@@ -55,7 +54,7 @@ void TestCase::runBare(TestResult& result)
 
 void TestCase::run(TestResult& result)
 {
-    if (TestOption::getInstance().handlerFilterOptionBy(name))
+    if (OPTIONS.handlerFilterOptionBy(name))
     {
         result.run(*this);
     }
