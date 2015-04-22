@@ -1,7 +1,9 @@
+#include <magellan/core/TestOption.h>
 #include "magellan/core/TestCase.h"
 #include "magellan/core/TestFunctor.h"
 #include "magellan/core/TestResult.h"
 
+#include <iostream>
 MAGELLAN_NS_BEGIN
 
 TestCase::TestCase(const std::string& fixture, const std::string& name)
@@ -53,7 +55,10 @@ void TestCase::runBare(TestResult& result)
 
 void TestCase::run(TestResult& result)
 {
-    result.run(*this);
+    if (TestOption::getInstance().handlerFilterOptionBy(name))
+    {
+        result.run(*this);
+    }
 }
 
 int TestCase::countTestCases() const
