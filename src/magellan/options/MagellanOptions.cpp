@@ -16,9 +16,9 @@ namespace
             , options(VariablesMap::getInstance())
             {
                 desc.add({
-                    {"help, h",   "help message"},
-                    {"filter", "set filter"},
-                    {"color,c", "print has color or not"},
+                    {"help , h ",   "help message"},
+                    {"filter, f",  "set filter"},
+                    {"color-off,c",   "output has color or not"},
                 });
 
                 options.clear();
@@ -31,7 +31,7 @@ namespace
 
         OVERRIDE(bool colorOn() const)
         {
-            return true;
+            return !options.has("color-off");
         }
 
         OVERRIDE(bool hasHelpOption() const)
