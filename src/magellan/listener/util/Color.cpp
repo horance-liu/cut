@@ -1,5 +1,5 @@
 #include <magellan/listener/util/Color.h>
-#include <magellan/options/magellanOptions.h>
+#include "magellan/options/MagellanOptions.h"
 
 MAGELLAN_NS_BEGIN
 
