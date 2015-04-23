@@ -12,7 +12,7 @@ namespace
     struct MagellanOptionsImp : MagellanOptions
     {
         MagellanOptionsImp()
-            : desc("Magellan Options")
+            : desc("Magellan")
             , varMap(VariablesMap::getInstance())
             {
                 desc.add({{"color,c", "print has color or not"}
