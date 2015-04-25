@@ -18,6 +18,7 @@ TestResult::~TestResult()
 
 void TestResult::add(TestListener* listener)
 {
+    if(listener == 0) return ;
     listeners.push_back(listener);
 }
 

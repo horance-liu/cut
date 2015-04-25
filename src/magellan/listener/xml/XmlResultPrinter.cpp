@@ -2,7 +2,11 @@
 #include "magellan/listener/util/TestInfo.h"
 #include "magellan/listener/util/XmlBuilder.h"
 #include "magellan/except/TestFailure.h"
+#include "magellan/options/MagellanOptions.h"
 #include <iostream>
+#include <fstream>
+#include <iosfwd>
+
 
 MAGELLAN_NS_BEGIN
 
@@ -98,13 +102,15 @@ void XmlResultPrinter::startTestRun(const Test& test, TestResult&)
     builder->addAttribute("tests", test.countTestCases());
 }
 
-void XmlResultPrinter::endTestRun(const Test&, TestResult& test)
+void XmlResultPrinter::endTestRun(const Test&, TestResult&)
 {
     addStatusAndTimeAttribute("testsuites", *testStat);
 
     builder->addAttributeTo("testsuites", "name", "AllTests");
 
     clearStatsBy(*testStat);
+    toXml();
+
 }
 
 void XmlResultPrinter::startSuite(const Test& test)
@@ -189,13 +195,35 @@ void XmlResultPrinter::addFailure(const TestFailure& fail)
     builder->addAttribute("message", getExceptionMsg(fail.getExceptionMsg()));
 }
 
-std::string XmlResultPrinter::toXml() const
+using std::ios;
+
+namespace
+{
+    void writeXmlFile(const std::string& s)
+    {
+        std::fstream file;
+
+        std::cout<<OPTIONS.getXmlPath()<<"----------f-"<<std::endl;
+
+        if(OPTIONS.getXmlPath().empty()) return;
+        file.open(OPTIONS.getXmlPath().c_str(), ios::out);
+
+        if (file)
+        {
+            file << s;
+        }
+
+        file.close();
+    }
+}
+
+
+void XmlResultPrinter::toXml() const
 {
     std::string result = "<?xml version=\"1.0\" encoding='utf-8'  standalone='yes' ?>\n";
 
     result += node.toXml();
-
-    return result;
+    writeXmlFile(result);
 }
 
 void XmlResultPrinter::recordStartTime()

@@ -4,10 +4,8 @@
 #include "magellan/listener/text/TextResultPrinter.h"
 #include "l0-infra/std/ScopeExit.h"
 #include "magellan/listener/xml/XmlResultPrinter.h"
-#include <fstream>
-#include <iosfwd>
+#include "magellan/options/MagellanOptions.h"
 
-using std::ios;
 
 MAGELLAN_NS_BEGIN
 
@@ -16,37 +14,20 @@ TestRunner::TestRunner(std::ostream& out)
 {
 }
 
-namespace
-{
-    void writeXmlFile(const std::string& s, const char* fileName = "./test_xml.xml")
-    {
-        std::fstream file;
-
-        file.open(fileName, ios::out);
-
-        if (file)
-        {
-            file << s;
-        }
-
-        file.close();
-    }
-}
-
 bool TestRunner::run(Test* test)
 {
     SCOPE_EXIT([=]{ delete test; });
 
+    TestListener* listeners[] ={new TextResultPrinter(out)
+                                , []{return OPTIONS.outPutXml()? new XmlResultPrinter() : 0;}()};
+                        
     TestResult result;
-    result.add(new TextResultPrinter(out));
-
-    // just test; need refactor when MAGELLAN::TEST_FLAG == xml ok
-    XmlResultPrinter *xmlPrt = new XmlResultPrinter();
-    result.add(xmlPrt);
+    for(auto& var: listeners)
+    {
+        result.add(var);
+    }
 
     result.runTest(*test);
-
-    writeXmlFile(xmlPrt->toXml());
 
     return result.isSucc();
 }

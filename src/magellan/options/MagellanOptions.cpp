@@ -19,14 +19,24 @@ namespace
                     {"help , h ",   "help message"},
                     {"filter, f",  "set filter"},
                     {"color-off,c",   "output has color or not"},
+                    {"format,x",     "output xml or term"},
+                    {"path,d", "xml out path"}
                 });
-
-                options.clear();
             }
+
+        OVERRIDE(const std::string& getXmlPath()const)
+        {
+           return options["path"];
+        }
         
         OVERRIDE(void capatureOptionsFrom(int argc, const char** argv))
         {
             options.parseArgs(argc, argv, desc);
+        }
+
+        OVERRIDE(bool outPutXml() const)
+        {
+            return options.has("format") && options["format"] == "xml";
         }
 
         OVERRIDE(bool colorOn() const)

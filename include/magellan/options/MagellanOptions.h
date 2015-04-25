@@ -12,11 +12,12 @@ DEFINE_ROLE(MagellanOptions)
   static MagellanOptions& getInstance();
 
   ABSTRACT(void capatureOptionsFrom(int argc, const char** argv));
-  ABSTRACT(bool colorOn() const);
 
+  ABSTRACT(bool colorOn() const);
   ABSTRACT(bool hasHelpOption() const);
   ABSTRACT(void handlerHelpOption() const);
-
+  ABSTRACT(bool outPutXml() const);
+  ABSTRACT(const std::string& getXmlPath()const);
   ABSTRACT(bool handlerFilterOptionBy(const std::string& name) const);
 };
 

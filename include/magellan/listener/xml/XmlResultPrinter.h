@@ -16,7 +16,6 @@ struct XmlResultPrinter : TestListener
     XmlResultPrinter();
     ~XmlResultPrinter();
 
-    std::string toXml() const;
 
 private:
     OVERRIDE(void startTestRun(const Test&, TestResult&));
@@ -34,6 +33,8 @@ private:
     struct Statistics;
 
 private:
+    void toXml() const;
+
     void collectTime(const timeval& elapsed);
     const std::string handlerTestResult(const TestInfo& info);
     void addStatusAndTimeAttribute(const std::string& node, const Statistics& stats);

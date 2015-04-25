@@ -4,7 +4,9 @@
 #include "magellan/core/TestResult.h"
 #include "magellan/except/TestFailure.h"
 #include "magellan/listener/util/TestInfo.h"
+#include <iosfwd>
 #include <sstream>
+
 
 MAGELLAN_NS_BEGIN
 
@@ -101,6 +103,7 @@ std::string TextResultPrinter::elapsedTimeAsString(const timeval& elapsed) const
 {
     return std::string("(") + format(elapsed) + ")";
 }
+
 
 void TextResultPrinter::endTest(const Test& test)
 {
