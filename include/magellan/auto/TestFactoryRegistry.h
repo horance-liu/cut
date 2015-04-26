@@ -10,9 +10,6 @@ struct TestSuite;
 
 struct TestFactoryRegistry : TestFactory
 {
-    static TestFactoryRegistry& getInstance();
-    static Test* makeAllTests();
-
     void addFactory(TestFactory&);
 
 private:

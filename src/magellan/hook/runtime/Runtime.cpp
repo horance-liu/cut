@@ -1,14 +1,23 @@
-#include <magellan/hook/runtime/Runtime.h>
+#include "magellan/hook/runtime/Runtime.h"
+#include "magellan/auto/TestFactoryRegistry.h"
+#include "magellan/hook/registry/HookRegistries.h"
+#include "magellan/startup/TestOptions.h"
 
 MAGELLAN_NS_BEGIN
 
 namespace
 {
-    struct RuntimeImpl : Runtime
+    struct RuntimeImpl
+        : private BeforeAllHookRegistry
+        , private AfterAllHookRegistry
+        , private TestFactoryRegistry
+        , private TestOptions
+        , Runtime
     {
-    private:
-        IMPL_ROLE_WITH_ROLE_VAR(BeforeAllHookRegistry);
-        IMPL_ROLE_WITH_ROLE_VAR(AfterAllHookRegistry);
+        IMPL_ROLE(BeforeAllHookRegistry);
+        IMPL_ROLE(AfterAllHookRegistry);
+        IMPL_ROLE(TestFactoryRegistry);
+        IMPL_ROLE(TestOptions);
     };
 }
 

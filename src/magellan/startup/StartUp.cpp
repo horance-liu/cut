@@ -1,22 +1,25 @@
 #include "magellan/startup/StartUp.h"
 #include "magellan/auto/TestFactoryRegistry.h"
 #include "magellan/core/TestRunner.h"
-#include "magellan/options/MagellanOptions.h"
+#include "magellan/startup/TestOptions.h"
+#include "magellan/hook/runtime/Runtime.h"
+#include <stdlib.h>
 
 MAGELLAN_NS_BEGIN
 
 int run_all_tests(int argc, char** argv)
 {
-    OPTIONS.capatureOptionsFrom(argc, (const char** )argv);
+    RUNTIME(TestOptions, options);
 
-    if (OPTIONS.hasHelpOption())
+    options.capatureOptionsFrom(argc, (const char** )argv);
+    if (options.hasHelpOption())
     {
-        OPTIONS.handlerHelpOption();
+        options.handlerHelpOption();
         return EXIT_SUCCESS;
     }
 
-    auto suite = TestFactoryRegistry::makeAllTests();
-    return TestRunner().run(suite) ? EXIT_SUCCESS : EXIT_FAILURE;
+    TestFactory& factory = __RUNTIME__(TestFactoryRegistry);
+    return TestRunner().run(factory.make()) ? EXIT_SUCCESS : EXIT_FAILURE;
 }
 
 MAGELLAN_NS_END

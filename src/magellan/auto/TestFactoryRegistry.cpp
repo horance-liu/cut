@@ -3,17 +3,6 @@
 
 MAGELLAN_NS_BEGIN
 
-TestFactoryRegistry& TestFactoryRegistry::getInstance()
-{
-    static TestFactoryRegistry registry;
-    return registry;
-}
-
-Test* TestFactoryRegistry::makeAllTests()
-{
-    return getInstance().make();
-}
-
 Test* TestFactoryRegistry::make()
 {
     auto suite = new TestSuite("All Tests");

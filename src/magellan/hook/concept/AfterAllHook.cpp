@@ -5,7 +5,7 @@ MAGELLAN_NS_BEGIN
 
 AfterAllHook::AfterAllHook()
 {
-    REGISTRY(AfterAllHookRegistry, registry);
+    RUNTIME(AfterAllHookRegistry, registry);
     registry.add(*this);
 }
 

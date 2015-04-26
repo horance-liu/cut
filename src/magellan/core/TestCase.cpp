@@ -1,7 +1,6 @@
 #include "magellan/core/TestCase.h"
 #include "magellan/core/TestFunctor.h"
 #include "magellan/core/TestResult.h"
-#include "magellan/options/MagellanOptions.h"
 
 MAGELLAN_NS_BEGIN
 
@@ -54,10 +53,7 @@ void TestCase::runBare(TestResult& result)
 
 void TestCase::run(TestResult& result)
 {
-    if (OPTIONS.handlerFilterOptionBy(name))
-    {
-        result.run(*this);
-    }
+    result.run(*this);
 }
 
 int TestCase::countTestCases() const

@@ -5,8 +5,8 @@
 
 MAGELLAN_NS_BEGIN
 
-using BeforeAllHookRegistry = UnconditionalHookRegistry;
-using AfterAllHookRegistry  = UnconditionalHookRegistry;
+struct BeforeAllHookRegistry : UnconditionalHookRegistry {};
+struct AfterAllHookRegistry  : UnconditionalHookRegistry {};
 
 MAGELLAN_NS_END
 

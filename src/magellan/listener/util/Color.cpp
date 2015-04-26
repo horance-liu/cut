@@ -1,5 +1,6 @@
 #include <magellan/listener/util/Color.h>
-#include "magellan/options/MagellanOptions.h"
+#include "magellan/startup/TestOptions.h"
+#include "magellan/hook/runtime/Runtime.h"
 
 MAGELLAN_NS_BEGIN
 
@@ -38,12 +39,9 @@ namespace
 }
 
 ///////////////////////////////////////////////////////////
-std::ostream& operator<<(std::ostream& os, const Color color)
+std::ostream& operator<<(std::ostream& os, const Color& color)
 {
-    if(OPTIONS.colorOn())
-    {
-        color();
-    }        
+    color();
     return os;
 }
 
@@ -68,11 +66,11 @@ std::ostream& operator<<(std::ostream& os, const Color color)
 #endif
 
 ///////////////////////////////////////////////////////////
-#define DEF_COLOR(color)                                 \
+#define DEF_COLOR(color)                                     \
 std::ostream& operator<<(std::ostream& os, const T_##color&) \
-{                                                        \
-    if(!OPTIONS.colorOn()) return os;                     \
-    return os << __##color;                               \
+{                                                            \
+    if(!__RUNTIME__(TestOptions).colorOn()) return os;   \
+    return os << __##color;                                  \
 }
 
 ///////////////////////////////////////////////////////////

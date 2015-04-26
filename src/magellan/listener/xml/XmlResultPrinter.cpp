@@ -2,7 +2,8 @@
 #include "magellan/listener/util/TestInfo.h"
 #include "magellan/listener/util/XmlBuilder.h"
 #include "magellan/except/TestFailure.h"
-#include "magellan/options/MagellanOptions.h"
+#include "magellan/startup/TestOptions.h"
+#include "magellan/hook/runtime/Runtime.h"
 #include <iostream>
 #include <fstream>
 #include <iosfwd>
@@ -203,10 +204,12 @@ namespace
     {
         std::fstream file;
 
-        std::cout<<OPTIONS.getXmlPath()<<"----------f-"<<std::endl;
+        RUNTIME(TestOptions, options);
 
-        if(OPTIONS.getXmlPath().empty()) return;
-        file.open(OPTIONS.getXmlPath().c_str(), ios::out);
+        std::cout<<options.getXmlPath()<<"----------f-"<<std::endl;
+
+        if(options.getXmlPath().empty()) return;
+        file.open(options.getXmlPath().c_str(), ios::out);
 
         if (file)
         {

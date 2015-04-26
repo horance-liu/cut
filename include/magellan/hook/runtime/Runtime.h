@@ -6,15 +6,23 @@
 
 MAGELLAN_NS_BEGIN
 
+struct BeforeAllHookRegistry;
+struct AfterAllHookRegistry;
+struct TestFactoryRegistry;
+struct TestOptions;
+
 DEFINE_ROLE(Runtime)
 {
     static Runtime& getIntance();
 
     HAS_ROLE(BeforeAllHookRegistry);
     HAS_ROLE(AfterAllHookRegistry);
+    HAS_ROLE(TestFactoryRegistry);
+    HAS_ROLE(TestOptions);
 };
 
-#define REGISTRY(type, name) type& name = Runtime::getIntance().ROLE(type)
+#define __RUNTIME__(type) Runtime::getIntance().ROLE(type)
+#define RUNTIME(type, name) type& name = __RUNTIME__(type)
 
 MAGELLAN_NS_END
 

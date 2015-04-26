@@ -3,6 +3,7 @@
 
 #include "magellan/auto/TestFactoryRegistry.h"
 #include "magellan/auto/TestSuiteFactory.h"
+#include "magellan/hook/runtime/Runtime.h"
 
 MAGELLAN_NS_BEGIN
 
@@ -11,7 +12,7 @@ struct AutoTestSuite
 {
     AutoTestSuite()
     {
-        TestFactoryRegistry::getInstance().addFactory(factory);
+        __RUNTIME__(TestFactoryRegistry).addFactory(factory);
     }
 
 private:
