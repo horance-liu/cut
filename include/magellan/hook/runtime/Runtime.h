@@ -10,6 +10,7 @@ struct BeforeAllHookRegistry;
 struct AfterAllHookRegistry;
 struct TestFactoryRegistry;
 struct TestOptions;
+struct ListenerFactory;
 
 DEFINE_ROLE(Runtime)
 {
@@ -19,6 +20,7 @@ DEFINE_ROLE(Runtime)
     HAS_ROLE(AfterAllHookRegistry);
     HAS_ROLE(TestFactoryRegistry);
     HAS_ROLE(TestOptions);
+    HAS_ROLE(ListenerFactory);
 };
 
 #define __RUNTIME__(type) Runtime::getIntance().ROLE(type)

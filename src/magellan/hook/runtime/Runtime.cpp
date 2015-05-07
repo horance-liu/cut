@@ -2,6 +2,7 @@
 #include "magellan/auto/TestFactoryRegistry.h"
 #include "magellan/hook/registry/HookRegistries.h"
 #include "magellan/startup/TestOptions.h"
+#include "magellan/listener/ListenerFactory.h"
 
 MAGELLAN_NS_BEGIN
 
@@ -12,12 +13,14 @@ namespace
         , private AfterAllHookRegistry
         , private TestFactoryRegistry
         , private TestOptions
+        , private ListenerFactory
         , Runtime
     {
         IMPL_ROLE(BeforeAllHookRegistry);
         IMPL_ROLE(AfterAllHookRegistry);
         IMPL_ROLE(TestFactoryRegistry);
         IMPL_ROLE(TestOptions);
+        IMPL_ROLE(ListenerFactory);
     };
 }
 

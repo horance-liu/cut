@@ -42,7 +42,7 @@ FIXTURE(MagellanXmlOptionsTest)
     {
         suite = new TestSuite("Tests");
         suite->addTest(new FakeTest());
-        runner = new TestRunner(ss);
+        runner = new TestRunner();
         remove(xmlFile.c_str());
         orignalFormat = options.outPutXml()? "xml":"term";
         orignalXmlFile = options.getXmlPath();
@@ -53,12 +53,12 @@ FIXTURE(MagellanXmlOptionsTest)
         delete runner;
         runner = 0;
         giveXmlOption({
-                [&]{return std::string{"-x="+orignalFormat};}().c_str(),                              [&]{return std::string{"-d="+orignalXmlFile};}().c_str(),
+                [&]{return std::string{"-x="+orignalFormat};}().c_str(),                      
+                [&]{return std::string{"-d="+orignalXmlFile};}().c_str(),
             });
     }
     std::string orignalFormat;
     std::string orignalXmlFile;
-    std::stringstream ss;
     TestSuite* suite ;
     TestRunner* runner;
     const std::string xmlFile{"test.xml"};
