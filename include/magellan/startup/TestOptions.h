@@ -13,11 +13,12 @@ struct TestOptions
 
     void capatureOptionsFrom(int argc, const char** argv);
 
+    void handlerHelpOption() const;
+
     bool colorOn() const;
     bool hasHelpOption() const;
-    void handlerHelpOption() const;
+    bool listAllTest() const;
     bool outPutXml() const;
-    const std::string& getXmlPath()const;
     bool handlerFilterOptionBy(const std::string& name) const;
 
 private:

@@ -11,13 +11,13 @@ TestOptions::TestOptions()
         {"filter, f",  "set filter"},
         {"color-off,c",   "output has color or not"},
         {"format,x",     "output xml or term"},
-        {"path,d", "xml out path"}
+		{"list, l",      "list all test not run"}
     });
 }
 
-const std::string& TestOptions::getXmlPath() const
+bool TestOptions::listAllTest() const
 {
-    return options["path"];
+	return options.has("list");
 }
 
 void TestOptions::capatureOptionsFrom(int argc, const char** argv)

@@ -8,8 +8,6 @@
 USING_HAMCREST_NS
 USING_MAGELLAN_NS
 
-#if 0
-
 namespace
 {
     struct FakeTest:Test
@@ -37,7 +35,6 @@ FIXTURE(MagellanXmlOptionsTest)
 {
     RUNTIME(TestOptions, options);
 
-
     SETUP()
     {
         suite = new TestSuite("Tests");
@@ -45,7 +42,6 @@ FIXTURE(MagellanXmlOptionsTest)
         runner = new TestRunner();
         remove(xmlFile.c_str());
         orignalFormat = options.outPutXml()? "xml":"term";
-        orignalXmlFile = options.getXmlPath();
     }
 
     TEARDOWN()
@@ -54,14 +50,13 @@ FIXTURE(MagellanXmlOptionsTest)
         runner = 0;
         giveXmlOption({
                 [&]{return std::string{"-x="+orignalFormat};}().c_str(),                      
-                [&]{return std::string{"-d="+orignalXmlFile};}().c_str(),
-            });
+                });
     }
+
     std::string orignalFormat;
-    std::string orignalXmlFile;
     TestSuite* suite ;
     TestRunner* runner;
-    const std::string xmlFile{"test.xml"};
+    const std::string xmlFile{"result.xml"};
 
     static const char** to_argv(std::vector<const char*>&& options)
     {
@@ -75,14 +70,11 @@ FIXTURE(MagellanXmlOptionsTest)
         return argv;
     }
 
-    void giveXmlOption(std::vector<const char*>&& opts)
+    void giveXmlOption(bool isXml)
     {
-        auto argv = to_argv(std::move(opts));
-
-        SCOPE_EXIT([=] { delete [] argv; });
-        std::cout<<opts.size()<<std::endl;
-        std::cout<<argv[1]<<std::endl;
-        options.capatureOptionsFrom(opts.size(), argv);
+    	auto argvXml = to_argv({" ","-x=xml"});
+    	auto argvNoXml = to_argv({" ", "-x=term"});
+        options.capatureOptionsFrom(2, isXml?argvXml:argvNoXml);
     }
 
     void checkFileExist(bool isExist)
@@ -99,38 +91,19 @@ FIXTURE(MagellanXmlOptionsTest)
         runner->run(suite);
     }
 
-    TEST("output xml when give --format=xml and path")
+    TEST("output xml when give --format=xml")
     {
-        giveXmlOption({
-                "",
-                "--format=xml",
-                [&]{return std::string{"-d="+xmlFile};}().c_str()
-            });
+        giveXmlOption(true);
         runTest();
         checkFileExist(true);
     }
 
-    TEST("not output xml when give --format=xml without path")
+    TEST("not output xml when give --format=term")
     {
-        giveXmlOption({
-                "",
-                "--format=xml",
-            });
+        giveXmlOption(false);
         runTest();
         checkFileExist(false);
     }
 
-    TEST("not output xml when give --path without format")
-    {
-        giveXmlOption({
-                "",
-                "--format=term",
-                [&]{return std::string{"-d="+xmlFile};}().c_str()
-            });
-        runTest();
-        checkFileExist(false);
-    }
-    
 };
 
-#endif

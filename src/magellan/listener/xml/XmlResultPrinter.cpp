@@ -2,7 +2,6 @@
 #include "magellan/listener/util/TestInfo.h"
 #include "magellan/listener/util/XmlBuilder.h"
 #include "magellan/except/TestFailure.h"
-#include "magellan/startup/TestOptions.h"
 #include "magellan/hook/runtime/Runtime.h"
 #include <iostream>
 #include <fstream>
@@ -204,12 +203,7 @@ namespace
     {
         std::fstream file;
 
-        RUNTIME(TestOptions, options);
-
-        std::cout<<options.getXmlPath()<<"----------f-"<<std::endl;
-
-        if(options.getXmlPath().empty()) return;
-        file.open(options.getXmlPath().c_str(), ios::out);
+        file.open("result.xml", ios::out);
 
         if (file)
         {
