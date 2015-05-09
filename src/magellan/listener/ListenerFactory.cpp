@@ -3,10 +3,9 @@
 #include "magellan/listener/text/TextResultPrinter.h"
 #include "magellan/startup/TestOptions.h"
 #include "magellan/hook/runtime/Runtime.h"
-#include <iostream>
-
 #include "magellan/listener/xml/XmlResultPrinter.h"
 #include "magellan/listener/text/ListAllTestPrinter.h"
+#include <iostream>
 
 MAGELLAN_NS_BEGIN
 

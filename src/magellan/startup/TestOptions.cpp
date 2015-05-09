@@ -1,4 +1,6 @@
 #include "magellan/startup/TestOptions.h"
+#include <l0-infra/std/String.h>
+#include <stdlib.h>
 #include <iostream>
 
 MAGELLAN_NS_BEGIN
@@ -8,11 +10,31 @@ TestOptions::TestOptions()
 {
     desc.add({
         {"help , h ",   "help message"},
-        {"filter, f",  "set filter"},
+        {"filter, f",  "set filter = string"},
         {"color-off,c",   "output has color or not"},
         {"format,x",     "output xml or term"},
-		{"list, l",      "list all test not run"}
+		{"list, l",      "list all test not run"},
+        {"verbose",      "print debug info in running"},
+        {"sandbox",      "support test run in sandbox"},
+        {"repeat, r",    "repeat all test with <value> times"}
     });
+}
+
+bool TestOptions::sandbox() const
+{
+	return options.has("sandbox");
+}
+
+unsigned int TestOptions::repeat() const
+{
+	if(!options.has("repeat") || options.has("list")) return 1;
+
+	return stdext::string_as<unsigned int>(options["repeat"]);
+}
+
+bool TestOptions::verbose() const
+{
+	return options.has("verbose");
 }
 
 bool TestOptions::listAllTest() const
@@ -40,9 +62,10 @@ bool TestOptions::hasHelpOption() const
     return options.has("help");
 }
 
-void TestOptions::handlerHelpOption() const
+int TestOptions::handlerHelpOption() const
 {
     std::cout << desc;
+    return EXIT_SUCCESS;
 }
 
 bool TestOptions::handlerFilterOptionBy(const std::string& name) const

@@ -25,23 +25,23 @@ namespace
 
 FIXTURE(HooksTest)
 {
+    TEARDOWN()
+    {
+        before_all_stream.str("");
+        after_all_stream.str("");
+    }
+    
     TEST("should supoort keywards BEFORE_ALL")
     {
         Runtime::getIntance().ROLE(BeforeAllHookRegistry).execHooks();
 
-        std::stringstream expected;
-        expected << "AB";
-
-        ASSERT_THAT(before_all_stream.str(), is(expected.str()));
+        ASSERT_THAT(before_all_stream.str(), is(std::string("AB")));
     }
 
     TEST("should supoort keywards AFTER_ALL")
     {
         Runtime::getIntance().ROLE(AfterAllHookRegistry).execHooks();
 
-        std::stringstream expected;
-        expected << "CD";
-
-        ASSERT_THAT(after_all_stream.str(), is(expected.str()));
+        ASSERT_THAT(after_all_stream.str(), is(std::string("CD")));
     }
 };

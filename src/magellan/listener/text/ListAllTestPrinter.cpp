@@ -1,7 +1,7 @@
 #include "magellan/listener/text/ListAllTestPrinter.h"
 #include "magellan/core/Test.h"
-
 #include "magellan/listener/util/Color.h"
+
 MAGELLAN_NS_BEGIN
 
 ListAllTestPrinter::ListAllTestPrinter(std::ostream& os):os(os)

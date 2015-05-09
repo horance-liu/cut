@@ -4,6 +4,7 @@
 #include "l0-infra/std/ScopeExit.h"
 #include "magellan/hook/runtime/Runtime.h"
 #include "magellan/listener/ListenerFactory.h"
+#include "magellan/startup/TestOptions.h"
 
 MAGELLAN_NS_BEGIN
 
@@ -14,9 +15,14 @@ bool TestRunner::run(Test* test)
     TestResult result;
 
     RUNTIME(ListenerFactory, listeners);
+    RUNTIME(TestOptions, options);
+
     listeners.create(result);
 
-    result.runTest(*test);
+    for(int i = 0; i< options.repeat(); ++i)
+    {
+    	result.runTest(*test);
+    }
     return result.isSucc();
 }
 
