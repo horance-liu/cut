@@ -72,9 +72,9 @@ FIXTURE(MagellanXmlOptionsTest)
 
     void giveXmlOption(bool isXml)
     {
-    	auto argvXml = to_argv({" ","-x=xml"});
-    	auto argvNoXml = to_argv({" ", "-x=term"});
-        options.capatureOptionsFrom(2, isXml?argvXml:argvNoXml);
+      	auto argvXml = to_argv({" ","-x=xml"});
+       	auto argvNoXml = to_argv({" ", "-x=term"});
+        options.parse(2, isXml?argvXml:argvNoXml);
     }
 
     void checkFileExist(bool isExist)

@@ -7,6 +7,8 @@
 #include "magellan/except/TestFailure.h"
 #include "magellan/listener/util/Color.h"
 #include "l0-infra/std/Algorithm.h"
+#include "magellan/hook/runtime/Runtime.h"
+#include "magellan/startup/TestOptions.h"
 
 MAGELLAN_NS_BEGIN
 
@@ -37,8 +39,19 @@ inline void TestResult::endTest(const Test& test)
     BROADCAST(endTest(test))
 }
 
+namespace
+{
+	bool isFilter(const Test& test)
+	{
+		RUNTIME(TestOptions, options);
+		return options.doFilter(test.getName());
+	}
+}
+
 void TestResult::run(TestCase& test)
 {
+	if(isFilter(test)) return;
+
     startTest(test);
     test.runBare(*this);
     endTest(test);

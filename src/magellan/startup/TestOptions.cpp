@@ -2,8 +2,10 @@
 #include <l0-infra/std/String.h>
 #include <stdlib.h>
 #include <iostream>
+#include <regex>
 
 MAGELLAN_NS_BEGIN
+using namespace std;
 
 TestOptions::TestOptions()
   : desc("Magellan")
@@ -25,6 +27,11 @@ bool TestOptions::sandbox() const
 	return options.has("sandbox");
 }
 
+void TestOptions::clear()
+{
+	options.clear();
+}
+
 unsigned int TestOptions::repeat() const
 {
 	if(!options.has("repeat") || options.has("list")) return 1;
@@ -42,9 +49,10 @@ bool TestOptions::listAllTest() const
 	return options.has("list");
 }
 
-void TestOptions::capatureOptionsFrom(int argc, const char** argv)
+void TestOptions::parse(int argc, const char** argv)
 {
     options.parseArgs(argc, argv, desc);
+    if(options.has("help")) cout << desc;
 }
 
 bool TestOptions::outPutXml() const
@@ -62,26 +70,16 @@ bool TestOptions::hasHelpOption() const
     return options.has("help");
 }
 
-int TestOptions::handlerHelpOption() const
+bool TestOptions::doFilter(const std::string& name) const
 {
-    std::cout << desc;
-    return EXIT_SUCCESS;
-}
-
-bool TestOptions::handlerFilterOptionBy(const std::string& name) const
-{
-    return (!hasFilterOption())
-            || (hasFilterOption() && isMatchedName(name));
-}
-
-bool TestOptions::hasFilterOption() const
-{
-    return options.has("filter");
+    if (!options.has("filter")) return false;
+    return isMatchedName(name);
 }
 
 bool TestOptions::isMatchedName(const std::string& name) const
 {
-    return name == options["filter"];  //To do: need fixed to support *
+	const regex pattern(options["filter"]);
+	return regex_match(name, pattern);
 }
 
 MAGELLAN_NS_END

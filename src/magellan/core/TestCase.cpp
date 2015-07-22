@@ -1,6 +1,8 @@
 #include "magellan/core/TestCase.h"
 #include "magellan/core/TestFunctor.h"
 #include "magellan/core/TestResult.h"
+#include "magellan/hook/runtime/Runtime.h"
+#include "magellan/startup/TestOptions.h"
 
 MAGELLAN_NS_BEGIN
 
@@ -58,7 +60,8 @@ void TestCase::run(TestResult& result)
 
 int TestCase::countTestCases() const
 {
-    return 1;
+	RUNTIME(TestOptions, options);
+	return options.doFilter(name)? 0 : 1;
 }
 
 int TestCase::countChildTests() const

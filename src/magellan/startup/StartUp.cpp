@@ -11,11 +11,7 @@ int run_all_tests(int argc, char** argv)
 {
     RUNTIME(TestOptions, options);
 
-    options.capatureOptionsFrom(argc, (const char** )argv);
-    if (options.hasHelpOption())
-    {
-        return options.handlerHelpOption();
-    }
+    options.parse(argc, (const char** )argv);
 
     TestFactory& factory = __RUNTIME__(TestFactoryRegistry);
     return TestRunner().run(factory.make()) ? EXIT_SUCCESS : EXIT_FAILURE;

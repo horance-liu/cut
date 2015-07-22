@@ -11,21 +11,19 @@ struct TestOptions
 {
     TestOptions();
 
-    void capatureOptionsFrom(int argc, const char** argv);
-
-    int handlerHelpOption() const;
+    void parse(int argc, const char** argv);
+    void clear();
 
     bool colorOn() const;
     bool hasHelpOption() const;
     bool listAllTest() const;
     bool outPutXml() const;
-    bool handlerFilterOptionBy(const std::string& name) const;
+    bool doFilter(const std::string& name) const;
     bool verbose() const;
     bool sandbox() const;
     unsigned int repeat() const;
 
 private:
-    bool hasFilterOption() const;
     bool isMatchedName(const std::string& name) const;
 
 private:
