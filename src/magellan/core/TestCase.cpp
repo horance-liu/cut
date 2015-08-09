@@ -53,15 +53,24 @@ void TestCase::runBare(TestResult& result)
     PROTECT(tearDown);
 }
 
+namespace
+{
+    bool isFilter(const std::string& name)
+    {
+        RUNTIME(TestOptions, options);
+        return options.doFilter(name);
+    }
+}
+
 void TestCase::run(TestResult& result)
 {
+    if(isFilter(name)) return;
     result.run(*this);
 }
 
 int TestCase::countTestCases() const
 {
-	RUNTIME(TestOptions, options);
-	return options.doFilter(name)? 0 : 1;
+	return isFilter(name) ? 0 : 1;
 }
 
 int TestCase::countChildTests() const

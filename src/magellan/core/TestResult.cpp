@@ -7,8 +7,6 @@
 #include "magellan/except/TestFailure.h"
 #include "magellan/listener/util/Color.h"
 #include "l0-infra/std/Algorithm.h"
-#include "magellan/hook/runtime/Runtime.h"
-#include "magellan/startup/TestOptions.h"
 
 MAGELLAN_NS_BEGIN
 
@@ -20,7 +18,6 @@ TestResult::~TestResult()
 
 void TestResult::add(TestListener* listener)
 {
-    if(listener == 0) return ;
     listeners.push_back(listener);
 }
 
@@ -39,19 +36,8 @@ inline void TestResult::endTest(const Test& test)
     BROADCAST(endTest(test))
 }
 
-namespace
-{
-	bool isFilter(const Test& test)
-	{
-		RUNTIME(TestOptions, options);
-		return options.doFilter(test.getName());
-	}
-}
-
 void TestResult::run(TestCase& test)
 {
-	if(isFilter(test)) return;
-
     startTest(test);
     test.runBare(*this);
     endTest(test);
@@ -108,16 +94,16 @@ inline void TestResult::reportError(const TestFunctor& method, Message&& msg)
     addFailure(new TestFailure(method, std::move(msg), false));
 }
 
-bool TestResult::protect(const TestFunctor& method, const std::string& desc)
+bool TestResult::protect(const TestFunctor& functor, const std::string& desc)
 {
     try {
-        return method();
+        return functor();
     } catch (const AssertionError& e) {
-        reportFailure(method, Message(std::string("assertion fail") + desc, e.what()));
+        reportFailure(functor, Message(std::string("assertion fail") + desc, e.what()));
     } catch (const std::exception& e) {
-        reportError(method, Message(std::string("uncaught std::exception") + desc, e.what()));
+        reportError(functor, Message(std::string("uncaught std::exception") + desc, e.what()));
     } catch (...) {
-        reportError(method, Message(std::string("uncaught unknown exception") + desc));
+        reportError(functor, Message(std::string("uncaught unknown exception") + desc));
     }
 
     return false;
