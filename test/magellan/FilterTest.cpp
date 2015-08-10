@@ -11,16 +11,10 @@ FIXTURE(FilterTest)
 {
 	TestOptions options;
 
-	SETUP()
-	{
-		options.clear();
-	}
-
 	template <typename Asserter>
 	void given_options_then(const std::vector<std::string>& config, Asserter asserter)
 	{
-        Args args({"", "-f=fake"});
-
+        Args args(config);
         options.parse(args.argc(), args.argv());
         asserter();
 	}
@@ -34,10 +28,9 @@ FIXTURE(FilterTest)
 
 	TEST("fake_face should be filtered when set filter=fake.*")
     {
-// TODO
-//        given_options_then({"", "-f=fake.*"}, [this]{
-//            ASSERT_THAT(options.filter("fake_face"), be_true());
-//        });
+        given_options_then({"", "-f=fake.*"}, [this]{
+            ASSERT_THAT(options.filter("fake_face"), be_true());
+        });
 	}
 
     TEST("face should be filtered when set filter=fake")
