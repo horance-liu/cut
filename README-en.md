@@ -1,6 +1,6 @@
-# Mangellan
+# Mangellan: A Simple xUnit Test Framework in Modern C++11
 
-[Magellan](http://gitlab.com/horance/magellan) is a simple implement for xUnit framework in modern C++11.
+[Magellan](http://gitlab.com/horance/magellan) is a simple, scalale xUnit Test Framework in Modern C++11. It's inspiration comes from the famous testing framework JUnit in Java community.
 
 Supported Platform:
 * [MAC OS X] supported
@@ -65,11 +65,7 @@ $ test/magellan-test
 TO see [MDK](https://gitloab.com/horance/mdk) README.md for details.
 
 
-## Magellan：Begin the new journey
-
-### Inspiration
-
-Magellan is a Simple, Scalale xUnit Test Framework in Modern C++11. It's inspiration comes from the famous testing framework JUnit in Java community.
+## Begin the new journey
 
 ### Ice Breaking
 
@@ -238,9 +234,9 @@ $ ./quantity-test
 
 Test fixture can be divided into three categories: 
 
-－ Independent Fixture
-－ Shared Fixture 
-－ Global Fixture.
+* Independent Fixture
+* Shared Fixture 
+* Global Fixture.
 
 #### BDD Style
 
