@@ -5,26 +5,22 @@
 #include <regex>
 
 MAGELLAN_NS_BEGIN
-using namespace std;
 
-TestOptions::TestOptions()
-  : desc("Magellan")
+TestOptions::TestOptions() : desc("magellan")
 {
     desc.add({
-        {"help , h ",   "help message"},
-        {"filter, f",  "set filter = string"},
-        {"color-off,c",   "output has color or not"},
-        {"format,x",     "output xml or term"},
-		{"list, l",      "list all test not run"},
-        {"verbose",      "print debug info in running"},
-        {"sandbox",      "support test run in sandbox"},
-        {"repeat, r",    "repeat all test with <value> times"}
+        {"help,     h",   "help message"},
+        {"filter,   f",   "--filter=pattern"},
+        {"color,    c",   "--color=[yes|no]"},
+        {"xml,      x",   "print test result into XML file"},
+		{"list,     l",   "list all tests without running them"},
+        {"progress, p",   "print test result in progress bar"},
+        {"verbose,  v",   "verbosely list tests processed"},
+        {"repeat,   r",   "how many times to repeat each test"}
     });
-}
 
-bool TestOptions::sandbox() const
-{
-	return options.has("sandbox");
+    options["color"]  = "yes";
+    options["repeat"] = "1";
 }
 
 void TestOptions::clear()
@@ -32,11 +28,9 @@ void TestOptions::clear()
 	options.clear();
 }
 
-unsigned int TestOptions::repeat() const
+int TestOptions::repeat() const
 {
-	if(!options.has("repeat") || options.has("list")) return 1;
-
-	return stdext::string_as<unsigned int>(options["repeat"]);
+	return options.has("list") ? 1 : stdext::string_as<int>(options["repeat"]);
 }
 
 bool TestOptions::verbose() const
@@ -44,42 +38,48 @@ bool TestOptions::verbose() const
 	return options.has("verbose");
 }
 
-bool TestOptions::listAllTest() const
+bool TestOptions::list() const
 {
 	return options.has("list");
+}
+
+bool TestOptions::progress() const
+{
+    return options.has("progress");
 }
 
 void TestOptions::parse(int argc, const char** argv)
 {
     options.parseArgs(argc, argv, desc);
-    if(options.has("help")) cout << desc;
+
+    if(options.has("help"))
+        std::cout << desc;
 }
 
-bool TestOptions::outPutXml() const
+bool TestOptions::xml() const
 {
-    return options.has("format") && options["format"] == "xml";
+    return options.has("xml");
 }
 
-bool TestOptions::colorOn() const
+bool TestOptions::colorful() const
 {
-    return !options.has("color-off");
+    return options.has("color") && options["color"] == "yes";
 }
 
-bool TestOptions::hasHelpOption() const
+bool TestOptions::help() const
 {
     return options.has("help");
 }
 
-bool TestOptions::doFilter(const std::string& name) const
+inline bool TestOptions::matches(const std::string& name) const
 {
-    if (!options.has("filter")) return false;
-    return isMatchedName(name);
+    const std::regex pattern(options["filter"]);
+    return std::regex_match(name, pattern);
 }
 
-bool TestOptions::isMatchedName(const std::string& name) const
+bool TestOptions::filter(const std::string& name) const
 {
-	const regex pattern(options["filter"]);
-	return regex_match(name, pattern);
+    return options.has("filter") && matches(name);
 }
 
 MAGELLAN_NS_END

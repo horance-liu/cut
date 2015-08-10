@@ -4,17 +4,12 @@
 #include "magellan/core/TestResult.h"
 #include "magellan/except/TestFailure.h"
 #include "magellan/listener/util/TestInfo.h"
-#include <iosfwd>
 #include <sstream>
-
 
 MAGELLAN_NS_BEGIN
 
 TextResultPrinter::TextResultPrinter(std::ostream& out)
-  : out(out)
-  , numOfPassed(0)
-  , numOfFailure(0)
-  , numOfError(0)
+  : out(out), numOfPassed(0), numOfFailure(0), numOfError(0), numOfTotalFail(0)
 {
     total.tv_sec  = 0;
     total.tv_usec = 0;
@@ -36,11 +31,6 @@ void TextResultPrinter::startTestRun(const Test& test, TestResult&)
         << WHITE << "Running " << test.countTestCases() << " test cases." << std::endl;
 }
 
-void TextResultPrinter::totalColor() const
-{
-    (numOfFailure == 0 && numOfError == 0) ? out << GREEN : out << RED;
-}
-
 namespace
 {
     std::string format(const timeval& elapsed)
@@ -56,21 +46,47 @@ namespace
     }
 }
 
+inline bool TextResultPrinter::isAllPassed() const
+{
+    return numOfTotalFail == 0;
+}
+
+namespace
+{
+    inline const char* titleFor(const TestFailure& failure)
+    {
+        return failure.isFailure() ? "[  FAILURE ] " : "[  ERROR   ] ";
+    }
+}
+
+void TextResultPrinter::listFailures(const TestResult& result) const
+{
+    if (isAllPassed())
+        return;
+
+    out << RED   << "[  FAILED  ] "
+        << WHITE << numOfTotalFail << " tests, listed below:\n";
+
+    result.listFailures([&](const TestFailure& failure){
+        out << RED   << titleFor(failure)
+            << WHITE << failure.getTestName() << std::endl;
+    });
+}
+
 void TextResultPrinter::endTestRun(const Test& test, TestResult& result)
 {
     out << GREEN << "[==========] "
         << WHITE << test.countTestCases() << " test cases ran." << std::endl;
 
-    totalColor();
+    isAllPassed() ? out << GREEN : out << RED;;
 
     out << "[  TOTAL   ] " << WHITE
-            << "PASS: "    << numOfPassed  << "  "
-            << "FAILURE: " << numOfFailure << "  "
-            << "ERROR: "   << numOfError   << "  "
-            << "TIME: "    << format(total)
-            << std::endl;
+        << "PASS: "    << numOfPassed   << "  "
+        << "FAILURE: " << numOfFailure  << "  "
+        << "ERROR: "   << numOfError    << "  "
+        << "TIME: "    << format(total) << std::endl;
 
-    result.listFailures(out);
+    listFailures(result);
 }
 
 void TextResultPrinter::startTest(const Test& test)
@@ -81,29 +97,29 @@ void TextResultPrinter::startTest(const Test& test)
         << WHITE << test.getName() << std::endl;
 }
 
-void TextResultPrinter::onTestSucc(const Test& test)
+inline void TextResultPrinter::onTestSucc(const Test& test)
 {
     numOfPassed++;
     out << GREEN << "[       OK ] ";
 }
 
-void TextResultPrinter::onTestFail(const Test& test, const bool failure)
+inline void TextResultPrinter::onTestFail(const Test& test, bool failure)
 {
     failure ? numOfFailure++ : numOfError++;
+    numOfTotalFail++;
     out << RED   << "[  FAILED  ] ";
 }
 
-void TextResultPrinter::collectTime(const timeval& elapsed)
+inline void TextResultPrinter::collectTime(const timeval& elapsed)
 {
     total.tv_sec  += elapsed.tv_sec;
     total.tv_usec += elapsed.tv_usec;
 }
 
-std::string TextResultPrinter::elapsedTimeAsString(const timeval& elapsed) const
+inline std::string TextResultPrinter::toString(const timeval& elapsed) const
 {
     return std::string("(") + format(elapsed) + ")";
 }
-
 
 void TextResultPrinter::endTest(const Test& test)
 {
@@ -114,7 +130,7 @@ void TextResultPrinter::endTest(const Test& test)
 
     auto elapsed = tests.top()->elapsedTime();
 
-    out << WHITE << test.getName() << elapsedTimeAsString(elapsed) << std::endl;
+    out << WHITE << test.getName() << toString(elapsed) << std::endl;
     collectTime(elapsed);
 
     tests.pop();
@@ -123,10 +139,7 @@ void TextResultPrinter::endTest(const Test& test)
 inline void TextResultPrinter::onSuite(const Test& test)
 {
     out << GREEN << "[----------] "
-        << WHITE << test.countTestCases() << " tests from " << test.getName();
-
-    out << std::endl;
-
+        << WHITE << test.countTestCases() << " tests from " << test.getName() << std::endl;
 }
 
 void TextResultPrinter::startSuite(const Test& test)

@@ -1,28 +1,23 @@
-#include "magellan/listener/text/ListAllTestPrinter.h"
+#include <magellan/listener/text/ListAllPrinter.h>
 #include "magellan/core/Test.h"
-#include "magellan/listener/util/Color.h"
+#include <ostream>
 
 MAGELLAN_NS_BEGIN
 
-ListAllTestPrinter::ListAllTestPrinter(std::ostream& os):os(os)
-{
+ListAllPrinter::ListAllPrinter(std::ostream& os) : os(os)
+{}
 
+void ListAllPrinter::startSuite(const Test& suite)
+{
+    if (suite.getName() != "All Tests")
+    {
+        os << suite.getName() << std::endl;
+    }
 }
 
-void ListAllTestPrinter::startTestRun(const Test& test, TestResult&)
+void ListAllPrinter::startTest(const Test& test)
 {
-	os << GREEN << "total has " << test.countTestCases() << " test cases." << std::endl;
-}
-
-void ListAllTestPrinter::startSuite(const Test& suite)
-{
-	os<< std::endl<< YELLOW <<suite.getName()<<" has "<< suite.countChildTests()
-			<<" test" <<std::endl;
-}
-
-void ListAllTestPrinter::startTest(const Test& test)
-{
-	os<<WHITE<<test.getName()<<std::endl;
+	os << "\t" << test.getName() << std::endl;
 }
 
 MAGELLAN_NS_END

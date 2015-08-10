@@ -6,8 +6,8 @@
 
 MAGELLAN_NS_BEGIN
 
-TestCase::TestCase(const std::string& fixture, const std::string& name)
-  : name(fixture + "::" + name)
+TestCase::TestCase(const std::string& /*fixture*/, const std::string& name)
+  : name(name)
 {}
 
 namespace
@@ -53,24 +53,17 @@ void TestCase::runBare(TestResult& result)
     PROTECT(tearDown);
 }
 
-namespace
-{
-    bool isFilter(const std::string& name)
-    {
-        RUNTIME(TestOptions, options);
-        return options.doFilter(name);
-    }
-}
-
 void TestCase::run(TestResult& result)
 {
-    if(isFilter(name)) return;
-    result.run(*this);
+    if(!RUNTIME(TestOptions).filter(name))
+    {
+        result.run(*this);
+    }
 }
 
 int TestCase::countTestCases() const
 {
-	return isFilter(name) ? 0 : 1;
+	return RUNTIME(TestOptions).filter(name) ? 0 : 1;
 }
 
 int TestCase::countChildTests() const

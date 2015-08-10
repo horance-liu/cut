@@ -4,7 +4,6 @@
 #include <magellan/magellan.h>
 #include <vector>
 #include <string>
-#include <ostream>
 
 MAGELLAN_NS_BEGIN
 
@@ -24,22 +23,21 @@ struct TestResult
     
     void run(TestCase&);
     void run(TestSuite&);
-    void runTest(Test& test);
-    void listFailures(std::ostream& out);
+    void run(Test&);
 
     bool isSucc() const;
     bool protect(const TestFunctor&, const std::string&);
 
+    template <typename Functor>
+    void listFailures(Functor functor) const
+    {
+        for (auto failure : failures)
+        {
+            functor(*failure);
+        }
+    }
+
 private:
-    void startTestRun(const Test& test);
-    void endTestRun(const Test& test);
-
-    void startTest(const Test&);
-    void endTest(const Test&);
-
-    void startSuite(const Test&);
-    void endSuite(const Test&);
-
     void addFailure(TestFailure*);
     void addError(TestFailure*);
 

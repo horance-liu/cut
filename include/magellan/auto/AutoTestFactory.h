@@ -7,13 +7,13 @@
 MAGELLAN_NS_BEGIN
 
 template <typename Fixture>
-struct TestSuiteFactory : TestFactory
+struct AutoTestFactory : TestFactory
 {
+private:
     OVERRIDE(Test* make())
     {
-        // auto register all test methods to MetaTestFixture<Fixture>
+        // !!! auto register all test methods to MetaTestFixture<Fixture>
         static Fixture fixture;
-
         return MetaTestFixture<Fixture>::suite();
     }
 };

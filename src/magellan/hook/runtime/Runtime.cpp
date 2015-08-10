@@ -1,8 +1,8 @@
 #include "magellan/hook/runtime/Runtime.h"
-#include "magellan/auto/TestFactoryRegistry.h"
+#include "magellan/auto/TestFactorySuite.h"
 #include "magellan/hook/registry/HookRegistries.h"
 #include "magellan/startup/TestOptions.h"
-#include "magellan/listener/ListenerFactory.h"
+#include "magellan/core/TestRunner.h"
 
 MAGELLAN_NS_BEGIN
 
@@ -11,16 +11,17 @@ namespace
     struct RuntimeImpl
         : private BeforeAllHookRegistry
         , private AfterAllHookRegistry
-        , private TestFactoryRegistry
+        , private TestFactorySuite
         , private TestOptions
-        , private ListenerFactory
+        , private TestRunner
         , Runtime
     {
+    private:
         IMPL_ROLE(BeforeAllHookRegistry);
         IMPL_ROLE(AfterAllHookRegistry);
-        IMPL_ROLE(TestFactoryRegistry);
+        IMPL_ROLE(TestFactorySuite);
         IMPL_ROLE(TestOptions);
-        IMPL_ROLE(ListenerFactory);
+        IMPL_ROLE(TestRunner);
     };
 }
 

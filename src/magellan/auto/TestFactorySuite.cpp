@@ -1,9 +1,9 @@
-#include "magellan/auto/TestFactoryRegistry.h"
+#include "magellan/auto/TestFactorySuite.h"
 #include "magellan/core/TestSuite.h"
 
 MAGELLAN_NS_BEGIN
 
-Test* TestFactoryRegistry::make()
+Test* TestFactorySuite::make()
 {
     auto suite = new TestSuite("All Tests");
     
@@ -15,7 +15,7 @@ Test* TestFactoryRegistry::make()
     return suite;
 }
 
-void TestFactoryRegistry::addFactory(TestFactory& factory)
+void TestFactorySuite::addFactory(TestFactory& factory)
 {
     factories.insert(&factory);
 }

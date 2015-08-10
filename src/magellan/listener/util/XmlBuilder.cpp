@@ -19,7 +19,7 @@ void XmlBuilder::addSibling(const std::string& value)
 	addTo(current->getParent(), value);
 }
 
-void XmlBuilder::addtoParent( const std::string& parent, const std::string& value)
+void XmlBuilder::addToParent( const std::string& parent, const std::string& value)
 {
     addTo(findNodeBy(parent), value);
 }

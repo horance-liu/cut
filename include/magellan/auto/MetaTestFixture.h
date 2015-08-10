@@ -36,7 +36,7 @@ private:
 
         Test* suite() const
         {
-            auto* result = new TestSuite(stdext::TypeName<Fixture>::value());
+            auto result = new TestSuite(stdext::TypeName<Fixture>::value());
 
             for (auto& method : registry)
             {

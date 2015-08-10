@@ -87,13 +87,13 @@ FIXTURE(XmlBuilderTest)
 
 	TEST("build 2 sibling and multi childrens")
 	{
-		builder.addtoParent("bookstore", "book");
+		builder.addToParent("bookstore", "book");
 		builder.addChild("title");
 		builder.addValue("The Legacy of the Wolf");
 		builder.addSibling("price");
 		builder.addValue("59.5");
 
-		builder.addtoParent("bookstore", "book");
+		builder.addToParent("bookstore", "book");
 		builder.addChild("title");
 		builder.addValue("The Legacy of the Panda");
 		builder.addSibling("price");

@@ -8,7 +8,7 @@ MAGELLAN_NS_BEGIN
 
 struct TestSuite : Test
 {
-    explicit TestSuite(const std::string& name);    
+    explicit TestSuite(const std::string& name);
     ~TestSuite();
 
     void addTest(Test*);

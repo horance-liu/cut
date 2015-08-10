@@ -2,8 +2,9 @@
 #define HC1529C5B_742D_4014_BBBF_7533B3E13905
 
 #include "magellan/core/TestListener.h"
-#include <ostream>
+#include <iostream>
 #include <stack>
+#include <time.h>
 
 MAGELLAN_NS_BEGIN
 
@@ -11,7 +12,7 @@ struct TestInfo;
 
 struct TextResultPrinter : TestListener
 {
-    explicit TextResultPrinter(std::ostream&);
+    TextResultPrinter(std::ostream& = std::cout);
     ~TextResultPrinter();
 
 private:
@@ -28,12 +29,13 @@ private:
 
 private:
     void onTestSucc(const Test& test);
-    void onTestFail(const Test& test, const bool failure);
+    void onTestFail(const Test& test, bool failure);
     void onSuite(const Test& test);
 
-    void totalColor() const;
+    bool isAllPassed() const;
+    void listFailures(const TestResult& result) const;
 
-    std::string elapsedTimeAsString(const timeval& elapsed) const;
+    std::string toString(const timeval& elapsed) const;
     void collectTime(const timeval& elapsed);
 
 private:
@@ -43,6 +45,7 @@ private:
     int numOfPassed;
     int numOfFailure;
     int numOfError;
+    int numOfTotalFail;
 
     timeval total;
 };

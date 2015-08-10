@@ -11,8 +11,9 @@ struct TestCaller : TestCase
 {
     using Method = void(Fixture::*)();
 
-    TestCaller(const std::string& name, const Method method)
-        : TestCase(stdext::TypeName<Fixture>::value(), name), method(method)
+    TestCaller(const std::string& name, Method method)
+        : TestCase(stdext::TypeName<Fixture>::value(), name)
+        , fixture(0), method(method)
     {}
 
 private:
@@ -26,7 +27,7 @@ private:
     {
         fixture->tearDown();
         delete fixture;
-        fixture = nullptr;
+        fixture = 0;
     }
 
     OVERRIDE(void runTest())
@@ -35,8 +36,8 @@ private:
     }
 
 private:
-    Fixture* fixture = nullptr;
-    Method method = nullptr;
+    Fixture* fixture;
+    Method method;
 };
 
 MAGELLAN_NS_END

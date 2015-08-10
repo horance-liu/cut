@@ -14,17 +14,17 @@ struct TestOptions
     void parse(int argc, const char** argv);
     void clear();
 
-    bool colorOn() const;
-    bool hasHelpOption() const;
-    bool listAllTest() const;
-    bool outPutXml() const;
-    bool doFilter(const std::string& name) const;
+    bool colorful() const;
+    bool help() const;
+    bool list() const;
+    bool progress() const;
+    bool xml() const;
+    bool filter(const std::string& name) const;
     bool verbose() const;
-    bool sandbox() const;
-    unsigned int repeat() const;
+    int repeat() const;
 
 private:
-    bool isMatchedName(const std::string& name) const;
+    bool matches(const std::string& name) const;
 
 private:
     OPTIONS_NS::OptionsDescription desc;

@@ -13,7 +13,7 @@ struct XmlBuilder
 
     void addChild(const std::string& value);
     void addSibling(const std::string& value);
-    void addtoParent(const std::string& parent, const std::string& value);
+    void addToParent(const std::string& parent, const std::string& value);
 
     template <typename V>
     void addAttribute(const std::string& key, const V& value)

@@ -6,15 +6,12 @@
 
 MAGELLAN_NS_BEGIN
 
-struct ListAllTestPrinter : TestListener
+struct ListAllPrinter : TestListener
 {
-	explicit ListAllTestPrinter(std::ostream&);
+	ListAllPrinter(std::ostream& = std::cout);
 
 private:
-    OVERRIDE(void startTestRun(const Test&, TestResult&));
-
     OVERRIDE(void startSuite(const Test&));
-
 	OVERRIDE(void startTest(const Test&));
 
 private:

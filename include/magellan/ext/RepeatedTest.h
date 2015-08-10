@@ -7,7 +7,7 @@ MAGELLAN_NS_BEGIN
 
 struct RepeatedTest : TestDecorator
 {
-    explicit RepeatedTest(Test& test, int times);
+    RepeatedTest(Test& test, int times);
 
 private:
     OVERRIDE(void run(TestResult&));

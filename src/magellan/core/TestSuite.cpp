@@ -37,10 +37,7 @@ int TestSuite::countChildTests() const
 
 void TestSuite::runBare(TestResult &result)
 {
-    for (auto test : tests)
-    {
-        test->run(result);
-    }
+    stdext::each(tests, [&](Test* test){ test->run(result); });
 }
 
 void TestSuite::run(TestResult& result)

@@ -7,6 +7,7 @@ USING_HAMCREST_NS
 FIXTURE(FilterTest)
 {
 	TestOptions options;
+
 	SETUP()
 	{
 		options.clear();
@@ -27,19 +28,19 @@ FIXTURE(FilterTest)
 	TEST("fake should be filtered when set filter=fake")
 	{
 		options.parse(2, to_argv({"", "-f=fake"}));
-		ASSERT_THAT(options.doFilter("fake"), is(true));
+		ASSERT_THAT(options.filter("fake"), is(true));
 	}
 
 	TEST("fake_face should be filtered when set filter=fake.*")
     {
 		options.parse(2, to_argv({"", "-f=fake.*"}));
-		ASSERT_THAT(options.doFilter("fake_face"), is(true));
+		ASSERT_THAT(options.filter("fake_face"), is(true));
 	}
 
 	TEST("face should be filtered when set filter=fake")
 	{
 		options.parse(2, to_argv({"", "-f=fake"}));
-		ASSERT_THAT(options.doFilter("face"), is(false));
+		ASSERT_THAT(options.filter("face"), is(false));
 	}
 };
 

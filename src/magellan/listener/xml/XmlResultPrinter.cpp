@@ -117,7 +117,7 @@ void XmlResultPrinter::startSuite(const Test& test)
 {
     if (isAllTestSuiteBy(test.getName())) return;
 
-    builder->addtoParent("testsuites", "testsuite");
+    builder->addToParent("testsuites", "testsuite");
 
     builder->addAttribute("name", test.getName());
     builder->addAttribute("test", test.countTestCases());
@@ -136,7 +136,7 @@ void XmlResultPrinter::startTest(const Test& test)
 {
     recordStartTime();
 
-    builder->addtoParent("testsuite", "testcase");
+    builder->addToParent("testsuite", "testcase");
     builder->addAttribute("name", test.getName());
 }
 
@@ -165,7 +165,7 @@ void XmlResultPrinter::endTest(const Test& test)
     auto elapsedTime = lastest->elapsedTime();
     collectTime(elapsedTime);
 
-    const std::string& result = handlerTestResult(*lastest);
+    std::string result = handlerTestResult(*lastest);
 
     builder->addAttributeTo("testcase", "status",    result);
     builder->addAttributeTo("testcase", "time",      format(elapsedTime));
@@ -195,15 +195,13 @@ void XmlResultPrinter::addFailure(const TestFailure& fail)
     builder->addAttribute("message", getExceptionMsg(fail.getExceptionMsg()));
 }
 
-using std::ios;
-
 namespace
 {
     void writeXmlFile(const std::string& s)
     {
         std::fstream file;
 
-        file.open("result.xml", ios::out);
+        file.open("result.xml", std::ios::out);
 
         if (file)
         {
@@ -245,7 +243,7 @@ bool XmlResultPrinter::isAllTestSuiteBy(const std::string& name) const
     return name == "All Tests";
 }
 
-const std::string XmlResultPrinter::handlerTestResult(const TestInfo& info)
+const char* XmlResultPrinter::handlerTestResult(const TestInfo& info)
 {
     if (info.isSucc())
     {

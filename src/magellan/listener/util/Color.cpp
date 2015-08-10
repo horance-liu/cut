@@ -69,7 +69,7 @@ std::ostream& operator<<(std::ostream& os, const Color& color)
 #define DEF_COLOR(color)                                     \
 std::ostream& operator<<(std::ostream& os, const T_##color&) \
 {                                                            \
-    if(!__RUNTIME__(TestOptions).colorOn()) return os;   \
+    if(!RUNTIME(TestOptions).colorful()) return os;   \
     return os << __##color;                                  \
 }
 

@@ -8,7 +8,7 @@ MAGELLAN_NS_BEGIN
 
 struct TestSuite;
 
-struct TestFactoryRegistry : TestFactory
+struct TestFactorySuite : TestFactory
 {
     void addFactory(TestFactory&);
 

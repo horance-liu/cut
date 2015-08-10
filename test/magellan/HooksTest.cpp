@@ -1,12 +1,6 @@
-#include <magellan/def/FixtureDef.h>
-#include <magellan/def/BeforeAllDef.h>
-#include <magellan/def/AfterAllDef.h>
-#include <magellan/def/TestDef.h>
-#include "magellan/core/Asserter.h"
-#include <iosfwd>
-#include <hamcrest/core/def/IsDef.h>
-#include <magellan/hook/runtime/Runtime.h>
-#include <iostream>
+#include <magellan/magellan.hpp>
+#include <magellan/hook/registry/HookRegistries.h>
+#include <sstream>
 
 USING_HAMCREST_NS
 USING_MAGELLAN_NS
