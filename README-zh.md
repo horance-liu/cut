@@ -954,7 +954,15 @@ Email：[horance@outlook.com](horance@outlook.com)
 
 #### 编译环境
 
-Magellan目前仅在Linux, MAC OS X系统上测试过，仅支持gcc 4.8，clang 3.4及以上版本。
+支持的平台:
+* [MAC OS X] supported
+* [Linux] supported
+* [Windows] not supported
+
+支持的编译器:
+* [CLANG] 3.4 or later.
+* [GCC] 4.8 or later.
+* [MSVC] not supported.
 
 #### 安装CMake
 
