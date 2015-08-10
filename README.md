@@ -1,6 +1,6 @@
 # Mangellan
 
-[Magellan](http://gitlab.com/horance/magellan) is a simple implement for xUnit framework using C++11/14.
+[Magellan](http://gitlab.com/horance/magellan) is a simple implement for xUnit framework in modern C++11.
 
 Supported Platform:
 * [MAC OS X] supported
@@ -8,8 +8,8 @@ Supported Platform:
 * [Windows] not supported
 
 Supported Compilers:
-* [CLANG] 3.5 or later.
-* [GCC] 4.9 or later.
+* [CLANG] 3.4 or later.
+* [GCC] 4.8 or later.
 * [MSVC] not supported.
 
 Dependences:
@@ -19,38 +19,46 @@ Dependences:
 
 ### Install CMake:
 
-    sudo apt-get install cmake
+```bash
+$ sudo apt-get install cmake
+```
   
 ### Install l0-infra: 
-  
-    git clone https://gitlab.com/horance/l0-infra.git
-    cd l0-infra
-    mkdir build
-    cd build
-    cmake ..
-    make
-    sudo make install
-    sudo ldconfig
+
+```bash  
+$ git clone https://gitlab.com/horance/l0-infra.git
+$ cd l0-infra
+$ mkdir build
+$ cd build
+$ cmake ..
+$ make
+$ sudo make install
+$ sudo ldconfig
+```
 
 ### Install Magellan:
 
-    mkdir build
-    cd build
-    cmake ..
-    make
-    sudo make install
-    sudo ldconfig
+```bash
+$ mkdir build
+$ cd build
+$ cmake ..
+$ make
+$ sudo make install
+$ sudo ldconfig
+```
 
 ### Test Magellan
   
-    cd build
-    cmake -DENABLE_TEST=on ..
-    make
-    test/magellan-test
+```bash
+$ cd build
+$ cmake -DENABLE_TEST=on ..
+$ make
+$ test/magellan-test
+```
 
 ### Magellan Developer
 
-TO see [MDK](https://gitloab.com/horance/mdk) README for details.
+TO see [MDK](https://gitloab.com/horance/mdk) README.md for details.
 
 ## Copyright
 Copyright (c) 2015-2020 Horance Liu. See LICENSE for details.
