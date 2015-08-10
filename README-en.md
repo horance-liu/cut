@@ -19,7 +19,7 @@ Dependences:
 
 ### Install CMake:
 
-Download CMake for [http://www.cmake.org](http://www.cmake.org), or if on Ubuntu, you can install cmake as follows:
+Download CMake for [http://www.cmake.org](http://www.cmake.org), or
 
 ```bash
 $ sudo apt-get install cmake
