@@ -9,7 +9,5 @@ FILE(GLOB_RECURSE all_files
 *.c
 *.C)
 
-sort_files(all_files)
-
 add_executable(magellan-test ${all_files})
 target_link_libraries(magellan-test magellan l0-infra)
