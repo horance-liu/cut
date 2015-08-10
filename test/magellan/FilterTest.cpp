@@ -19,24 +19,24 @@ FIXTURE(FilterTest)
         asserter();
 	}
 
-	TEST("fake should be filtered when set filter=fake")
+	TEST("should be filtered")
 	{
 	    given_options_then({"", "-f=fake"}, [this]{
 	        ASSERT_THAT(options.filter("fake"), be_true());
 	    });
 	}
 
-	TEST("fake_face should be filtered when set filter=fake.*")
-    {
-        given_options_then({"", "-f=fake.*"}, [this]{
-            ASSERT_THAT(options.filter("fake_face"), be_true());
-        });
-	}
-
-    TEST("face should be filtered when set filter=fake")
+    TEST("should not be filtered")
     {
         given_options_then({"", "-f=fake"}, [this]{
             ASSERT_THAT(options.filter("face"), be_false());
         });
     }
+
+	TEST("should be able to use regex")
+    {
+        given_options_then({"", "-f=fake.*"}, [this]{
+            ASSERT_THAT(options.filter("fake_face"), be_true());
+        });
+	}
 };
