@@ -822,5 +822,27 @@ FIXTURE(IsNanTest)
 };
 ```
 
+### Magellan Options
+
+```cpp
+TestOptions::TestOptions() : desc("magellan")
+{
+    desc.add({
+        {"help,     h",   "help message"},
+        {"filter,   f",   "--filter=pattern"},
+        {"color,    c",   "--color=[yes|no]"},
+        {"xml,      x",   "print test result into XML file"},
+        {"list,     l",   "list all tests without running them"},
+        {"progress, p",   "print test result in progress bar"},
+        {"verbose,  v",   "verbosely list tests processed"},
+        {"repeat,   r",   "how many times to repeat each test"}
+    });
+    
+    // default value
+    options["color"]  = "yes";
+    options["repeat"] = "1";
+}
+```
+
 ## Copyright
 Copyright (c) 2015-2020 Horance Liu. See LICENSE for details.

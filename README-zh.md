@@ -177,6 +177,56 @@ int main(int argc, char** argv)
 
 Magellan是一个简单的、可扩展的、使用C\+\+11实现的xUnit测试框架。Magellan设计灵感来自于Java社区著名的测试框架JUnit。
 
+### 安装
+
+#### Gitlab
+
+地址：[https://gitlab.com/horance/magellan](https://gitlab.com/horance/magellan)
+作者：刘光聪
+Email：[horance@outlook.com](horance@outlook.com)
+
+#### 编译环境
+
+支持的平台:
+* [MAC OS X] supported
+* [Linux] supported
+* [Windows] not supported
+
+支持的编译器:
+* [CLANG] 3.4 or later.
+* [GCC] 4.8 or later.
+* [MSVC] not supported.
+
+#### 安装CMake
+
+CMake的下载地址：[http://www.cmake.org](http://www.cmake.org)。
+
+#### 安装l0-infra
+
+Magellan依赖于l0-infra，所以必须先安装l0-infra。
+
+```bash
+$ git clone https://gitlab.com/horance/l0-infra.git
+$ cd l0-infra
+$ mkdir build
+$ cd build
+$ cmake ..
+$ make
+$ sudo make install
+```
+
+#### 安装Magellan
+
+```bash
+$ git clone https://gitlab.com/horance/magellan.git
+$ cd magellan
+$ mkdir build
+$ cd build
+$ cmake ..
+$ make
+$ sudo make install
+```
+
 ### 破冰之旅
 
 ##### 物理目录
@@ -944,53 +994,24 @@ FIXTURE(IsNanTest)
 };
 ```
 
-### Magellan安装
+### 程序选项
 
-#### Gitlab
-
-地址：[https://gitlab.com/horance/magellan](https://gitlab.com/horance/magellan)
-作者：刘光聪
-Email：[horance@outlook.com](horance@outlook.com)
-
-#### 编译环境
-
-支持的平台:
-* [MAC OS X] supported
-* [Linux] supported
-* [Windows] not supported
-
-支持的编译器:
-* [CLANG] 3.4 or later.
-* [GCC] 4.8 or later.
-* [MSVC] not supported.
-
-#### 安装CMake
-
-CMake的下载地址：[http://www.cmake.org](http://www.cmake.org)。
-
-#### 安装l0-infra
-
-Magellan依赖于l0-infra，所以必须先安装l0-infra。
-
-```bash
-$ git clone https://gitlab.com/horance/l0-infra.git
-$ cd l0-infra
-$ mkdir build
-$ cd build
-$ cmake ..
-$ make
-$ sudo make install
+```cpp
+TestOptions::TestOptions() : desc("magellan")
+{
+    desc.add({
+        {"help,     h",   "help message"},
+        {"filter,   f",   "--filter=pattern"},
+        {"color,    c",   "--color=[yes|no]"},
+        {"xml,      x",   "print test result into XML file"},
+        {"list,     l",   "list all tests without running them"},
+        {"progress, p",   "print test result in progress bar"},
+        {"verbose,  v",   "verbosely list tests processed"},
+        {"repeat,   r",   "how many times to repeat each test"}
+    });
+    
+    // default value
+    options["color"]  = "yes";
+    options["repeat"] = "1";
+}
 ```
-
-#### 安装Magellan
-
-```bash
-$ git clone https://gitlab.com/horance/magellan.git
-$ cd magellan
-$ mkdir build
-$ cd build
-$ cmake ..
-$ make
-$ sudo make install
-```
-
