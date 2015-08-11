@@ -23,6 +23,8 @@ struct TestOptions
     bool verbose() const;
     int repeat() const;
 
+    const OPTIONS_NS::OptionsDescription& description() const;
+
 private:
     bool matches(const std::string& name) const;
 

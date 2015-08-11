@@ -136,22 +136,24 @@ void TextResultPrinter::endTest(const Test& test)
     tests.pop();
 }
 
-inline void TextResultPrinter::onSuite(const Test& test)
+inline void TextResultPrinter::onSuite(const Test& test, const std::string& newline)
 {
-    out << GREEN << "[----------] "
+    if (test.getName() == "All Tests" || test.countChildTests() == 0)
+        return;
+
+    out << GREEN << newline << "[----------] "
         << WHITE << test.countTestCases() << " tests from " << test.getName() << std::endl;
 }
 
 void TextResultPrinter::startSuite(const Test& test)
 {
     tests.push(new TestInfo);
-    onSuite(test);
+    onSuite(test, "\n");
 }
 
 void TextResultPrinter::endSuite(const Test& test)
 {
-    onSuite(test);
-    out << std::endl;
+    onSuite(test, "");
     tests.pop();
 }
 

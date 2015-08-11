@@ -8,7 +8,7 @@ MAGELLAN_NS_BEGIN
 
 struct TestCase : Test, TestFixture
 {
-    TestCase(const std::string& fixture, const std::string& name);
+    TestCase(const std::string& name);
 
     void runBare(TestResult&);
 

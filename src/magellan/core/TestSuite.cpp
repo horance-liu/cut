@@ -15,7 +15,10 @@ TestSuite::~TestSuite()
 
 void TestSuite::addTest(Test* test)
 {
-    tests.push_back(test);
+    if (test != 0)
+    {
+        tests.push_back(test);
+    }
 }
 
 const std::string& TestSuite::getName() const
@@ -43,6 +46,11 @@ void TestSuite::runBare(TestResult &result)
 void TestSuite::run(TestResult& result)
 {
     result.run(*this);
+}
+
+bool TestSuite::hasChild() const
+{
+    return countChildTests() != 0;
 }
 
 MAGELLAN_NS_END

@@ -51,9 +51,11 @@ bool TestOptions::progress() const
 void TestOptions::parse(int argc, const char** argv)
 {
     options.parseArgs(argc, argv, desc);
+}
 
-    if(options.has("help"))
-        std::cout << desc;
+const OPTIONS_NS::OptionsDescription& TestOptions::description() const
+{
+    return desc;
 }
 
 bool TestOptions::xml() const
@@ -79,7 +81,7 @@ inline bool TestOptions::matches(const std::string& name) const
 
 bool TestOptions::filter(const std::string& name) const
 {
-    return options.has("filter") && matches(name);
+    return !options.has("filter") || matches(name);
 }
 
 MAGELLAN_NS_END

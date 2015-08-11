@@ -36,14 +36,14 @@ private:
 
         Test* suite() const
         {
-            auto result = new TestSuite(stdext::TypeName<Fixture>::value());
+            auto fixture = new TestSuite(stdext::TypeName<Fixture>::value());
 
             for (auto& method : registry)
             {
-                result->addTest(method.makeTest());
+                fixture->addTest(method.makeTest());
             }
 
-            return result;
+            return fixture;
         }
 
     private:

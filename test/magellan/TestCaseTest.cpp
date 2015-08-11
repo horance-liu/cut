@@ -14,7 +14,7 @@ namespace
     struct FakeTestCase : TestCase
     {
         FakeTestCase(std::function<void()> functor)
-          : TestCase("FakeTestCase", "Functor")
+          : TestCase("FakeTestCase::Functor")
           , functor(functor)
         {}
 

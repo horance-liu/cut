@@ -11,6 +11,7 @@ struct TestSuite : Test
     explicit TestSuite(const std::string& name);
     ~TestSuite();
 
+    bool hasChild() const;
     void addTest(Test*);
     void runBare(TestResult &result);
 

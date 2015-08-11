@@ -2,7 +2,6 @@
 #define H8830446F_F68B_4ECB_945B_1474064EB768
 
 #include "magellan/core/TestCase.h"
-#include "l0-infra/std/TypeName.h"
 
 MAGELLAN_NS_BEGIN
 
@@ -12,8 +11,7 @@ struct TestCaller : TestCase
     using Method = void(Fixture::*)();
 
     TestCaller(const std::string& name, Method method)
-        : TestCase(stdext::TypeName<Fixture>::value(), name)
-        , fixture(0), method(method)
+        : TestCase(name), fixture(0), method(method)
     {}
 
 private:

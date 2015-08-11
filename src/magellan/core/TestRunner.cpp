@@ -62,6 +62,12 @@ bool TestRunner::run(int argc, const char** argv)
 {
     ROLE(TestOptions).parse(argc, argv);
 
+    if (ROLE(TestOptions).help())
+    {
+        std::cout << ROLE(TestOptions).description();
+        return true;
+    }
+
     TestFactory& factory = ROLE(TestFactorySuite);
     return run(factory.make());
 }

@@ -1,13 +1,10 @@
 #include "magellan/core/TestCase.h"
 #include "magellan/core/TestFunctor.h"
 #include "magellan/core/TestResult.h"
-#include "magellan/hook/runtime/Runtime.h"
-#include "magellan/startup/TestOptions.h"
 
 MAGELLAN_NS_BEGIN
 
-TestCase::TestCase(const std::string& /*fixture*/, const std::string& name)
-  : name(name)
+TestCase::TestCase(const std::string& name) : name(name)
 {}
 
 namespace
@@ -55,15 +52,12 @@ void TestCase::runBare(TestResult& result)
 
 void TestCase::run(TestResult& result)
 {
-    if(!RUNTIME(TestOptions).filter(name))
-    {
-        result.run(*this);
-    }
+    result.run(*this);
 }
 
 int TestCase::countTestCases() const
 {
-	return RUNTIME(TestOptions).filter(name) ? 0 : 1;
+	return 1;
 }
 
 int TestCase::countChildTests() const

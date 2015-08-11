@@ -30,7 +30,7 @@ private:
 private:
     void onTestSucc(const Test& test);
     void onTestFail(const Test& test, bool failure);
-    void onSuite(const Test& test);
+    void onSuite(const Test& test, const std::string& newline);
 
     bool isAllPassed() const;
     void listFailures(const TestResult& result) const;
