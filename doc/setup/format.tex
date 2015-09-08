@@ -1,0 +1,161 @@
+﻿
+% Standard packages
+
+\usepackage[english]{babel}
+% \usepackage[latin1]{inputenc}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage{tabularx,multirow,multicol,keystroke,subfigure,longtable}
+
+% 定制代码输出
+\definecolor{lstbgcolor}{rgb}{0.9,0.9,0.9}
+\usepackage{listings} %代码样式
+\usepackage{fancyvrb}
+\usepackage{xcolor}
+
+%% 所要粘贴代码的编程语言
+\lstloadlanguages{{[LaTeX]TeX}, {[ISO]C++}, {Java}, {Ruby}, {Bash}}
+
+%% 设置listings宏包的一些全局样式
+%% 参考http://hi.baidu.com/shawpinlee/blog/item/9ec431cbae28e41cbe09e6e4.html
+\lstset{
+escapeinside=`',
+frameround=ftft,
+keywordstyle=\color{blue!70},
+commentstyle=\color{red!50!green!50!blue!50},
+frame=shadowbox,
+backgroundcolor=\color{yellow!20},
+rulesepcolor=\color{red!20!green!20!blue!20}
+numberbychapter=true,
+breakatwhitespace=true,
+showstringspaces=false,              %% 设定是否显示代码之间的空格符号
+basicstyle=\tiny\ttfamily,           %% 设定字体大小\tiny, \small, \Large等等
+commentstyle=\color{red!50!green!50!blue!50},                           
+escapechar=`,                        %% 中文逃逸字符，用于中英混排
+xleftmargin=1.5em,xrightmargin=0em, aboveskip=1em,
+breaklines,                          %% 这条命令可以让LaTeX自动将长的代码行换行排版
+extendedchars=false,                 %% 这一条命令可以解决代码跨页时，章节标题，页眉等汉字不显示的问题
+frameround=fttt,
+captionpos=top,
+belowcaptionskip=1em
+}
+
+\lstdefinestyle{numbers}{
+   numbers=left,
+   numberstyle=\tiny,
+   stepnumber=1,
+   numbersep=1em
+}
+
+\lstdefinestyle{C++}{
+   language=C++,
+   texcl=true,
+   prebreak=\textbackslash,
+   breakindent=1em,
+   % keywordstyle=\bfseries, %% 关键字高亮
+   morekeywords={alignas, alignof, char16_t, char32_t, constexpr, decltype, noexcept, nullptr, static_assert, thread_local, OVERRIDE, INTERFACE, ABSTRACT, ROLE, USE_ROLE, IMPL_ROLE, __def_transaction,__def,__as,__as_procedure,__as_prot_procedure,__params,__apply,__with,
+   TEST_F, TEST, TEST_G, it, ASSERT_EQ, ASSERT_NE, ASSERT_TRUE, ASSERT_FALSE, ASSERT_THAT, expect_that, describe, FIXTURE, SETUP, TEARDOWN, SETUP_CLASS, TEARDOWN_CLASS, before, after, before_all, after_all, before_class, after_class, eq, ne, le, le, gt, ge, is, is_not, nil, starts_with, ends_with, be_true, be_false, nil,
+   __transaction,__procedure, __prot_procedure, __throw, __fix, __sync,__asyn,
+   __concurrent,__sequential,__optional,__switch,__case, __loop0, __loop1,
+   __timer_prot,__sleep,
+   __fork,__join,__join_all,__signal,__sig_wait,__sig_sync,__broadcast,__sig_reply,
+   __with_id,__finally,__on_fail,
+   __call,__req,__rsp,__ind,__not,
+   __wait,__peek,
+   __action, __timer_id, __action_id, FT_FIXTURE, FT_SETUP, FT_TEARDOWN, TEST_F}
+   %frame=leftline,                     %% 给代码加框
+   %framerule=2pt,
+   %rulesep=5pt
+}
+
+\lstnewenvironment{c++}[1][]
+  {\lstset{style=C++, #1}}
+  {}
+
+\lstdefinestyle{Java}{
+   language=Java,
+   texcl=true,
+   prebreak=\textbackslash,
+   breakindent=1em,
+   keywordstyle=\bfseries, %% 关键字高亮
+   morekeywords={}
+   style=numbers,
+   %frame=leftline,                     %% 给代码加框
+   %framerule=2pt,
+   %rulesep=5pt
+}
+
+\lstnewenvironment{java}[1][]
+  {\setstretch{1}
+  \lstset{style=Java, #1}}
+  {}
+
+\lstdefinestyle{Ruby}{
+   language=Ruby,
+   texcl=true,
+   prebreak=\textbackslash,
+   breakindent=1em,
+   keywordstyle=\bfseries, %% 关键字高亮
+   morekeywords={}
+   style=numbers,
+   %frame=leftline,                     %% 给代码加框
+   %framerule=2pt,
+   %rulesep=5pt
+}
+
+\lstnewenvironment{ruby}[1][]
+  {\setstretch{1}
+  \lstset{style=Ruby, #1}}
+  {}  
+
+\lstdefinestyle{Bash}{
+   language=Bash,
+   texcl=true,
+   prebreak=\textbackslash,
+   breakindent=1em,
+   keywordstyle=\bfseries, %% 关键字高亮
+   morekeywords={}
+   style=numbers,
+   %frame=leftline,                     %% 给代码加框
+   %framerule=2pt,
+   %rulesep=5pt
+}
+
+\lstnewenvironment{bash}[1][]
+  {\setstretch{1}
+  \lstset{style=Bash, #1}}
+  {}  
+
+% CJK packages
+\usepackage{xeCJK}
+%\setCJKmainfont{KaiTi}
+\setCJKmainfont{Adobe Heiti Std}
+\setCJKmonofont{Monaco}
+
+% Graphix
+\usepackage{graphicx}
+
+% Setup TikZ
+\usepackage{tikz}
+\usetikzlibrary{shapes,snakes,trees,arrows,positioning,shadows,automata}
+
+\usepackage{amsmath,amssymb}
+
+% 定义罗马数字
+\makeatletter
+\newcommand{\rmnum}[1]{\romannumeral #1}
+\newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+
+% 定义破折号
+\newcommand{\pozhehao}{\kern0.3ex\rule[0.8ex]{2em}{0.1ex}\kern0.3ex}
+
+% 中文图表
+\renewcommand\figurename{图}
+\renewcommand\tablename{表}
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-master: "../ann.tex"
+%%% End:
+

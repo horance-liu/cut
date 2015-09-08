@@ -1,0 +1,92 @@
+\section{Motivation}
+\label{sec:motivation}
+
+\begin{frame}
+  \begin{center}
+    \Huge{\textcolor{red}{Motivation}}
+  \end{center}
+\end{frame}
+
+\subsection{Google Test}
+
+\begin{frame}{Lots of Unit Test Frameworks} 
+ \begin{block}{Who was always a favorite of mine?} 
+  \begin{enumerate}
+    \item \textcolor{red}{SUnit}
+    \item \textcolor{red}{JUnit/TestNG}
+    \item \textcolor{red}{CppUnit/GoogleTest/BoostTest}
+    \item \textcolor{red}{RSpec/Shoulda}
+    \item \textcolor{red}{ScalaTest}
+  \end{enumerate}
+ \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{A Simple Example}
+\begin{c++}
+struct RobotCleanerTest : testing::Test
+{
+protected:
+    RobotCleaner robot;
+};
+
+TEST_F(RobotCleanerTest, at_the_beginning_the_robot_should_be_in_at_the_initial_position)
+{
+    ASSERT_EQ(Position(0, 0, NORTH), robot.getPosition());
+}
+
+TEST_F(RobotCleanerTest, should_be_face_west_after_turn_left)
+{
+   robot.turnLeft();
+   ASSERT_EQ(Position(0, 0, WEST), robot.getPosition());
+}
+\end{c++}
+\end{frame}
+
+\begin{frame}[fragile]{Override Setup/Teardown}
+\begin{c++}
+struct RobotCleanerTest : testing::Test
+{
+    RobotCleaner robot;
+
+    virtual void setUp()
+    { ... }
+
+    virtual void tearDown()
+    { ... }
+};
+
+TEST_F(RobotCleanerTest, should_be_face_west_after_turn_left_1_times)
+{
+    robot.turnLeft();
+    ASSERT_EQ(Position(0, 0, WEST), robot.getPosition());
+}
+
+TEST_F(RobotCleanerTest, should_be_face_south_after_turn_left_2_times)
+{
+    robot.turnLeft();
+    robot.turnLeft();
+    ASSERT_EQ(Position(0, 0, SOUTH), robot.getPosition());
+}
+\end{c++}
+\end{frame}
+
+\begin{frame}[fragile]{Global Setup/Teardown}
+\begin{c++}
+struct GlobalEnvironment : testing::Environment
+{
+    virtual void SetUp()
+    { ... }
+
+    virtual void TearDown()
+    { ... }
+};
+
+int main(int argc, char** argv)
+{
+    testing::AddGlobalTestEnvironment(new GlobalEnvironment);
+    testing::InitGoogleTest(&argc, argv);
+
+    return RUN_ALL_TESTS();
+}
+\end{c++}
+\end{frame}

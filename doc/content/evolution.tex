@@ -1,0 +1,64 @@
+\section{Evolution}
+\label{sec:evolution}
+
+\begin{frame}
+  \begin{center}
+    \Huge{\textcolor{red}{Evolution}}
+  \end{center}
+\end{frame}
+
+\subsection{BDD}
+
+\begin{frame}[fragile]{BDD Style}
+\begin{c++}
+describe("RobotCleaner")
+{
+    RobotCleaner robot;
+
+    before()
+    { ... }
+
+    after()
+    { ... }
+
+    describe("left")
+    {
+        it("should be faced west after turn left")
+        {
+            robot.exec(left());
+            expect_that(robot.getPosition(), is(Position(0, 0, WEST)));
+        }
+    }
+
+    describe("right")
+    {
+        it("should be faced east after turn right")
+        {
+            robot.exec(right());
+            expect_that(robot.getPosition(), is(Position(0, 0, EAST)));
+        }
+    }
+};
+\end{c++}
+\end{frame}
+
+\begin{frame}[fragile]{Notation}
+\begin{c++}
+describe("RobotCleaner")
+{
+    RobotCleaner robot;
+
+    it("{id=1-left} should be faced west after turn left")
+    {
+        robot.exec(repeat(left(), 2));
+        expect_that(robot.getPosition(), is(Position(0, 0, SOUTH)));
+    }
+
+    it("{id=2-left, depend=1-left} should be faced south after turn left with 2 times")
+    {
+        robot.exec(left());
+        expect_that(robot.getPosition(), is(Position(0, 0, SOUTH)));
+    }
+};
+\end{c++}
+\end{frame}

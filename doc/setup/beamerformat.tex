@@ -1,0 +1,46 @@
+﻿% Setup appearance:
+\setbeamercovered{transparent}
+%\usecolortheme[named=FireBrick]{structure} 
+\usecolortheme{rose} 
+%\usecolortheme[named=DarkRed]{structure} 
+%\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{navigation symbols}{}
+
+\useoutertheme{infolines}
+\usetheme{Darmstadt}
+
+% 修改样式
+\setbeamertemplate{blocks}[rounded][shadow=true]
+
+%\setbeamercolor{block title}{use=sidebar,fg=sidebar.fg!10!white,bg=black!50!blue}
+%\setbeamercolor{block body}{use=sidebar,fg=black,bg=sidebar.bg!90!blue}
+
+\setbeamercolor{block title example}{use=sidebar,fg=sidebar.fg!10!white,bg=black!60!green}
+%\setbeamercolor{block body example}{use=sidebar,fg=black,bg=sidebar.bg!90!green}
+
+\setbeamercolor{block title alerted}{use=sidebar,fg=sidebar.fg!10!white,bg=black!50!red}
+%\setbeamercolor{block body alerted}{use=sidebar,fg=black,bg=sidebar.bg!90!red}
+
+
+\iffalse
+\AtBeginSection[]{ \frame{
+    \footnotesize
+    \frametitle{Contents}
+    \tableofcontents[currentsection]
+}
+}
+
+% \AtBeginSubsection[]
+% {
+%     \begin{frame}
+%      \footnotesize
+%      \frametitle{本讲的主要内容}
+%      \tableofcontents[currentsection,currentsubsection]
+%     \end{frame}
+% }
+\fi
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../ann.tex"
+%%% End: 

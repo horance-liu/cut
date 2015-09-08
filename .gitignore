@@ -1,2 +1,4 @@
+tmp/
+output/
 build/
 test_xml.xml
