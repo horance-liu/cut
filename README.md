@@ -58,6 +58,16 @@ $ lib/l0-infra/test/l0-infra-test
 $ lib/hamcrest/test/hamcrest-test
 ```
 
+### Using Rake
+
+```bash                                                                                                                                                          
+$ rake           # build, install, and test using clang
+$ rake clang     # build, install, and test using clang
+$ rake gcc       # build, install, and test using gcc
+$ rake clean     # remove temp directory, and uninstall magellan
+$ rake uninstall # uninstall magellan only 
+```
+
 ## Begin the new journey
 
 ### Ice Breaking
