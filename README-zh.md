@@ -179,9 +179,9 @@ Magellan是一个简单的、可扩展的、使用C\+\+11实现的xUnit测试框
 
 ### 安装
 
-#### Gitlab
+#### GitHub
 
-地址：[https://gitlab.com/horance/magellan](https://gitlab.com/horance/magellan)
+地址：[https://github.com/horance/magellan](https://github.com/horance/magellan)
 作者：刘光聪
 Email：[horance@outlook.com](horance@outlook.com)
 
@@ -201,13 +201,13 @@ Email：[horance@outlook.com](horance@outlook.com)
 
 CMake的下载地址：[http://www.cmake.org](http://www.cmake.org)。
 
-#### 安装l0-infra
-
-Magellan依赖于l0-infra，所以必须先安装l0-infra。
+#### 安装Magellan
 
 ```bash
-$ git clone https://gitlab.com/horance/l0-infra.git
-$ cd l0-infra
+$ git clone https://gitlab.com/horance/magellan.git
+$ cd magellan
+$ git submodule init
+$ git submodule update
 $ mkdir build
 $ cd build
 $ cmake ..
@@ -215,16 +215,15 @@ $ make
 $ sudo make install
 ```
 
-#### 安装Magellan
+#### 测试Magellan
 
 ```bash
-$ git clone https://gitlab.com/horance/magellan.git
-$ cd magellan
-$ mkdir build
-$ cd build
-$ cmake ..
+$ cd magellan/build
+$ cmake -DENABLE_TEST=on ..
 $ make
-$ sudo make install
+$ test/magellan-test
+$ lib/l0-infra/l0-infra-test
+$ lib/hamcrest/hamcrest-test
 ```
 
 ### 破冰之旅
@@ -275,7 +274,7 @@ test/*.c)
 
 add_executable(quantity-test ${all_files})
 
-target_link_libraries(quantity-test magellan l0-infra)
+target_link_libraries(quantity-test magellan hamcrest l0-infra)
 ```
 
 ##### 构建

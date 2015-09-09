@@ -13,35 +13,31 @@ Supported Compilers:
 * [MSVC] not supported.
 
 Dependences:
-* [l0-infra](https://gitloab.com/horance/l0-infra).
+* [l0-infra](https://github.com/horance/l0-infra).
+* [hamcrest](https://github.com/horance/hamcrest).
 
 ## Installation
 
 ### Install CMake:
 
-Download CMake for [http://www.cmake.org](http://www.cmake.org), or
+Download CMake for [http://www.cmake.org](http://www.cmake.org), if on ubuntu:
 
 ```bash
 $ sudo apt-get install cmake
 ```
   
-### Install l0-infra: 
-
-```bash  
-$ git clone https://gitlab.com/horance/l0-infra.git
-$ cd l0-infra
-$ mkdir build
-$ cd build
-$ cmake ..
-$ make
-$ sudo make install
-$ sudo ldconfig
-```
-
-### Install Magellan:
+### Clone Magellan
 
 ```bash
-$ git clone https://gitlab.com/horance/magellan.git
+$ git clone https://github.com/horance-liu/magellan.git
+$ cd magellan
+$ git submodule init
+$ git submodule update
+```
+
+### Install Magellan
+
+```bash
 $ cd magellan
 $ mkdir build
 $ cd build
@@ -51,19 +47,16 @@ $ sudo make install
 $ sudo ldconfig
 ```
 
-### Test Magellan
+### Test Magellan Self
   
 ```bash
-$ cd build
+$ cd magellan/build
 $ cmake -DENABLE_TEST=on ..
 $ make
 $ test/magellan-test
+$ lib/l0-infra/test/l0-infra-test
+$ lib/hamcrest/test/hamcrest-test
 ```
-
-### Magellan Developer
-
-TO see [MDK](https://gitloab.com/horance/mdk) README.md for details.
-
 
 ## Begin the new journey
 
@@ -114,7 +107,7 @@ test/*.c)
 
 add_executable(quantity-test ${all_files})
 
-target_link_libraries(quantity-test magellan l0-infra)
+target_link_libraries(quantity-test magellan hamcrest l0-infra)
 ```
 
 ##### Build

@@ -9,9 +9,9 @@ if(UNIX)
 endif()
 
 set(MAGELLAN_INCLUDE_DIR 
-${CMAKE_CURRENT_SOURCE_DIR}/infra/include
-${CMAKE_CURRENT_SOURCE_DIR}/magellan/include
-${CMAKE_CURRENT_SOURCE_DIR}/hamcrest/include)
+${CMAKE_CURRENT_SOURCE_DIR}/lib/l0-infra/include
+${CMAKE_CURRENT_SOURCE_DIR}/lib/hamcrest/include
+${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 include_directories(${MAGELLAN_INCLUDE_DIR})
 
