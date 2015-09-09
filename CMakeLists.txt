@@ -15,6 +15,12 @@ ${CMAKE_CURRENT_SOURCE_DIR}/hamcrest/include)
 
 include_directories(${MAGELLAN_INCLUDE_DIR})
 
-add_subdirectory(infra)
-add_subdirectory(hamcrest)
-add_subdirectory(magellan)
+add_subdirectory(lib/l0-infra)
+add_subdirectory(lib/hamcrest)
+add_subdirectory(src)
+
+if(ENABLE_TEST)
+    add_subdirectory(test)
+endif()
+
+install(DIRECTORY include/magellan DESTINATION include)
