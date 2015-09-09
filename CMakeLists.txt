@@ -8,13 +8,13 @@ if(UNIX)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
 endif()
 
-set(MAGELLAN_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
+set(MAGELLAN_INCLUDE_DIR 
+${CMAKE_CURRENT_SOURCE_DIR}/infra/include
+${CMAKE_CURRENT_SOURCE_DIR}/magellan/include
+${CMAKE_CURRENT_SOURCE_DIR}/hamcrest/include)
 
 include_directories(${MAGELLAN_INCLUDE_DIR})
-install(DIRECTORY include/hamcrest include/magellan DESTINATION include)
 
-add_subdirectory(src)
-
-if(ENABLE_TEST)
-  add_subdirectory(test)
-endif()
+add_subdirectory(infra)
+add_subdirectory(hamcrest)
+add_subdirectory(magellan)
