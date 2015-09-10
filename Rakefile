@@ -14,13 +14,17 @@ def cmake_cmd args
   "#{compiler args[:clang]} cmake #{test_switch args[:test]} -DCMAKE_BUILD_TYPE=Debug .."
 end
 
-def do_build(args)
-  execute "mkdir -p build && cd build && #{cmake_cmd args} && make && sudo make install" 
+def do_install
+  system "cd build && sudo make install"
 end
 
-def do_test(args)
-  do_build(args)
+def do_test
   execute "cd build && test/magellan-test && cd lib && l0-infra/test/l0-infra-test && hamcrest/test/hamcrest-test"
+end
+
+def do_build(args, &action)
+  execute "mkdir -p build && cd build && #{cmake_cmd args} && make" 
+  action.call
 end
 
 task :uninstall do |task|
@@ -31,13 +35,13 @@ task :uninstall do |task|
 end 
 
 task :gcc => :uninstall do
-  do_build(clang:false, test:false)
-  do_test(clang:false, test:true)
+  do_build(clang:false, test:false) { do_install }
+  do_build(clang:false, test:true) { do_test }
 end
 
 task :clang => :uninstall do
-  do_build(clang:true, test:false)
-  do_test(clang:true, test:true)
+  do_build(clang:true, test:false) { do_install }
+  do_build(clang:true, test:true) { do_test }
 end
 
 task :clean => :uninstall do |task|
