@@ -226,6 +226,18 @@ $ lib/l0-infra/l0-infra-test
 $ lib/hamcrest/hamcrest-test
 ```
 
+#### 使用Rake
+
+使用Rake可简化Magelan的构建和测试过程，并且使得Magellan自我测试变成可能。
+
+```bash
+$ rake           # build, install, and test using clang
+$ rake clang     # build, install, and test using clang
+$ rake gcc       # build, install, and test using gcc
+$ rake clean     # remove temp directory, and uninstall magellan
+$ rake uninstall # uninstall magellan only
+```
+
 ### 破冰之旅
 
 ##### 物理目录
