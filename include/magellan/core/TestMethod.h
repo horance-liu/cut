@@ -20,10 +20,9 @@ struct TestMethod
 
     Test* makeTest() const
     {
-        std::string name = getFullName();
-
+        auto name = getFullName();
         return RUNTIME(TestOptions).filter(name) ?
-            new TestCaller<Fixture>(name, method) : 0;
+            new TestCaller<Fixture>(name, method) : nullptr;
     }
 
     bool operator<(const TestMethod<Fixture>& rhs) const
