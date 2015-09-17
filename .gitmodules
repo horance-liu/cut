@@ -3,4 +3,4 @@
 	url = https://gitlab.com/horance/hamcrest.git
 [submodule "lib/l0-infra"]
 	path = lib/l0-infra
-	url = https://gitlab.com/horance/l0-infra
+	url = https://gitlab.com/horance/l0-infra.git
