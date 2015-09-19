@@ -22,8 +22,6 @@
 #include "magellan/magellan.hpp"
 #include "quantity/Length.h"
 
-USING_HAMCREST_NS
-
 FIXTURE(LengthTest)
 {
     TEST("1 FEET == 12 INCH")
@@ -128,25 +126,25 @@ FIXTURE(RobotCleanerTest)
 {
     RobotCleaner robot;
 
-    void WHEN_I_send_instruction(Instruction* instruction)
+    void when_I_send_instruction(Instruction* instruction)
     {
         robot.exec(instruction);
     }
 
-    void THEN_the_robot_cleaner_should_be_in(const Position& position)
+    void then_the_robot_cleaner_should_be_in(const Position& position)
     {
         ASSERT_THAT(robot.getPosition(), is(position));
     }
 
     TEST("at the beginning")
     {
-        THEN_the_robot_cleaner_should_be_in(Position(0, 0, NORTH));
+        then_the_robot_cleaner_should_be_in(Position(0, 0, NORTH));
     }
 
     TEST("left instruction: 1-times")
     {
-        WHEN_I_send_instruction(left());
-        THEN_the_robot_cleaner_should_be_in(Position(0, 0, WEST));
+        when_I_send_instruction(left());
+        then_the_robot_cleaner_should_be_in(Position(0, 0, WEST));
     }
 };
 \end{c++}

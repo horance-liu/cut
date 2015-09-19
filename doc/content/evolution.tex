@@ -15,11 +15,8 @@ describe("RobotCleaner")
 {
     RobotCleaner robot;
 
-    before()
-    { ... }
-
-    after()
-    { ... }
+    before() { ... }
+    after()  { ... }
 
     describe("left")
     {
@@ -44,20 +41,32 @@ describe("RobotCleaner")
 
 \begin{frame}[fragile]{Notation}
 \begin{c++}
-describe("RobotCleaner")
+describe("RobotCleaner") 
 {
     RobotCleaner robot;
 
-    it("{id=1-left} should be faced west after turn left")
+    it("{id=starting} should be in at the initial position") 
+    {
+        robot.exec(left());
+        expect_that(robot.getPosition(), is(Position(0, 0, WEST)));
+    }
+
+    it("{id=1-left, depend=starting} should be faced west after turn left") 
+    {
+        robot.exec(left());
+        expect_that(robot.getPosition(), is(Position(0, 0, WEST)));
+    }
+
+    it("{id=2-left, depend=1-left} should be faced south after turn left with 2 times") 
     {
         robot.exec(repeat(left(), 2));
         expect_that(robot.getPosition(), is(Position(0, 0, SOUTH)));
     }
 
-    it("{id=2-left, depend=1-left} should be faced south after turn left with 2 times")
+    it("{id=3-left, depend=2-left} should be faced east after turn left with 3 times") 
     {
-        robot.exec(left());
-        expect_that(robot.getPosition(), is(Position(0, 0, SOUTH)));
+        robot.exec(repeat(left(), 3));
+        expect_that(robot.getPosition(), is(Position(0, 0, EAST)));
     }
 };
 \end{c++}

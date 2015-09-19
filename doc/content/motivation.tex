@@ -7,9 +7,15 @@
   \end{center}
 \end{frame}
 
-\subsection{Google Test}
+\subsection{History}
 
-\begin{frame}{Lots of Unit Test Frameworks} 
+\begin{frame}
+  \begin{center}
+    \huge{\textcolor{red}{Making TDD Productive and Fun}}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Lots of Test Frameworks} 
  \begin{block}{Who was always a favorite of mine?} 
   \begin{enumerate}
     \item \textcolor{red}{SUnit}
@@ -21,7 +27,10 @@
  \end{block}
 \end{frame}
 
+\subsection{Google Test}
+
 \begin{frame}[fragile]{A Simple Example}
+\begin{block}{How many problems you can find?}
 \begin{c++}
 struct RobotCleanerTest : testing::Test
 {
@@ -40,6 +49,7 @@ TEST_F(RobotCleanerTest, should_be_face_west_after_turn_left)
    ASSERT_EQ(Position(0, 0, WEST), robot.getPosition());
 }
 \end{c++}
+\end{block}
 \end{frame}
 
 \begin{frame}[fragile]{Override Setup/Teardown}

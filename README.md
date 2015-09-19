@@ -1,6 +1,10 @@
 # Mangellan: A Simple xUnit Test Framework in Modern C++11
 
-[Magellan](http://gitlab.com/horance/magellan) is a simple, scalale xUnit Test Framework in Modern C++11. It's inspiration comes from the famous testing framework JUnit in Java community.
+[Magellan](http://gitlab.com/horance/magellan) is a simple, practical, and scalable xUnit Test Framework in Modern C++11. It's inspiration comes from the famous testing framework JUnit in Java community.
+
+C/C++ are different languages from most modern ones. Writing tests for them has some very specific challenges. Therefore, simply clone ideas from xUnit frameworks for other languages does not work the best. Programmers have to suffer accidental complexities brought by most of existing frameworks.
+
+**Magellan** is designed for simplifying efforts of programers, in terms of development, maintenance, flexibility of test management, build & run-time strategy, and others.
 
 Supported Platform:
 * [MAC OS X] supported
