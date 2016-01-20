@@ -1,7 +1,9 @@
 #include "magellan/startup/TestOptions.h"
-#include <l0-infra/std/String.h>
-#include <stdlib.h>
-#include <iostream>
+#include "magellan/core/TestRunner.h"
+#include "magellan/listener/text/ListAllPrinter.h"
+#include "magellan/listener/text/ProgressPrinter.h"
+#include "magellan/listener/text/TextResultPrinter.h"
+#include "magellan/listener/xml/XmlResultPrinter.h"
 #include <regex>
 
 MAGELLAN_NS_BEGIN
@@ -19,13 +21,15 @@ TestOptions::TestOptions() : desc("magellan")
         {"repeat,   r",   "how many times to repeat each test"}
     });
 
-    options["color"]  = "yes";
-    options["repeat"] = "1";
+    clear();
 }
 
 void TestOptions::clear()
 {
 	options.clear();
+
+    options["color"]  = "yes";
+    options["repeat"] = "1";
 }
 
 int TestOptions::repeat() const
@@ -38,14 +42,33 @@ bool TestOptions::verbose() const
 	return options.has("verbose");
 }
 
-bool TestOptions::list() const
+TestListener* TestOptions::makeTextPrinter() const
 {
-	return options.has("list");
+    if (options.has("list")) return new ListAllPrinter;
+    if (options.has("progress")) return new ProgressPrinter;
+    return new TextResultPrinter;
 }
 
-bool TestOptions::progress() const
+TestListener* TestOptions::makeXmlPrinter() const
 {
-    return options.has("progress");
+    if (options.has("xml")) return new XmlResultPrinter;
+    return new TestListener();
+}
+
+inline int TestOptions::help() const
+{
+    std::cout << desc;
+    return EXIT_SUCCESS;
+}
+
+inline int TestOptions::go() const
+{
+    return ROLE(TestRunner).run() ? EXIT_SUCCESS : EXIT_FAILURE;
+}
+
+int TestOptions::run() const
+{
+    return options.has("help") ? help() : go();
 }
 
 void TestOptions::parse(int argc, const char** argv)
@@ -53,29 +76,14 @@ void TestOptions::parse(int argc, const char** argv)
     options.parseArgs(argc, argv, desc);
 }
 
-const OPTIONS_NS::OptionsDescription& TestOptions::description() const
-{
-    return desc;
-}
-
-bool TestOptions::xml() const
-{
-    return options.has("xml");
-}
-
 bool TestOptions::colorful() const
 {
     return options.has("color") && options["color"] == "yes";
 }
 
-bool TestOptions::help() const
-{
-    return options.has("help");
-}
-
 inline bool TestOptions::matches(const std::string& name) const
 {
-    const std::regex pattern(options["filter"]);
+    std::regex pattern(options["filter"]);
     return std::regex_match(name, pattern);
 }
 

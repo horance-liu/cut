@@ -9,7 +9,12 @@ USING_STDEXT_NS
 
 FIXTURE(FilterTest)
 {
-	TestOptions options;
+	TestOptions &options = RUNTIME(TestOptions);
+
+	TEARDOWN()
+	{
+	    options.clear();
+	}
 
 	template <typename Asserter>
 	void given_options_then(const std::vector<std::string>& config, Asserter asserter)

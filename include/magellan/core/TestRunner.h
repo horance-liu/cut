@@ -14,13 +14,12 @@ struct TestFactorySuite;
 
 DEFINE_ROLE(TestRunner)
 {
-    bool run(int argc, const char** argv);
+    bool run();
 
 private:
     bool run(Test* test);
     void addListeners(TestResult& result) const;
 
-    TestListener* makeTextPrinter() const;
     TestListener* makeXmlPrinter() const;
 
 private:
