@@ -48,10 +48,5 @@ void TestSuite::run(TestResult& result)
     result.run(*this);
 }
 
-bool TestSuite::hasChild() const
-{
-    return countChildTests() != 0;
-}
-
 MAGELLAN_NS_END
 
