@@ -17,7 +17,7 @@ Supported Compilers:
 * [MSVC] not supported.
 
 Dependences:
-* [l0-infra](https://github.com/horance/l0-infra).
+* [ccinfra](https://github.com/horance/ccinfra).
 * [hamcrest](https://github.com/horance/hamcrest).
 
 ## Installation
@@ -58,7 +58,7 @@ $ cd magellan/build
 $ cmake -DENABLE_TEST=on ..
 $ make
 $ test/magellan-test
-$ lib/l0-infra/test/l0-infra-test
+$ lib/ccinfra/test/ccinfra-test
 $ lib/hamcrest/test/hamcrest-test
 ```
 
@@ -121,7 +121,7 @@ test/*.c)
 
 add_executable(quantity-test ${all_files})
 
-target_link_libraries(quantity-test magellan hamcrest l0-infra)
+target_link_libraries(quantity-test magellan hamcrest ccinfra)
 ```
 
 ##### Build

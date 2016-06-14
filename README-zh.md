@@ -222,7 +222,7 @@ $ cd magellan/build
 $ cmake -DENABLE_TEST=on ..
 $ make
 $ test/magellan-test
-$ lib/l0-infra/l0-infra-test
+$ lib/ccinfra/ccinfra-test
 $ lib/hamcrest/hamcrest-test
 ```
 
@@ -286,7 +286,7 @@ test/*.c)
 
 add_executable(quantity-test ${all_files})
 
-target_link_libraries(quantity-test magellan hamcrest l0-infra)
+target_link_libraries(quantity-test magellan hamcrest ccinfra)
 ```
 
 ##### 构建

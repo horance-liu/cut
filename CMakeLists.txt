@@ -9,13 +9,13 @@ if(UNIX)
 endif()
 
 set(MAGELLAN_INCLUDE_DIR 
-${CMAKE_CURRENT_SOURCE_DIR}/lib/l0-infra/include
+${CMAKE_CURRENT_SOURCE_DIR}/lib/ccinfra/include
 ${CMAKE_CURRENT_SOURCE_DIR}/lib/hamcrest/include
 ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 include_directories(${MAGELLAN_INCLUDE_DIR})
 
-add_subdirectory(lib/l0-infra)
+add_subdirectory(lib/ccinfra)
 add_subdirectory(lib/hamcrest)
 add_subdirectory(src)
 

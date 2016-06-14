@@ -1,5 +1,4 @@
 #include "magellan/except/Message.h"
-#include <l0-infra/std/Algorithm.h>
 
 MAGELLAN_NS_BEGIN
 

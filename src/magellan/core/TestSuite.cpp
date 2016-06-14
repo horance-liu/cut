@@ -1,6 +1,6 @@
 #include "magellan/core/TestSuite.h"
 #include "magellan/core/TestResult.h"
-#include <l0-infra/std/Algorithm.h>
+#include <ccinfra/base/Algorithm.h>
 
 MAGELLAN_NS_BEGIN
 
@@ -10,7 +10,7 @@ TestSuite::TestSuite(const std::string& name)
 
 TestSuite::~TestSuite()
 {
-    stdext::each(tests, [](Test* t){ delete t; });
+    ccinfra::each(tests, [](Test* t){ delete t; });
 }
 
 void TestSuite::addTest(Test* test)
@@ -28,7 +28,7 @@ const std::string& TestSuite::getName() const
 
 int TestSuite::countTestCases() const
 {
-    return stdext::reduce(tests, 0, [](int& num, Test* test) {
+    return ccinfra::reduce(tests, 0, [](int& num, Test* test) {
         num += test->countTestCases();
     });
 }
@@ -40,7 +40,7 @@ int TestSuite::countChildTests() const
 
 void TestSuite::runBare(TestResult &result)
 {
-    stdext::each(tests, [&](Test* test){ test->run(result); });
+    ccinfra::each(tests, [&](Test* test){ test->run(result); });
 }
 
 void TestSuite::run(TestResult& result)

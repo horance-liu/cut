@@ -1,11 +1,11 @@
 #include "magellan/magellan.hpp"
 #include "magellan/startup/TestOptions.h"
-#include "l0-infra/std/Args.h"
+#include "ccinfra/base/Args.h"
 #include <regex>
 
 USING_MAGELLAN_NS
 USING_HAMCREST_NS
-USING_STDEXT_NS
+USING_CCINFRA_NS
 
 FIXTURE(FilterTest)
 {

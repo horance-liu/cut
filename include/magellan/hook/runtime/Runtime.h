@@ -1,7 +1,7 @@
 #ifndef H4F0DAA73_78BC_4665_B214_D485ED463BB1
 #define H4F0DAA73_78BC_4665_B214_D485ED463BB1
 
-#include <l0-infra/dci/Role.h>
+#include <ccinfra/dci/Role.h>
 #include <magellan/magellan.h>
 
 MAGELLAN_NS_BEGIN

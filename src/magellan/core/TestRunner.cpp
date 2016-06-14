@@ -3,7 +3,7 @@
 #include "magellan/core/TestResult.h"
 #include "magellan/ext/RepeatedTest.h"
 #include "magellan/auto/TestFactorySuite.h"
-#include "l0-infra/std/ScopeExit.h"
+#include "ccinfra/base/ScopeExit.h"
 
 MAGELLAN_NS_BEGIN
 

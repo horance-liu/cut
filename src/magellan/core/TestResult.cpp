@@ -5,14 +5,14 @@
 #include "magellan/core/TestSuite.h"
 #include "magellan/except/AssertionError.h"
 #include "magellan/except/TestFailure.h"
-#include "l0-infra/std/Algorithm.h"
+#include "ccinfra/base/Algorithm.h"
 
 MAGELLAN_NS_BEGIN
 
 TestResult::~TestResult()
 {
-    stdext::each(listeners, [](TestListener* p) { delete p; });
-    stdext::each(failures,  [](TestFailure* p)  { delete p; });
+    ccinfra::each(listeners, [](TestListener* p) { delete p; });
+    ccinfra::each(failures,  [](TestFailure* p)  { delete p; });
 }
 
 void TestResult::add(TestListener* listener)
@@ -21,7 +21,7 @@ void TestResult::add(TestListener* listener)
 }
 
 #define BROADCAST(action) \
-stdext::each(listeners, [&](TestListener* listener) { listener->action; })
+ccinfra::each(listeners, [&](TestListener* listener) { listener->action; })
 
 void TestResult::run(TestCase& test)
 {

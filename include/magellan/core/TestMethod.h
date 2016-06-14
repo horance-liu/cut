@@ -4,7 +4,7 @@
 #include "magellan/core/TestCaller.h"
 #include "magellan/hook/runtime/Runtime.h"
 #include "magellan/startup/TestOptions.h"
-#include "l0-infra/std/TypeName.h"
+#include "ccinfra/base/TypeName.h"
 #include <iostream>
 
 MAGELLAN_NS_BEGIN
@@ -33,7 +33,7 @@ struct TestMethod
 private:
     std::string getFullName() const
     {
-        return stdext::TypeName<Fixture>::value() + "::" + name;
+        return ccinfra::TypeName<Fixture>::value() + "::" + name;
     }
 
 private:

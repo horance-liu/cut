@@ -2,9 +2,9 @@
 #define INCL_DCM_H7349D344_AAC4_47D0_8E42_DF1F7EC0C2A4
 
 #include <magellan/magellan.h>
-#include <l0-infra/dci/Role.h>
-#include "l0-infra/options/program_options/VariablesMap.hpp"
-#include "l0-infra/options/program_options/OptionsDescription.hpp"
+#include <ccinfra/dci/Role.h>
+#include "ccinfra/options/program_options/VariablesMap.hpp"
+#include "ccinfra/options/program_options/OptionsDescription.hpp"
 
 MAGELLAN_NS_BEGIN
 
@@ -33,8 +33,8 @@ private:
     bool matches(const std::string& name) const;
 
 private:
-    OPTIONS_NS::OptionsDescription desc;
-    OPTIONS_NS::VariablesMap options;
+    ccinfra::OptionsDescription desc;
+    ccinfra::VariablesMap options;
 
 private:
     USE_ROLE(TestRunner);

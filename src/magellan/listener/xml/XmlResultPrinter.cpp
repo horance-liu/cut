@@ -2,6 +2,7 @@
 #include "magellan/listener/util/TestInfo.h"
 #include "magellan/listener/util/XmlBuilder.h"
 #include "magellan/except/TestFailure.h"
+#include "magellan/core/Test.h"
 #include "magellan/hook/runtime/Runtime.h"
 #include <iostream>
 #include <fstream>

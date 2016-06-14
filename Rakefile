@@ -19,7 +19,7 @@ def do_install
 end
 
 def do_test
-  execute "cd build && test/magellan-test && cd lib && l0-infra/test/l0-infra-test && hamcrest/test/hamcrest-test"
+  execute "cd build && test/magellan-test && cd lib && ccinfra/test/ccinfra-test && hamcrest/test/hamcrest-test"
 end
 
 def do_build(args, &action)
@@ -28,7 +28,7 @@ def do_build(args, &action)
 end
 
 task :uninstall do |task|
-  %w[l0-infra hamcrest magellan].each do |modular|
+  %w[ccinfra hamcrest magellan].each do |modular|
     system "sudo rm -rf /usr/local/include/#{modular}"
     system "sudo rm -rf /usr/local/lib/lib#{modular}.a"
   end

@@ -1,7 +1,8 @@
 #ifndef HA5559C9B_84A7_4876_BDDD_B95BC2FF503B
 #define HA5559C9B_84A7_4876_BDDD_B95BC2FF503B
 
-#include "magellan/magellan.hpp"
+#include <magellan/magellan.h>
+#include <ccinfra/base/String.h>
 
 MAGELLAN_NS_BEGIN
 
@@ -18,19 +19,19 @@ struct XmlBuilder
     template <typename V>
     void addAttribute(const std::string& key, const V& value)
     {
-        doAddAttribute(key, stdext::toString(value));
+        doAddAttribute(key, ccinfra::toString(value));
     }
 
     template <typename V>
     void addAttributeTo(const std::string& name, const std::string& key, const V& value)
     {
-        doAddAttributeTo(name, key, stdext::toString(value));
+        doAddAttributeTo(name, key, ccinfra::toString(value));
     }
 
     template <typename V>
     void addValue(const V& value)
     {
-        doAddValue(stdext::toString(value));
+        doAddValue(ccinfra::toString(value));
     }
 
     const std::string& getParentName() const;

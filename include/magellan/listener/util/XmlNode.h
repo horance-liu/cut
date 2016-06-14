@@ -4,7 +4,7 @@
 #include <magellan/magellan.h>
 #include <vector>
 #include <string>
-#include <l0-infra/std/String.h>
+#include <ccinfra/base/String.h>
 
 MAGELLAN_NS_BEGIN
 
@@ -18,13 +18,13 @@ struct XmlNode
     template <typename V>
     void addAttribute(const std::string& key, const V& value)
     {
-        doAddAtribute(key, stdext::toString(value));
+        doAddAtribute(key, ccinfra::toString(value));
     }
 
     template <typename V>
     void addValue(const V& value)
     {
-        doAddValue(stdext::toString(value));
+        doAddValue(ccinfra::toString(value));
     }
 
     const std::string& getName() const;

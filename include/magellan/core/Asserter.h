@@ -1,8 +1,8 @@
 #ifndef H7E147A58_B997_4DC5_B6EB_A014CC6F6C3E
 #define H7E147A58_B997_4DC5_B6EB_A014CC6F6C3E
 
-#include <l0-infra/std/SourceFile.h>
-#include <l0-infra/std/ScopeExit.h>
+#include <ccinfra/base/SourceFile.h>
+#include <ccinfra/base/ScopeExit.h>
 #include <hamcrest/base/Matcher.h>
 #include <hamcrest/base/Description.h>
 #include <magellan/except/AssertionError.h>

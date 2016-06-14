@@ -8,7 +8,7 @@ struct Position : Point, Orientation
 {
     Position(int x, int y, const Orientation& orientation);
 
-    DECL_EQUALS(Position);
+    __DECL_EQUALS(Position);
 };
 
 #endif

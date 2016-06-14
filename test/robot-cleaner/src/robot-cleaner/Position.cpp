@@ -4,7 +4,7 @@ Position::Position(int x, int y, const Orientation& orientation)
  : Point(x, y), Orientation(orientation)
 {}
 
-DEF_EQUALS(Position)
+__DEF_EQUALS(Position)
 {
-    return SUPER_EQ(Point) && SUPER_EQ(Orientation);
+    return __SUPER_EQ(Point) && __SUPER_EQ(Orientation);
 }

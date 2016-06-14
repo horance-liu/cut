@@ -10,7 +10,7 @@ Point Point::moveOn(int step, const Orientation& orientation) const
     return orientation.moveOn(x, y, step);
 }
 
-DEF_EQUALS(Point)
+__DEF_EQUALS(Point)
 {
-    return FIELD_EQ(x) && FIELD_EQ(y);
+    return __FIELD_EQ(x) && __FIELD_EQ(y);
 }

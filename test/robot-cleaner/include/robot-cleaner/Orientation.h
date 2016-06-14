@@ -1,7 +1,7 @@
 #ifndef H9811B75A_15B3_4DF0_91B7_483C42F74473
 #define H9811B75A_15B3_4DF0_91B7_483C42F74473
 
-#include "l0-infra/std/EqHelper.h"
+#include "ccinfra/base/EqHelper.h"
 
 struct Point;
 
@@ -18,7 +18,7 @@ struct Orientation
     DECL_ORIENTATION(west)
     DECL_ORIENTATION(north)
 
-    DECL_EQUALS(Orientation);
+    __DECL_EQUALS(Orientation);
 
 private:
     Orientation(int order, int offset);
