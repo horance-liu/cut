@@ -1,6 +1,3 @@
 [submodule "lib/hamcrest"]
 	path = lib/hamcrest
 	url = https://github.com/horance-liu/hamcrest.git
-[submodule "lib/l0-infra"]
-	path = lib/l0-infra
-	url = https://github.com/horance-liu/l0-infra.git
