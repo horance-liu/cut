@@ -9,7 +9,7 @@
 ```cpp
 TEST_F(RobotCleanerTest, at_the_beginning_the_robot_should_be_in_at_the_initial_position)
 {
-    ASSERT_EQ(Position(0, 0, NORTH), robot.getPosition());
+    ASSERT_THAT(Position(0, 0, NORTH), robot.getPosition());
 }
 ```
 
@@ -26,13 +26,13 @@ protected:
 
 TEST_F(RobotCleanerTest, at_the_beginning_the_robot_should_be_in_at_the_initial_position)
 {
-    ASSERT_EQ(Position(0, 0, NORTH), robot.getPosition());
+    ASSERT_THAT(Position(0, 0, NORTH), robot.getPosition());
 }
 
 TEST_F(RobotCleanerTest, should_be_face_west_after_turn_left)
 {
    robot.turnLeft();
-   ASSERT_EQ(Position(0, 0, WEST), robot.getPosition());
+   ASSERT_THAT(Position(0, 0, WEST), robot.getPosition());
 }
 ```
 
@@ -56,7 +56,7 @@ protected:
 
 TEST_F(RobotCleanerTest, at_the_beginning_the_robot_should_be_in_at_the_initial_position)
 {
-    ASSERT_EQ(Position(0, 0, NORTH), robot.getPosition());
+    ASSERT_THAT(Position(0, 0, NORTH), robot.getPosition());
 }
 ```
 
@@ -93,20 +93,20 @@ protected:
 
 TEST_F(RobotCleanerTest, at_the_beginning_the_robot_should_be_in_at_the_initial_position)
 {
-    ASSERT_EQ(Position(0, 0, NORTH), robot.getPosition());
+    ASSERT_THAT(Position(0, 0, NORTH), robot.getPosition());
 }
 
 TEST_F(RobotCleanerTest, should_be_face_west_after_turn_left_1_times)
 {
     robot.turnLeft();
-    ASSERT_EQ(Position(0, 0, WEST), robot.getPosition());
+    ASSERT_THAT(Position(0, 0, WEST), robot.getPosition());
 }
 
 TEST_F(RobotCleanerTest, should_be_face_south_after_turn_left_2_times)
 {
     robot.turnLeft();
     robot.turnLeft();
-    ASSERT_EQ(Position(0, 0, SOUTH), robot.getPosition());
+    ASSERT_THAT(Position(0, 0, SOUTH), robot.getPosition());
 }
 
 TEST_F(RobotCleanerTest, should_be_face_east_after_turn_left_3_times)
@@ -114,7 +114,7 @@ TEST_F(RobotCleanerTest, should_be_face_east_after_turn_left_3_times)
     robot.turnLeft();
     robot.turnLeft();
     robot.turnLeft();
-    ASSERT_EQ(Position(0, 0, EAST), robot.getPosition());
+    ASSERT_THAT(Position(0, 0, EAST), robot.getPosition());
 }
 
 TEST_F(RobotCleanerTest, should_be_face_north_after_turn_left_4_times)
@@ -123,7 +123,7 @@ TEST_F(RobotCleanerTest, should_be_face_north_after_turn_left_4_times)
     robot.turnLeft();
     robot.turnLeft();
     robot.turnLeft();
-    ASSERT_EQ(Position(0, 0, NORTH), robot.getPosition());
+    ASSERT_THAT(Position(0, 0, NORTH), robot.getPosition());
 }
 ```
 
@@ -132,7 +132,7 @@ TEST_F(RobotCleanerTest, should_be_face_north_after_turn_left_4_times)
 把期望值放在前面，而把实际值放在后面，严重违反了英语的阅读习惯。犹如我讨厌诸如`if (NULL != ptr)`的反人类的代码一样。
 
 ```cpp
-ASSERT_EQ(Position(0, 0, WEST), robot.getPosition());
+ASSERT_THAT(Position(0, 0, WEST), robot.getPosition());
 ```
 
 ### Global级Fixture不能自动发现
@@ -140,7 +140,7 @@ ASSERT_EQ(Position(0, 0, WEST), robot.getPosition());
 `GlobalEnvironment`需要手动注册到框架，才能被框架发现，而不像`TEST_F, TEST, TEST_G`无需显式地注册，便能被框架自动发现，设计缺乏统一性，一致性。
 
 ```cpp
-#include "gtest/gtest.h"
+#include "magellan/magellan.hpp"
 
 struct GlobalEnvironment : testing::Environment
 {
@@ -161,7 +161,7 @@ int main(int argc, char** argv)
 
 ### 断言缺乏可扩展性
 
-使用Google Test的断言时，你可以在`ASSERT_EQ, ASSERT_NE, ASSERT_TRUE, ASSERT_FALSE`之中做选择。当然你可以认为这无可厚非，但这样的设计最大的问题在于：只能使用框架本身所提供的几个为数不多的断言原语，缺乏可扩展性，或者扩展起来非常困难。
+使用Google Test的断言时，你可以在`ASSERT_THAT, ASSERT_NE, ASSERT_TRUE, ASSERT_FALSE`之中做选择。当然你可以认为这无可厚非，但这样的设计最大的问题在于：只能使用框架本身所提供的几个为数不多的断言原语，缺乏可扩展性，或者扩展起来非常困难。
 
 例如你想增加个一个`ASSERT_NIL`的断言，扩展起来变得非常不自然。
 
@@ -743,7 +743,7 @@ FIXTURE(RobotCleanerTest)
 
 #### ASSERT_THAT
 
-Magellan只支持一种断言原语：`ASSERT_THAT`, 从而避免用户在选择`ASSERT_EQ/ASSERT_NE, ASSERT_TRUE/ASSERT_FALSE`时的困扰，使其断言更加具有统一性，一致性。
+Magellan只支持一种断言原语：`ASSERT_THAT`, 从而避免用户在选择`ASSERT_THAT/ASSERT_NE, ASSERT_TRUE/ASSERT_FALSE`时的困扰，使其断言更加具有统一性，一致性。
 
 此外，`ASSERT_THAT`使得断言更加具有表达力，它将实际值放在左边，期望值放在右边，更加符合英语习惯。
 
