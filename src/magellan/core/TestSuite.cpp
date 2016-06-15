@@ -1,6 +1,6 @@
 #include "magellan/core/TestSuite.h"
 #include "magellan/core/TestResult.h"
-#include <ccinfra/base/Algorithm.h>
+#include <ccinfra/algo/range.h>
 
 MAGELLAN_NS_BEGIN
 

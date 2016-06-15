@@ -4,7 +4,7 @@
 #include <magellan/magellan.h>
 #include <vector>
 #include <string>
-#include <ccinfra/base/String.h>
+#include <ccinfra/algo/String.h>
 
 MAGELLAN_NS_BEGIN
 

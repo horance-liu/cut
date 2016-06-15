@@ -1,7 +1,7 @@
 #ifndef HBAD0E026_1661_48E7_B0EE_F3DA07EA24F9
 #define HBAD0E026_1661_48E7_B0EE_F3DA07EA24F9
 
-#include <ccinfra/base/Symbol.h>
+#include <ccinfra/utils/Symbol.h>
 #include <magellan/core/TestFixture.h>
 #include <magellan/auto/AutoTestSuite.h>
 

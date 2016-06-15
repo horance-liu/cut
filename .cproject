@@ -27,13 +27,7 @@
 								</inputType>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.assembler.macosx.base.1607815902" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.macosx.base">
-								<option id="gnu.both.asm.option.include.paths.237012804" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/infrastructure/include}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/magellan/include}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/hamcrest-cxx/include}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/magellan/lib/hamcrest/include}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/magellan/lib/ccinfra/include}&quot;"/>
-								</option>
+								<option id="gnu.both.asm.option.include.paths.237012804" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath"/>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1414778853" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.archiver.macosx.base.2000446281" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.macosx.base"/>
@@ -46,13 +40,7 @@
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1919296537" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.c.compiler.macosx.base.1017947876" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.macosx.base">
-								<option id="gnu.c.compiler.option.include.paths.172137100" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/infrastructure/include}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/magellan/include}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/hamcrest-cxx/include}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/magellan/lib/hamcrest/include}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/magellan/lib/ccinfra/include}&quot;"/>
-								</option>
+								<option id="gnu.c.compiler.option.include.paths.172137100" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath"/>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1117005720" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
 						</toolChain>
