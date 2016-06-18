@@ -1,176 +1,5 @@
 # Magellan: A Simple xUnit Test Framework in Modern C++11
 
-## 你无法忍受Google Test的9个特性
-
-### 用例描述必须遵循严格的标识符规则
-
-这种严格的规则，虽然给Google Test的实现带来了诸多便捷之处，但这给用户造成了很大的负担。尤其当一个用例需要描述一个数学逻辑规则时，用例的表达力将大大折扣。
-
-```cpp
-TEST_F(RobotCleanerTest, at_the_beginning_the_robot_should_be_in_at_the_initial_position)
-{
-    ASSERT_THAT(Position(0, 0, NORTH), robot.getPosition());
-}
-```
-
-### 贯穿着“重复设计”的坏味道
-
-如下例，每个`TEST_F`用例都要重复一次`RobotCleanerTest`。
-
-```cpp
-struct RobotCleanerTest : testing::Test
-{
-protected:
-    RobotCleaner robot;
-};
-
-TEST_F(RobotCleanerTest, at_the_beginning_the_robot_should_be_in_at_the_initial_position)
-{
-    ASSERT_THAT(Position(0, 0, NORTH), robot.getPosition());
-}
-
-TEST_F(RobotCleanerTest, should_be_face_west_after_turn_left)
-{
-   robot.turnLeft();
-   ASSERT_THAT(Position(0, 0, WEST), robot.getPosition());
-}
-```
-
-### Fixture与TEST_F存在隐晦的继承关系
-
-这也是上例中将`RobotCleaner robot`声明为`protected`的原因。这种隐晦的继承关系，让刚刚入门使用Google Test的人都大吃一惊。
-
-当然，如果你了解过Google Test的实现技术(`TEST_F`展开后将生成`Fixture`的一个子类，并自动地注册到框架中)，或者已经习惯了他的的设计，这自然不是问题。
-
-
-### TEST， TEST_F的设计容易让人误解、误用
-
-`TEST_F`的第一个参数是`Fixture`的名字。如下例如果被误用为`TEST`，最理想的情况下，则发生编译时错误。如本例所示，编译器将提示`robot`是一个未定义的变量。最坏的情况下是，错误发生在运行时，可能存在没有调用预期的`SetUp/TearDown`的风险。
-
-```cpp
-struct RobotCleanerTest : testing::Test
-{
-protected:
-    RobotCleaner robot;
-};
-
-TEST_F(RobotCleanerTest, at_the_beginning_the_robot_should_be_in_at_the_initial_position)
-{
-    ASSERT_THAT(Position(0, 0, NORTH), robot.getPosition());
-}
-```
-
-### 重写SetUp/TearDown时，缺乏Override的保护
-
-Google Test通过在子类中改写`Setup/TearDown`来定制`Fixture`的功能，但程序员往往易于混淆`setUp, Setup, SetUp, set_up`，尤其在C\+\+98中，由于缺失`override`的编译时保护，易于让程序员写出违背原意的逻辑代码，这样的错误很可能是运行时错误。
-
-```cpp
-struct RobotCleanerTest : testing::Test
-{
-    virtual void Setup()   // 本应该为SetUp
-    {
-        robot.reset();
-    }
-
-protected:
-    RobotCleaner robot;
-};
-```
-
-### 不符合OO的习惯
-
-每个`TEST_F/TEST`的实现，感觉是一个个游离的函数，是一个典型的过程式设计，通过重复地使用`RobotCleanerTest`而使它们联系在一起，这太过于牵强。
-
-此外，需要提取函数时，要么将函数提取到父类的`Fixture`中，要么提取到匿名的`namespace`中，物理上隔离非常远，尤其用例数目很多的时候，问题更突出。无论怎么样，Google Test缺乏严格意义上的OO设计。
-
-```cpp
-struct RobotCleanerTest : testing::Test
-{
-
-protected:
-    RobotCleaner robot;
-};
-
-TEST_F(RobotCleanerTest, at_the_beginning_the_robot_should_be_in_at_the_initial_position)
-{
-    ASSERT_THAT(Position(0, 0, NORTH), robot.getPosition());
-}
-
-TEST_F(RobotCleanerTest, should_be_face_west_after_turn_left_1_times)
-{
-    robot.turnLeft();
-    ASSERT_THAT(Position(0, 0, WEST), robot.getPosition());
-}
-
-TEST_F(RobotCleanerTest, should_be_face_south_after_turn_left_2_times)
-{
-    robot.turnLeft();
-    robot.turnLeft();
-    ASSERT_THAT(Position(0, 0, SOUTH), robot.getPosition());
-}
-
-TEST_F(RobotCleanerTest, should_be_face_east_after_turn_left_3_times)
-{
-    robot.turnLeft();
-    robot.turnLeft();
-    robot.turnLeft();
-    ASSERT_THAT(Position(0, 0, EAST), robot.getPosition());
-}
-
-TEST_F(RobotCleanerTest, should_be_face_north_after_turn_left_4_times)
-{
-    robot.turnLeft();
-    robot.turnLeft();
-    robot.turnLeft();
-    robot.turnLeft();
-    ASSERT_THAT(Position(0, 0, NORTH), robot.getPosition());
-}
-```
-
-### 断言违背直觉
-
-把期望值放在前面，而把实际值放在后面，严重违反了英语的阅读习惯。犹如我讨厌诸如`if (NULL != ptr)`的反人类的代码一样。
-
-```cpp
-ASSERT_THAT(Position(0, 0, WEST), robot.getPosition());
-```
-
-### Global级Fixture不能自动发现
-
-`GlobalEnvironment`需要手动注册到框架，才能被框架发现，而不像`TEST_F, TEST, TEST_G`无需显式地注册，便能被框架自动发现，设计缺乏统一性，一致性。
-
-```cpp
-#include "magellan/magellan.hpp"
-
-struct GlobalEnvironment : testing::Environment
-{
-    virtual void SetUp()
-    { ... }
-
-    virtual void TearDown()
-    { ... }
-};
-
-int main(int argc, char** argv)
-{
-    testing::AddGlobalTestEnvironment(new GlobalEnvironment);
-    testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-}
-```
-
-### 断言缺乏可扩展性
-
-使用Google Test的断言时，你可以在`ASSERT_THAT, ASSERT_NE, ASSERT_TRUE, ASSERT_FALSE`之中做选择。当然你可以认为这无可厚非，但这样的设计最大的问题在于：只能使用框架本身所提供的几个为数不多的断言原语，缺乏可扩展性，或者扩展起来非常困难。
-
-例如你想增加个一个`ASSERT_NIL`的断言，扩展起来变得非常不自然。
-
-### 没有理由，就是不喜欢
-
-在C\+\+社区中，有很多人在使用Google Test。这归功于它在平台性移植、部署与安装等方面非常成功，尤其符合微软平台上的C++程序员的胃口；其次，Google Test的`TEST, TEST_F`实现的自动发现机制，相对于CppUnit等框架显得更技高一筹。
-
-但对于高级别的、骨灰级的C++程序员，是无法容忍上述的Google Test的致命性缺陷的，例如严格的标识符命名规则，这种强制的约束几乎等于杀了他。
-
 ## Magellan：开启新的征程
 
 ### 灵感
@@ -181,9 +10,9 @@ Magellan是一个简单的、可扩展的、使用C\+\+11实现的xUnit测试框
 
 #### GitHub
 
-地址：[https://github.com/horance/magellan](https://github.com/horance/magellan)
-作者：刘光聪
-Email：[horance@outlook.com](horance@outlook.com)
+- 地址：[https://github.com/horance-liu/magellan](https://github.com/horance-liu/magellan)
+- 作者：刘光聪
+- Email：[horance@outlook.com](horance@outlook.com)
 
 #### 编译环境
 
@@ -201,29 +30,56 @@ Email：[horance@outlook.com](horance@outlook.com)
 
 CMake的下载地址：[http://www.cmake.org](http://www.cmake.org)。
 
+#### 安装依赖
+
+##### cub
+
+```bash
+$ git clone https://gitlab.com/ccup/cub.git
+$ cd cub && mkdir build && cd build
+$ cmake .. && make
+$ sudo make install 
+```
+
+##### options
+
+```bash
+$ git clone https://github.com/ccup/options.git
+$ cd cub && mkdir build && cd build
+$ cmake .. && make
+$ sudo make install 
+```
+
+##### hamcrest
+
+```bash
+$ git clone https://github.com/hamcrest-liu/hamcrest.git
+$ cd cub && mkdir build && cd build
+$ cmake .. && make
+$ sudo make install 
+```
+
+##### 使用Rake
+
+```bash
+$ rake deps
+```
+
 #### 安装Magellan
 
 ```bash
-$ git clone https://gitlab.com/horance/magellan.git
-$ cd magellan
-$ git submodule init
-$ git submodule update
-$ mkdir build
-$ cd build
-$ cmake ..
-$ make
-$ sudo make install
+$ git clone https://gitlab.com/horance-liu/magellan.git
+$ cd cub && mkdir build && cd build
+$ cmake .. && make
+$ sudo make install 
 ```
 
 #### 测试Magellan
 
 ```bash
 $ cd magellan/build
-$ cmake -DENABLE_TEST=on ..
-$ make
+$ cmake -DENABLE_TEST=on .. && make
 $ test/magellan-test
-$ lib/ccinfra/ccinfra-test
-$ lib/hamcrest/hamcrest-test
 ```
 
 #### 使用Rake

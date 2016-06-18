@@ -1,6 +1,6 @@
 #include "magellan/magellan.hpp"
 #include "magellan/startup/TestOptions.h"
-#include "ccinfra/options/Args.h"
+#include "options/core/Args.h"
 #include <regex>
 
 USING_MAGELLAN_NS
@@ -19,7 +19,7 @@ FIXTURE(FilterTest)
 	template <typename Asserter>
 	void given_options_then(const std::vector<std::string>& config, Asserter asserter)
 	{
-        Args args(config);
+        opt::Args args(config);
         options.parse(args.argc(), args.argv());
         asserter();
 	}

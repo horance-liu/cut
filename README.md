@@ -17,54 +17,69 @@ Supported Compilers:
 * [MSVC] not supported.
 
 Dependences:
-* [ccinfra](https://github.com/horance/ccinfra).
-* [hamcrest](https://github.com/horance/hamcrest).
+* [cub](git clone https://github.com/ccup/cub.git).
+* [options](git clone https://github.com/ccup/options.git).
+* [hamcrest](https://github.com/horance-liu/hamcrest).
 
 ## Installation
 
-### Install CMake:
+### Install Dependencies
 
-Download CMake for [http://www.cmake.org](http://www.cmake.org), if on ubuntu:
+##### cub
 
 ```bash
-$ sudo apt-get install cmake
+$ git clone https://github.com/ccup/cub.git
+$ cd cub && mkdir build && cd build
+$ cmake .. && make
+$ sudo make install
 ```
-  
-### Clone Magellan
+
+##### options
 
 ```bash
-$ git clone https://github.com/horance-liu/magellan.git
-$ cd magellan
-$ git submodule init
-$ git submodule update
+$ git clone https://github.com/ccup/options.git
+$ cd cub && mkdir build && cd build
+$ cmake .. && make
+$ sudo make install 
+```
+
+##### hamcrest
+
+```bash
+$ git clone https://github.com/hamcrest-liu/hamcrest.git
+$ cd cub && mkdir build && cd build
+$ cmake .. && make
+$ sudo make install 
+```
+
+##### Using Rake
+
+```bash
+$ rake deps
 ```
 
 ### Install Magellan
 
+> you should run `sudo ldconfig` after installing on linux.
+
 ```bash
-$ cd magellan
-$ mkdir build
-$ cd build
-$ cmake ..
-$ make
+$ git clone https://github.com/horance-liu/magellan.git
+$ cd magellan && mkdir build && cd build
+$ cmake .. && make
 $ sudo make install
-$ sudo ldconfig
 ```
 
 ### Test Magellan Self
   
 ```bash
 $ cd magellan/build
-$ cmake -DENABLE_TEST=on ..
-$ make
+$ cmake -DENABLE_TEST=on .. && make
 $ test/magellan-test
-$ lib/ccinfra/test/ccinfra-test
-$ lib/hamcrest/test/hamcrest-test
 ```
 
 ### Using Rake
 
-```bash                                                                                                                                                          
+```bash                            
 $ rake           # build, install, and test using clang
 $ rake clang     # build, install, and test using clang
 $ rake gcc       # build, install, and test using gcc

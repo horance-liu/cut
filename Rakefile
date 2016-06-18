@@ -14,34 +14,71 @@ def cmake_cmd args
   "#{compiler args[:clang]} cmake #{test_switch args[:test]} -DCMAKE_BUILD_TYPE=Debug .."
 end
 
-def do_install
-  system "cd build && sudo make install"
+def do_install(path)
+  system "cd #{path}/build && sudo make install"
 end
 
-def do_test
-  execute "cd build && test/magellan-test && cd lib && ccinfra/test/ccinfra-test && hamcrest/test/hamcrest-test"
+def do_test(path, modular)
+  execute "cd #{path}/build && test/#{modular}-test"
 end
 
-def do_build(args, &action)
-  execute "mkdir -p build && cd build && #{cmake_cmd args} && make" 
+def do_build(path, args, &action)
+  execute "mkdir -p #{path}/build && cd #{path}/build && #{cmake_cmd args} && make" 
   action.call
 end
 
-task :uninstall do |task|
-  %w[ccinfra hamcrest magellan].each do |modular|
-    system "sudo rm -rf /usr/local/include/#{modular}"
-    system "sudo rm -rf /usr/local/lib/lib#{modular}.a"
+def do_clean(m)
+  system "sudo rm -rf /usr/local/include/#{m}"
+  system "sudo rm -rf /usr/local/lib/lib#{m}.a"
+end
+
+DEPS = %w[ccinfra hamcrest options]
+
+task :deps_clone => :deps_clean do
+  system "rm -rf lib"
+  system "git clone https://github.com/MagicBowen/ccinfra.git lib/ccinfra"
+  system "git clone https://github.com/ccup/options.git lib/options"
+  system "git clone https://github.com/horance-liu/hamcrest.git lib/hamcrest"
+end
+
+task :deps_uninstall do
+  DEPS.each do |m|
+    do_clean(m)
   end
+end
+
+task :deps_clean => :deps_uninstall do
+  DEPS.each do |m|
+    system "cd lib/#{m} && rm -rf build"
+  end 
+end
+
+task :deps_gcc do
+  DEPS.each do |m|
+    do_build("lib/#{m}", clang:false, test:false) { do_install("lib/#{m}") }
+  end
+end
+
+task :deps_clang do
+  DEPS.each do |m|
+    do_build("lib/#{m}", clang:true, test:false) { do_install("lib/#{m}") }
+   end
+end
+
+task :deps => [:deps_clone, :deps_clang]
+
+task :uninstall do
+  do_clean(:magellan)
 end 
 
 task :gcc => :uninstall do
-  do_build(clang:false, test:false) { do_install }
-  do_build(clang:false, test:true) { do_test }
+  do_build(".", clang:false, test:false) { do_install(".") }
+  do_build(".", clang:false, test:true) { do_test(".", :magellan) }
 end
 
 task :clang => :uninstall do
-  do_build(clang:true, test:false) { do_install }
-  do_build(clang:true, test:true) { do_test }
+  do_build(".", clang:true, test:false) { do_install(".") }
+  do_build(".", clang:true, test:true) { do_test(".", :magellan) }
 end
 
 task :clean => :uninstall do |task|

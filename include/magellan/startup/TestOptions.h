@@ -3,8 +3,8 @@
 
 #include <magellan/magellan.h>
 #include <ccinfra/dci/Role.h>
-#include "ccinfra/options/program_options/VariablesMap.hpp"
-#include "ccinfra/options/program_options/OptionsDescription.hpp"
+#include "options/core/VariablesMap.hpp"
+#include "options/core/OptionsDescription.hpp"
 
 MAGELLAN_NS_BEGIN
 
@@ -33,8 +33,8 @@ private:
     bool matches(const std::string& name) const;
 
 private:
-    cub::OptionsDescription desc;
-    cub::VariablesMap options;
+    opt::OptionsDescription desc;
+    opt::VariablesMap options;
 
 private:
     USE_ROLE(TestRunner);
