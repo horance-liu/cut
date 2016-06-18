@@ -10,4 +10,4 @@ FILE(GLOB_RECURSE all_files
 *.C)
 
 add_executable(cum-test ${all_files})
-target_link_libraries(cum-test cum options cut cub)
+target_link_libraries(cum-test cum opt cut cub)
