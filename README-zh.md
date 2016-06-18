@@ -137,7 +137,6 @@ quantity
 ```cpp
 #include <cut/cut.hpp>
 
-
 int main(int argc, char** argv)
 {
     return cut::run_all_tests(argc, argv);
@@ -151,7 +150,7 @@ project(quantity)
 
 cmake_minimum_required(VERSION 2.8)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
@@ -165,8 +164,15 @@ test/*.c)
 
 add_executable(quantity-test ${all_files})
 
-target_link_libraries(quantity-test cut cum cub)
+target_link_libraries(quantity-test cut cum opt cub)
 ```
+
+其中：
+
+- cut: C++ Unified Test framework;
+- cum: C++ Universal Matchers;
+- opt: C++ Program Options;
+- cub: C++ Unified Base Libary;
 
 ##### 构建
 
@@ -196,7 +202,6 @@ $ ./quantity-test
 
 ```cpp
 #include <cut/cut.hpp>
-
 #include <quantity/Length.h>
 
 USING_CUM_NS
@@ -210,9 +215,7 @@ FIXTURE(LengthTest)
 };
 ```
 
-使用 cut,只需要包含 `cut.hpp` 一个头文件即可。cut 使用 Hamcrest 的断言机制,
-使得断言更加统一、自然,且具有良好的扩展性;使用 `USING_CUM_NS`,从而可以使用 `eq` 代
-替 `cum::eq`,简短明确;除非出现名字冲突,否则推荐使用简写的 `eq`。
+使用`cut`时，只需要包含`cut.hpp`一个头文件即可。`cut`使用`cum`的断言机制, 使得断言更加统一、自然,且具有良好的扩展性;使用 `USING_CUM_NS`, 从而可以使用 `eq` 代替 `cum::eq`,简短明确;除非出现名字冲突,否则推荐使用简写的`eq`。
 
 #### Length实现
 

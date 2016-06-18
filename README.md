@@ -163,6 +163,11 @@ add_executable(quantity-test ${all_files})
 target_link_libraries(quantity-test cut cum cub)
 ```
 
+- cut: C++ Unified Test framework;
+- cum: C++ Universal Matchers;
+- opt: C++ Program Options;
+- cub: C++ Unified Base Libary;
+
 ##### Build
 
 ```bash
