@@ -31,6 +31,8 @@ $ git clone https://github.com:ccup/cut.git
 
 ### Install Dependencies
 
+> Current Path: cut
+
 ```bash
 $ cd cut/lib
 $ git clone https://github.com/ccup/cub.git
@@ -43,8 +45,10 @@ $ sudo make install
 
 First, Install `cum`：
 
+> Current Path: cut
+
 ```bash
-$ cd cut/lib/cum && mkdir build && cd build
+$ cd lib/cum && mkdir build && cd build
 $ cmake .. && make
 $ sudo make install 
 ```
@@ -52,28 +56,34 @@ $ sudo make install
 Second, Intall `opt`：
 
 ```bash
-$ cd cut/lib/opt && mkdir build && cd build
+$ cd lib/opt && mkdir build && cd build
 $ cmake .. && make
 $ sudo make install 
 ```
 
 At last, Install `cut`：
 
+> Current Path: cut
+
 ```bash
-$ cd cut && mkdir build && cd build
+$ mkdir build && cd build
 $ cmake .. && make
 $ sudo make install 
 ```
 
 ##### Test cut
 
+> Current Path: cut
+
 ```bash
-$ cd cut/build
+$ cd build
 $ cmake -DENABLE_TEST=on .. && make
 $ test/cut-test
 ```
 
 ### Using Rake
+
+> Current Path: cut
 
 ```bash
 $ rake deps      # install all dependencies

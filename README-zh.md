@@ -33,8 +33,9 @@ $ git clone https://github.com:ccup/cut.git
 
 ### 安装依赖
 
+> 当前路径：`cut`所在目录
+
 ```bash
-$ cd cut
 $ git clone https://github.com/ccup/cub.git lib/cub
 $ cd lib/cub && mkdir build && cd build
 $ cmake .. && make
@@ -45,32 +46,40 @@ $ sudo make install
 
 安装`cum`：
 
+> 当前路径：`cut`所在目录
+
 ```bash
-$ cd cut/lib/cum && mkdir build && cd build
+$ cd lib/cum && mkdir build && cd build
 $ cmake .. && make
 $ sudo make install 
 ```
 
 安装`opt`：
 
+> 当前路径：`cut`所在目录
+
 ```bash
-$ cd cut/lib/opt && mkdir build && cd build
+$ cd lib/opt && mkdir build && cd build
 $ cmake .. && make
 $ sudo make install 
 ```
 
 最后安装`cut`：
 
+> 当前路径：`cut`所在目录
+
 ```bash
-$ cd cut && mkdir build && cd build
+$ mkdir build && cd build
 $ cmake .. && make
 $ sudo make install 
 ```
 
 ##### 测试cut
 
+> 当前路径：`cut`所在目录
+
 ```bash
-$ cd cut/build
+$ cd build
 $ cmake -DENABLE_TEST=on .. && make
 $ test/cut-test
 ```
@@ -78,6 +87,8 @@ $ test/cut-test
 ##### 使用Rake
 
 使用`Rake`可简化`Magelan`的依赖管理，方便`cut`的构建，及其测试，并且使得`cut`自我测试变成更加方便自如。
+
+> 当前路径：`cut`所在目录
 
 ```bash
 $ rake deps      # install all dependencies
