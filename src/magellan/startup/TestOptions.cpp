@@ -34,7 +34,7 @@ void TestOptions::clear()
 
 int TestOptions::repeat() const
 {
-	return options.has("list") ? 1 : ccinfra::string_as<int>(options["repeat"]);
+	return options.has("list") ? 1 : cub::string_as<int>(options["repeat"]);
 }
 
 bool TestOptions::verbose() const

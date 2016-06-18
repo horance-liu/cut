@@ -10,7 +10,7 @@ TestSuite::TestSuite(const std::string& name)
 
 TestSuite::~TestSuite()
 {
-    ccinfra::each(tests, [](Test* t){ delete t; });
+    cub::each(tests, [](Test* t){ delete t; });
 }
 
 void TestSuite::addTest(Test* test)
@@ -28,7 +28,7 @@ const std::string& TestSuite::getName() const
 
 int TestSuite::countTestCases() const
 {
-    return ccinfra::reduce(tests, 0, [](int& num, Test* test) {
+    return cub::reduce(tests, 0, [](int& num, Test* test) {
         num += test->countTestCases();
     });
 }
@@ -40,7 +40,7 @@ int TestSuite::countChildTests() const
 
 void TestSuite::runBare(TestResult &result)
 {
-    ccinfra::each(tests, [&](Test* test){ test->run(result); });
+    cub::each(tests, [&](Test* test){ test->run(result); });
 }
 
 void TestSuite::run(TestResult& result)

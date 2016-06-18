@@ -19,19 +19,19 @@ struct XmlBuilder
     template <typename V>
     void addAttribute(const std::string& key, const V& value)
     {
-        doAddAttribute(key, ccinfra::toString(value));
+        doAddAttribute(key, cub::toString(value));
     }
 
     template <typename V>
     void addAttributeTo(const std::string& name, const std::string& key, const V& value)
     {
-        doAddAttributeTo(name, key, ccinfra::toString(value));
+        doAddAttributeTo(name, key, cub::toString(value));
     }
 
     template <typename V>
     void addValue(const V& value)
     {
-        doAddValue(ccinfra::toString(value));
+        doAddValue(cub::toString(value));
     }
 
     const std::string& getParentName() const;

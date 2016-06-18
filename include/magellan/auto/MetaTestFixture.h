@@ -36,7 +36,7 @@ private:
 
         Test* suite() const
         {
-            auto fixture = new TestSuite(ccinfra::TypeName<Fixture>::value());
+            auto fixture = new TestSuite(cub::TypeName<Fixture>::value());
 
             for (auto& method : registry)
             {

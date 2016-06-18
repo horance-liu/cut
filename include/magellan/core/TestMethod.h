@@ -33,7 +33,7 @@ struct TestMethod
 private:
     std::string getFullName() const
     {
-        return ccinfra::TypeName<Fixture>::value() + "::" + name;
+        return cub::TypeName<Fixture>::value() + "::" + name;
     }
 
 private:

@@ -18,13 +18,13 @@ struct XmlNode
     template <typename V>
     void addAttribute(const std::string& key, const V& value)
     {
-        doAddAtribute(key, ccinfra::toString(value));
+        doAddAtribute(key, cub::toString(value));
     }
 
     template <typename V>
     void addValue(const V& value)
     {
-        doAddValue(ccinfra::toString(value));
+        doAddValue(cub::toString(value));
     }
 
     const std::string& getName() const;

@@ -11,8 +11,8 @@ MAGELLAN_NS_BEGIN
 
 TestResult::~TestResult()
 {
-    ccinfra::each(listeners, [](TestListener* p) { delete p; });
-    ccinfra::each(failures,  [](TestFailure* p)  { delete p; });
+    cub::each(listeners, [](TestListener* p) { delete p; });
+    cub::each(failures,  [](TestFailure* p)  { delete p; });
 }
 
 void TestResult::add(TestListener* listener)
@@ -21,7 +21,7 @@ void TestResult::add(TestListener* listener)
 }
 
 #define BROADCAST(action) \
-ccinfra::each(listeners, [&](TestListener* listener) { listener->action; })
+cub::each(listeners, [&](TestListener* listener) { listener->action; })
 
 void TestResult::run(TestCase& test)
 {

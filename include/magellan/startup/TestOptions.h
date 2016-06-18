@@ -33,8 +33,8 @@ private:
     bool matches(const std::string& name) const;
 
 private:
-    ccinfra::OptionsDescription desc;
-    ccinfra::VariablesMap options;
+    cub::OptionsDescription desc;
+    cub::VariablesMap options;
 
 private:
     USE_ROLE(TestRunner);

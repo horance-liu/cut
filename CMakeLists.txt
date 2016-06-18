@@ -8,15 +8,8 @@ if(UNIX)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-invalid-offsetof -g -std=c++11")
 endif()
 
-set(MAGELLAN_INCLUDE_DIR 
-${CMAKE_CURRENT_SOURCE_DIR}/lib/ccinfra/include
-${CMAKE_CURRENT_SOURCE_DIR}/lib/hamcrest/include
-${CMAKE_CURRENT_SOURCE_DIR}/include)
+include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include")
 
-include_directories(${MAGELLAN_INCLUDE_DIR})
-
-add_subdirectory(lib/ccinfra)
-add_subdirectory(lib/hamcrest)
 add_subdirectory(src)
 
 if(ENABLE_TEST)
