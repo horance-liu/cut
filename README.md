@@ -1,4 +1,4 @@
-# Mangellan: A Simple xUnit Test Framework in Modern C++11
+# Cut: A Simple xUnit Test Framework in Modern C++11
 
 [cut](http://gitlab.com/horance/cut) is a simple, practical, and scalable xUnit Test Framework in Modern C++11. It's inspiration comes from the famous testing framework JUnit in Java community.
 
