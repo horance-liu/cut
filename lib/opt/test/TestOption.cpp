@@ -1,6 +1,6 @@
 #include <cut/cut.hpp>
-#include <opt/ProgramOptions.hpp>
 #include <opt/core/Args.h>
+#include "../include/opt/Opt.hpp"
 
 USING_OPT_NS
 
