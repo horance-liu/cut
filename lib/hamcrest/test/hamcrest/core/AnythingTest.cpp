@@ -1,4 +1,4 @@
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 #include <hamcrest/core/def/AnythingDef.h>
 
 USING_HAMCREST_NS

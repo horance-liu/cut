@@ -1,10 +1,10 @@
 # Mangellan: A Simple xUnit Test Framework in Modern C++11
 
-[Magellan](http://gitlab.com/horance/magellan) is a simple, practical, and scalable xUnit Test Framework in Modern C++11. It's inspiration comes from the famous testing framework JUnit in Java community.
+[cut](http://gitlab.com/horance/cut) is a simple, practical, and scalable xUnit Test Framework in Modern C++11. It's inspiration comes from the famous testing framework JUnit in Java community.
 
 C/C++ are different languages from most modern ones. Writing tests for them has some very specific challenges. Therefore, simply clone ideas from xUnit frameworks for other languages does not work the best. Programmers have to suffer accidental complexities brought by most of existing frameworks.
 
-**Magellan** is designed for simplifying efforts of programers, in terms of development, maintenance, flexibility of test management, build & run-time strategy, and others.
+**cut** is designed for simplifying efforts of programers, in terms of development, maintenance, flexibility of test management, build & run-time strategy, and others.
 
 Supported Platform:
 * [MAC OS X] supported
@@ -23,28 +23,28 @@ Dependences:
 
 ## Installing
 
-### Clone Magellan
+### Clone cut
 
 ```bash
-$ git clone https://github.com:ccup/magellan.git
+$ git clone https://github.com:ccup/cut.git
 ```
 
 ### Install Dependencies
 
 ```bash
-$ cd magellan/lib
+$ cd cut/lib
 $ git clone https://github.com/ccup/cub.git
 $ cd cub && mkdir build && cd build
 $ cmake .. && make
 $ sudo make install 
 ```
 
-### Install Magellan
+### Install cut
 
 First, Install `hamcrest`：
 
 ```bash
-$ cd magellan/lib/hamcrest && mkdir build && cd build
+$ cd cut/lib/hamcrest && mkdir build && cd build
 $ cmake .. && make
 $ sudo make install 
 ```
@@ -52,25 +52,25 @@ $ sudo make install
 Second, Intall `options`：
 
 ```bash
-$ cd magellan/lib/options && mkdir build && cd build
+$ cd cut/lib/options && mkdir build && cd build
 $ cmake .. && make
 $ sudo make install 
 ```
 
-At last, Install `magellan`：
+At last, Install `cut`：
 
 ```bash
-$ cd magellan && mkdir build && cd build
+$ cd cut && mkdir build && cd build
 $ cmake .. && make
 $ sudo make install 
 ```
 
-##### Test Magellan
+##### Test cut
 
 ```bash
-$ cd magellan/build
+$ cd cut/build
 $ cmake -DENABLE_TEST=on .. && make
-$ test/magellan-test
+$ test/cut-test
 ```
 
 ### Using Rake
@@ -89,13 +89,13 @@ $ rake build[gcc]    # clone all dependencies
 Other tasks:
 
 ```bash
-$ rake             # build, install magellan using clang
+$ rake             # build, install cut using clang
 $ rake build       # build, install using clang
 $ rake test        # build, install, and test using clang
 $ rake build[gcc]  # build, install using gcc
 $ rake test[gcc]   # build, install, and test using gcc
-$ rake uninstall   # uninstall magellan only
-$ rake clean       # remove temp directory, and uninstall magellan
+$ rake uninstall   # uninstall cut only
+$ rake clean       # remove temp directory, and uninstall cut
 ```
 
 And other task for dependencies:
@@ -131,12 +131,12 @@ quantity
 ##### main
 
 ```cpp
-#include "magellan/magellan.hpp"
+#include <cut/cut.hpp>
 
 
 int main(int argc, char** argv)
 {
-    return magellan::run_all_tests(argc, argv);
+    return cut::run_all_tests(argc, argv);
 }
 ```
 
@@ -160,7 +160,7 @@ test/*.c)
 
 add_executable(quantity-test ${all_files})
 
-target_link_libraries(quantity-test magellan hamcrest cub)
+target_link_libraries(quantity-test cut hamcrest cub)
 ```
 
 ##### Build
@@ -185,14 +185,14 @@ $ ./quantity-test
 [  TOTAL   ] PASS: 0  FAILURE: 0  ERROR: 0  TIME: 0 us
 ```
 
-### Magellan Experience
+### cut Experience
 
 #### First Test Case
 
 ```cpp
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 
-#include "quantity/Length.h"
+#include <quantity/Length.h>
 
 USING_HAMCREST_NS
 
@@ -209,7 +209,7 @@ FIXTURE(LengthTest)
 
 ```cpp
 // quantity/Length.h
-#include "quantity/Amount.h"
+#include <quantity/Amount.h>
 
 enum LengthUnit
 {
@@ -231,7 +231,7 @@ private:
 
 ```cpp
 // quantity/Length.cpp
-#include "quantity/Length.h"
+#include <quantity/Length.h>
 
 Length::Length(Amount amount, LengthUnit unit)
   : amountInBaseUnit(unit * amount)
@@ -296,7 +296,7 @@ Test fixture can be divided into three categories:
 #### Independent Fixture
 
 ```cpp
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 
 FIXTURE(LengthTest)
 {
@@ -331,7 +331,7 @@ Executing sequence：
 #### Shared Fixture
 
 ```cpp
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 
 FIXTURE(LengthTest)
 {
@@ -374,7 +374,7 @@ Executing squence：
 #### Global Fixture
 
 ```cpp
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 
 BEFORE_ALL("before all 1")
 {
@@ -394,7 +394,7 @@ AFTER_ALL("after all 2")
 ```
 
 ```cpp
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 
 FIXTURE(LengthTest)
 {
@@ -421,7 +421,7 @@ FIXTURE(LengthTest)
 ```
 
 ```cpp
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 
 FIXTURE(VolumeTest)
 {
@@ -484,8 +484,8 @@ Possible executing squence：
 #### Auto Identification
 
 ```cpp
-#include <magellan/magellan.hpp>
-#include "quantity/length/Length.h"
+#include <cut/cut.hpp>
+#include <quantity/length/Length.h>
 
 USING_HAMCREST_NS
 
@@ -513,10 +513,10 @@ FIXTURE(LengthTest)
 A independant and new instance `RobotCleaner robot` will be created for each test case.
 
 ```cpp
-#include "magellan/magellan.hpp"
-#include "robot-cleaner/RobotCleaner.h"
-#include "robot-cleaner/Position.h"
-#include "robot-cleaner/Instructions.h"
+#include <cut/cut.hpp>
+#include <robot-cleaner/RobotCleaner.h>
+#include <robot-cleaner/Position.h>
+#include <robot-cleaner/Instructions.h>
 
 USING_HAMCREST_NS
 
@@ -547,10 +547,10 @@ FIXTURE(RobotCleanerTest)
 #### Extract Method
 
 ```cpp
-#include "magellan/magellan.hpp"
-#include "robot-cleaner/RobotCleaner.h"
-#include "robot-cleaner/Position.h"
-#include "robot-cleaner/Instructions.h"
+#include <cut/cut.hpp>
+#include <robot-cleaner/RobotCleaner.h>
+#include <robot-cleaner/Position.h>
+#include <robot-cleaner/Instructions.h>
 
 USING_HAMCREST_NS
 
@@ -611,7 +611,7 @@ FIXTURE(RobotCleanerTest)
 `ASSERT_THAT` makes assertions more expressive, it will be the actual value on the left, but the desired value on the right, and more consistent with English habits.
 
 ```cpp
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 
 FIXTURE(CloseToTest)
 {
@@ -626,7 +626,7 @@ FIXTURE(CloseToTest)
 
 #### Hamcrest
 
-Hamcrest is a lightweight, extensible matcher framework that has been introduced into the JUnit framework by Beck Kent. Magellan introduces the design of Hamcrest, implements a C\+\+ porting version of Hamcrest, which makes the assertion of Magellang more scalable and readable.
+Hamcrest is a lightweight, extensible matcher framework that has been introduced into the JUnit framework by Beck Kent. cut introduces the design of Hamcrest, implements a C\+\+ porting version of Hamcrest, which makes the assertion of cutg more scalable and readable.
 
 ##### anything
 
@@ -636,7 +636,7 @@ Hamcrest is a lightweight, extensible matcher framework that has been introduced
 | _             | syntax sugar of anything  |
 
 ```cpp
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 
 USING_HAMCREST_NS
 
@@ -675,7 +675,7 @@ FIXTURE(AnythingTest)
 | ge            | greater or equal to |
 
 ```cpp
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 
 USING_HAMCREST_NS
 
@@ -738,7 +738,7 @@ FIXTURE(NotEqualToTest)
 | is_not        | not decorator  |
 
 ```cpp
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 
 USING_HAMCREST_NS
 
@@ -768,7 +768,7 @@ FIXTURE(IsNotTest)
 | nil           | null pointer   |
 
 ```cpp
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 
 USING_HAMCREST_NS
 
@@ -814,7 +814,7 @@ FIXTURE(NilTest)
 | ends_with_ignoring_case       | ends with a sub-string ignoring case   |
 
 ```cpp
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 
 USING_HAMCREST_NS
 
@@ -850,7 +850,7 @@ FIXTURE(StartsWithTest)
 | nan      | not a number            |
 
 ```cpp
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 #include <math.h>
 
 USING_HAMCREST_NS
@@ -868,10 +868,10 @@ FIXTURE(IsNanTest)
 };
 ```
 
-### Magellan Options
+### cut Options
 
 ```cpp
-TestOptions::TestOptions() : desc("magellan")
+TestOptions::TestOptions() : desc("cut")
 {
     desc.add({
         {"help,     h",   "help message"},

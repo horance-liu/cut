@@ -1,6 +1,6 @@
-#include "magellan/magellan.hpp"
-#include "options/ProgramOptions.hpp"
-#include "options/core/Args.h"
+#include <cut/cut.hpp>
+#include <options/ProgramOptions.hpp>
+#include <options/core/Args.h>
 
 USING_OPT_NS
 

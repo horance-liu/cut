@@ -1,4 +1,4 @@
-project(magellan)
+project(cut)
 
 cmake_minimum_required(VERSION 2.8)
 
@@ -16,4 +16,4 @@ if(ENABLE_TEST)
     add_subdirectory(test)
 endif()
 
-install(DIRECTORY include/magellan DESTINATION include)
+install(DIRECTORY include/cut DESTINATION include)

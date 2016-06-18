@@ -1,6 +1,6 @@
-project(magellan-test)
+project(cut-test)
 
-include_directories(${MAGELLAN_INCLUDE_DIR} robot-cleaner/include quantity/include)
+include_directories(${cut_INCLUDE_DIR} robot-cleaner/include quantity/include)
 
 FILE(GLOB_RECURSE all_files
 *.cpp
@@ -9,5 +9,5 @@ FILE(GLOB_RECURSE all_files
 *.c
 *.C)
 
-add_executable(magellan-test ${all_files})
-target_link_libraries(magellan-test magellan hamcrest options cub)
+add_executable(cut-test ${all_files})
+target_link_libraries(cut-test cut hamcrest options cub)

@@ -1,9 +1,9 @@
-#include "magellan/magellan.hpp"
-#include "magellan/startup/TestOptions.h"
-#include "options/core/Args.h"
+#include <cut/cut.hpp>
+#include <cut/startup/TestOptions.h>
+#include <options/core/Args.h>
 #include <regex>
 
-USING_MAGELLAN_NS
+USING_CUT_NS
 USING_HAMCREST_NS
 USING_CUB_NS
 

@@ -1,4 +1,4 @@
-#include "quantity/base/Quantity.h"
+#include <quantity/base/Quantity.h>
 
 template <typename Unit>
 Quantity<Unit>::Quantity(const Amount amount, const Unit unit)

@@ -1,6 +1,6 @@
 project(options-test)
 
-include_directories(${MAGELLAN_INCLUDE_DIR})
+include_directories(${cut_INCLUDE_DIR})
 
 if(UNIX)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
@@ -14,4 +14,4 @@ FILE(GLOB_RECURSE all_files
 *.C)
 
 add_executable(options-test ${all_files})
-target_link_libraries(options-test hamcrest options magellan cub)
+target_link_libraries(options-test hamcrest options cut cub)

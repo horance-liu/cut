@@ -1,8 +1,8 @@
 #ifndef H722C49C6_D285_4885_88D1_97A11D669EE1
 #define H722C49C6_D285_4885_88D1_97A11D669EE1
 
-#include "robot-cleaner/Point.h"
-#include "robot-cleaner/Orientation.h"
+#include <robot-cleaner/Point.h>
+#include <robot-cleaner/Orientation.h>
 
 struct Position : Point, Orientation
 {

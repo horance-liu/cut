@@ -1,8 +1,8 @@
-#include "magellan/magellan.hpp"
-#include "magellan/listener/util/XmlNode.h"
-#include "magellan/listener/util/XmlBuilder.h"
+#include <cut/cut.hpp>
+#include <cut/listener/util/XmlNode.h>
+#include <cut/listener/util/XmlBuilder.h>
 
-USING_MAGELLAN_NS
+USING_CUT_NS
 USING_HAMCREST_NS
 
 FIXTURE(XmlBuilderTest)

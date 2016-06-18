@@ -1,12 +1,12 @@
-#include "magellan/magellan.hpp"
-#include "magellan/core/TestResult.h"
-#include "magellan/core/TestListener.h"
-#include "magellan/except/TestFailure.h"
+#include <cut/cut.hpp>
+#include <cut/core/TestResult.h>
+#include <cut/core/TestListener.h>
+#include <cut/except/TestFailure.h>
 #include <functional>
 #include <exception>
 #include <new>
 
-USING_MAGELLAN_NS
+USING_CUT_NS
 USING_HAMCREST_NS
 
 namespace

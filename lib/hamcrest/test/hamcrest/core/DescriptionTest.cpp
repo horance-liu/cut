@@ -1,6 +1,6 @@
 #include <hamcrest/base/Description.h>
 #include <hamcrest/core/def/IsDef.h>
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 
 USING_HAMCREST_NS
 

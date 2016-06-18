@@ -1,9 +1,9 @@
-#include <magellan/magellan.hpp>
-#include <magellan/hook/registry/HookRegistries.h>
+#include <cut/cut.hpp>
+#include <cut/hook/registry/HookRegistries.h>
 #include <sstream>
 
 USING_HAMCREST_NS
-USING_MAGELLAN_NS
+USING_CUT_NS
 
 namespace
 {

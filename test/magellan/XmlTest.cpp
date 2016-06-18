@@ -1,8 +1,8 @@
-#include "magellan/magellan.hpp"
-#include "magellan/listener/util/XmlNode.h"
+#include <cut/cut.hpp>
+#include <cut/listener/util/XmlNode.h>
 
 USING_HAMCREST_NS
-USING_MAGELLAN_NS
+USING_CUT_NS
 
 FIXTURE(XmlNodeTest)
 {

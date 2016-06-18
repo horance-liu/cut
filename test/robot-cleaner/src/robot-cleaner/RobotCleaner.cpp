@@ -1,5 +1,5 @@
-#include "robot-cleaner/RobotCleaner.h"
-#include "robot-cleaner/Instructions.h"
+#include <robot-cleaner/RobotCleaner.h>
+#include <robot-cleaner/Instructions.h>
 
 RobotCleaner::RobotCleaner()
   : position(0, 0, NORTH)

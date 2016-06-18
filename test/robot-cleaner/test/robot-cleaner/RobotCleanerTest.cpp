@@ -1,7 +1,7 @@
-#include "magellan/magellan.hpp"
-#include "robot-cleaner/RobotCleaner.h"
-#include "robot-cleaner/Position.h"
-#include "robot-cleaner/Instructions.h"
+#include <cut/cut.hpp>
+#include <robot-cleaner/RobotCleaner.h>
+#include <robot-cleaner/Position.h>
+#include <robot-cleaner/Instructions.h>
 
 USING_HAMCREST_NS
 

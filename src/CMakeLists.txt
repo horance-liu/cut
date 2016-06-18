@@ -5,5 +5,5 @@ FILE(GLOB_RECURSE all_files
 *.c
 *.C)
 
-add_library(magellan STATIC ${all_files})
-install(TARGETS magellan ARCHIVE DESTINATION lib)
+add_library(cut STATIC ${all_files})
+install(TARGETS cut ARCHIVE DESTINATION lib)

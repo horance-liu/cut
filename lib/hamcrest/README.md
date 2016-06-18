@@ -1,6 +1,6 @@
 # Hamcrest
 
-Hamcrest是Java社区一个轻量级的，可扩展的Matcher框架，曾被Kent Beck引入到JUnit框架中，用于增强断言的机制。Magellan引入了Hamcrest的设计，实现了一个C\+\+移植版本的Hamcrest，使得Magellang的断言更加具有扩展性和可读性。
+Hamcrest是Java社区一个轻量级的，可扩展的Matcher框架，曾被Kent Beck引入到JUnit框架中，用于增强断言的机制。cut引入了Hamcrest的设计，实现了一个C\+\+移植版本的Hamcrest，使得cutg的断言更加具有扩展性和可读性。
 
 ## anything
 
@@ -10,7 +10,7 @@ Hamcrest是Java社区一个轻量级的，可扩展的Matcher框架，曾被Kent
 | _             | anything语法糖 |
 
 ```cpp
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 
 USING_HAMCREST_NS
 
@@ -49,7 +49,7 @@ FIXTURE(AnythingTest)
 | ge            | 大于或等于       |
 
 ```cpp
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 
 USING_HAMCREST_NS
 
@@ -112,7 +112,7 @@ FIXTURE(NotEqualToTest)
 | is_not        | 可读性装饰器     |
 
 ```cpp
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 
 USING_HAMCREST_NS
 
@@ -142,7 +142,7 @@ FIXTURE(IsNotTest)
 | nil           | 空指针          |
 
 ```cpp
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 
 USING_HAMCREST_NS
 
@@ -188,7 +188,7 @@ FIXTURE(NilTest)
 | ends_with_ignoring_case       | 忽略大小写，断言是否以该子串结尾 |
 
 ```cpp
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 
 USING_HAMCREST_NS
 
@@ -224,7 +224,7 @@ FIXTURE(StartsWithTest)
 | nan      | 断言浮点数不是一个数字   |
 
 ```cpp
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 #include <math.h>
 
 USING_HAMCREST_NS

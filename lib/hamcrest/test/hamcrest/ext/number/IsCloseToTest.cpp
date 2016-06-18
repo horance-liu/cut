@@ -1,5 +1,5 @@
 #include <hamcrest/ext/number/def/IsCloseToDef.h>
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 
 USING_HAMCREST_NS
 

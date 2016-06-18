@@ -76,7 +76,7 @@ end
 task :deps => [:deps_clone, :deps_build]
 
 task :uninstall do
-  do_clean(:magellan)
+  do_clean(:cut)
 end 
 
 task :build, [:compiler] => :uninstall do |task, args| 
@@ -91,7 +91,7 @@ task :test, [:compiler] => :build do |task, args|
   args.with_defaults(:compiler => 'clang')
 
   do_build(".", clang:args.compiler == 'clang', test:true)  { 
-    do_test(".", :magellan) 
+    do_test(".", :cut) 
   }
 end
 

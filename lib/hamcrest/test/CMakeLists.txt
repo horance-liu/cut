@@ -1,6 +1,6 @@
 project(hamcrest-test)
 
-include_directories(${MAGELLAN_INCLUDE_DIR})
+include_directories(${cut_INCLUDE_DIR})
 
 FILE(GLOB_RECURSE all_files
 *.cpp
@@ -10,4 +10,4 @@ FILE(GLOB_RECURSE all_files
 *.C)
 
 add_executable(hamcrest-test ${all_files})
-target_link_libraries(hamcrest-test hamcrest options magellan cub)
+target_link_libraries(hamcrest-test hamcrest options cut cub)

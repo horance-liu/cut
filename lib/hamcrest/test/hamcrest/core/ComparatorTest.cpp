@@ -1,4 +1,4 @@
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 #include <hamcrest/core/def/ComparatorDef.h>
 #include <hamcrest/core/def/IsDef.h>
 #include <hamcrest/core/def/IsNotDef.h>

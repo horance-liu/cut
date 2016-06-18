@@ -1,6 +1,6 @@
 #include <hamcrest/core/def/IsDef.h>
 #include <hamcrest/ext/string/def/StringEndsWithDef.h>
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 
 USING_HAMCREST_NS
 

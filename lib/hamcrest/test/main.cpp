@@ -1,6 +1,6 @@
-#include "magellan/magellan.hpp"
+#include <cut/cut.hpp>
 
 int main(int argc, char** argv)
 {
-    return magellan::run_all_tests(argc, argv);
+    return cut::run_all_tests(argc, argv);
 }

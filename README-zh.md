@@ -1,14 +1,14 @@
-# Magellan: A Simple xUnit Test Framework in Modern C++11
+# cut: A Simple xUnit Test Framework in Modern C++11
 
 ## 灵感
 
-Magellan是一个简单的、可扩展的、使用C\+\+11实现的xUnit测试框架。Magellan设计灵感来自于Java社区著名的测试框架JUnit。
+cut是一个简单的、可扩展的、使用C\+\+11实现的xUnit测试框架。cut设计灵感来自于Java社区著名的测试框架JUnit。
 
 ## 安装
 
 ### GitHub
 
-- 地址：[https://github.com/horance-liu/magellan](https://github.com/horance-liu/magellan)
+- 地址：[https://github.com/horance-liu/cut](https://github.com/horance-liu/cut)
 - 作者：刘光聪
 - Email：[horance@outlook.com](horance@outlook.com)
 
@@ -25,28 +25,28 @@ Magellan是一个简单的、可扩展的、使用C\+\+11实现的xUnit测试框
 * [MSVC] not supported.
 
 
-### 克隆Magellan
+### 克隆cut
 
 ```bash
-$ git clone https://github.com:ccup/magellan.git
+$ git clone https://github.com:ccup/cut.git
 ```
 
 ### 安装依赖
 
 ```bash
-$ cd magellan
+$ cd cut
 $ git clone https://github.com/ccup/cub.git lib/cub
 $ cd lib/cub && mkdir build && cd build
 $ cmake .. && make
 $ sudo make install 
 ```
 
-### 安装Magellan
+### 安装cut
 
 安装`hamcrest`：
 
 ```bash
-$ cd magellan/lib/hamcrest && mkdir build && cd build
+$ cd cut/lib/hamcrest && mkdir build && cd build
 $ cmake .. && make
 $ sudo make install 
 ```
@@ -54,30 +54,30 @@ $ sudo make install
 安装`options`：
 
 ```bash
-$ cd magellan/lib/options && mkdir build && cd build
+$ cd cut/lib/options && mkdir build && cd build
 $ cmake .. && make
 $ sudo make install 
 ```
 
-最后安装`magellan`：
+最后安装`cut`：
 
 ```bash
-$ cd magellan && mkdir build && cd build
+$ cd cut && mkdir build && cd build
 $ cmake .. && make
 $ sudo make install 
 ```
 
-##### 测试Magellan
+##### 测试cut
 
 ```bash
-$ cd magellan/build
+$ cd cut/build
 $ cmake -DENABLE_TEST=on .. && make
-$ test/magellan-test
+$ test/cut-test
 ```
 
 ##### 使用Rake
 
-使用`Rake`可简化`Magelan`的依赖管理，方便`magellan`的构建，及其测试，并且使得`Magellan`自我测试变成更加方便自如。
+使用`Rake`可简化`Magelan`的依赖管理，方便`cut`的构建，及其测试，并且使得`cut`自我测试变成更加方便自如。
 
 ```bash
 $ rake deps      # install all dependencies
@@ -93,13 +93,13 @@ $ rake build[gcc]    # clone all dependencies
 其他`rake`任务包括：
 
 ```bash
-$ rake             # build, install magellan using clang
+$ rake             # build, install cut using clang
 $ rake build       # build, install using clang
 $ rake test        # build, install, and test using clang
 $ rake build[gcc]  # build, install using gcc
 $ rake test[gcc]   # build, install, and test using gcc
-$ rake uninstall   # uninstall magellan only
-$ rake clean       # remove temp directory, and uninstall magellan
+$ rake uninstall   # uninstall cut only
+$ rake clean       # remove temp directory, and uninstall cut
 ```
 
 其他依赖的`rake`任务包括：
@@ -135,12 +135,12 @@ quantity
 ##### main函数
 
 ```cpp
-#include "magellan/magellan.hpp"
+#include <cut/cut.hpp>
 
 
 int main(int argc, char** argv)
 {
-    return magellan::run_all_tests(argc, argv);
+    return cut::run_all_tests(argc, argv);
 }
 ```
 
@@ -165,7 +165,7 @@ test/*.c)
 
 add_executable(quantity-test ${all_files})
 
-target_link_libraries(quantity-test magellan hamcrest cub)
+target_link_libraries(quantity-test cut hamcrest cub)
 ```
 
 ##### 构建
@@ -190,14 +190,14 @@ $ ./quantity-test
 [  TOTAL   ] PASS: 0  FAILURE: 0  ERROR: 0  TIME: 0 us
 ```
 
-### 体验Magellan
+### 体验cut
 
 #### 第一个用例
 
 ```cpp
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 
-#include "quantity/Length.h"
+#include <quantity/Length.h>
 
 USING_HAMCREST_NS
 
@@ -210,7 +210,7 @@ FIXTURE(LengthTest)
 };
 ```
 
-使用 Magellan,只需要包含 `magellan.hpp` 一个头文件即可。Magellan 使用 Hamcrest 的断言机制,
+使用 cut,只需要包含 `cut.hpp` 一个头文件即可。cut 使用 Hamcrest 的断言机制,
 使得断言更加统一、自然,且具有良好的扩展性;使用 `USING_HAMCREST_NS`,从而可以使用 `eq` 代
 替 `hamcrest::eq`,简短明确;除非出现名字冲突,否则推荐使用简写的 `eq`。
 
@@ -218,7 +218,7 @@ FIXTURE(LengthTest)
 
 ```cpp
 // quantity/Length.h
-#include "quantity/Amount.h"
+#include <quantity/Amount.h>
 
 enum LengthUnit
 {
@@ -240,7 +240,7 @@ private:
 
 ```cpp
 // quantity/Length.cpp
-#include "quantity/Length.h"
+#include <quantity/Length.h>
 
 Length::Length(Amount amount, LengthUnit unit)
   : amountInBaseUnit(unit * amount)
@@ -301,7 +301,7 @@ FIXTURE的参数可以是任意的C\+\+标识符。一般而言，将其命名�
 #### 独立的Fixture
 
 ```cpp
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 
 FIXTURE(LengthTest)
 {
@@ -337,7 +337,7 @@ FIXTURE(LengthTest)
 #### 共享的Fixture
 
 ```cpp
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 
 FIXTURE(LengthTest)
 {
@@ -379,10 +379,10 @@ FIXTURE(LengthTest)
 
 #### 全局的Fixture
 
-有时候需要在所有用例启动之前完成一次性的全局性的配置，在所有用例运行完成之后完成一次性的清理工作。Magellan则使用`BEFORE_ALL`和`AFTER_ALL`两个关键字来支持这样的特性。
+有时候需要在所有用例启动之前完成一次性的全局性的配置，在所有用例运行完成之后完成一次性的清理工作。cut则使用`BEFORE_ALL`和`AFTER_ALL`两个关键字来支持这样的特性。
 
 ```cpp
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 
 BEFORE_ALL("before all 1")
 {
@@ -401,10 +401,10 @@ AFTER_ALL("after all 2")
 }
 ```
 
-`BEFORE_ALL`和`AFTER_ALL`向系统注册`Hook`即可，Magellan便能自动地发现它们，并执行它们。犹如C\+\+不能保证各源文件中全局变量初始化的顺序一样，避免在源文件之间的`BEFORE_ALL`和`AFTER_ALL`设计不合理的依赖关系。
+`BEFORE_ALL`和`AFTER_ALL`向系统注册`Hook`即可，cut便能自动地发现它们，并执行它们。犹如C\+\+不能保证各源文件中全局变量初始化的顺序一样，避免在源文件之间的`BEFORE_ALL`和`AFTER_ALL`设计不合理的依赖关系。
 
 ```cpp
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 
 FIXTURE(LengthTest)
 {
@@ -431,7 +431,7 @@ FIXTURE(LengthTest)
 ```
 
 ```cpp
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 
 FIXTURE(VolumeTest)
 {
@@ -457,7 +457,7 @@ FIXTURE(VolumeTest)
 };
 ```
 
-Magellan可能的一个执行序列为：
+cut可能的一个执行序列为：
 
 1. `BEFORE_ALL("before all 1")`
 2. `BEFORE_ALL("before all 2")`
@@ -493,11 +493,11 @@ Magellan可能的一个执行序列为：
 
 #### 自动标识
 
-Magellan能够自动地实现测试用例的标识功能，用户可以使用字符串来解释说明测试用例的意图，使得用户在描述用例时更加自然和方便。
+cut能够自动地实现测试用例的标识功能，用户可以使用字符串来解释说明测试用例的意图，使得用户在描述用例时更加自然和方便。
 
 ```cpp
-#include <magellan/magellan.hpp>
-#include "quantity/length/Length.h"
+#include <cut/cut.hpp>
+#include <quantity/length/Length.h>
 
 USING_HAMCREST_NS
 
@@ -522,13 +522,13 @@ FIXTURE(LengthTest)
 
 #### 面向对象
 
-Magellan实现xUnit时非常巧妙，使得用户设计用例时更加面向对象。`RobotCleaner robot`在每个用例执行时都将获取一个独立的、全新的实例。
+cut实现xUnit时非常巧妙，使得用户设计用例时更加面向对象。`RobotCleaner robot`在每个用例执行时都将获取一个独立的、全新的实例。
 
 ```cpp
-#include "magellan/magellan.hpp"
-#include "robot-cleaner/RobotCleaner.h"
-#include "robot-cleaner/Position.h"
-#include "robot-cleaner/Instructions.h"
+#include <cut/cut.hpp>
+#include <robot-cleaner/RobotCleaner.h>
+#include <robot-cleaner/Position.h>
+#include <robot-cleaner/Instructions.h>
 
 USING_HAMCREST_NS
 
@@ -561,10 +561,10 @@ FIXTURE(RobotCleanerTest)
 提取的相关子函数，可以直接放在`Fixture`的内部，使得用例与其的距离最近，更加体现类作用域的概念。
 
 ```cpp
-#include "magellan/magellan.hpp"
-#include "robot-cleaner/RobotCleaner.h"
-#include "robot-cleaner/Position.h"
-#include "robot-cleaner/Instructions.h"
+#include <cut/cut.hpp>
+#include <robot-cleaner/RobotCleaner.h>
+#include <robot-cleaner/Position.h>
+#include <robot-cleaner/Instructions.h>
 
 USING_HAMCREST_NS
 
@@ -622,12 +622,12 @@ FIXTURE(RobotCleanerTest)
 
 #### ASSERT_THAT
 
-Magellan只支持一种断言原语：`ASSERT_THAT`, 从而避免用户在选择`ASSERT_THAT/ASSERT_NE, ASSERT_TRUE/ASSERT_FALSE`时的困扰，使其断言更加具有统一性，一致性。
+cut只支持一种断言原语：`ASSERT_THAT`, 从而避免用户在选择`ASSERT_THAT/ASSERT_NE, ASSERT_TRUE/ASSERT_FALSE`时的困扰，使其断言更加具有统一性，一致性。
 
 此外，`ASSERT_THAT`使得断言更加具有表达力，它将实际值放在左边，期望值放在右边，更加符合英语习惯。
 
 ```cpp
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 
 FIXTURE(CloseToTest)
 {
@@ -642,7 +642,7 @@ FIXTURE(CloseToTest)
 
 #### Hamcrest
 
-Hamcrest是Java社区一个轻量级的，可扩展的Matcher框架，曾被Kent Beck引入到JUnit框架中，用于增强断言的机制。Magellan引入了Hamcrest的设计，实现了一个C\+\+移植版本的Hamcrest，使得Magellang的断言更加具有扩展性和可读性。
+Hamcrest是Java社区一个轻量级的，可扩展的Matcher框架，曾被Kent Beck引入到JUnit框架中，用于增强断言的机制。cut引入了Hamcrest的设计，实现了一个C\+\+移植版本的Hamcrest，使得cutg的断言更加具有扩展性和可读性。
 
 ##### anything
 
@@ -652,7 +652,7 @@ Hamcrest是Java社区一个轻量级的，可扩展的Matcher框架，曾被Kent
 | _             | anything语法糖 |
 
 ```cpp
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 
 USING_HAMCREST_NS
 
@@ -691,7 +691,7 @@ FIXTURE(AnythingTest)
 | ge      		| 大于或等于       |
 
 ```cpp
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 
 USING_HAMCREST_NS
 
@@ -754,7 +754,7 @@ FIXTURE(NotEqualToTest)
 | is_not        | 可读性装饰器     |
 
 ```cpp
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 
 USING_HAMCREST_NS
 
@@ -784,7 +784,7 @@ FIXTURE(IsNotTest)
 | nil      		| 空指针          |
 
 ```cpp
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 
 USING_HAMCREST_NS
 
@@ -830,7 +830,7 @@ FIXTURE(NilTest)
 | ends_with_ignoring_case       | 忽略大小写，断言是否以该子串结尾 |
 
 ```cpp
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 
 USING_HAMCREST_NS
 
@@ -866,7 +866,7 @@ FIXTURE(StartsWithTest)
 | nan      | 断言浮点数不是一个数字   |
 
 ```cpp
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 #include <math.h>
 
 USING_HAMCREST_NS
@@ -887,7 +887,7 @@ FIXTURE(IsNanTest)
 ### 程序选项
 
 ```cpp
-TestOptions::TestOptions() : desc("magellan")
+TestOptions::TestOptions() : desc("cut")
 {
     desc.add({
         {"help,     h",   "help message"},

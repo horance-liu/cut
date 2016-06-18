@@ -1,5 +1,5 @@
 #include <hamcrest/core/def/IsNotDef.h>
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 
 USING_HAMCREST_NS
 

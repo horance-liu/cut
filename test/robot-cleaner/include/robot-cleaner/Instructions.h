@@ -1,7 +1,7 @@
 #ifndef HC37C3D94_43F1_4677_BD56_34CB78EFEC75
 #define HC37C3D94_43F1_4677_BD56_34CB78EFEC75
 
-#include "cub/dci/Role.h"
+#include <cub/dci/Role.h>
 #include <vector>
 
 struct Point;

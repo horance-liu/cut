@@ -1,7 +1,7 @@
 #include <hamcrest/ext/number/def/IsNaNDef.h>
 #include <hamcrest/core/def/IsDef.h>
 #include <hamcrest/core/def/IsNotDef.h>
-#include <magellan/magellan.hpp>
+#include <cut/cut.hpp>
 #include <math.h>
 
 USING_HAMCREST_NS

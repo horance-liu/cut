@@ -1,7 +1,7 @@
 #ifndef _8NT1GNZJHQJIDQ5CHOBNEIYHQTXDU89K6T7OBWJQSOP4MXLC8DN3Z4KY               
 #define _8NT1GNZJHQJIDQ5CHOBNEIYHQTXDU89K6T7OBWJQSOP4MXLC8DN3Z4KY
 
-#include "hamcrest/core/matcher/comparator/Comparator.h"
+#include <hamcrest/core/matcher/comparator/Comparator.h>
 #include <cub/algo/operator.h>
 
 HAMCREST_NS_BEGIN
