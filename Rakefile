@@ -1,5 +1,3 @@
-USING_CLANG = true
-
 def execute(cmd)
   system "#{cmd}" or exit
 end
