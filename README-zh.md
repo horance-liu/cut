@@ -1,20 +1,18 @@
 # Magellan: A Simple xUnit Test Framework in Modern C++11
 
-## Magellan：开启新的征程
-
-### 灵感
+## 灵感
 
 Magellan是一个简单的、可扩展的、使用C\+\+11实现的xUnit测试框架。Magellan设计灵感来自于Java社区著名的测试框架JUnit。
 
-### 安装
+## 安装
 
-#### GitHub
+### GitHub
 
 - 地址：[https://github.com/horance-liu/magellan](https://github.com/horance-liu/magellan)
 - 作者：刘光聪
 - Email：[horance@outlook.com](horance@outlook.com)
 
-#### 编译环境
+### 编译环境
 
 支持的平台:
 * [MAC OS X] supported
@@ -26,55 +24,50 @@ Magellan是一个简单的、可扩展的、使用C\+\+11实现的xUnit测试框
 * [GCC] 4.8 or later.
 * [MSVC] not supported.
 
-#### 安装CMake
 
-CMake的下载地址：[http://www.cmake.org](http://www.cmake.org)。
-
-#### 安装依赖
-
-##### cub 
+### 克隆Magellan
 
 ```bash
-$ git clone https://github.com/MagicBowen/cub.git
-$ cd cub && mkdir build && cd build
+$ git clone https://github.com:ccup/magellan.git
+```
+
+### 安装依赖
+
+```bash
+$ cd magellan
+$ git clone https://github.com/ccup/cub.git lib/cub
+$ cd lib/cub && mkdir build && cd build
 $ cmake .. && make
 $ sudo make install 
 ```
 
-##### options
+### 安装Magellan
+
+安装`hamcrest`：
 
 ```bash
-$ git clone https://github.com/ccup/options.git
-$ cd cub && mkdir build && cd build
+$ cd magellan/lib/hamcrest && mkdir build && cd build
 $ cmake .. && make
 $ sudo make install 
 ```
 
-##### hamcrest
+安装`options`：
 
 ```bash
-$ git clone https://github.com/hamcrest-liu/hamcrest.git
-$ cd cub && mkdir build && cd build
+$ cd magellan/lib/options && mkdir build && cd build
 $ cmake .. && make
 $ sudo make install 
 ```
 
-##### 使用Rake
+最后安装`magellan`：
 
 ```bash
-$ rake deps
-```
-
-#### 安装Magellan
-
-```bash
-$ git clone https://gitlab.com/horance-liu/magellan.git
-$ cd cub && mkdir build && cd build
+$ cd magellan && mkdir build && cd build
 $ cmake .. && make
 $ sudo make install 
 ```
 
-#### 测试Magellan
+##### 测试Magellan
 
 ```bash
 $ cd magellan/build
@@ -82,16 +75,44 @@ $ cmake -DENABLE_TEST=on .. && make
 $ test/magellan-test
 ```
 
-#### 使用Rake
+##### 使用Rake
 
-使用Rake可简化Magelan的构建和测试过程，并且使得Magellan自我测试变成可能。
+使用`Rake`可简化`Magelan`的依赖管理，方便`magellan`的构建，及其测试，并且使得`Magellan`自我测试变成更加方便自如。
 
 ```bash
-$ rake           # build, install, and test using clang
-$ rake clang     # build, install, and test using clang
-$ rake gcc       # build, install, and test using gcc
-$ rake clean     # remove temp directory, and uninstall magellan
-$ rake uninstall # uninstall magellan only
+$ rake deps      # install all dependencies
+```
+
+如果使用`GCC`，安装依赖可以如下命令完成：
+
+```bash
+$ rake clone    # clone all dependencies
+$ rake build[gcc]    # clone all dependencies
+```
+
+其他`rake`任务包括：
+
+$ rake             # build, install magellan using clang
+$ rake build       # build, install using clang
+$ rake test        # build, install, and test using clang
+$ rake build[gcc]  # build, install using gcc
+$ rake test[gcc]   # build, install, and test using gcc
+$ rake uninstall   # uninstall magellan only
+$ rake clean       # remove temp directory, and uninstall magellan
+```
+
+其他依赖的`rake`任务包括：
+
+$ rake deps        # clone, build, install all dependencies using clang
+$ rake deps_clone  # clone all dependencies
+$ rake deps_build  # clone, build, install all dependencies using clang
+$ rake deps_test   # clone, build, install, and test all dependencies using clang
+
+$ rake deps_build[gcc]  # clone, build, install all dependencies using gcc
+$ rake deps_test[gcc]   # clone, build, install, and test all dependencies using gcc
+
+$ rake deps_uninstall   # uninstall all dependencies
+$ rake deps_clean       # remove temp directory, and uninstall all dependencies
 ```
 
 ### 破冰之旅

@@ -21,56 +21,52 @@ Dependences:
 * [options](git clone https://github.com/ccup/options.git).
 * [hamcrest](https://github.com/horance-liu/hamcrest).
 
-## Installation
+## Installing
+
+### Clone Magellan
+
+```bash
+$ git clone https://github.com:ccup/magellan.git
+```
 
 ### Install Dependencies
 
-##### cub 
-
 ```bash
-$ git clone https://github.com/MagicBowen/cub.git
-$ cd cub && mkdir build && cd build
-$ cmake .. && make
-$ sudo make install
-```
-
-##### options
-
-```bash
-$ git clone https://github.com/ccup/options.git
+$ cd magellan/lib
+$ git clone https://github.com/ccup/cub.git
 $ cd cub && mkdir build && cd build
 $ cmake .. && make
 $ sudo make install 
-```
-
-##### hamcrest
-
-```bash
-$ git clone https://github.com/hamcrest-liu/hamcrest.git
-$ cd cub && mkdir build && cd build
-$ cmake .. && make
-$ sudo make install 
-```
-
-##### Using Rake
-
-```bash
-$ rake deps
 ```
 
 ### Install Magellan
 
-> you should run `sudo ldconfig` after installing on linux.
+First, Install `hamcrest`：
 
 ```bash
-$ git clone https://github.com/horance-liu/magellan.git
-$ cd magellan && mkdir build && cd build
+$ cd magellan/lib/hamcrest && mkdir build && cd build
 $ cmake .. && make
-$ sudo make install
+$ sudo make install 
 ```
 
-### Test Magellan Self
-  
+Second, Intall `options`：
+
+```bash
+$ cd magellan/lib/options && mkdir build && cd build
+$ cmake .. && make
+$ sudo make install 
+```
+
+At last, Install `magellan`：
+
+```bash
+$ cd magellan && mkdir build && cd build
+$ cmake .. && make
+$ sudo make install 
+```
+
+##### Test Magellan
+
 ```bash
 $ cd magellan/build
 $ cmake -DENABLE_TEST=on .. && make
@@ -79,12 +75,40 @@ $ test/magellan-test
 
 ### Using Rake
 
-```bash                            
-$ rake           # build, install, and test using clang
-$ rake clang     # build, install, and test using clang
-$ rake gcc       # build, install, and test using gcc
-$ rake clean     # remove temp directory, and uninstall magellan
-$ rake uninstall # uninstall magellan only 
+```bash
+$ rake deps      # install all dependencies
+```
+
+Run commands if using GCC:
+
+```bash
+$ rake clone         # clone all dependencies
+$ rake build[gcc]    # clone all dependencies
+```
+
+other `rake` tasks:
+
+$ rake             # build, install magellan using clang
+$ rake build       # build, install using clang
+$ rake test        # build, install, and test using clang
+$ rake build[gcc]  # build, install using gcc
+$ rake test[gcc]   # build, install, and test using gcc
+$ rake uninstall   # uninstall magellan only
+$ rake clean       # remove temp directory, and uninstall magellan
+```
+
+and other task for dependencies:
+
+$ rake deps        # clone, build, install all dependencies using clang
+$ rake deps_clone  # clone all dependencies
+$ rake deps_build  # clone, build, install all dependencies using clang
+$ rake deps_test   # clone, build, install, and test all dependencies using clang
+
+$ rake deps_build[gcc]  # clone, build, install all dependencies using gcc
+$ rake deps_test[gcc]   # clone, build, install, and test all dependencies using gcc
+
+$ rake deps_uninstall   # uninstall all dependencies
+$ rake deps_clean       # remove temp directory, and uninstall all dependencies
 ```
 
 ## Begin the new journey

@@ -85,7 +85,11 @@ task :build, [:compiler] => :uninstall do |task, args|
   do_build(".", clang:args.compiler == 'clang', test:false) { 
     do_install(".") 
   }
-  
+end
+
+task :test, [:compiler] => :build do |task, args|
+  args.with_defaults(:compiler => 'clang')
+
   do_build(".", clang:args.compiler == 'clang', test:true)  { 
     do_test(".", :magellan) 
   }
