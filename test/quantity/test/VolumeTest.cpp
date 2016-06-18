@@ -1,7 +1,7 @@
 #include <cut/cut.hpp>
 #include <quantity/volume/Volume.h>
 
-USING_HAMCREST_NS
+USING_CUM_NS
 
 FIXTURE(VolumeTest)
 {

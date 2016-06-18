@@ -4,7 +4,7 @@
 #include <regex>
 
 USING_CUT_NS
-USING_HAMCREST_NS
+USING_CUM_NS
 USING_CUB_NS
 
 FIXTURE(FilterTest)

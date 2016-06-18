@@ -3,7 +3,7 @@
 #include <cut/listener/util/XmlBuilder.h>
 
 USING_CUT_NS
-USING_HAMCREST_NS
+USING_CUM_NS
 
 FIXTURE(XmlBuilderTest)
 {

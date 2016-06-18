@@ -34,7 +34,7 @@
 							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.macosx.base.1368123055" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.macosx.base">
 								<option id="gnu.cpp.compiler.option.include.paths.1497515034" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/cut/include}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/cut/lib/hamcrest/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/cut/lib/cum/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/cut/lib/cub/include}&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1919296537" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
@@ -51,7 +51,7 @@
 		</cconfiguration>
 	</storageModule>
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-		<project id="cut.null.1510495172" name="cut"/>
+		<project id="magellan.null.1510495172" name="magellan"/>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 	<storageModule moduleId="refreshScope" versionNumber="2">

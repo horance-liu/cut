@@ -7,6 +7,6 @@
 #include <cut/def/BeforeAllDef.h>
 #include <cut/startup/StartUp.h>
 #include <cut/core/Asserter.h>
-#include <hamcrest/hamcrest.hpp>
+#include <cum/cum.hpp>
 
 #endif

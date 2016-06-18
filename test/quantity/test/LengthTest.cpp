@@ -1,7 +1,7 @@
 #include <cut/cut.hpp>
 #include <quantity/length/Length.h>
 
-USING_HAMCREST_NS
+USING_CUM_NS
 
 FIXTURE(LengthTest)
 {

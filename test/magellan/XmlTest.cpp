@@ -1,7 +1,7 @@
 #include <cut/cut.hpp>
 #include <cut/listener/util/XmlNode.h>
 
-USING_HAMCREST_NS
+USING_CUM_NS
 USING_CUT_NS
 
 FIXTURE(XmlNodeTest)

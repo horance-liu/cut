@@ -3,7 +3,7 @@
 #include <robot-cleaner/Position.h>
 #include <robot-cleaner/Instructions.h>
 
-USING_HAMCREST_NS
+USING_CUM_NS
 
 FIXTURE(RobotCleanerTest)
 {

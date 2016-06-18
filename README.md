@@ -19,7 +19,7 @@ Supported Compilers:
 Dependences:
 * [cub](git clone https://github.com/ccup/cub.git).
 * [options](git clone https://github.com/ccup/options.git).
-* [hamcrest](https://github.com/horance-liu/hamcrest).
+* [cum](https://github.com/horance-liu/cum).
 
 ## Installing
 
@@ -41,10 +41,10 @@ $ sudo make install
 
 ### Install cut
 
-First, Install `hamcrest`：
+First, Install `cum`：
 
 ```bash
-$ cd cut/lib/hamcrest && mkdir build && cd build
+$ cd cut/lib/cum && mkdir build && cd build
 $ cmake .. && make
 $ sudo make install 
 ```
@@ -160,7 +160,7 @@ test/*.c)
 
 add_executable(quantity-test ${all_files})
 
-target_link_libraries(quantity-test cut hamcrest cub)
+target_link_libraries(quantity-test cut cum cub)
 ```
 
 ##### Build
@@ -194,7 +194,7 @@ $ ./quantity-test
 
 #include <quantity/Length.h>
 
-USING_HAMCREST_NS
+USING_CUM_NS
 
 FIXTURE(LengthTest)
 {
@@ -487,7 +487,7 @@ Possible executing squence：
 #include <cut/cut.hpp>
 #include <quantity/length/Length.h>
 
-USING_HAMCREST_NS
+USING_CUM_NS
 
 FIXTURE(LengthTest)
 {
@@ -518,7 +518,7 @@ A independant and new instance `RobotCleaner robot` will be created for each tes
 #include <robot-cleaner/Position.h>
 #include <robot-cleaner/Instructions.h>
 
-USING_HAMCREST_NS
+USING_CUM_NS
 
 FIXTURE(RobotCleanerTest)
 {
@@ -552,7 +552,7 @@ FIXTURE(RobotCleanerTest)
 #include <robot-cleaner/Position.h>
 #include <robot-cleaner/Instructions.h>
 
-USING_HAMCREST_NS
+USING_CUM_NS
 
 FIXTURE(RobotCleanerTest)
 {
@@ -638,7 +638,7 @@ Hamcrest is a lightweight, extensible matcher framework that has been introduced
 ```cpp
 #include <cut/cut.hpp>
 
-USING_HAMCREST_NS
+USING_CUM_NS
 
 FIXTURE(AnythingTest)
 {
@@ -677,7 +677,7 @@ FIXTURE(AnythingTest)
 ```cpp
 #include <cut/cut.hpp>
 
-USING_HAMCREST_NS
+USING_CUM_NS
 
 FIXTURE(EqualToTest)
 {
@@ -740,7 +740,7 @@ FIXTURE(NotEqualToTest)
 ```cpp
 #include <cut/cut.hpp>
 
-USING_HAMCREST_NS
+USING_CUM_NS
 
 FIXTURE(IsNotTest)
 {
@@ -770,7 +770,7 @@ FIXTURE(IsNotTest)
 ```cpp
 #include <cut/cut.hpp>
 
-USING_HAMCREST_NS
+USING_CUM_NS
 
 FIXTURE(NilTest)
 {
@@ -816,7 +816,7 @@ FIXTURE(NilTest)
 ```cpp
 #include <cut/cut.hpp>
 
-USING_HAMCREST_NS
+USING_CUM_NS
 
 FIXTURE(StartsWithTest)
 {
@@ -853,7 +853,7 @@ FIXTURE(StartsWithTest)
 #include <cut/cut.hpp>
 #include <math.h>
 
-USING_HAMCREST_NS
+USING_CUM_NS
 
 FIXTURE(IsNanTest)
 {

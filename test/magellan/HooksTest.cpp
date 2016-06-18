@@ -2,7 +2,7 @@
 #include <cut/hook/registry/HookRegistries.h>
 #include <sstream>
 
-USING_HAMCREST_NS
+USING_CUM_NS
 USING_CUT_NS
 
 namespace

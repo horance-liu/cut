@@ -4,7 +4,7 @@
 
 USING_OPT_NS
 
-using namespace hamcrest;
+using namespace cum;
 
 FIXTURE(OptionTest)
 {

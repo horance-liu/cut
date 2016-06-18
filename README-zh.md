@@ -43,10 +43,10 @@ $ sudo make install
 
 ### 安装cut
 
-安装`hamcrest`：
+安装`cum`：
 
 ```bash
-$ cd cut/lib/hamcrest && mkdir build && cd build
+$ cd cut/lib/cum && mkdir build && cd build
 $ cmake .. && make
 $ sudo make install 
 ```
@@ -165,7 +165,7 @@ test/*.c)
 
 add_executable(quantity-test ${all_files})
 
-target_link_libraries(quantity-test cut hamcrest cub)
+target_link_libraries(quantity-test cut cum cub)
 ```
 
 ##### 构建
@@ -199,7 +199,7 @@ $ ./quantity-test
 
 #include <quantity/Length.h>
 
-USING_HAMCREST_NS
+USING_CUM_NS
 
 FIXTURE(LengthTest)
 {
@@ -211,8 +211,8 @@ FIXTURE(LengthTest)
 ```
 
 使用 cut,只需要包含 `cut.hpp` 一个头文件即可。cut 使用 Hamcrest 的断言机制,
-使得断言更加统一、自然,且具有良好的扩展性;使用 `USING_HAMCREST_NS`,从而可以使用 `eq` 代
-替 `hamcrest::eq`,简短明确;除非出现名字冲突,否则推荐使用简写的 `eq`。
+使得断言更加统一、自然,且具有良好的扩展性;使用 `USING_CUM_NS`,从而可以使用 `eq` 代
+替 `cum::eq`,简短明确;除非出现名字冲突,否则推荐使用简写的 `eq`。
 
 #### Length实现
 
@@ -499,7 +499,7 @@ cut能够自动地实现测试用例的标识功能，用户可以使用字符�
 #include <cut/cut.hpp>
 #include <quantity/length/Length.h>
 
-USING_HAMCREST_NS
+USING_CUM_NS
 
 FIXTURE(LengthTest)
 {
@@ -530,7 +530,7 @@ cut实现xUnit时非常巧妙，使得用户设计用例时更加面向对象。
 #include <robot-cleaner/Position.h>
 #include <robot-cleaner/Instructions.h>
 
-USING_HAMCREST_NS
+USING_CUM_NS
 
 FIXTURE(RobotCleanerTest)
 {
@@ -566,7 +566,7 @@ FIXTURE(RobotCleanerTest)
 #include <robot-cleaner/Position.h>
 #include <robot-cleaner/Instructions.h>
 
-USING_HAMCREST_NS
+USING_CUM_NS
 
 FIXTURE(RobotCleanerTest)
 {
@@ -654,7 +654,7 @@ Hamcrest是Java社区一个轻量级的，可扩展的Matcher框架，曾被Kent
 ```cpp
 #include <cut/cut.hpp>
 
-USING_HAMCREST_NS
+USING_CUM_NS
 
 FIXTURE(AnythingTest)
 {
@@ -693,7 +693,7 @@ FIXTURE(AnythingTest)
 ```cpp
 #include <cut/cut.hpp>
 
-USING_HAMCREST_NS
+USING_CUM_NS
 
 FIXTURE(EqualToTest)
 {
@@ -756,7 +756,7 @@ FIXTURE(NotEqualToTest)
 ```cpp
 #include <cut/cut.hpp>
 
-USING_HAMCREST_NS
+USING_CUM_NS
 
 FIXTURE(IsNotTest)
 {
@@ -786,7 +786,7 @@ FIXTURE(IsNotTest)
 ```cpp
 #include <cut/cut.hpp>
 
-USING_HAMCREST_NS
+USING_CUM_NS
 
 FIXTURE(NilTest)
 {
@@ -832,7 +832,7 @@ FIXTURE(NilTest)
 ```cpp
 #include <cut/cut.hpp>
 
-USING_HAMCREST_NS
+USING_CUM_NS
 
 FIXTURE(StartsWithTest)
 {
@@ -869,7 +869,7 @@ FIXTURE(StartsWithTest)
 #include <cut/cut.hpp>
 #include <math.h>
 
-USING_HAMCREST_NS
+USING_CUM_NS
 
 FIXTURE(IsNanTest)
 {

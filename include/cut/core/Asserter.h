@@ -3,20 +3,20 @@
 
 #include <cub/utils/SourceFile.h>
 #include <cub/mem/ScopeExit.h>
-#include <hamcrest/base/Matcher.h>
-#include <hamcrest/base/Description.h>
+#include <cum/base/Matcher.h>
+#include <cum/base/Description.h>
 #include <cut/except/AssertionError.h>
 
 CUT_NS_BEGIN
 
 template <typename U, typename V>
-void assert_that(const U& actual, hamcrest::Matcher<V>* matcher, const std::string& source)
+void assert_that(const U& actual, cum::Matcher<V>* matcher, const std::string& source)
 {
     SCOPE_EXIT([=]{ delete matcher; });
 
     if (!matcher->matches(actual))
     {
-        hamcrest::Description desc;
+        cum::Description desc;
         
         desc.appendText("\nExpected: ")
             .appendDescriptionOf(*matcher)
