@@ -32,10 +32,10 @@ CMake的下载地址：[http://www.cmake.org](http://www.cmake.org)。
 
 #### 安装依赖
 
-##### cub
+##### ccinfra 
 
 ```bash
-$ git clone https://gitlab.com/ccup/cub.git
+$ git clone https://github.com/MagicBowen/ccinfra.git
 $ cd cub && mkdir build && cd build
 $ cmake .. && make
 $ sudo make install 

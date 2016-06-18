@@ -25,10 +25,10 @@ Dependences:
 
 ### Install Dependencies
 
-##### cub
+##### ccinfra 
 
 ```bash
-$ git clone https://github.com/ccup/cub.git
+$ git clone https://github.com/MagicBowen/ccinfra.git
 $ cd cub && mkdir build && cd build
 $ cmake .. && make
 $ sudo make install

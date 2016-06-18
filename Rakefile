@@ -34,7 +34,7 @@ end
 
 DEPS = %w[ccinfra hamcrest options]
 
-task :deps_clone => :deps_clean do
+task :deps_clone do
   system "rm -rf lib"
   system "git clone https://github.com/MagicBowen/ccinfra.git lib/ccinfra"
   system "git clone https://github.com/ccup/options.git lib/options"
@@ -73,12 +73,12 @@ end
 
 task :gcc => :uninstall do
   do_build(".", clang:false, test:false) { do_install(".") }
-  do_build(".", clang:false, test:true) { do_test(".", :magellan) }
+  do_build(".", clang:false, test:true)  { do_test(".", :magellan) }
 end
 
 task :clang => :uninstall do
   do_build(".", clang:true, test:false) { do_install(".") }
-  do_build(".", clang:true, test:true) { do_test(".", :magellan) }
+  do_build(".", clang:true, test:true)  { do_test(".", :magellan) }
 end
 
 task :clean => :uninstall do |task|
