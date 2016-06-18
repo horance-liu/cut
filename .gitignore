@@ -3,7 +3,3 @@ output/
 build/
 .idea/
 *.xml
-ccinfra/
-cup/
-options/
-hamcrest/

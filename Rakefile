@@ -35,10 +35,8 @@ end
 DEPS = %w[ccinfra hamcrest options]
 
 task :deps_clone do
-  system "rm -rf lib"
+  system "rm -rf lib/ccinfra"
   system "git clone https://github.com/MagicBowen/ccinfra.git lib/ccinfra"
-  system "git clone https://github.com/ccup/options.git lib/options"
-  system "git clone https://github.com/horance-liu/hamcrest.git lib/hamcrest"
 end
 
 task :deps_uninstall do
