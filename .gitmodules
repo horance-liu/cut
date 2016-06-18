@@ -1,6 +1,0 @@
-[submodule "lib/hamcrest"]
-	path = lib/hamcrest
-	url = https://github.com/horance-liu/hamcrest.git
-[submodule "lib/ccinfra"]
-	path = lib/ccinfra
-	url = https://github.com/MagicBowen/ccinfra.git
