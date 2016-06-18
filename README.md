@@ -86,8 +86,9 @@ $ rake clone         # clone all dependencies
 $ rake build[gcc]    # clone all dependencies
 ```
 
-other `rake` tasks:
+Other tasks:
 
+```bash
 $ rake             # build, install magellan using clang
 $ rake build       # build, install using clang
 $ rake test        # build, install, and test using clang
@@ -97,16 +98,15 @@ $ rake uninstall   # uninstall magellan only
 $ rake clean       # remove temp directory, and uninstall magellan
 ```
 
-and other task for dependencies:
+And other task for dependencies:
 
-$ rake deps        # clone, build, install all dependencies using clang
-$ rake deps_clone  # clone all dependencies
-$ rake deps_build  # clone, build, install all dependencies using clang
-$ rake deps_test   # clone, build, install, and test all dependencies using clang
-
+```bash
+$ rake deps             # clone, build, install all dependencies using clang
+$ rake deps_clone       # clone all dependencies
+$ rake deps_build       # clone, build, install all dependencies using clang
+$ rake deps_test        # clone, build, install, and test all dependencies using clang
 $ rake deps_build[gcc]  # clone, build, install all dependencies using gcc
 $ rake deps_test[gcc]   # clone, build, install, and test all dependencies using gcc
-
 $ rake deps_uninstall   # uninstall all dependencies
 $ rake deps_clean       # remove temp directory, and uninstall all dependencies
 ```

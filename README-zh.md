@@ -92,6 +92,7 @@ $ rake build[gcc]    # clone all dependencies
 
 其他`rake`任务包括：
 
+```bash
 $ rake             # build, install magellan using clang
 $ rake build       # build, install using clang
 $ rake test        # build, install, and test using clang
@@ -103,6 +104,7 @@ $ rake clean       # remove temp directory, and uninstall magellan
 
 其他依赖的`rake`任务包括：
 
+```bash
 $ rake deps        # clone, build, install all dependencies using clang
 $ rake deps_clone  # clone all dependencies
 $ rake deps_build  # clone, build, install all dependencies using clang
