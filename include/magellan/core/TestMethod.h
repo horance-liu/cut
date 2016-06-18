@@ -4,7 +4,7 @@
 #include "magellan/core/TestCaller.h"
 #include "magellan/hook/runtime/Runtime.h"
 #include "magellan/startup/TestOptions.h"
-#include "ccinfra/utils/TypeName.h"
+#include "cub/utils/TypeName.h"
 #include <iostream>
 
 MAGELLAN_NS_BEGIN

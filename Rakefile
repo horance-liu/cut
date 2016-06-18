@@ -1,3 +1,5 @@
+USING_CLANG = true
+
 def execute(cmd)
   system "#{cmd}" or exit
 end
@@ -32,11 +34,11 @@ def do_clean(m)
   system "sudo rm -rf /usr/local/lib/lib#{m}.a"
 end
 
-DEPS = %w[ccinfra hamcrest options]
+DEPS = %w[cub hamcrest options]
 
 task :deps_clone do
-  system "rm -rf lib/ccinfra"
-  system "git clone https://github.com/MagicBowen/ccinfra.git lib/ccinfra"
+  system "rm -rf lib/cub"
+  system "git clone https://github.com/ccup/cub.git lib/cub"
 end
 
 task :deps_uninstall do
@@ -51,36 +53,46 @@ task :deps_clean => :deps_uninstall do
   end 
 end
 
-task :deps_gcc do
-  DEPS.each do |m|
-    do_build("lib/#{m}", clang:false, test:false) { do_install("lib/#{m}") }
-  end
-end
+task :deps_build, [:compiler] => :deps_uninstall do |task, args| 
+  args.with_defaults(:compiler => 'clang')
 
-task :deps_clang do
   DEPS.each do |m|
-    do_build("lib/#{m}", clang:true, test:false) { do_install("lib/#{m}") }
+    do_build("lib/#{m}", clang:args.compiler == 'clang', test:false) { 
+      do_install("lib/#{m}") 
+    }
    end
 end
 
-task :deps => [:deps_clone, :deps_clang]
+task :deps_test, [:compiler] => :deps_build do |task, args| 
+  args.with_defaults(:compiler => 'clang')
+
+  DEPS.each do |m|
+    do_build("lib/#{m}", clang:args.compiler == 'clang', test:true) { 
+      do_test("lib/#{m}", m) 
+    }
+   end
+end
+
+task :deps => [:deps_clone, :deps_build]
 
 task :uninstall do
   do_clean(:magellan)
 end 
 
-task :gcc => :uninstall do
-  do_build(".", clang:false, test:false) { do_install(".") }
-  do_build(".", clang:false, test:true)  { do_test(".", :magellan) }
-end
-
-task :clang => :uninstall do
-  do_build(".", clang:true, test:false) { do_install(".") }
-  do_build(".", clang:true, test:true)  { do_test(".", :magellan) }
+task :build, [:compiler] => :uninstall do |task, args| 
+  args.with_defaults(:compiler => 'clang')
+  
+  do_build(".", clang:args.compiler == 'clang', test:false) { 
+    do_install(".") 
+  }
+  
+  do_build(".", clang:args.compiler == 'clang', test:true)  { 
+    do_test(".", :magellan) 
+  }
 end
 
 task :clean => :uninstall do |task|
   system "rm -rf build"
 end
 
-task :default => :clang
+task :default => :build

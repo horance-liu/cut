@@ -2,7 +2,7 @@
 #define HA5559C9B_84A7_4876_BDDD_B95BC2FF503B
 
 #include <magellan/magellan.h>
-#include <ccinfra/algo/String.h>
+#include <cub/algo/String.h>
 
 MAGELLAN_NS_BEGIN
 

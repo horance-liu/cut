@@ -10,4 +10,4 @@ FILE(GLOB_RECURSE all_files
 *.C)
 
 add_executable(magellan-test ${all_files})
-target_link_libraries(magellan-test magellan hamcrest options ccinfra)
+target_link_libraries(magellan-test magellan hamcrest options cub)

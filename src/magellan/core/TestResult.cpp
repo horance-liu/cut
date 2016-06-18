@@ -5,7 +5,7 @@
 #include "magellan/core/TestSuite.h"
 #include "magellan/except/AssertionError.h"
 #include "magellan/except/TestFailure.h"
-#include "ccinfra/algo/range.h"
+#include "cub/algo/range.h"
 
 MAGELLAN_NS_BEGIN
 

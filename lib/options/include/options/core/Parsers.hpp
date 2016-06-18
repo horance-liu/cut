@@ -3,7 +3,7 @@
 
 #include "options/core/OptionsDescription.hpp"
 #include "options/core/Option.hpp"
-#include "ccinfra/dci/Role.h"
+#include "cub/dci/Role.h"
 #include "options/core/Cmdline.hpp"
 
 OPT_NS_BEGIN

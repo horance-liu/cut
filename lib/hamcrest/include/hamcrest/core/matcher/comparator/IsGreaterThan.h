@@ -2,7 +2,7 @@
 #define _7LUN0OQGWD5RINSDM0GCZR7FFVZRXGD0P35557IOS8AGKBRMSSZ44LZC
 
 #include "hamcrest/core/matcher/comparator/Comparator.h"
-#include <ccinfra/algo/operator.h>
+#include <cub/algo/operator.h>
 
 HAMCREST_NS_BEGIN
 

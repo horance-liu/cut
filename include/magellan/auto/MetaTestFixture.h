@@ -3,7 +3,7 @@
 
 #include "magellan/core/TestMethod.h"
 #include "magellan/core/TestSuite.h"
-#include "ccinfra/utils/TypeName.h"
+#include "cub/utils/TypeName.h"
 #include <set>
 
 MAGELLAN_NS_BEGIN

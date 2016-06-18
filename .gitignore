@@ -3,5 +3,5 @@ output/
 build/
 .idea/
 *.xml
-lib/ccinfra/
+lib/cub/
 lib/cub/

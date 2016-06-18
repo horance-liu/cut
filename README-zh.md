@@ -32,10 +32,10 @@ CMake的下载地址：[http://www.cmake.org](http://www.cmake.org)。
 
 #### 安装依赖
 
-##### ccinfra 
+##### cub 
 
 ```bash
-$ git clone https://github.com/MagicBowen/ccinfra.git
+$ git clone https://github.com/MagicBowen/cub.git
 $ cd cub && mkdir build && cd build
 $ cmake .. && make
 $ sudo make install 
@@ -142,7 +142,7 @@ test/*.c)
 
 add_executable(quantity-test ${all_files})
 
-target_link_libraries(quantity-test magellan hamcrest ccinfra)
+target_link_libraries(quantity-test magellan hamcrest cub)
 ```
 
 ##### 构建

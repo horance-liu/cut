@@ -2,7 +2,7 @@
 #define HB4FDA3F1_A2B1_407F_922D_FF7A05FBB0D4
 
 #include <hamcrest/internal/SelfDescribingContainer.h>
-#include <ccinfra/algo/String.h>
+#include <cub/algo/String.h>
 
 HAMCREST_NS_BEGIN
 

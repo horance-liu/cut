@@ -1,6 +1,6 @@
 #include "magellan/magellan.hpp"
 #include "options/ProgramOptions.hpp"
-#include "options/Args.h"
+#include "options/core/Args.h"
 
 USING_OPT_NS
 
@@ -19,7 +19,7 @@ FIXTURE(OptionTest)
 
     void when_parse_program_options(const std::vector<std::string>& options)
     {
-        ccinfra::Args args(options);
+        opt::Args args(options);
 		varMap.parseArgs(args.argc(), args.argv(), desc);
     }
 

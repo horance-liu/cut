@@ -1,5 +1,5 @@
 #include <hamcrest/ext/string/matcher/StringMatcher.h>
-#include <ccinfra/algo/String.h>
+#include <cub/algo/String.h>
 
 HAMCREST_NS_BEGIN
 

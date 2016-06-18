@@ -2,7 +2,7 @@
 #define INCL_DCM_H7349D344_AAC4_47D0_8E42_DF1F7EC0C2A4
 
 #include <magellan/magellan.h>
-#include <ccinfra/dci/Role.h>
+#include <cub/dci/Role.h>
 #include "options/core/VariablesMap.hpp"
 #include "options/core/OptionsDescription.hpp"
 

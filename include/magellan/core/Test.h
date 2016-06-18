@@ -2,7 +2,7 @@
 #define _30KHGDCAF3MOKCBO9D1E7TLHUX8AUQ8FLRZ2MNXSJTX011I7KFOCMGJY
 
 #include <magellan/magellan.h>
-#include <ccinfra/dci/Role.h>
+#include <cub/dci/Role.h>
 #include <string>
 
 MAGELLAN_NS_BEGIN

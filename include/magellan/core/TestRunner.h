@@ -2,7 +2,7 @@
 #define H6DE28224_E43F_4689_BA39_491C30F80764
 
 #include "magellan/magellan.h"
-#include "ccinfra/dci/Role.h"
+#include "cub/dci/Role.h"
 
 MAGELLAN_NS_BEGIN
 

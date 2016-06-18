@@ -35,7 +35,7 @@
 								<option id="gnu.cpp.compiler.option.include.paths.1497515034" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/magellan/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/magellan/lib/hamcrest/include}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/magellan/lib/ccinfra/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/magellan/lib/cub/include}&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1919296537" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>

@@ -2,7 +2,7 @@
 #define H6A8AA0FD_F336_493F_9E77_767862365287
 
 #include <magellan/magellan.h>
-#include <ccinfra/utils/Symbol.h>
+#include <cub/utils/Symbol.h>
 
 MAGELLAN_NS_BEGIN
 
