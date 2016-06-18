@@ -1,4 +1,4 @@
-project(options-test)
+project(opt-test)
 
 include_directories(${cut_INCLUDE_DIR})
 
@@ -13,5 +13,5 @@ FILE(GLOB_RECURSE all_files
 *.c
 *.C)
 
-add_executable(options-test ${all_files})
-target_link_libraries(options-test cum options cut cub)
+add_executable(opt-test ${all_files})
+target_link_libraries(opt-test cum opt cut cub)

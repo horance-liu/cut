@@ -51,10 +51,10 @@ $ cmake .. && make
 $ sudo make install 
 ```
 
-安装`options`：
+安装`opt`：
 
 ```bash
-$ cd cut/lib/options && mkdir build && cd build
+$ cd cut/lib/opt && mkdir build && cd build
 $ cmake .. && make
 $ sudo make install 
 ```
@@ -901,7 +901,7 @@ TestOptions::TestOptions() : desc("cut")
     });
     
     // default value
-    options["color"]  = "yes";
-    options["repeat"] = "1";
+    opt["color"]  = "yes";
+    opt["repeat"] = "1";
 }
 ```

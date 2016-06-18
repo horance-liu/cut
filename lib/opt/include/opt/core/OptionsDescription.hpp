@@ -1,7 +1,7 @@
 #ifndef OPTIONSDESCRIPTION_Fri_Apr_10_23_35_29_2015_H
 #define OPTIONSDESCRIPTION_Fri_Apr_10_23_35_29_2015_H
 
-#include <options/options.h>
+#include <opt/opt.h>
 #include <string>
 #include <vector>
 #include <map>
@@ -42,7 +42,7 @@ private:
     using DescPtr = std::shared_ptr<OptionDescription>;
 
     std::string m_caption;
-    std::vector<DescPtr> m_options;
+    std::vector<DescPtr> m_opt;
 };
 
 OPT_NS_END

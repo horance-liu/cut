@@ -1,6 +1,6 @@
 #include <cut/cut.hpp>
-#include <options/ProgramOptions.hpp>
-#include <options/core/Args.h>
+#include <opt/ProgramOptions.hpp>
+#include <opt/core/Args.h>
 
 USING_OPT_NS
 
@@ -8,7 +8,7 @@ using namespace cum;
 
 FIXTURE(OptionTest)
 {
-    OptionsDescription desc {"Allowed options"};
+    OptionsDescription desc {"Allowed opt"};
     VariablesMap varMap;
 
     void give_option_config(std::map<std::string, std::string>&& tbl)
@@ -17,9 +17,9 @@ FIXTURE(OptionTest)
         varMap.clear();
     }
 
-    void when_parse_program_options(const std::vector<std::string>& options)
+    void when_parse_program_opt(const std::vector<std::string>& opt)
     {
-        opt::Args args(options);
+        opt::Args args(opt);
 		varMap.parseArgs(args.argc(), args.argv(), desc);
     }
 
@@ -45,7 +45,7 @@ FIXTURE(OptionTest)
             {"filter", "set filter"},
         });
 
-        when_parse_program_options({"", "--filter=1"});
+        when_parse_program_opt({"", "--filter=1"});
         then_expect_option_with_value("filter", "1");
     }
 
@@ -56,7 +56,7 @@ FIXTURE(OptionTest)
             {"filter", "set filter"},
         });
 
-        when_parse_program_options({"", "--hello"});
+        when_parse_program_opt({"", "--hello"});
 
         then_expect_has_option("filter", be_false());
         and_expect_has_option("hello", be_false());
@@ -70,7 +70,7 @@ FIXTURE(OptionTest)
             {"date", "set date"},
         });
 
-        when_parse_program_options({"","-h", "-f", "-D"});
+        when_parse_program_opt({"","-h", "-f", "-D"});
 
         then_expect_has_option("help", be_true());
         and_expect_has_option("help", be_true());
@@ -84,7 +84,7 @@ FIXTURE(OptionTest)
             {"filter,f", "set filter"},
         });
 
-        when_parse_program_options({"","-hf"});
+        when_parse_program_opt({"","-hf"});
 
         then_expect_has_option("help", be_true());
         and_expect_has_option("filter", be_true());
@@ -97,7 +97,7 @@ FIXTURE(OptionTest)
             {"filter,f", "set filter"},
         });
 
-        when_parse_program_options({"","-f=1"});
+        when_parse_program_opt({"","-f=1"});
         then_expect_option_with_value("filter", "1");
     }
 
@@ -108,7 +108,7 @@ FIXTURE(OptionTest)
             {"filter,f", "set filter"},
         });
 
-        when_parse_program_options({"","--f"});
+        when_parse_program_opt({"","--f"});
         then_expect_has_option("filter", be_false());
     }
 
@@ -119,7 +119,7 @@ FIXTURE(OptionTest)
             {"filter,f", "set filter"},
         });
 
-        when_parse_program_options({"","-hf=1"});
+        when_parse_program_opt({"","-hf=1"});
         then_expect_has_option("help", be_true());
         and_expect_option_with_value("filter", "1");
     }

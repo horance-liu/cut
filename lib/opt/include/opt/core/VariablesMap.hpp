@@ -1,7 +1,7 @@
 #ifndef VARIABLESMAP_Fri_Apr_10_22_02_27_2015_H
 #define VARIABLESMAP_Fri_Apr_10_22_02_27_2015_H
 
-#include <options/options.h>
+#include <opt/opt.h>
 #include <string>
 #include <map>
 
@@ -23,10 +23,10 @@ struct VariablesMap
     void dump() const;
 
 private:
-    void store(const ParsedOptions& options);
+    void store(const ParsedOptions& opt);
 
 private:
-    std::map<std::string, std::string> options;
+    std::map<std::string, std::string> opt;
 };
 
 OPT_NS_END

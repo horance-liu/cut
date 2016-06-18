@@ -1,7 +1,7 @@
-#include <options/core/Cmdline.hpp>
-#include <options/core/OptionsDescription.hpp>
-#include <options/core/Parsers.hpp>
-#include <options/core/VariablesMap.hpp>
+#include <opt/core/Cmdline.hpp>
+#include <opt/core/OptionsDescription.hpp>
+#include <opt/core/Parsers.hpp>
+#include <opt/core/VariablesMap.hpp>
 
 OPT_NS_BEGIN
 
@@ -19,7 +19,7 @@ const ParsedOptions&  CommandLineParser::run()
     return *this;
 }
     
-const std::vector<Option>& CommandLineParser::options() const
+const std::vector<Option>& CommandLineParser::opt() const
 {
     return parsedOptions;
 }

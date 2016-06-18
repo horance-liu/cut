@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 
-project("options")
+project("opt")
 
 if(UNIX)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-invalid-offsetof  -g -std=c++11")
@@ -14,4 +14,4 @@ if(ENABLE_TEST)
   add_subdirectory(test)
 endif()
 
-install(DIRECTORY include/options DESTINATION include)
+install(DIRECTORY include/opt DESTINATION include)

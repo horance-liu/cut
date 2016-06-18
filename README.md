@@ -18,7 +18,7 @@ Supported Compilers:
 
 Dependences:
 * [cub](git clone https://github.com/ccup/cub.git).
-* [options](git clone https://github.com/ccup/options.git).
+* [opt](git clone https://github.com/ccup/opt.git).
 * [cum](https://github.com/horance-liu/cum).
 
 ## Installing
@@ -49,10 +49,10 @@ $ cmake .. && make
 $ sudo make install 
 ```
 
-Second, Intall `options`：
+Second, Intall `opt`：
 
 ```bash
-$ cd cut/lib/options && mkdir build && cd build
+$ cd cut/lib/opt && mkdir build && cd build
 $ cmake .. && make
 $ sudo make install 
 ```
@@ -885,8 +885,8 @@ TestOptions::TestOptions() : desc("cut")
     });
     
     // default value
-    options["color"]  = "yes";
-    options["repeat"] = "1";
+    opt["color"]  = "yes";
+    opt["repeat"] = "1";
 }
 ```
 

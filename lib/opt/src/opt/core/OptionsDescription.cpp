@@ -1,5 +1,5 @@
-#include <options/core/OptionsDescription.hpp>
-#include <options/core/Parsers.hpp>
+#include <opt/core/OptionsDescription.hpp>
+#include <opt/core/Parsers.hpp>
 #include <algorithm>
 #include <iostream>
 #include <iomanip>
@@ -66,13 +66,13 @@ void OptionsDescription::add(std::map<std::string, std::string>&& args)
     for (auto& entry : args)
     {
         DescPtr d(new OptionDescription(entry.first, entry.second));
-        m_options.push_back(d);
+        m_opt.push_back(d);
     }
 }
 
 const OptionDescription* OptionsDescription::find(const std::string& name) const
 {
-    for(auto& one : m_options)
+    for(auto& one : m_opt)
     {
         if(one->match(name)) return one.get();
     }
@@ -89,7 +89,7 @@ ostream& operator<<(ostream& os, const OptionsDescription& desc)
     os<< usage << desc.m_caption <<" ";
 
     int i = 1;
-    for (auto& var : desc.m_options)
+    for (auto& var : desc.m_opt)
     {
         os << var->format() << " ";
         if((i++)% 4 == 0 )
@@ -100,7 +100,7 @@ ostream& operator<<(ostream& os, const OptionsDescription& desc)
     }
     os<<endl;
     os<<setfill('=') << setw(80) << "" << endl << setfill(' ');
-    for (auto& var : desc.m_options)
+    for (auto& var : desc.m_opt)
     {
         os << "  " << left << setw(20) << var->getLongName() << setw(40) << var->getDescription() << endl;
     }

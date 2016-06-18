@@ -1,15 +1,15 @@
-#include <options/core/Args.h>
+#include <opt/core/Args.h>
 #include <string.h>
 
 OPT_NS_BEGIN
 
-Args::Args(const std::vector<std::string>& options)
-  : m_argc(options.size()), m_argv(new const char*[m_argc])
+Args::Args(const std::vector<std::string>& opt)
+  : m_argc(opt.size()), m_argv(new const char*[m_argc])
 {
     for (size_t i=0; i<m_argc; i++)
     {
-        m_argv[i] = new char[options[i].size() + 1];
-        ::strcpy((char*)m_argv[i], options[i].c_str());
+        m_argv[i] = new char[opt[i].size() + 1];
+        ::strcpy((char*)m_argv[i], opt[i].c_str());
     }
 }
 

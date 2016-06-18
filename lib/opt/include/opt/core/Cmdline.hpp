@@ -1,7 +1,7 @@
 #ifndef CMDLINE_Sun_Apr_19_00_17_15_2015_H
 #define CMDLINE_Sun_Apr_19_00_17_15_2015_H
 
-#include <options/core/OptionsDescription.hpp>
+#include <opt/core/OptionsDescription.hpp>
 
 OPT_NS_BEGIN
 

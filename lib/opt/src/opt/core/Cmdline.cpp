@@ -1,7 +1,7 @@
-#include <options/core/Cmdline.hpp>
+#include <opt/core/Cmdline.hpp>
 
-#include <options/core/OptionsDescription.hpp>
-#include <options/core/Option.hpp>
+#include <opt/core/OptionsDescription.hpp>
+#include <opt/core/Option.hpp>
 #include <cub/dci/Role.h>
 
 using namespace std;

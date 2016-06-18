@@ -3,8 +3,8 @@
 
 #include <cut/cut.h>
 #include <cub/dci/Role.h>
-#include <options/core/VariablesMap.hpp>
-#include <options/core/OptionsDescription.hpp>
+#include <opt/core/VariablesMap.hpp>
+#include <opt/core/OptionsDescription.hpp>
 
 CUT_NS_BEGIN
 
