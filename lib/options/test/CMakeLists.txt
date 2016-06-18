@@ -14,4 +14,4 @@ FILE(GLOB_RECURSE all_files
 *.C)
 
 add_executable(options-test ${all_files})
-target_link_libraries(options-test hamcrest magellan options ccinfra)
+target_link_libraries(options-test hamcrest options magellan ccinfra)
