@@ -14,4 +14,4 @@ FILE(GLOB_RECURSE all_files
 *.C)
 
 add_executable(opt-test ${all_files})
-target_link_libraries(opt-test cum opt cut cub)
+target_link_libraries(opt-test cut cum opt cub)
