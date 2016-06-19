@@ -4,14 +4,6 @@
 
 Cut是一个简单的、可扩展的、使用C\+\+11实现的xUnit测试框架。Cut设计灵感来自于Java社区著名的测试框架JUnit。
 
-## 安装
-
-### GitHub
-
-- 地址：[https://github.com/horance-liu/cut](https://github.com/ccut/cut)
-- 作者：刘光聪
-- Email：[horance@outlook.com](horance@outlook.com)
-
 ### 编译环境
 
 支持的平台:
@@ -23,6 +15,11 @@ Cut是一个简单的、可扩展的、使用C\+\+11实现的xUnit测试框架�
 * [CLANG] 3.4 or later.
 * [GCC] 4.8 or later.
 * [MSVC] not supported.
+
+依赖：
+- [cub](https://github.com/ccup/cub): C++ Unified Base Library.
+- [cpo](https://github.com/ccup/cut): C++ Programm Options Library.
+- [cum](https://github.com/ccup/cut): C++ Universal Matchers Library.
 
 ### 安装Cut
 
@@ -53,13 +50,7 @@ $ cmake .. && make
 $ sudo make install 
 ```
 
-<<<<<<< HEAD
 - 安装`cpo`：
-=======
-安装`cpo`：
-
-> 当前路径：`cut`所在目录
->>>>>>> dc7dcf82d0ab59ccae31f549344958dde6cd3c72
 
 ```bash
 $ cd lib/cpo && mkdir build && cd build
@@ -235,17 +226,10 @@ target_link_libraries(quantity-test cut cum cpo cub)
 
 其中：
 
-<<<<<<< HEAD
 - [cut](https://github.com/ccup/cut): C++ Unified Test Framework.
 - [cub](https://github.com/ccup/cub): C++ Unified Base Library.
 - [cpo](https://github.com/ccup/cut): C++ Programm Options Library.
 - [cum](https://github.com/ccup/cut): C++ Universal Matchers Library.
-=======
-- cut: C++ Unified Test framework;
-- cum: C++ Universal Matchers;
-- cpo: C++ Program Options;
-- cub: C++ Unified Base Libary;
->>>>>>> dc7dcf82d0ab59ccae31f549344958dde6cd3c72
 
 ##### 构建
 
