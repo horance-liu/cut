@@ -58,11 +58,8 @@ $ sudo make install
 ```
 
 Second, Intall `cpo`：
-<<<<<<< HEAD
 
 > Current Path: `${CUT_HOME}`
-=======
->>>>>>> dc7dcf82d0ab59ccae31f549344958dde6cd3c72
 
 ```bash
 $ cd lib/cpo && mkdir build && cd build
