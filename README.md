@@ -1,10 +1,10 @@
-# Cut: A Simple xUnit Test Framework in Modern C++11
+# CUT: C++ Unified Test Framework
 
-[cut](http://gitlab.com/horance/cut) is a simple, practical, and scalable xUnit Test Framework in Modern C++11. It's inspiration comes from the famous testing framework JUnit in Java community.
+[Cut](http://github.com/ccup/cut) is a simple, practical, and scalable xUnit Test Framework in Modern C++11. It's inspiration comes from the famous testing framework JUnit in Java community.
 
 C/C++ are different languages from most modern ones. Writing tests for them has some very specific challenges. Therefore, simply clone ideas from xUnit frameworks for other languages does not work the best. Programmers have to suffer accidental complexities brought by most of existing frameworks.
 
-**cut** is designed for simplifying efforts of programers, in terms of development, maintenance, flexibility of test management, build & run-time strategy, and others.
+**Cut** is designed for simplifying efforts of programers, in terms of development, maintenance, flexibility of test management, build & run-time strategy, and others.
 
 Supported Platform:
 * [MAC OS X] supported
@@ -17,9 +17,9 @@ Supported Compilers:
 * [MSVC] not supported.
 
 Dependences:
-* [cub](git clone https://github.com/ccup/cub.git).
-* [opt](git clone https://github.com/ccup/opt.git).
-* [cum](https://github.com/horance-liu/cum).
+* [cub](https://github.com/ccup/cub): C++ Unified Base Library.
+* [cpo](https://github.com/ccup/cut): C++ Programm Options Library.
+* [cum](https://github.com/ccup/cut): C++ Universal Matchers Library.
 
 ## Installing
 
@@ -29,9 +29,11 @@ Dependences:
 $ git clone https://github.com:ccup/cut.git
 ```
 
+`${CUT_HOME}` is file path of cloned cut form github.
+
 ### Install Dependencies
 
-> Current Path: cut
+> Current Path: ${CUT_HOME}
 
 ```bash
 $ cd cut/lib
@@ -45,7 +47,7 @@ $ sudo make install
 
 First, Install `cum`：
 
-> Current Path: cut
+> Current Path: `${CUT_HOME}`
 
 ```bash
 $ cd lib/cum && mkdir build && cd build
@@ -55,6 +57,8 @@ $ sudo make install
 
 Second, Intall `opt`：
 
+> Current Path: `${CUT_HOME}`
+
 ```bash
 $ cd lib/opt && mkdir build && cd build
 $ cmake .. && make
@@ -63,7 +67,7 @@ $ sudo make install
 
 At last, Install `cut`：
 
-> Current Path: cut
+> Current Path: `${CUT_HOME}`
 
 ```bash
 $ mkdir build && cd build
@@ -73,7 +77,7 @@ $ sudo make install
 
 ##### Test cut
 
-> Current Path: cut
+> Current Path: `${CUT_HOME}`
 
 ```bash
 $ cd build
@@ -83,20 +87,58 @@ $ test/cut-test
 
 ### Using Rake
 
-> Current Path: cut
+You can use Rake to simply procedure of dependency, building, installing, and testing of cut.
+
+##### Clang
+
+> Current Path: `${CUT_HOME}`
+
+- Resolve dependency
 
 ```bash
-$ rake deps      # install all dependencies
+$ rake deps    # clone, build, install all dependencies
 ```
 
-Run commands if using GCC:
+- Install cut 
 
 ```bash
-$ rake clone         # clone all dependencies
-$ rake build[gcc]    # clone all dependencies
+$ rake         # build, and install cut
 ```
 
-Other tasks:
+- Test 
+
+```bash
+$ rake test         # test cut
+$ rake deps_test    # test all dependencies
+```
+
+##### GCC
+
+> Current Path: `${CUT_HOME}`
+
+- Resolve dependency
+
+```bash
+$ rake deps_clone        # clone all dependencies
+$ rake deps_build[gcc]   # build by GCC, and install all dependencies
+```
+
+- Install cut 
+
+```bash
+$ rake build[GCC]        # build, and install cut by GCC
+```
+
+- Test 
+
+```bash
+$ rake test[GCC]         # test cut by GCC
+$ rake deps_test[GCC]    # test all dependencies by GCC
+```
+
+##### Tasks Reference
+
+> Current Path: `${CUT_HOME}`
 
 ```bash
 $ rake             # build, install cut using clang
@@ -109,6 +151,8 @@ $ rake clean       # remove temp directory, and uninstall cut
 ```
 
 And other task for dependencies:
+
+> Current Path: `${CUT_HOME}`
 
 ```bash
 $ rake deps             # clone, build, install all dependencies using clang
@@ -143,7 +187,6 @@ quantity
 ```cpp
 #include <cut/cut.hpp>
 
-
 int main(int argc, char** argv)
 {
     return cut::run_all_tests(argc, argv);
@@ -157,7 +200,7 @@ project(quantity)
 
 cmake_minimum_required(VERSION 2.8)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 file(GLOB_RECURSE all_files
@@ -170,13 +213,13 @@ test/*.c)
 
 add_executable(quantity-test ${all_files})
 
-target_link_libraries(quantity-test cut cum cub)
+target_link_libraries(quantity-test cut cum cpo cub)
 ```
 
-- cut: C++ Unified Test framework;
-- cum: C++ Universal Matchers;
-- opt: C++ Program Options;
-- cub: C++ Unified Base Libary;
+- [cut](https://github.com/ccup/cut): C++ Unified Test Framework.
+- [cub](https://github.com/ccup/cub): C++ Unified Base Library.
+- [cpo](https://github.com/ccup/cut): C++ Programm Options Library.
+- [cum](https://github.com/ccup/cut): C++ Universal Matchers Library.
 
 ##### Build
 
