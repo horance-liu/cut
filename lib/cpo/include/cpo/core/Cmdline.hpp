@@ -1,9 +1,9 @@
 #ifndef CMDLINE_Sun_Apr_19_00_17_15_2015_H
 #define CMDLINE_Sun_Apr_19_00_17_15_2015_H
 
-#include <opt/core/OptionsDescription.hpp>
+#include <cpo/core/OptionsDescription.hpp>
 
-OPT_NS_BEGIN
+CPO_NS_BEGIN
 
 struct Option;
 
@@ -26,7 +26,7 @@ private:
     const OptionsDescription* desc;
 };
 
-OPT_NS_END
+CPO_NS_END
 
 #endif
 

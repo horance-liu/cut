@@ -1,17 +1,17 @@
-#include <opt/core/VariablesMap.hpp>
-#include <opt/core/Parsers.hpp>
-#include <opt/core/OptionsDescription.hpp>
+#include <cpo/core/VariablesMap.hpp>
+#include <cpo/core/Parsers.hpp>
+#include <cpo/core/OptionsDescription.hpp>
 #include <iostream>
 
-OPT_NS_BEGIN
+CPO_NS_BEGIN
 
-inline void VariablesMap::store(const ParsedOptions& opt)
+inline void VariablesMap::store(const ParsedOptions& options)
 {
-    for (auto& option : opt.opt())
+    for (auto& opt : options.options())
     {
-        if (!option.key().empty())
+        if (!opt.key().empty())
         {
-            this->opt[option.key()] = option.value();
+            this->opt[opt.key()] = opt.value();
         }
     }
 }
@@ -23,7 +23,7 @@ void VariablesMap::parseArgs(int argc, const char** argv, const OptionsDescripti
 
 void VariablesMap::clear()
 {
-    opt.clear();
+	opt.clear();
 }
 
 const std::string& VariablesMap::operator[](const std::string& name) const
@@ -51,4 +51,4 @@ void VariablesMap::dump() const
     }
 }
 
-OPT_NS_END
+CPO_NS_END

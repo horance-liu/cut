@@ -54,12 +54,12 @@ $ cmake .. && make
 $ sudo make install 
 ```
 
-安装`opt`：
+安装`cpo`：
 
 > 当前路径：`cut`所在目录
 
 ```bash
-$ cd lib/opt && mkdir build && cd build
+$ cd lib/cpo && mkdir build && cd build
 $ cmake .. && make
 $ sudo make install 
 ```
@@ -175,14 +175,14 @@ test/*.c)
 
 add_executable(quantity-test ${all_files})
 
-target_link_libraries(quantity-test cut cum opt cub)
+target_link_libraries(quantity-test cut cum cpo cub)
 ```
 
 其中：
 
 - cut: C++ Unified Test framework;
 - cum: C++ Universal Matchers;
-- opt: C++ Program Options;
+- cpo: C++ Program Options;
 - cub: C++ Unified Base Libary;
 
 ##### 构建

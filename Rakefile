@@ -32,7 +32,7 @@ def do_clean(m)
   system "sudo rm -rf /usr/local/lib/lib#{m}.a"
 end
 
-DEPS = %w[cub cum opt]
+DEPS = %w[cub cum cpo]
 
 task :deps_clone do
   system "rm -rf lib/cub"

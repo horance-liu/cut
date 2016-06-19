@@ -20,7 +20,7 @@ Supported Compilers:
 
 Dependences:
 * [cub](git clone https://github.com/ccup/cub.git).
-* [opt](git clone https://github.com/ccup/opt.git).
+* [cpo](git clone https://github.com/ccup/cpo.git).
 * [cum](https://github.com/horance-liu/cum).
 
 ## Installing
@@ -55,10 +55,10 @@ $ cmake .. && make
 $ sudo make install 
 ```
 
-Second, Intall `opt`：
+Second, Intall `cpo`：
 
 ```bash
-$ cd lib/opt && mkdir build && cd build
+$ cd lib/cpo && mkdir build && cd build
 $ cmake .. && make
 $ sudo make install 
 ```
@@ -177,7 +177,7 @@ target_link_libraries(quantity-test cut cum cub)
 
 - cut: C++ Unified Test framework;
 - cum: C++ Universal Matchers;
-- opt: C++ Program Options;
+- cpo: C++ Program Options;
 - cub: C++ Unified Base Libary;
 
 ##### Build

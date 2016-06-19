@@ -1,10 +1,10 @@
 #ifndef OPTION_Fri_Apr_10_22_35_31_2015_H
 #define OPTION_Fri_Apr_10_22_35_31_2015_H
 
-#include <opt/opt.h>
+#include <cpo/cpo.h>
 #include <string>
 
-OPT_NS_BEGIN
+CPO_NS_BEGIN
 
 struct Option 
 {
@@ -20,6 +20,6 @@ private:
     std::string _value;
 };
 
-OPT_NS_END
+CPO_NS_END
 
 #endif

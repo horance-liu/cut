@@ -1,9 +1,9 @@
-#include <opt/core/Cmdline.hpp>
-#include <opt/core/OptionsDescription.hpp>
-#include <opt/core/Parsers.hpp>
-#include <opt/core/VariablesMap.hpp>
+#include <cpo/core/Cmdline.hpp>
+#include <cpo/core/OptionsDescription.hpp>
+#include <cpo/core/Parsers.hpp>
+#include <cpo/core/VariablesMap.hpp>
 
-OPT_NS_BEGIN
+CPO_NS_BEGIN
 
 CommandLineParser::	CommandLineParser
     ( int argc, const char** argv, const OptionsDescription& desc)
@@ -19,7 +19,7 @@ const ParsedOptions&  CommandLineParser::run()
     return *this;
 }
     
-const std::vector<Option>& CommandLineParser::opt() const
+const std::vector<Option>& CommandLineParser::options() const
 {
     return parsedOptions;
 }
@@ -29,4 +29,4 @@ const OptionsDescription& CommandLineParser::description() const
     return desc;
 }
 
-OPT_NS_END
+CPO_NS_END

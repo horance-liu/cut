@@ -1,6 +1,6 @@
 #include <cut/cut.hpp>
 #include <cut/startup/TestOptions.h>
-#include <opt/core/Args.h>
+#include <cpo/core/Args.h>
 #include <regex>
 
 USING_CUT_NS
@@ -19,7 +19,7 @@ FIXTURE(FilterTest)
 	template <typename Asserter>
 	void given_options_then(const std::vector<std::string>& config, Asserter asserter)
 	{
-        opt::Args args(config);
+        cpo::Args args(config);
         options.parse(args.argc(), args.argv());
         asserter();
 	}

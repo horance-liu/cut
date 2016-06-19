@@ -1,14 +1,14 @@
 #include <cut/cut.hpp>
-#include <opt/core/Args.h>
-#include "../include/opt/Opt.hpp"
+#include <cpo/core/Args.h>
+#include <cpo/cpo.hpp>
 
-USING_OPT_NS
+USING_CPO_NS
 
 using namespace cum;
 
 FIXTURE(OptionTest)
 {
-    OptionsDescription desc {"Allowed opt"};
+    OptionsDescription desc {"Allowed options"};
     VariablesMap varMap;
 
     void give_option_config(std::map<std::string, std::string>&& tbl)
@@ -19,7 +19,7 @@ FIXTURE(OptionTest)
 
     void when_parse_program_opt(const std::vector<std::string>& opt)
     {
-        opt::Args args(opt);
+        cpo::Args args(opt);
 		varMap.parseArgs(args.argc(), args.argv(), desc);
     }
 

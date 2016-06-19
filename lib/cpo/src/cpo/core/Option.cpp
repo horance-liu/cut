@@ -1,7 +1,7 @@
-#include <opt/core/Option.hpp>
+#include <cpo/core/Option.hpp>
 #include <iostream>
 
-OPT_NS_BEGIN
+CPO_NS_BEGIN
 
 using namespace std;
     
@@ -28,4 +28,4 @@ const string& Option::key() const
     return _key;
 }       
 
-OPT_NS_END
+CPO_NS_END
