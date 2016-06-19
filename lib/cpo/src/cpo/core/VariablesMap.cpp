@@ -1,13 +1,15 @@
-#include <opt/core/VariablesMap.hpp>
-#include <opt/core/Parsers.hpp>
-#include <opt/core/OptionsDescription.hpp>
+#include <cpo/core/VariablesMap.hpp>
+
 #include <iostream>
 
-OPT_NS_BEGIN
+#include <cpo/core/OptionsDescription.hpp>
+#include <cpo/core/Parsers.hpp>
+
+CPO_NS_BEGIN
 
 inline void VariablesMap::store(const ParsedOptions& opt)
 {
-    for (auto& option : opt.opt())
+    for (auto& option : opt.options())
     {
         if (!option.key().empty())
         {
@@ -51,4 +53,4 @@ void VariablesMap::dump() const
     }
 }
 
-OPT_NS_END
+CPO_NS_END

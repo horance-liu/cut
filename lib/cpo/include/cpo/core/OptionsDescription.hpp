@@ -1,13 +1,14 @@
 #ifndef OPTIONSDESCRIPTION_Fri_Apr_10_23_35_29_2015_H
 #define OPTIONSDESCRIPTION_Fri_Apr_10_23_35_29_2015_H
 
-#include <opt/opt.h>
 #include <string>
 #include <vector>
 #include <map>
 #include <memory>
 
-OPT_NS_BEGIN
+#include <cpo/cpo.h>
+
+CPO_NS_BEGIN
 
 struct OptionDescription
 {
@@ -45,6 +46,6 @@ private:
     std::vector<DescPtr> m_opt;
 };
 
-OPT_NS_END
+CPO_NS_END
 
 #endif

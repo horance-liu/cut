@@ -1,18 +1,19 @@
 #ifndef PARSERS_Thu_Apr_16_23_57_14_2015_H
 #define PARSERS_Thu_Apr_16_23_57_14_2015_H
 
-#include <opt/core/OptionsDescription.hpp>
-#include <opt/core/Option.hpp>
 #include <cub/dci/Role.h>
-#include <opt/core/Cmdline.hpp>
 
-OPT_NS_BEGIN
+#include <cpo/core/OptionsDescription.hpp>
+#include <cpo/core/Cmdline.hpp>
+#include <cpo/core/Option.hpp>
+
+CPO_NS_BEGIN
 
 struct OptionsDescription;
 
 DEFINE_ROLE(ParsedOptions)
 {
-    ABSTRACT(const std::vector<Option>& opt() const);
+    ABSTRACT(const std::vector<Option>& options() const);
     ABSTRACT(const OptionsDescription& description() const);
 };
 
@@ -24,7 +25,7 @@ struct CommandLineParser : private Cmdline, ParsedOptions{
     const ParsedOptions& run();
 
 private:
-    OVERRIDE(const std::vector<Option>& opt() const);
+    OVERRIDE(const std::vector<Option>& options() const);
     OVERRIDE(const OptionsDescription& description() const);
 
 private:
@@ -32,6 +33,6 @@ private:
     const OptionsDescription& desc;
 };
 
-OPT_NS_END
+CPO_NS_END
 
 #endif

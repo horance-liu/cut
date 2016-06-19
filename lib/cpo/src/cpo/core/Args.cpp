@@ -1,7 +1,8 @@
-#include <opt/core/Args.h>
+#include <cpo/core/Args.h>
+
 #include <string.h>
 
-OPT_NS_BEGIN
+CPO_NS_BEGIN
 
 Args::Args(const std::vector<std::string>& opt)
   : m_argc(opt.size()), m_argv(new const char*[m_argc])
@@ -32,4 +33,4 @@ const char** Args::argv() const
     return m_argv;
 }
 
-OPT_NS_END
+CPO_NS_END

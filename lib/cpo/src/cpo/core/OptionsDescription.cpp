@@ -1,13 +1,15 @@
-#include <opt/core/OptionsDescription.hpp>
-#include <opt/core/Parsers.hpp>
+#include <cpo/core/OptionsDescription.hpp>
+
 #include <algorithm>
 #include <iostream>
 #include <iomanip>
 #include <cub/algo/String.h>
 
+#include <cpo/core/Parsers.hpp>
+
 using namespace std;
 
-OPT_NS_BEGIN
+CPO_NS_BEGIN
 
 inline void OptionDescription::setName(const std::string& name)
 {
@@ -108,5 +110,5 @@ ostream& operator<<(ostream& os, const OptionsDescription& desc)
 
 }
 
-OPT_NS_END
+CPO_NS_END
 

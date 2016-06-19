@@ -55,12 +55,12 @@ $ cmake .. && make
 $ sudo make install 
 ```
 
-Second, Intall `opt`：
+Second, Intall `cpo`：
 
 > Current Path: `${CUT_HOME}`
 
 ```bash
-$ cd lib/opt && mkdir build && cd build
+$ cd lib/cpo && mkdir build && cd build
 $ cmake .. && make
 $ sudo make install 
 ```
@@ -943,8 +943,8 @@ TestOptions::TestOptions() : desc("cut")
     });
     
     // default value
-    opt["color"]  = "yes";
-    opt["repeat"] = "1";
+    cpo["color"]  = "yes";
+    cpo["repeat"] = "1";
 }
 ```
 

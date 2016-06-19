@@ -53,10 +53,10 @@ $ cmake .. && make
 $ sudo make install 
 ```
 
-- 安装`opt`：
+- 安装`cpo`：
 
 ```bash
-$ cd lib/opt && mkdir build && cd build
+$ cd lib/cpo && mkdir build && cd build
 $ cmake .. && make
 $ sudo make install 
 ```
@@ -95,12 +95,12 @@ $ cmake -DENABLE_TEST=on .. && make
 $ test/cum-test
 ```
 
-- 测试Opt
+- 测试cpo
 
 ```bash
-$ cd lib/opt/build
+$ cd lib/cpo/build
 $ cmake -DENABLE_TEST=on .. && make
-$ test/opt-test
+$ test/cpo-test
 ```
 
 ### 使用Rake
@@ -224,7 +224,7 @@ test/*.c)
 
 add_executable(quantity-test ${all_files})
 
-target_link_libraries(quantity-test cut cum opt cub)
+target_link_libraries(quantity-test cut cum cpo cub)
 ```
 
 其中：

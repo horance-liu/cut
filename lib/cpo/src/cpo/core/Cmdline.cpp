@@ -1,12 +1,14 @@
-#include <opt/core/Cmdline.hpp>
+#include <cpo/core/Cmdline.hpp>
 
-#include <opt/core/OptionsDescription.hpp>
-#include <opt/core/Option.hpp>
+#include <cpo/core/OptionsDescription.hpp>
 #include <cub/dci/Role.h>
+#include <cpo/core/OptionsDescription.hpp>
+#include <cpo/core/Option.hpp>
+#include <cpo/core/OptionsDescription.hpp>
 
 using namespace std;
 
-OPT_NS_BEGIN
+CPO_NS_BEGIN
 
 Cmdline::Cmdline(const vector<string>& args)
   : args(args), desc(0)
@@ -199,4 +201,4 @@ vector<Option> Cmdline::parseShortOption(const string& tok)
     return parser.result;
 }
 
-OPT_NS_END
+CPO_NS_END

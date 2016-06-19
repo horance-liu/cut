@@ -3,8 +3,8 @@
 
 #include <cut/cut.h>
 #include <cub/dci/Role.h>
-#include <opt/core/VariablesMap.hpp>
-#include <opt/core/OptionsDescription.hpp>
+#include <cpo/core/OptionsDescription.hpp>
+#include <cpo/core/VariablesMap.hpp>
 
 CUT_NS_BEGIN
 
@@ -33,8 +33,8 @@ private:
     bool matches(const std::string& name) const;
 
 private:
-    opt::OptionsDescription desc;
-    opt::VariablesMap options;
+    cpo::OptionsDescription desc;
+    cpo::VariablesMap options;
 
 private:
     USE_ROLE(TestRunner);
