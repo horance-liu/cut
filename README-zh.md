@@ -1,14 +1,14 @@
-# cut: A Simple xUnit Test Framework in Modern C++11
+# CUT: C++ Unified Test Framework
 
 ## 灵感
 
-cut是一个简单的、可扩展的、使用C\+\+11实现的xUnit测试框架。cut设计灵感来自于Java社区著名的测试框架JUnit。
+Cut是一个简单的、可扩展的、使用C\+\+11实现的xUnit测试框架。Cut设计灵感来自于Java社区著名的测试框架JUnit。
 
 ## 安装
 
 ### GitHub
 
-- 地址：[https://github.com/horance-liu/cut](https://github.com/horance-liu/cut)
+- 地址：[https://github.com/horance-liu/cut](https://github.com/ccut/cut)
 - 作者：刘光聪
 - Email：[horance@outlook.com](horance@outlook.com)
 
@@ -24,16 +24,19 @@ cut是一个简单的、可扩展的、使用C\+\+11实现的xUnit测试框架�
 * [GCC] 4.8 or later.
 * [MSVC] not supported.
 
+### 安装Cut
 
-### 克隆cut
+##### 克隆Cut
 
 ```bash
 $ git clone https://github.com:ccup/cut.git
 ```
 
-### 安装依赖
+假设，`${CUT_HOME}`是`cut`所在克隆所在目录，下文如果未特殊说明，当前路径默认为`${CUT_HOME}`。
 
-> 当前路径：`cut`所在目录
+##### 安装依赖
+
+- 克隆Cub
 
 ```bash
 $ git clone https://github.com/ccup/cub.git lib/cub
@@ -42,11 +45,7 @@ $ cmake .. && make
 $ sudo make install 
 ```
 
-### 安装cut
-
-安装`cum`：
-
-> 当前路径：`cut`所在目录
+- 安装`cum`：
 
 ```bash
 $ cd lib/cum && mkdir build && cd build
@@ -54,9 +53,7 @@ $ cmake .. && make
 $ sudo make install 
 ```
 
-安装`opt`：
-
-> 当前路径：`cut`所在目录
+- 安装`opt`：
 
 ```bash
 $ cd lib/opt && mkdir build && cd build
@@ -64,9 +61,7 @@ $ cmake .. && make
 $ sudo make install 
 ```
 
-最后安装`cut`：
-
-> 当前路径：`cut`所在目录
+- 安装`cut`：
 
 ```bash
 $ mkdir build && cd build
@@ -76,32 +71,88 @@ $ sudo make install
 
 ##### 测试cut
 
-> 当前路径：`cut`所在目录
-
 ```bash
 $ cd build
 $ cmake -DENABLE_TEST=on .. && make
 $ test/cut-test
 ```
 
-##### 使用Rake
+##### 测试依赖
 
-使用`Rake`可简化`Magelan`的依赖管理，方便`cut`的构建，及其测试，并且使得`cut`自我测试变成更加方便自如。
-
-> 当前路径：`cut`所在目录
+- 测试Cub
 
 ```bash
-$ rake deps      # install all dependencies
+$ cd lib/cub/build
+$ cmake -DENABLE_TEST=on .. && make
+$ test/cub-test
 ```
 
-如果使用`GCC`，安装依赖可以如下命令完成：
+- 测试Cum
 
 ```bash
-$ rake clone    # clone all dependencies
-$ rake build[gcc]    # clone all dependencies
+$ cd lib/cum/build
+$ cmake -DENABLE_TEST=on .. && make
+$ test/cum-test
 ```
 
-其他`rake`任务包括：
+- 测试Opt
+
+```bash
+$ cd lib/opt/build
+$ cmake -DENABLE_TEST=on .. && make
+$ test/opt-test
+```
+
+### 使用Rake
+
+使用`Rake`可简化`Magelan`的依赖管理，方便`cut`的构建，测试，并且使得`cut`自我测试变得更加方便自如。
+
+##### 使用Clang
+
+- 解决依赖
+
+```bash
+$ rake deps    # clone, build, install all dependencies
+```
+
+- 安装cut 
+
+```bash
+$ rake         # build, and install cut
+```
+
+- 测试 
+
+```bash
+$ rake test         # test cut
+$ rake deps_test    # test all dependencies
+```
+
+##### 使用GCC
+
+- 解决依赖
+
+```bash
+$ rake deps_clone        # clone all dependencies
+$ rake deps_build[gcc]   # build by GCC, and install all dependencies
+```
+
+- 安装cut 
+
+```bash
+$ rake build[GCC]        # build, and install cut by GCC
+```
+
+- 测试 
+
+```bash
+$ rake test[GCC]         # test cut by GCC
+$ rake deps_test[GCC]    # test all dependencies by GCC
+```
+
+##### 任务表
+
+- Cut的Rake任务：
 
 ```bash
 $ rake             # build, install cut using clang
@@ -113,17 +164,15 @@ $ rake uninstall   # uninstall cut only
 $ rake clean       # remove temp directory, and uninstall cut
 ```
 
-其他依赖的`rake`任务包括：
+- 依赖管理的Rake任务:
 
 ```bash
-$ rake deps        # clone, build, install all dependencies using clang
-$ rake deps_clone  # clone all dependencies
-$ rake deps_build  # clone, build, install all dependencies using clang
-$ rake deps_test   # clone, build, install, and test all dependencies using clang
-
+$ rake deps             # clone, build, install all dependencies using clang
+$ rake deps_clone       # clone all dependencies
+$ rake deps_build       # clone, build, install all dependencies using clang
+$ rake deps_test        # clone, build, install, and test all dependencies using clang
 $ rake deps_build[gcc]  # clone, build, install all dependencies using gcc
 $ rake deps_test[gcc]   # clone, build, install, and test all dependencies using gcc
-
 $ rake deps_uninstall   # uninstall all dependencies
 $ rake deps_clean       # remove temp directory, and uninstall all dependencies
 ```
@@ -180,10 +229,10 @@ target_link_libraries(quantity-test cut cum opt cub)
 
 其中：
 
-- cut: C++ Unified Test framework;
-- cum: C++ Universal Matchers;
-- opt: C++ Program Options;
-- cub: C++ Unified Base Libary;
+- [cut](https://github.com/ccup/cut): C++ Unified Test Framework.
+- [cub](https://github.com/ccup/cub): C++ Unified Base Library.
+- [cpo](https://github.com/ccup/cut): C++ Programm Options Library.
+- [cum](https://github.com/ccup/cut): C++ Universal Matchers Library.
 
 ##### 构建
 
