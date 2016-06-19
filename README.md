@@ -1,4 +1,4 @@
-**NOTE:** Magellan has been move to [https://github.com/ccup/cut]. Yes, [magellan](https://github.com/horance-liu/magellan) has been renamed to [cut](https://github.com/ccup/cut), [Cut](https://github.com/ccup/cut) is a C++ Unified Test framework which is an important part of [ccup]([cut](https://github.com/ccup)(C++ unified packages). We will delivery more and more components, libraries, middlewares, and best practices, and so on. I believe that you'll get a lot of interest things from [ccut](https://github.com/ccup).
+**NOTE:** Magellan has been move to [https://github.com/ccup/cut]. Yes, [magellan](https://github.com/horance-liu/magellan) has been renamed to [cut](https://github.com/ccup/cut), [Cut](https://github.com/ccup/cut) is a C++ Unified Test framework which is an important part of [ccup](https://github.com/ccup)(C++ unified packages). We will delivery more and more components, libraries, middlewares, and best practices, and so on. I believe that you'll get a lot of interest things from [ccut](https://github.com/ccup).
 
 # Mangellan: A Simple xUnit Test Framework in Modern C++11
 
