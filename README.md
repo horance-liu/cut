@@ -1,6 +1,12 @@
 # CUT: C++ Unified Test Framework
 
+<<<<<<< HEAD
 [Cut](http://github.com/ccup/cut) is a simple, practical, and scalable xUnit Test Framework in Modern C++11. It's inspiration comes from the famous testing framework JUnit in Java community.
+=======
+**NOTE:** Cut has been move to [https://github.com/ccup/cut]. Yes, [magellan](https://github.com/horance-liu/magellan) has been renamed to [cut](https://github.com/ccup/cut), [Cut](https://github.com/ccup/cut) is a C++ Unified Test framework which is an important part of [ccup](https://github.com/ccup)(C++ unified packages). We will delivery more and more components, libraries, middlewares, and best practices, and so on. I believe that you'll get a lot of interest things from [ccut](https://github.com/ccup).
+
+[cut](http://gitlab.com/horance/cut) is a simple, practical, and scalable xUnit Test Framework in Modern C++11. It's inspiration comes from the famous testing framework JUnit in Java community.
+>>>>>>> dc7dcf82d0ab59ccae31f549344958dde6cd3c72
 
 C/C++ are different languages from most modern ones. Writing tests for them has some very specific challenges. Therefore, simply clone ideas from xUnit frameworks for other languages does not work the best. Programmers have to suffer accidental complexities brought by most of existing frameworks.
 
@@ -17,9 +23,15 @@ Supported Compilers:
 * [MSVC] not supported.
 
 Dependences:
+<<<<<<< HEAD
 * [cub](https://github.com/ccup/cub): C++ Unified Base Library.
 * [cpo](https://github.com/ccup/cut): C++ Programm Options Library.
 * [cum](https://github.com/ccup/cut): C++ Universal Matchers Library.
+=======
+* [cub](git clone https://github.com/ccup/cub.git).
+* [cpo](git clone https://github.com/ccup/cpo.git).
+* [cum](https://github.com/horance-liu/cum).
+>>>>>>> dc7dcf82d0ab59ccae31f549344958dde6cd3c72
 
 ## Installing
 
@@ -56,8 +68,11 @@ $ sudo make install
 ```
 
 Second, Intall `cpo`：
+<<<<<<< HEAD
 
 > Current Path: `${CUT_HOME}`
+=======
+>>>>>>> dc7dcf82d0ab59ccae31f549344958dde6cd3c72
 
 ```bash
 $ cd lib/cpo && mkdir build && cd build
@@ -216,10 +231,17 @@ add_executable(quantity-test ${all_files})
 target_link_libraries(quantity-test cut cum cpo cub)
 ```
 
+<<<<<<< HEAD
 - [cut](https://github.com/ccup/cut): C++ Unified Test Framework.
 - [cub](https://github.com/ccup/cub): C++ Unified Base Library.
 - [cpo](https://github.com/ccup/cut): C++ Programm Options Library.
 - [cum](https://github.com/ccup/cut): C++ Universal Matchers Library.
+=======
+- cut: C++ Unified Test framework;
+- cum: C++ Universal Matchers;
+- cpo: C++ Program Options;
+- cub: C++ Unified Base Libary;
+>>>>>>> dc7dcf82d0ab59ccae31f549344958dde6cd3c72
 
 ##### Build
 

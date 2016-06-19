@@ -53,7 +53,13 @@ $ cmake .. && make
 $ sudo make install 
 ```
 
+<<<<<<< HEAD
 - 安装`cpo`：
+=======
+安装`cpo`：
+
+> 当前路径：`cut`所在目录
+>>>>>>> dc7dcf82d0ab59ccae31f549344958dde6cd3c72
 
 ```bash
 $ cd lib/cpo && mkdir build && cd build
@@ -229,10 +235,17 @@ target_link_libraries(quantity-test cut cum cpo cub)
 
 其中：
 
+<<<<<<< HEAD
 - [cut](https://github.com/ccup/cut): C++ Unified Test Framework.
 - [cub](https://github.com/ccup/cub): C++ Unified Base Library.
 - [cpo](https://github.com/ccup/cut): C++ Programm Options Library.
 - [cum](https://github.com/ccup/cut): C++ Universal Matchers Library.
+=======
+- cut: C++ Unified Test framework;
+- cum: C++ Universal Matchers;
+- cpo: C++ Program Options;
+- cub: C++ Unified Base Libary;
+>>>>>>> dc7dcf82d0ab59ccae31f549344958dde6cd3c72
 
 ##### 构建
 

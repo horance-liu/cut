@@ -1,5 +1,4 @@
 #include <cut/cut.hpp>
-
 #include <cpo/core/Args.h>
 #include <cpo/cpo.hpp>
 

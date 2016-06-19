@@ -1,10 +1,9 @@
 #ifndef H5088D5BD_7AEF_4B80_987D_2432554E45CA
 #define H5088D5BD_7AEF_4B80_987D_2432554E45CA
 
+#include <cpo/cpo.h>
 #include <vector>
 #include <string>
-
-#include <cpo/cpo.h>
 
 CPO_NS_BEGIN
 

@@ -1,7 +1,6 @@
 #include <cut/cut.hpp>
 #include <cut/startup/TestOptions.h>
 #include <regex>
-
 #include <cpo/core/Args.h>
 
 USING_CUT_NS

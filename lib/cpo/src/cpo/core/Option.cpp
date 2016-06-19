@@ -1,5 +1,4 @@
 #include <cpo/core/Option.hpp>
-
 #include <iostream>
 
 CPO_NS_BEGIN

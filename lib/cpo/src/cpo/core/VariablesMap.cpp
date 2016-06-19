@@ -1,19 +1,17 @@
 #include <cpo/core/VariablesMap.hpp>
-
-#include <iostream>
-
-#include <cpo/core/OptionsDescription.hpp>
 #include <cpo/core/Parsers.hpp>
+#include <cpo/core/OptionsDescription.hpp>
+#include <iostream>
 
 CPO_NS_BEGIN
 
-inline void VariablesMap::store(const ParsedOptions& opt)
+inline void VariablesMap::store(const ParsedOptions& options)
 {
-    for (auto& option : opt.options())
+    for (auto& opt : options.options())
     {
-        if (!option.key().empty())
+        if (!opt.key().empty())
         {
-            this->opt[option.key()] = option.value();
+            this->opt[opt.key()] = opt.value();
         }
     }
 }
@@ -25,7 +23,7 @@ void VariablesMap::parseArgs(int argc, const char** argv, const OptionsDescripti
 
 void VariablesMap::clear()
 {
-    opt.clear();
+	opt.clear();
 }
 
 const std::string& VariablesMap::operator[](const std::string& name) const

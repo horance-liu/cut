@@ -1,11 +1,10 @@
 #include <cpo/core/OptionsDescription.hpp>
+#include <cpo/core/Parsers.hpp>
 
 #include <algorithm>
 #include <iostream>
 #include <iomanip>
 #include <cub/algo/String.h>
-
-#include <cpo/core/Parsers.hpp>
 
 using namespace std;
 

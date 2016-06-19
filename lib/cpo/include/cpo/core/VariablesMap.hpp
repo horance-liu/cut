@@ -1,9 +1,10 @@
 #ifndef VARIABLESMAP_Fri_Apr_10_22_02_27_2015_H
 #define VARIABLESMAP_Fri_Apr_10_22_02_27_2015_H
 
+#include <cpo/cpo.h>
+
 #include <string>
 #include <map>
-#include <cpo/cpo.h>
 
 CPO_NS_BEGIN
 

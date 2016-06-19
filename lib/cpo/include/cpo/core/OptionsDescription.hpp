@@ -1,12 +1,11 @@
 #ifndef OPTIONSDESCRIPTION_Fri_Apr_10_23_35_29_2015_H
 #define OPTIONSDESCRIPTION_Fri_Apr_10_23_35_29_2015_H
 
+#include <cpo/cpo.h>
 #include <string>
 #include <vector>
 #include <map>
 #include <memory>
-
-#include <cpo/cpo.h>
 
 CPO_NS_BEGIN
 
