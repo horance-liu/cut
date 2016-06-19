@@ -1,12 +1,18 @@
 # CUT: C++ Unified Test Framework
 
-**NOTE:** Cut has been move to [https://github.com/ccup/cut]. Yes, [magellan](https://github.com/horance-liu/magellan) has been renamed to [cut](https://github.com/ccup/cut), [Cut](https://github.com/ccup/cut) is a C++ Unified Test framework which is an important part of [ccup](https://github.com/ccup)(C++ unified packages). We will delivery more and more components, libraries, middlewares, and best practices, and so on. I believe that you'll get a lot of interest things from [ccut](https://github.com/ccup).
+## NOTE
+
+Cut has been move to [https://github.com/ccup/cut]. Yes, [magellan](https://github.com/horance-liu/magellan) has been renamed to [cut](https://github.com/ccup/cut), [Cut](https://github.com/ccup/cut) is a C++ Unified Test framework which is an important part of [ccup](https://github.com/ccup)(C++ unified packages). We will delivery more and more components, libraries, middlewares, and best practices, and so on. I believe that you'll get a lot of interest things from [ccut](https://github.com/ccup).
+
+## Introduction
 
 [Cut](http://github.com/ccup/cut) is a simple, practical, and scalable xUnit Test Framework in Modern C++11. It's inspiration comes from the famous testing framework JUnit in Java community.
 
 C/C++ are different languages from most modern ones. Writing tests for them has some very specific challenges. Therefore, simply clone ideas from xUnit frameworks for other languages does not work the best. Programmers have to suffer accidental complexities brought by most of existing frameworks.
 
 **Cut** is designed for simplifying efforts of programers, in terms of development, maintenance, flexibility of test management, build & run-time strategy, and others.
+
+## Contrains
 
 Supported Platform:
 * [MAC OS X] supported
