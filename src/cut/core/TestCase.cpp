@@ -18,13 +18,13 @@ namespace
         {}
 
     private:
-        OVERRIDE(bool operator()() const)
+        __OVERRIDE__(bool operator()() const)
         {
             (test.*method)();
             return true;
         }
 
-        IMPL_ROLE_WITH_OBJ(Test, test);
+        __IMPL_ROLE_WITH_OBJ__(Test, test);
 
     private:
        TestCase& test;

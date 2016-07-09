@@ -1,9 +1,9 @@
 #ifndef _EM7NQ5392XET3HU9T1F55VEUXF7IF2VL9NRNSB7LM17OT1G8VM8P0TD               
 #define _EM7NQ5392XET3HU9T1F55VEUXF7IF2VL9NRNSB7LM17OT1G8VM8P0TD
 
+#include <cui/utils/__TypeName__.h>
 #include <cut/core/TestMethod.h>
 #include <cut/core/TestSuite.h>
-#include <cub/utils/TypeName.h>
 #include <set>
 
 CUT_NS_BEGIN
@@ -36,7 +36,7 @@ private:
 
         Test* suite() const
         {
-            auto fixture = new TestSuite(cub::TypeName<Fixture>::value());
+            auto fixture = new TestSuite(cui::TypeName<Fixture>::value());
 
             for (auto& method : registry)
             {

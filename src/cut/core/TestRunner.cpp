@@ -1,26 +1,26 @@
+#include <cui/mem/__ScopeExit__.h>
 #include <cut/core/TestRunner.h>
 #include <cut/startup/TestOptions.h>
 #include <cut/core/TestResult.h>
 #include <cut/ext/RepeatedTest.h>
 #include <cut/auto/TestFactorySuite.h>
-#include <cub/mem/ScopeExit.h>
 
 CUT_NS_BEGIN
 
 inline void TestRunner::addListeners(TestResult& result) const
 {
-    result.add(ROLE(TestOptions).makeTextPrinter());
-    result.add(ROLE(TestOptions).makeXmlPrinter());
+    result.add(__ROLE__(TestOptions).makeTextPrinter());
+    result.add(__ROLE__(TestOptions).makeXmlPrinter());
 }
 
 inline bool TestRunner::run(Test* test)
 {
-    SCOPE_EXIT([=]{ delete test; });
+    __SCOPE_EXIT__([=]{ delete test; });
                         
     TestResult result;
     addListeners(result);
 
-    RepeatedTest repeated(*test, ROLE(TestOptions).repeat());
+    RepeatedTest repeated(*test, __ROLE__(TestOptions).repeat());
     result.run(repeated);
 
     return result.isSucc();
@@ -28,7 +28,7 @@ inline bool TestRunner::run(Test* test)
 
 bool TestRunner::run()
 {
-    TestFactory& factory = ROLE(TestFactorySuite);
+    TestFactory& factory = __ROLE__(TestFactorySuite);
     return run(factory.make());
 }
 

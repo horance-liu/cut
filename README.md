@@ -1,81 +1,39 @@
 # CUT: C++ Unified Test Framework
 
-## NOTE
-
-Cut has been move to [https://github.com/ccup/cut]. Yes, [magellan](https://github.com/horance-liu/magellan) has been renamed to [cut](https://github.com/ccup/cut), [Cut](https://github.com/ccup/cut) is a C++ Unified Test framework which is an important part of [ccup](https://github.com/ccup)(C++ unified packages). We will delivery more and more components, libraries, middlewares, and best practices, and so on. I believe that you'll get a lot of interest things from [ccut](https://github.com/ccup).
-
-## Introduction
-
-[Cut](http://github.com/ccup/cut) is a simple, practical, and scalable xUnit Test Framework in Modern C++11. It's inspiration comes from the famous testing framework JUnit in Java community.
+[Cut](http://github.com/ccock/cut) is a simple, practical, and scalable xUnit Test Framework in Modern C++11. It's inspiration comes from the famous testing framework JUnit in Java community.
 
 C/C++ are different languages from most modern ones. Writing tests for them has some very specific challenges. Therefore, simply clone ideas from xUnit frameworks for other languages does not work the best. Programmers have to suffer accidental complexities brought by most of existing frameworks.
 
 **Cut** is designed for simplifying efforts of programers, in terms of development, maintenance, flexibility of test management, build & run-time strategy, and others.
 
-## Contrains
+## Requirement
 
-Supported Platform:
-* [MAC OS X] supported
-* [Linux] supported
-* [Windows] not supported
+- Supported Platform:
+  * [MAC OS X] supported
+  * [Linux] supported
+  * [Windows] not supported
 
-Supported Compilers:
-* [CLANG] 3.4 or later.
-* [GCC] 4.8 or later.
-* [MSVC] not supported.
-
-Dependences:
-* [cub](https://github.com/ccup/cub): C++ Unified Base Library.
-* [cpo](https://github.com/ccup/cut): C++ Programm Options Library.
-* [cum](https://github.com/ccup/cut): C++ Universal Matchers Library.
+- Supported Compilers:
+  * [CLANG] 3.4 or later.
+  * [GCC] 4.8 or later.
+  * [MSVC] not supported.
 
 ## Installing
 
-### Clone cut
+Cut support 2 intalling method.
+
+- Online Installing
+- Manual Installing
+
+### Online Installing
 
 ```bash
-$ git clone https://github.com:ccup/cut.git
+$ curl -fsSL https://raw.github.com/ccock/cut/master/install.sh | sh
 ```
 
-`${CUT_HOME}` is file path of cloned cut form github.
+### Manual Installing and Testing
 
-### Install Dependencies
-
-> Current Path: ${CUT_HOME}
-
-```bash
-$ cd cut/lib
-$ git clone https://github.com/ccup/cub.git
-$ cd cub && mkdir build && cd build
-$ cmake .. && make
-$ sudo make install 
-```
-
-### Install cut
-
-First, Install `cum`：
-
-> Current Path: `${CUT_HOME}`
-
-```bash
-$ cd lib/cum && mkdir build && cd build
-$ cmake .. && make
-$ sudo make install 
-```
-
-Second, Intall `cpo`：
-
-> Current Path: `${CUT_HOME}`
-
-```bash
-$ cd lib/cpo && mkdir build && cd build
-$ cmake .. && make
-$ sudo make install 
-```
-
-At last, Install `cut`：
-
-> Current Path: `${CUT_HOME}`
+##### Install Cut
 
 ```bash
 $ mkdir build && cd build
@@ -85,92 +43,10 @@ $ sudo make install
 
 ##### Test cut
 
-> Current Path: `${CUT_HOME}`
-
 ```bash
 $ cd build
 $ cmake -DENABLE_TEST=on .. && make
 $ test/cut-test
-```
-
-### Using Rake
-
-You can use Rake to simply procedure of dependency, building, installing, and testing of cut.
-
-##### Clang
-
-> Current Path: `${CUT_HOME}`
-
-- Resolve dependency
-
-```bash
-$ rake deps    # clone, build, install all dependencies
-```
-
-- Install cut 
-
-```bash
-$ rake         # build, and install cut
-```
-
-- Test 
-
-```bash
-$ rake test         # test cut
-$ rake deps_test    # test all dependencies
-```
-
-##### GCC
-
-> Current Path: `${CUT_HOME}`
-
-- Resolve dependency
-
-```bash
-$ rake deps_clone        # clone all dependencies
-$ rake deps_build[gcc]   # build by GCC, and install all dependencies
-```
-
-- Install cut 
-
-```bash
-$ rake build[GCC]        # build, and install cut by GCC
-```
-
-- Test 
-
-```bash
-$ rake test[GCC]         # test cut by GCC
-$ rake deps_test[GCC]    # test all dependencies by GCC
-```
-
-##### Tasks Reference
-
-> Current Path: `${CUT_HOME}`
-
-```bash
-$ rake             # build, install cut using clang
-$ rake build       # build, install using clang
-$ rake test        # build, install, and test using clang
-$ rake build[gcc]  # build, install using gcc
-$ rake test[gcc]   # build, install, and test using gcc
-$ rake uninstall   # uninstall cut only
-$ rake clean       # remove temp directory, and uninstall cut
-```
-
-And other task for dependencies:
-
-> Current Path: `${CUT_HOME}`
-
-```bash
-$ rake deps             # clone, build, install all dependencies using clang
-$ rake deps_clone       # clone all dependencies
-$ rake deps_build       # clone, build, install all dependencies using clang
-$ rake deps_test        # clone, build, install, and test all dependencies using clang
-$ rake deps_build[gcc]  # clone, build, install all dependencies using gcc
-$ rake deps_test[gcc]   # clone, build, install, and test all dependencies using gcc
-$ rake deps_uninstall   # uninstall all dependencies
-$ rake deps_clean       # remove temp directory, and uninstall all dependencies
 ```
 
 ## Begin the new journey
@@ -221,13 +97,8 @@ test/*.c)
 
 add_executable(quantity-test ${all_files})
 
-target_link_libraries(quantity-test cut cum cpo cub)
+target_link_libraries(quantity-test cut)
 ```
-
-- [cut](https://github.com/ccup/cut): C++ Unified Test Framework.
-- [cub](https://github.com/ccup/cub): C++ Unified Base Library.
-- [cpo](https://github.com/ccup/cut): C++ Programm Options Library.
-- [cum](https://github.com/ccup/cut): C++ Universal Matchers Library.
 
 ##### Build
 
@@ -951,8 +822,8 @@ TestOptions::TestOptions() : desc("cut")
     });
     
     // default value
-    cpo["color"]  = "yes";
-    cpo["repeat"] = "1";
+    opt["color"]  = "yes";
+    opt["repeat"] = "1";
 }
 ```
 

@@ -10,7 +10,7 @@ template <typename Fixture>
 struct AutoTestFactory : TestFactory
 {
 private:
-    OVERRIDE(Test* make())
+    __OVERRIDE__(Test* make())
     {
         // !!! auto register all test methods to MetaTestFixture<Fixture>
         static Fixture fixture;

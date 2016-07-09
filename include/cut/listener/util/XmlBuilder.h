@@ -1,8 +1,8 @@
 #ifndef HA5559C9B_84A7_4876_BDDD_B95BC2FF503B
 #define HA5559C9B_84A7_4876_BDDD_B95BC2FF503B
 
+#include <cui/algo/__string__.h>
 #include <cut/cut.h>
-#include <cub/algo/String.h>
 
 CUT_NS_BEGIN
 
@@ -19,19 +19,19 @@ struct XmlBuilder
     template <typename V>
     void addAttribute(const std::string& key, const V& value)
     {
-        doAddAttribute(key, cub::toString(value));
+        doAddAttribute(key, cui::toString(value));
     }
 
     template <typename V>
     void addAttributeTo(const std::string& name, const std::string& key, const V& value)
     {
-        doAddAttributeTo(name, key, cub::toString(value));
+        doAddAttributeTo(name, key, cui::toString(value));
     }
 
     template <typename V>
     void addValue(const V& value)
     {
-        doAddValue(cub::toString(value));
+        doAddValue(cui::toString(value));
     }
 
     const std::string& getParentName() const;

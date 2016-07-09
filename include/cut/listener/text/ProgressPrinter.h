@@ -11,9 +11,9 @@ struct ProgressPrinter : TestListener
     ProgressPrinter(std::ostream& = std::cout);
 
 private:
-    OVERRIDE(void startTest(const Test&));
-    OVERRIDE(void endTestRun(const Test&, TestResult&));
-    OVERRIDE(void addFailure(const TestFailure&));
+    __OVERRIDE__(void startTest(const Test&));
+    __OVERRIDE__(void endTestRun(const Test&, TestResult&));
+    __OVERRIDE__(void addFailure(const TestFailure&));
 
 private:
     std::ostream& out;

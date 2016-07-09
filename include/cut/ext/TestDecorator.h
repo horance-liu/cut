@@ -10,10 +10,10 @@ struct TestDecorator : Test
     explicit TestDecorator(Test& test);
 
 protected:
-    OVERRIDE(void run(TestResult&));
-    OVERRIDE(int countTestCases() const);
-    OVERRIDE(int countChildTests() const);
-    OVERRIDE(const std::string& getName () const);
+    __OVERRIDE__(void run(TestResult&));
+    __OVERRIDE__(int countTestCases() const);
+    __OVERRIDE__(int countChildTests() const);
+    __OVERRIDE__(const std::string& getName () const);
 
 private:
     Test& test;

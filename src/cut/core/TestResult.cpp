@@ -1,3 +1,4 @@
+#include <cui/algo/__range__.h>
 #include <cut/core/TestResult.h>
 #include <cut/core/TestCase.h>
 #include <cut/core/TestFunctor.h>
@@ -5,14 +6,13 @@
 #include <cut/core/TestSuite.h>
 #include <cut/except/AssertionError.h>
 #include <cut/except/TestFailure.h>
-#include <cub/algo/range.h>
 
 CUT_NS_BEGIN
 
 TestResult::~TestResult()
 {
-    cub::each(listeners, [](TestListener* p) { delete p; });
-    cub::each(failures,  [](TestFailure* p)  { delete p; });
+    cui::each(listeners, [](TestListener* p) { delete p; });
+    cui::each(failures,  [](TestFailure* p)  { delete p; });
 }
 
 void TestResult::add(TestListener* listener)
@@ -21,7 +21,7 @@ void TestResult::add(TestListener* listener)
 }
 
 #define BROADCAST(action) \
-cub::each(listeners, [&](TestListener* listener) { listener->action; })
+cui::each(listeners, [&](TestListener* listener) { listener->action; })
 
 void TestResult::run(TestCase& test)
 {

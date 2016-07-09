@@ -34,7 +34,7 @@ void TestOptions::clear()
 
 int TestOptions::repeat() const
 {
-	return options.has("list") ? 1 : cub::string_as<int>(options["repeat"]);
+	return options.has("list") ? 1 : cui::string_as<int>(options["repeat"]);
 }
 
 bool TestOptions::verbose() const
@@ -63,7 +63,7 @@ inline int TestOptions::help() const
 
 inline int TestOptions::go() const
 {
-    return ROLE(TestRunner).run() ? EXIT_SUCCESS : EXIT_FAILURE;
+    return __ROLE__(TestRunner).run() ? EXIT_SUCCESS : EXIT_FAILURE;
 }
 
 int TestOptions::run() const

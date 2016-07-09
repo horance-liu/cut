@@ -2,16 +2,16 @@
 #define INCL_DCM_H7349D344_AAC4_47D0_8E42_DF1F7EC0C2A4
 
 #include <cut/cut.h>
-#include <cub/dci/Role.h>
-#include <cpo/core/VariablesMap.hpp>
 #include <cpo/core/OptionsDescription.hpp>
+#include <cpo/core/VariablesMap.hpp>
+#include <cui/dci/__Role__.h>
 
 CUT_NS_BEGIN
 
 struct TestRunner;
 struct TestListener;
 
-DEFINE_ROLE(TestOptions)
+__TRAIT__(TestOptions)
 {
     TestOptions();
 
@@ -37,7 +37,7 @@ private:
     cpo::VariablesMap options;
 
 private:
-    USE_ROLE(TestRunner);
+    __USE_ROLE__(TestRunner);
 };
 
 CUT_NS_END

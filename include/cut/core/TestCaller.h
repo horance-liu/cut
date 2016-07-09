@@ -15,20 +15,20 @@ struct TestCaller : TestCase
     {}
 
 private:
-    OVERRIDE(void setUp())
+    __OVERRIDE__(void setUp())
     {
         fixture = new Fixture;
         fixture->setUp();
     }
 
-    OVERRIDE(void tearDown())
+    __OVERRIDE__(void tearDown())
     {
         fixture->tearDown();
         delete fixture;
         fixture = 0;
     }
 
-    OVERRIDE(void runTest())
+    __OVERRIDE__(void runTest())
     {
         (fixture->*method)();
     }

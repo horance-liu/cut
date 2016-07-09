@@ -1,8 +1,6 @@
 #ifndef H9811B75A_15B3_4DF0_91B7_483C42F74473
 #define H9811B75A_15B3_4DF0_91B7_483C42F74473
 
-#include <cub/base/EqHelper.h>
-
 struct Point;
 
 struct Orientation
@@ -18,7 +16,8 @@ struct Orientation
     DECL_ORIENTATION(west)
     DECL_ORIENTATION(north)
 
-    __DECL_EQUALS(Orientation);
+    bool operator!=(const Orientation& rhs) const;
+    bool operator==(const Orientation& rhs) const;
 
 private:
     Orientation(int order, int offset);

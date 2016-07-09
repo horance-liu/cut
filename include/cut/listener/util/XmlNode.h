@@ -4,7 +4,7 @@
 #include <cut/cut.h>
 #include <vector>
 #include <string>
-#include <cub/algo/String.h>
+#include <cui/algo/__string__.h>
 
 CUT_NS_BEGIN
 
@@ -18,13 +18,13 @@ struct XmlNode
     template <typename V>
     void addAttribute(const std::string& key, const V& value)
     {
-        doAddAtribute(key, cub::toString(value));
+        doAddAtribute(key, cui::toString(value));
     }
 
     template <typename V>
     void addValue(const V& value)
     {
-        doAddValue(cub::toString(value));
+        doAddValue(cui::toString(value));
     }
 
     const std::string& getName() const;

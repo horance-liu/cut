@@ -1,15 +1,15 @@
 #ifndef HC37C3D94_43F1_4677_BD56_34CB78EFEC75
 #define HC37C3D94_43F1_4677_BD56_34CB78EFEC75
 
-#include <cub/dci/Role.h>
+#include <cui/dci/__Role__.h>
 #include <vector>
 
 struct Point;
 struct Orientation;
 
-DEFINE_ROLE(Instruction)
+__TRAIT__(Instruction)
 {
-    ABSTRACT(void exec(Point& point, Orientation& orientation) const);
+    __ABSTRACT__(void exec(Point& point, Orientation& orientation) const);
 };
 
 Instruction* left();

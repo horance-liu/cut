@@ -1,0 +1,25 @@
+#ifndef HFBBD9E09_2084_46FE_BCC4_C44FDB7FC15A
+#define HFBBD9E09_2084_46FE_BCC4_C44FDB7FC15A
+
+////////////////////////////////////////////////////////////////////////////////
+#define __DO_STRINGIZE__( symbol ) #symbol
+#define __STRINGIZE__(symbol) __DO_STRINGIZE__(symbol)
+
+////////////////////////////////////////////////////////////////////////////////
+#define __DO_JOIN_AGAIN__(symbol1, symbol2) symbol1##symbol2
+#define __DO_JOIN__(symbol1, symbol2) __DO_JOIN_AGAIN__(symbol1, symbol2)
+
+////////////////////////////////////////////////////////////////////////////////
+#define __JOIN__(symbol1, symbol2) __DO_JOIN__(symbol1, symbol2)
+
+////////////////////////////////////////////////////////////////////////////////
+#ifdef __COUNTER__
+# define __UNIQUE_ID__ __COUNTER__
+#else
+# define __UNIQUE_ID__ __LINE__
+#endif
+
+////////////////////////////////////////////////////////////////////////////////
+# define __UNIQUE_NAME__(prefix) __JOIN__(prefix, __UNIQUE_ID__)
+
+#endif

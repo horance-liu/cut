@@ -1,6 +1,6 @@
+#include <cui/algo/__range__.h>
 #include <cut/core/TestSuite.h>
 #include <cut/core/TestResult.h>
-#include <cub/algo/range.h>
 
 CUT_NS_BEGIN
 
@@ -10,7 +10,7 @@ TestSuite::TestSuite(const std::string& name)
 
 TestSuite::~TestSuite()
 {
-    cub::each(tests, [](Test* t){ delete t; });
+    cui::each(tests, [](Test* t){ delete t; });
 }
 
 void TestSuite::addTest(Test* test)
@@ -28,7 +28,7 @@ const std::string& TestSuite::getName() const
 
 int TestSuite::countTestCases() const
 {
-    return cub::reduce(tests, 0, [](int& num, Test* test) {
+    return cui::reduce(tests, 0, [](int& num, Test* test) {
         num += test->countTestCases();
     });
 }
@@ -40,7 +40,7 @@ int TestSuite::countChildTests() const
 
 void TestSuite::runBare(TestResult &result)
 {
-    cub::each(tests, [&](Test* test){ test->run(result); });
+    cui::each(tests, [&](Test* test){ test->run(result); });
 }
 
 void TestSuite::run(TestResult& result)

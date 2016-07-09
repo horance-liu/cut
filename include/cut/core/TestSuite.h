@@ -16,10 +16,10 @@ struct TestSuite : Test
     void runBare(TestResult &result);
 
 private:
-    OVERRIDE(const std::string& getName() const);
-    OVERRIDE(int countTestCases() const);
-    OVERRIDE(int countChildTests() const);
-    OVERRIDE(void run(TestResult&));
+    __OVERRIDE__(const std::string& getName() const);
+    __OVERRIDE__(int countTestCases() const);
+    __OVERRIDE__(int countChildTests() const);
+    __OVERRIDE__(void run(TestResult&));
 
 private:
     const std::string name;

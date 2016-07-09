@@ -10,7 +10,12 @@ Point Point::moveOn(int step, const Orientation& orientation) const
     return orientation.moveOn(x, y, step);
 }
 
-__DEF_EQUALS(Point)
+bool Point::operator!=(const Point& rhs) const
 {
-    return __FIELD_EQ(x) && __FIELD_EQ(y);
+    return !(*this == rhs);
+}
+
+bool Point::operator==(const Point& rhs) const
+{
+    return this->x == rhs.x && this->y == rhs.y;
 }

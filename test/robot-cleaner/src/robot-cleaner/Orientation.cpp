@@ -50,7 +50,12 @@ DEF_ORIENTATION(south, 1, 0)
 DEF_ORIENTATION(west,  2, -1)
 DEF_ORIENTATION(north, 3, 0)
 
-__DEF_EQUALS(Orientation)
+bool Orientation::operator!=(const Orientation& rhs) const
 {
-    return __FIELD_EQ(order) && __FIELD_EQ(offset);
+    return !(*this == rhs);
+}
+
+bool Orientation::operator==(const Orientation& rhs) const
+{
+    return order == rhs.order && offset == rhs.offset;
 }

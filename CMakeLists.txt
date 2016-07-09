@@ -17,3 +17,6 @@ if(ENABLE_TEST)
 endif()
 
 install(DIRECTORY include/cut DESTINATION include)
+install(DIRECTORY include/cum DESTINATION include)
+install(DIRECTORY include/cui DESTINATION include)
+install(DIRECTORY include/cpo DESTINATION include)

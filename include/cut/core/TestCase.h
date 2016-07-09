@@ -13,13 +13,13 @@ struct TestCase : Test, TestFixture
     void runBare(TestResult&);
 
 private:
-    OVERRIDE(void run(TestResult&));
-    OVERRIDE(int countTestCases() const);
-    OVERRIDE(int countChildTests() const);
-    OVERRIDE(const std::string& getName() const);
+    __OVERRIDE__(void run(TestResult&));
+    __OVERRIDE__(int countTestCases() const);
+    __OVERRIDE__(int countChildTests() const);
+    __OVERRIDE__(const std::string& getName() const);
 
 private:
-    DEFAULT(void, runTest());
+    __DEFAULT__(void, runTest());
 
 private:
     template <typename Functor>

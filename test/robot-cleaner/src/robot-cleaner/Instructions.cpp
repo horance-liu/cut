@@ -11,7 +11,7 @@ namespace {
 
     struct EmptyInstruction : Instruction
     {
-        OVERRIDE(void exec(Point&, Orientation&) const) {}
+        __OVERRIDE__(void exec(Point&, Orientation&) const) {}
     };
 }
 
@@ -23,7 +23,7 @@ namespace
         {}
 
     private:
-        OVERRIDE(void exec(Point&, Orientation& orientation) const)
+        __OVERRIDE__(void exec(Point&, Orientation& orientation) const)
         {
             orientation = orientation.turnTo(left);
         }
@@ -52,7 +52,7 @@ namespace
         {}
 
     private:
-        OVERRIDE(void exec(Point& point, Orientation& orientation) const)
+        __OVERRIDE__(void exec(Point& point, Orientation& orientation) const)
         {
             point = point.moveOn(step, orientation);
         }
@@ -96,7 +96,7 @@ namespace
         {}
 
     private:
-        OVERRIDE(void exec(Point& point, Orientation& orientation) const)
+        __OVERRIDE__(void exec(Point& point, Orientation& orientation) const)
         {
             for (auto i=0; i<n; i++)
             {
@@ -136,7 +136,7 @@ namespace
         }
 
     private:
-        OVERRIDE(void exec(Point& point, Orientation& orientation) const)
+        __OVERRIDE__(void exec(Point& point, Orientation& orientation) const)
         {
             for(auto instruction : instructions)
             {

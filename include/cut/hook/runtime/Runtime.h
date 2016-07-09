@@ -1,7 +1,7 @@
 #ifndef H4F0DAA73_78BC_4665_B214_D485ED463BB1
 #define H4F0DAA73_78BC_4665_B214_D485ED463BB1
 
-#include <cub/dci/Role.h>
+#include <cui/dci/__Role__.h>
 #include <cut/cut.h>
 
 CUT_NS_BEGIN
@@ -12,18 +12,18 @@ struct TestFactorySuite;
 struct TestOptions;
 struct TestRunner;
 
-DEFINE_ROLE(Runtime)
+__TRAIT__(Runtime)
 {
     static Runtime& getIntance();
 
-    HAS_ROLE(BeforeAllHookRegistry);
-    HAS_ROLE(AfterAllHookRegistry);
-    HAS_ROLE(TestFactorySuite);
-    HAS_ROLE(TestOptions);
-    HAS_ROLE(TestRunner);
+    __HAS_ROLE__(BeforeAllHookRegistry);
+    __HAS_ROLE__(AfterAllHookRegistry);
+    __HAS_ROLE__(TestFactorySuite);
+    __HAS_ROLE__(TestOptions);
+    __HAS_ROLE__(TestRunner);
 };
 
-#define RUNTIME(type) Runtime::getIntance().ROLE(type)
+#define RUNTIME(type) Runtime::getIntance().__ROLE__(type)
 
 CUT_NS_END
 

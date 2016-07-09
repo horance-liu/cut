@@ -1,14 +1,14 @@
 #ifndef H9ABDDEDF_C97D_4D65_80C2_33DE40D6F46A
 #define H9ABDDEDF_C97D_4D65_80C2_33DE40D6F46A
 
+#include <cui/dci/__Role__.h>
 #include <cut/cut.h>
-#include <cub/dci/Role.h>
 
 CUT_NS_BEGIN
 
-DEFINE_ROLE(UnconditionalHook)
+__TRAIT__(UnconditionalHook)
 {
-    ABSTRACT(void invoke());
+    __ABSTRACT__(void invoke());
 };
 
 CUT_NS_END

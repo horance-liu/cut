@@ -10,9 +10,9 @@ struct RepeatedTest : TestDecorator
     RepeatedTest(Test& test, int times);
 
 private:
-    OVERRIDE(void run(TestResult&));
-    OVERRIDE(int countTestCases() const);
-    OVERRIDE(int countChildTests() const);
+    __OVERRIDE__(void run(TestResult&));
+    __OVERRIDE__(int countTestCases() const);
+    __OVERRIDE__(int countChildTests() const);
 
 private:
     int times;
