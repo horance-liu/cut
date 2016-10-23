@@ -20,22 +20,21 @@ main() {
     NORMAL=""
   fi
 
-  printf "${BLUE}Cloning ccock/cut...${NORMAL}\n"
+  printf "${BLUE}Cloning cut...${NORMAL}\n"
 
   hash git >/dev/null 2>&1 || {
     echo "Error: git is not installed"
     exit 1
   }
 
-  env git clone https://github.com/ccock/cut.git || {
-    printf "Error: git clone of ccock/cut repo failed\n"
+  env git clone https://github.com/horance-liu/cut.git || {
+    printf "Error: git clone of cut repo failed\n"
     exit 1
   }
 
   printf "${BLUE}Looking for an existing ccock/cut...${NORMAL}\n"
   if [ -f /usr/local/lib/libcut.a ]; then
-    printf "${YELLOW}Found ccock/cut installed.${NORMAL} ${GREEN}Clearing prev version.${NORMAL}\n";
-    sudo rm -rf /usr/local/include/cui
+    printf "${YELLOW}Found cut installed.${NORMAL} ${GREEN}Clearing prev version.${NORMAL}\n";
     sudo rm -rf /usr/local/include/cut
     sudo rm -rf /usr/local/include/cum
     sudo rm -rf /usr/local/include/cpo
@@ -46,9 +45,9 @@ main() {
   mkdir build && cd build
   cmake ..
 
-  printf "${BLUE}Makinging ccock/cut...${NORMAL}\n"
+  printf "${BLUE}Makinging cut...${NORMAL}\n"
   env make || {
-    printf "Error: install ccock/cut failed.\n"
+    printf "Error: install cut failed.\n"
     exit 1
   }
 
@@ -56,9 +55,9 @@ main() {
 
   printf "${GREEN}"
   echo ''
-  echo 'ccock/cut is now installed!'
+  echo 'cut is now installed!'
   echo ''
-  echo 'p.s. Follow us at https://github.com/ccock/cut'
+  echo 'p.s. Follow us at https://github.com/horance-liu/cut'
   echo ''
   printf "${NORMAL}"
 }
