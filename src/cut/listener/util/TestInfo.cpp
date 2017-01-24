@@ -3,10 +3,10 @@
 CUT_NS_BEGIN
 
 TestInfo::TestInfo()
-    : timer(new Timer)
-    , succ(true)
+    : succ(true)
     , failure(false)
     , error(false)
+    , timer(new Timer)
 {}
 
 void TestInfo::onFailure()

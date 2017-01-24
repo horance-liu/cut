@@ -82,8 +82,8 @@ namespace
 
     struct BaseOptionParser
     {
-         BaseOptionParser(const Tok& init, const OptionsDescription& desc ):
-              foundOption(0), desc(desc)
+         BaseOptionParser(const Tok& init, const OptionsDescription& desc )
+           : desc(desc), foundOption(0)
          {
               init.parse(name, adjacent);
          }

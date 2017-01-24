@@ -42,7 +42,7 @@ main() {
   fi
 
   cd cut
-  mkdir build && cd build
+  mkdir tmp && cd tmp
   cmake ..
 
   printf "${BLUE}Makinging cut...${NORMAL}\n"

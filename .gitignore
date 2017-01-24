@@ -1,7 +1,21 @@
+# temp 
 tmp/
 output/
 build/
+
+# clion
 .idea/
 *.xml
-lib/cub/
-lib/cub/
+
+# eclipse
+.settings/
+.project
+.cproject
+
+# bazel
+bazel-bin
+bazel-cut
+bazel-genfiles
+bazel-out
+bazel-testlogs
+

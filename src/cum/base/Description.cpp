@@ -2,7 +2,7 @@
 
 CUM_NS_BEGIN
 
-inline Description& Description::append(const std::string& text)
+Description& Description::append(const std::string& text)
 {
     desc += text;
     return *this;

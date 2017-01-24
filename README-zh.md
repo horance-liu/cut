@@ -36,7 +36,7 @@ $ curl -fsSL https://raw.github.com/ccock/cut/master/install.sh | sh
 ### 手动安装和测试Cut
 
 ```bash
-$ mkdir build && cd build
+$ mkdir tmp && cd tmp
 $ cmake .. && make
 $ sudo make install 
 ```
@@ -44,7 +44,7 @@ $ sudo make install
 ##### 测试cut
 
 ```bash
-$ cd build
+$ cd tmp 
 $ cmake -DENABLE_TEST=on .. && make
 $ test/cut-test
 ```

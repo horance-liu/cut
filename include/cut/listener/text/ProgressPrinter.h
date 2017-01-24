@@ -16,7 +16,7 @@ private:
     __OVERRIDE__(void addFailure(const TestFailure&));
 
 private:
-    std::ostream& out;
+//    std::ostream& out;
 };
 
 CUT_NS_END
