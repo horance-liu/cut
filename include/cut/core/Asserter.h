@@ -9,6 +9,24 @@
 
 CUT_NS_BEGIN
 
+#define FAIL(msg) throw AssertionError(__FULL_FILE__, msg);
+
+template <typename E>
+inline bool throwing(std::function<void()> f)
+{
+    try
+    {
+        f();
+    } catch (const E& e) {
+        return true;
+    } catch (...) {
+      FAIL("Expected exception to be thrown, but got different exception.");
+      return false;
+    }
+    FAIL("Expected exception to be thrown, but got nothing.");
+    return false;
+}
+
 template <typename U, typename V>
 void assert_that(const U& actual, cum::Matcher<V>* matcher, const std::string& source)
 {
@@ -29,7 +47,13 @@ void assert_that(const U& actual, cum::Matcher<V>* matcher, const std::string& s
 }
 
 #define ASSERT_THAT(actual, matcher) \
-    CUT_NS::assert_that(actual, matcher, __FULL_FILE__())
+    CUT_NS::assert_that(actual, matcher, __FULL_FILE__)
+
+#define ASSERT_TRUE(actual) \
+  ASSERT_THAT(actual, cum::be_true())
+
+#define ASSERT_FALSE(actual) \
+  ASSERT_THAT(actual, cum::be_false())
 
 CUT_NS_END
 

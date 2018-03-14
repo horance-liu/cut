@@ -8,8 +8,8 @@ CUI_NS_BEGIN
 
 std::string sourcefile(const std::string& file, int line, bool absolute);
 
-#define __SHORT_FILE__() ::CUI_NS::sourcefile(__FILE__, __LINE__, false)
-#define __FULL_FILE__()  ::CUI_NS::sourcefile(__FILE__, __LINE__, true)
+#define __SHORT_FILE__ ::CUI_NS::sourcefile(__FILE__, __LINE__, false)
+#define __FULL_FILE__  ::CUI_NS::sourcefile(__FILE__, __LINE__, true)
 
 CUI_NS_END
 
