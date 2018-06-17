@@ -1,8 +1,8 @@
 #ifndef H77D5AE53_F815_4987_87CC_9254557EC4BD
 #define H77D5AE53_F815_4987_87CC_9254557EC4BD
 
-#include <utility>
 #include <algorithm>
+#include <iterator>
 #include <cui/cui.h>
 
 CUI_NS_BEGIN
