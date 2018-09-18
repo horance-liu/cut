@@ -10,4 +10,4 @@ FILE(GLOB_RECURSE all_files
 *.C)
 
 add_executable(cut-test ${all_files})
-target_link_libraries(cut-test cut)
+target_link_libraries(cut-test cut-main cut)
