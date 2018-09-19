@@ -20,11 +20,15 @@ inline CUM_NS::comparator<const T*>* factory(const T expected[])   \
     return new CUM_NS::comparator<const T*>(expected);             \
 }
 
+CUM_NS_BEGIN
+
 DEFINE_COMPARATOR(eq, IsEqual)
 DEFINE_COMPARATOR(ne, IsNotEqual)
 DEFINE_COMPARATOR(lt, IsLessThan)
 DEFINE_COMPARATOR(gt, IsGreaterThan)
 DEFINE_COMPARATOR(le, IsLessThanOrEqualTo)
 DEFINE_COMPARATOR(ge, IsGreaterThanOrEqualTo)
+
+CUM_NS_END
 
 #endif
