@@ -55,6 +55,12 @@ void assert_that(const U& actual, cum::Matcher<V>* matcher, const std::string& s
 #define ASSERT_FALSE(actual) \
   ASSERT_THAT(actual, cum::be_false())
 
+#define ASSERT_EQ(expected, actual) \
+  ASSERT_THAT(actual, cum::eq(expected))
+
+#define ASSERT_NE(expected, actual) \
+  ASSERT_THAT(actual, cum::ne(expected))
+
 CUT_NS_END
 
 #endif
