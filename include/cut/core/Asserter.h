@@ -61,6 +61,18 @@ void assert_that(const U& actual, cum::Matcher<V>* matcher, const std::string& s
 #define ASSERT_NE(expected, actual) \
   ASSERT_THAT(actual, cum::ne(expected))
 
+#define ASSERT_LT(expected, actual) \
+  ASSERT_THAT(actual, cum::lt(expected))
+
+#define ASSERT_GT(expected, actual) \
+  ASSERT_THAT(actual, cum::gt(expected))
+
+#define ASSERT_LE(expected, actual) \
+  ASSERT_THAT(actual, cum::le(expected))
+
+#define ASSERT_GE(expected, actual) \
+  ASSERT_THAT(actual, cum::ge(expected))
+
 CUT_NS_END
 
 #endif
