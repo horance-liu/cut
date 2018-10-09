@@ -5,7 +5,8 @@ cc_library(
       exclude = ["src/cut/startup/main.cpp"]    
   ),
   hdrs = glob(["include/**/*.h", "include/**/*.hpp"]),
-  copts = ["-Iinclude", "-std=c++14", "-Wno-invalid-offsetof"],
+  copts = ["-std=c++14"],
+  includes = ["include"],
   visibility = ["//visibility:public"],
 )
 
@@ -16,6 +17,7 @@ cc_library(
       "include/cut/cut.h",
       "include/cut/startup/StartUp.h",
   ],
-  copts = ["-Iinclude", "-std=c++14", "-Wno-invalid-offsetof"],
+  copts = ["-std=c++14"],
+  includes = ["include"],
   visibility = ["//visibility:public"],
 )
