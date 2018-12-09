@@ -6,5 +6,5 @@ cc_test(
     "-std=c++11", 
     "-g", 
     "-Wno-invalid-offsetof"],  
-  deps = ["//:cut"],
+  deps = ["//:cut", "//:cut_main"],
 )
