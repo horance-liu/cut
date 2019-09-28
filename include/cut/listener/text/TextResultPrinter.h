@@ -4,7 +4,7 @@
 #include <cut/core/TestListener.h>
 #include <iostream>
 #include <stack>
-#include <time.h>
+#include <sys/time.h>
 
 CUT_NS_BEGIN
 
