@@ -11,11 +11,13 @@ C/C++ are different languages from most modern ones. Writing tests for them has 
 - Supported Platform:
   * [MAC OS X] supported
   * [Linux] supported
-  * [Windows] not supported
+  * [Windows] partial supported
 
 - Supported Compilers:
   * [CLANG] 3.4 or later.
   * [GCC] 4.8 or later.
+  * [MinGW] ok
+  * [Cygwin] ok    
   * [MSVC] not supported.
 
 ## Installing
@@ -47,6 +49,24 @@ $ sudo make install
 $ cd tmp 
 $ cmake -DENABLE_TEST=on .. && make
 $ test/cut-test
+```
+
+### Build on Windows
+
+##### MinGW
+
+```bash
+$ cmake -G"MinGW Makefiles" ..
+$ make
+$ make install
+```
+
+##### Cygwin
+
+```bash
+$ cmake ..
+$ make
+$ make install
 ```
 
 ## Begin the new journey

@@ -11,12 +11,13 @@ Cut是一个简单的、可扩展的、使用C\+\+11实现的xUnit测试框架�
 - 支持的平台:
   * [MAC OS X] supported
   * [Linux] supported
-  * [Windows] not supported
+  * [Windows] partial supported
 
 - 支持的编译器:
   * [CLANG] 3.4 or later.
   * [GCC] 4.8 or later.
-  * [MSVC] not supported.
+  * [Cygwin or MinGW] supported.
+  * [MSVC] not supported.  
 
 ### 安装Cut
 
@@ -47,6 +48,24 @@ $ sudo make install
 $ cd tmp 
 $ cmake -DENABLE_TEST=on .. && make
 $ test/cut-test
+```
+
+### Windows构建
+
+##### MinGW
+
+```bash
+$ cmake -G"MinGW Makefiles" ..
+$ make
+$ make install
+```
+
+##### Cygwin
+
+```bash
+$ cmake ..
+$ make
+$ make install
 ```
 
 ### 破冰之旅
